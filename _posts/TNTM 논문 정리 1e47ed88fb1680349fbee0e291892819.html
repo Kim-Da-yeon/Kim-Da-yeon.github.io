@@ -1,0 +1,715 @@
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"/><title>TNTM 논문 정리</title><style>
+/* cspell:disable-file */
+/* webkit printing magic: print all background colors */
+html {
+	-webkit-print-color-adjust: exact;
+}
+* {
+	box-sizing: border-box;
+	-webkit-print-color-adjust: exact;
+}
+
+html,
+body {
+	margin: 0;
+	padding: 0;
+}
+@media only screen {
+	body {
+		margin: 2em auto;
+		max-width: 900px;
+		color: rgb(55, 53, 47);
+	}
+}
+
+body {
+	line-height: 1.5;
+	white-space: pre-wrap;
+}
+
+a,
+a.visited {
+	color: inherit;
+	text-decoration: underline;
+}
+
+.pdf-relative-link-path {
+	font-size: 80%;
+	color: #444;
+}
+
+h1,
+h2,
+h3 {
+	letter-spacing: -0.01em;
+	line-height: 1.2;
+	font-weight: 600;
+	margin-bottom: 0;
+}
+
+.page-title {
+	font-size: 2.5rem;
+	font-weight: 700;
+	margin-top: 0;
+	margin-bottom: 0.75em;
+}
+
+h1 {
+	font-size: 1.875rem;
+	margin-top: 1.875rem;
+}
+
+h2 {
+	font-size: 1.5rem;
+	margin-top: 1.5rem;
+}
+
+h3 {
+	font-size: 1.25rem;
+	margin-top: 1.25rem;
+}
+
+.source {
+	border: 1px solid #ddd;
+	border-radius: 3px;
+	padding: 1.5em;
+	word-break: break-all;
+}
+
+.callout {
+	border-radius: 10px;
+	padding: 1rem;
+}
+
+figure {
+	margin: 1.25em 0;
+	page-break-inside: avoid;
+}
+
+figcaption {
+	opacity: 0.5;
+	font-size: 85%;
+	margin-top: 0.5em;
+}
+
+mark {
+	background-color: transparent;
+}
+
+.indented {
+	padding-left: 1.5em;
+}
+
+hr {
+	background: transparent;
+	display: block;
+	width: 100%;
+	height: 1px;
+	visibility: visible;
+	border: none;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.09);
+}
+
+img {
+	max-width: 100%;
+}
+
+@media only print {
+	img {
+		max-height: 100vh;
+		object-fit: contain;
+	}
+}
+
+@page {
+	margin: 1in;
+}
+
+.collection-content {
+	font-size: 0.875rem;
+}
+
+.collection-content td {
+	white-space: pre-wrap;
+	word-break: break-word;
+}
+
+.column-list {
+	display: flex;
+	justify-content: space-between;
+}
+
+.column {
+	padding: 0 1em;
+}
+
+.column:first-child {
+	padding-left: 0;
+}
+
+.column:last-child {
+	padding-right: 0;
+}
+
+.table_of_contents-item {
+	display: block;
+	font-size: 0.875rem;
+	line-height: 1.3;
+	padding: 0.125rem;
+}
+
+.table_of_contents-indent-1 {
+	margin-left: 1.5rem;
+}
+
+.table_of_contents-indent-2 {
+	margin-left: 3rem;
+}
+
+.table_of_contents-indent-3 {
+	margin-left: 4.5rem;
+}
+
+.table_of_contents-link {
+	text-decoration: none;
+	opacity: 0.7;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.18);
+}
+
+table,
+th,
+td {
+	border: 1px solid rgba(55, 53, 47, 0.09);
+	border-collapse: collapse;
+}
+
+table {
+	border-left: none;
+	border-right: none;
+}
+
+th,
+td {
+	font-weight: normal;
+	padding: 0.25em 0.5em;
+	line-height: 1.5;
+	min-height: 1.5em;
+	text-align: left;
+}
+
+th {
+	color: rgba(55, 53, 47, 0.6);
+}
+
+ol,
+ul {
+	margin: 0;
+	margin-block-start: 0.6em;
+	margin-block-end: 0.6em;
+}
+
+li > ol:first-child,
+li > ul:first-child {
+	margin-block-start: 0.6em;
+}
+
+ul > li {
+	list-style: disc;
+}
+
+ul.to-do-list {
+	padding-inline-start: 0;
+}
+
+ul.to-do-list > li {
+	list-style: none;
+}
+
+.to-do-children-checked {
+	text-decoration: line-through;
+	opacity: 0.375;
+}
+
+ul.toggle > li {
+	list-style: none;
+}
+
+ul {
+	padding-inline-start: 1.7em;
+}
+
+ul > li {
+	padding-left: 0.1em;
+}
+
+ol {
+	padding-inline-start: 1.6em;
+}
+
+ol > li {
+	padding-left: 0.2em;
+}
+
+.mono ol {
+	padding-inline-start: 2em;
+}
+
+.mono ol > li {
+	text-indent: -0.4em;
+}
+
+.toggle {
+	padding-inline-start: 0em;
+	list-style-type: none;
+}
+
+/* Indent toggle children */
+.toggle > li > details {
+	padding-left: 1.7em;
+}
+
+.toggle > li > details > summary {
+	margin-left: -1.1em;
+}
+
+.selected-value {
+	display: inline-block;
+	padding: 0 0.5em;
+	background: rgba(206, 205, 202, 0.5);
+	border-radius: 3px;
+	margin-right: 0.5em;
+	margin-top: 0.3em;
+	margin-bottom: 0.3em;
+	white-space: nowrap;
+}
+
+.collection-title {
+	display: inline-block;
+	margin-right: 1em;
+}
+
+.page-description {
+	margin-bottom: 2em;
+}
+
+.simple-table {
+	margin-top: 1em;
+	font-size: 0.875rem;
+	empty-cells: show;
+}
+.simple-table td {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table th {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table-header-color {
+	background: rgb(247, 246, 243);
+	color: black;
+}
+.simple-table-header {
+	font-weight: 500;
+}
+
+time {
+	opacity: 0.5;
+}
+
+.icon {
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	max-width: 1.2em;
+	max-height: 1.2em;
+	text-decoration: none;
+	vertical-align: text-bottom;
+	margin-right: 0.5em;
+}
+
+img.icon {
+	border-radius: 3px;
+}
+
+.callout img.notion-static-icon {
+	width: 1em;
+	height: 1em;
+}
+
+.callout p {
+	margin: 0;
+}
+
+.callout h1,
+.callout h2,
+.callout h3 {
+	margin: 0 0 0.6rem;
+}
+
+.user-icon {
+	width: 1.5em;
+	height: 1.5em;
+	border-radius: 100%;
+	margin-right: 0.5rem;
+}
+
+.user-icon-inner {
+	font-size: 0.8em;
+}
+
+.text-icon {
+	border: 1px solid #000;
+	text-align: center;
+}
+
+.page-cover-image {
+	display: block;
+	object-fit: cover;
+	width: 100%;
+	max-height: 30vh;
+}
+
+.page-header-icon {
+	font-size: 3rem;
+	margin-bottom: 1rem;
+}
+
+.page-header-icon-with-cover {
+	margin-top: -0.72em;
+	margin-left: 0.07em;
+}
+
+.page-header-icon img {
+	border-radius: 3px;
+}
+
+.link-to-page {
+	margin: 1em 0;
+	padding: 0;
+	border: none;
+	font-weight: 500;
+}
+
+p > .user {
+	opacity: 0.5;
+}
+
+td > .user,
+td > time {
+	white-space: nowrap;
+}
+
+input[type="checkbox"] {
+	transform: scale(1.5);
+	margin-right: 0.6em;
+	vertical-align: middle;
+}
+
+p {
+	margin-top: 0.5em;
+	margin-bottom: 0.5em;
+}
+
+.image {
+	border: none;
+	margin: 1.5em 0;
+	padding: 0;
+	border-radius: 0;
+	text-align: center;
+}
+
+.code,
+code {
+	background: rgba(135, 131, 120, 0.15);
+	border-radius: 3px;
+	padding: 0.2em 0.4em;
+	border-radius: 3px;
+	font-size: 85%;
+	tab-size: 2;
+}
+
+code {
+	color: #eb5757;
+}
+
+.code {
+	padding: 1.5em 1em;
+}
+
+.code-wrap {
+	white-space: pre-wrap;
+	word-break: break-all;
+}
+
+.code > code {
+	background: none;
+	padding: 0;
+	font-size: 100%;
+	color: inherit;
+}
+
+blockquote {
+	font-size: 1em;
+	margin: 1em 0;
+	padding-left: 1em;
+	border-left: 3px solid rgb(55, 53, 47);
+}
+
+blockquote.quote-large {
+	font-size: 1.25em;
+}
+
+.bookmark {
+	text-decoration: none;
+	max-height: 8em;
+	padding: 0;
+	display: flex;
+	width: 100%;
+	align-items: stretch;
+}
+
+.bookmark-title {
+	font-size: 0.85em;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	height: 1.75em;
+	white-space: nowrap;
+}
+
+.bookmark-text {
+	display: flex;
+	flex-direction: column;
+}
+
+.bookmark-info {
+	flex: 4 1 180px;
+	padding: 12px 14px 14px;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+}
+
+.bookmark-image {
+	width: 33%;
+	flex: 1 1 180px;
+	display: block;
+	position: relative;
+	object-fit: cover;
+	border-radius: 1px;
+}
+
+.bookmark-description {
+	color: rgba(55, 53, 47, 0.6);
+	font-size: 0.75em;
+	overflow: hidden;
+	max-height: 4.5em;
+	word-break: break-word;
+}
+
+.bookmark-href {
+	font-size: 0.75em;
+	margin-top: 0.25em;
+}
+
+.sans { font-family: ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol"; }
+.code { font-family: "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace; }
+.serif { font-family: Lyon-Text, Georgia, ui-serif, serif; }
+.mono { font-family: iawriter-mono, Nitti, Menlo, Courier, monospace; }
+.pdf .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK JP'; }
+.pdf:lang(zh-CN) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK SC'; }
+.pdf:lang(zh-TW) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK TC'; }
+.pdf:lang(ko-KR) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK KR'; }
+.pdf .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.pdf .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK JP'; }
+.pdf:lang(zh-CN) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK SC'; }
+.pdf:lang(zh-TW) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK TC'; }
+.pdf:lang(ko-KR) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK KR'; }
+.pdf .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.highlight-default {
+	color: rgba(44, 44, 43, 1);
+}
+.highlight-gray {
+	color: rgba(134, 131, 126, 1);
+	fill: rgba(134, 131, 126, 1);
+}
+.highlight-brown {
+	color: rgba(159, 118, 90, 1);
+	fill: rgba(159, 118, 90, 1);
+}
+.highlight-orange {
+	color: rgba(210, 123, 45, 1);
+	fill: rgba(210, 123, 45, 1);
+}
+.highlight-yellow {
+	color: rgba(203, 148, 52, 1);
+	fill: rgba(203, 148, 52, 1);
+}
+.highlight-teal {
+	color: rgba(80, 148, 110, 1);
+	fill: rgba(80, 148, 110, 1);
+}
+.highlight-blue {
+	color: rgba(63, 126, 190, 1);
+	fill: rgba(63, 126, 190, 1);
+}
+.highlight-purple {
+	color: rgba(154, 107, 180, 1);
+	fill: rgba(154, 107, 180, 1);
+}
+.highlight-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.highlight-red {
+	color: rgba(207, 81, 72, 1);
+	fill: rgba(207, 81, 72, 1);
+}
+.highlight-default_background {
+	color: rgba(44, 44, 43, 1);
+}
+.highlight-gray_background {
+	background: rgba(42, 28, 0, 0.07);
+}
+.highlight-brown_background {
+	background: rgba(139, 46, 0, 0.086);
+}
+.highlight-orange_background {
+	background: rgba(224, 101, 1, 0.129);
+}
+.highlight-yellow_background {
+	background: rgba(211, 168, 0, 0.137);
+}
+.highlight-teal_background {
+	background: rgba(0, 100, 45, 0.09);
+}
+.highlight-blue_background {
+	background: rgba(0, 111, 200, 0.09);
+}
+.highlight-purple_background {
+	background: rgba(102, 0, 178, 0.078);
+}
+.highlight-pink_background {
+	background: rgba(197, 0, 93, 0.086);
+}
+.highlight-red_background {
+	background: rgba(223, 22, 0, 0.094);
+}
+.block-color-default {
+	color: inherit;
+	fill: inherit;
+}
+.block-color-gray {
+	color: rgba(134, 131, 126, 1);
+	fill: rgba(134, 131, 126, 1);
+}
+.block-color-brown {
+	color: rgba(159, 118, 90, 1);
+	fill: rgba(159, 118, 90, 1);
+}
+.block-color-orange {
+	color: rgba(210, 123, 45, 1);
+	fill: rgba(210, 123, 45, 1);
+}
+.block-color-yellow {
+	color: rgba(203, 148, 52, 1);
+	fill: rgba(203, 148, 52, 1);
+}
+.block-color-teal {
+	color: rgba(80, 148, 110, 1);
+	fill: rgba(80, 148, 110, 1);
+}
+.block-color-blue {
+	color: rgba(63, 126, 190, 1);
+	fill: rgba(63, 126, 190, 1);
+}
+.block-color-purple {
+	color: rgba(154, 107, 180, 1);
+	fill: rgba(154, 107, 180, 1);
+}
+.block-color-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.block-color-red {
+	color: rgba(207, 81, 72, 1);
+	fill: rgba(207, 81, 72, 1);
+}
+.block-color-default_background {
+	color: inherit;
+	fill: inherit;
+}
+.block-color-gray_background {
+	background: rgba(240, 239, 237, 1);
+}
+.block-color-brown_background {
+	background: rgba(245, 237, 233, 1);
+}
+.block-color-orange_background {
+	background: rgba(251, 235, 222, 1);
+}
+.block-color-yellow_background {
+	background: rgba(249, 243, 220, 1);
+}
+.block-color-teal_background {
+	background: rgba(232, 241, 236, 1);
+}
+.block-color-blue_background {
+	background: rgba(232, 242, 250, 1);
+}
+.block-color-purple_background {
+	background: rgba(243, 235, 249, 1);
+}
+.block-color-pink_background {
+	background: rgba(250, 233, 241, 1);
+}
+.block-color-red_background {
+	background: rgba(252, 233, 231, 1);
+}
+.select-value-color-default { background-color: rgba(42, 28, 0, 0.07); }
+.select-value-color-gray { background-color: rgba(28, 19, 1, 0.11); }
+.select-value-color-brown { background-color: rgba(127, 51, 0, 0.156); }
+.select-value-color-orange { background-color: rgba(196, 88, 0, 0.203); }
+.select-value-color-yellow { background-color: rgba(209, 156, 0, 0.282); }
+.select-value-color-green { background-color: rgba(0, 96, 38, 0.156); }
+.select-value-color-blue { background-color: rgba(0, 99, 174, 0.172); }
+.select-value-color-purple { background-color: rgba(92, 0, 163, 0.141); }
+.select-value-color-pink { background-color: rgba(183, 0, 78, 0.152); }
+.select-value-color-red { background-color: rgba(206, 24, 0, 0.164); }
+
+.checkbox {
+	display: inline-flex;
+	vertical-align: text-bottom;
+	width: 16;
+	height: 16;
+	background-size: 16px;
+	margin-left: 2px;
+	margin-right: 5px;
+}
+
+.checkbox-on {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20width%3D%2216%22%20height%3D%2216%22%20fill%3D%22%2358A9D7%22%2F%3E%0A%3Cpath%20d%3D%22M6.71429%2012.2852L14%204.9995L12.7143%203.71436L6.71429%209.71378L3.28571%206.2831L2%207.57092L6.71429%2012.2852Z%22%20fill%3D%22white%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+
+.checkbox-off {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20x%3D%220.75%22%20y%3D%220.75%22%20width%3D%2214.5%22%20height%3D%2214.5%22%20fill%3D%22white%22%20stroke%3D%22%2336352F%22%20stroke-width%3D%221.5%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+	
+</style></head><body><article id="1e47ed88-fb16-8034-9fbe-e0e291892819" class="page sans"><header><img class="page-cover-image" src="https://www.notion.so/images/page-cover/webb4.jpg" style="object-position:center 50%"/><div class="page-header-icon page-header-icon-with-cover"><span class="icon">💬</span></div><h1 class="page-title">TNTM 논문 정리</h1><p class="page-description"></p></header><div class="page-body"><hr id="1e47ed88-fb16-815f-87a3-ee68a2a4440f"/><h2 id="1e47ed88-fb16-8100-adf0-e04dbe98855f" class="">A Bayesian Transition Network Topic Model<br/>for Inferring Conceptual Networks</h2><hr id="1e47ed88-fb16-81e0-8720-e02312e29784"/><h2 id="2467ed88-fb16-8088-a566-e8ff26c36a26" class="">MCMC 구현 방식</h2><p id="2467ed88-fb16-80ed-b08b-ea999d59d090" class=""><strong>1. 기본 구현</strong></p><ul id="2467ed88-fb16-80d4-adde-eabd4ccc7cd8" class="bulleted-list"><li style="list-style-type:disc"><strong>표준 MCMC 방법</strong> 사용 (<mark class="highlight-default"><code>standard MCMC methods</code></mark>)</li></ul><ul id="2467ed88-fb16-80ac-97e8-ec38f588c432" class="bulleted-list"><li style="list-style-type:disc"><strong>JAGS</strong>(Just Another Gibbs Sampler)를 R 환경에서 사용</li></ul><ul id="2467ed88-fb16-8079-b0a4-f59a096eb8da" class="bulleted-list"><li style="list-style-type:disc"><strong>단일 체인</strong>으로 보통 <strong>10,000 iterations</strong> 실행</li></ul><p id="2467ed88-fb16-809e-9a1d-d578c0568e73" class=""><strong>2. 수렴성 검증</strong></p><ul id="2467ed88-fb16-80df-b9a6-e8ef454516ce" class="bulleted-list"><li style="list-style-type:disc"><strong>Gelman-Rubin diagnostic test</strong>를 사용하여 단일 체인의 정상성(stationarity) 검증</li></ul><p id="2467ed88-fb16-80e7-96d8-d78668333da6" class="">
+</p><h2 id="2467ed88-fb16-802c-ab16-fa26ee258ba9" class="">2.1 직역</h2><h3 id="2467ed88-fb16-80f5-b117-e1101f4e8b00" class=""><strong>2.1 형식적 설명</strong></h3><p id="2467ed88-fb16-808d-83e1-d66ca68e8b4f" class="">형식적으로, 단일 문서에 대한 기본 모델 1은 다음과 같습니다:</p><ul id="2467ed88-fb16-8010-a0d6-dba908be7db1" class="bulleted-list"><li style="list-style-type:disc">각 문장 s는 하나의 주제 <style>@import url('https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.9/katex.min.css')</style><span data-token-index="0" contenteditable="false" class="notion-text-equation-token" style="user-select:all;-webkit-user-select:all;-moz-user-select:all"><span></span><span><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>t</mi><mi>s</mi></msub></mrow><annotation encoding="application/x-tex">t_s</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.7651em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathnormal">t</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.1514em;"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight">s</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span></span><span>﻿</span></span>에 할당됩니다.</li></ul><ul id="2467ed88-fb16-80e6-84d3-e3860624db92" class="bulleted-list"><li style="list-style-type:disc">다음 문장의 주제 <style>@import url('https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.9/katex.min.css')</style><span data-token-index="0" contenteditable="false" class="notion-text-equation-token" style="user-select:all;-webkit-user-select:all;-moz-user-select:all"><span></span><span><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>t</mi><mrow><mi>s</mi><mo>+</mo><mn>1</mn></mrow></msub></mrow><annotation encoding="application/x-tex">t_{s+1}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8234em;vertical-align:-0.2083em;"></span><span class="mord"><span class="mord mathnormal">t</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3011em;"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathnormal mtight">s</span><span class="mbin mtight">+</span><span class="mord mtight">1</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.2083em;"><span></span></span></span></span></span></span></span></span></span></span><span>﻿</span></span>는 전이 행렬 <style>@import url('https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.9/katex.min.css')</style><span data-token-index="0" contenteditable="false" class="notion-text-equation-token" style="user-select:all;-webkit-user-select:all;-moz-user-select:all"><span></span><span><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi mathvariant="bold">T</mi></mrow><annotation encoding="application/x-tex">\mathbf{T}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6861em;"></span><span class="mord mathbf">T</span></span></span></span></span><span>﻿</span></span>로부터 추출됩니다. 여기서 <style>@import url('https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.9/katex.min.css')</style><span data-token-index="0" contenteditable="false" class="notion-text-equation-token" style="user-select:all;-webkit-user-select:all;-moz-user-select:all"><span></span><span><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>T</mi><mrow><mi>i</mi><mo separator="true">,</mo><mi>j</mi></mrow></msub></mrow><annotation encoding="application/x-tex">T_{i,j}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.9694em;vertical-align:-0.2861em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.13889em;">T</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3117em;"><span style="top:-2.55em;margin-left:-0.1389em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathnormal mtight">i</span><span class="mpunct mtight">,</span><span class="mord mathnormal mtight" style="margin-right:0.05724em;">j</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.2861em;"><span></span></span></span></span></span></span></span></span></span></span><span>﻿</span></span>는 이전 주제 <style>@import url('https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.9/katex.min.css')</style><span data-token-index="0" contenteditable="false" class="notion-text-equation-token" style="user-select:all;-webkit-user-select:all;-moz-user-select:all"><span></span><span><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>t</mi><mi>j</mi></msub></mrow><annotation encoding="application/x-tex">t_j</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.9012em;vertical-align:-0.2861em;"></span><span class="mord"><span class="mord mathnormal">t</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3117em;"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight" style="margin-right:0.05724em;">j</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.2861em;"><span></span></span></span></span></span></span></span></span></span></span><span>﻿</span></span>에서 주제 <style>@import url('https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.9/katex.min.css')</style><span data-token-index="0" contenteditable="false" class="notion-text-equation-token" style="user-select:all;-webkit-user-select:all;-moz-user-select:all"><span></span><span><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>t</mi><mi>i</mi></msub></mrow><annotation encoding="application/x-tex">t_i</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.7651em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathnormal">t</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3117em;"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight">i</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span></span><span>﻿</span></span>로 전이될 확률입니다.</li></ul><ul id="2467ed88-fb16-803b-ab54-d08a6da12760" class="bulleted-list"><li style="list-style-type:disc">각 문장 s에 있는 단어 <style>@import url('https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.9/katex.min.css')</style><span data-token-index="0" contenteditable="false" class="notion-text-equation-token" style="user-select:all;-webkit-user-select:all;-moz-user-select:all"><span></span><span><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>n</mi><mi>s</mi></msub></mrow><annotation encoding="application/x-tex">n_s</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.5806em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathnormal">n</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.1514em;"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight">s</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span></span><span>﻿</span></span>개는 다항 분포에서 추출됩니다. 여기서 <style>@import url('https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.9/katex.min.css')</style><span data-token-index="0" contenteditable="false" class="notion-text-equation-token" style="user-select:all;-webkit-user-select:all;-moz-user-select:all"><span></span><span><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>β</mi><mrow><msub><mi>t</mi><mi>s</mi></msub><mo separator="true">,</mo><msub><mi>w</mi><mi>k</mi></msub></mrow></msub></mrow><annotation encoding="application/x-tex">\beta_{t_s, w_k}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.9805em;vertical-align:-0.2861em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.05278em;">β</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.2806em;"><span style="top:-2.55em;margin-left:-0.0528em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight"><span class="mord mathnormal mtight">t</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.1645em;"><span style="top:-2.357em;margin-left:0em;margin-right:0.0714em;"><span class="pstrut" style="height:2.5em;"></span><span class="sizing reset-size3 size1 mtight"><span class="mord mathnormal mtight">s</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.143em;"><span></span></span></span></span></span></span><span class="mpunct mtight">,</span><span class="mord mtight"><span class="mord mathnormal mtight" style="margin-right:0.02691em;">w</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3448em;"><span style="top:-2.3488em;margin-left:-0.0269em;margin-right:0.0714em;"><span class="pstrut" style="height:2.5em;"></span><span class="sizing reset-size3 size1 mtight"><span class="mord mathnormal mtight" style="margin-right:0.03148em;">k</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.1512em;"><span></span></span></span></span></span></span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.2861em;"><span></span></span></span></span></span></span></span></span></span></span><span>﻿</span></span>는 문장의 주제 <style>@import url('https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.9/katex.min.css')</style><span data-token-index="0" contenteditable="false" class="notion-text-equation-token" style="user-select:all;-webkit-user-select:all;-moz-user-select:all"><span></span><span><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>t</mi><mi>s</mi></msub></mrow><annotation encoding="application/x-tex">t_s</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.7651em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathnormal">t</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.1514em;"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight">s</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span></span><span>﻿</span></span>가 주어졌을 때 단어 k를 추출할 확률입니다.</li></ul><hr id="2467ed88-fb16-805e-8179-db7356950a6a"/><p id="2467ed88-fb16-80bb-b2f4-c2f52c505d54" class=""><strong>생성 과정은 다음과 같습니다:</strong></p><p id="2467ed88-fb16-8086-84e5-f8cb86915860" class=""><style>@import url('https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.9/katex.min.css')</style><span data-token-index="0" contenteditable="false" class="notion-text-equation-token" style="user-select:all;-webkit-user-select:all;-moz-user-select:all"><span></span><span><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>p</mi><mo stretchy="false">(</mo><msub><mi>X</mi><mrow><mi>s</mi><mo separator="true">,</mo><mi>w</mi></mrow></msub><mi mathvariant="normal">∣</mi><msub><mi>β</mi><mrow><msub><mi>t</mi><mi>s</mi></msub><mo separator="true">,</mo><mi>w</mi></mrow></msub><mo stretchy="false">)</mo><mo>∼</mo><mtext>Multinomial</mtext><mo stretchy="false">(</mo><msub><mi>n</mi><mi>s</mi></msub><mo separator="true">,</mo><msub><mi>β</mi><mrow><msub><mi>t</mi><mi>s</mi></msub><mo separator="true">,</mo><mi>w</mi></mrow></msub><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">p(X_{s,w} | \beta_{t_s,w}) \sim \text{Multinomial}(n_s, \beta_{t_s,w})</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1.0361em;vertical-align:-0.2861em;"></span><span class="mord mathnormal">p</span><span class="mopen">(</span><span class="mord"><span class="mord mathnormal" style="margin-right:0.07847em;">X</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.1514em;"><span style="top:-2.55em;margin-left:-0.0785em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathnormal mtight">s</span><span class="mpunct mtight">,</span><span class="mord mathnormal mtight" style="margin-right:0.02691em;">w</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.2861em;"><span></span></span></span></span></span></span><span class="mord">∣</span><span class="mord"><span class="mord mathnormal" style="margin-right:0.05278em;">β</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.2806em;"><span style="top:-2.55em;margin-left:-0.0528em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight"><span class="mord mathnormal mtight">t</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.1645em;"><span style="top:-2.357em;margin-left:0em;margin-right:0.0714em;"><span class="pstrut" style="height:2.5em;"></span><span class="sizing reset-size3 size1 mtight"><span class="mord mathnormal mtight">s</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.143em;"><span></span></span></span></span></span></span><span class="mpunct mtight">,</span><span class="mord mathnormal mtight" style="margin-right:0.02691em;">w</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.2861em;"><span></span></span></span></span></span></span><span class="mclose">)</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">∼</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:1.0361em;vertical-align:-0.2861em;"></span><span class="mord text"><span class="mord">Multinomial</span></span><span class="mopen">(</span><span class="mord"><span class="mord mathnormal">n</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.1514em;"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight">s</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.05278em;">β</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.2806em;"><span style="top:-2.55em;margin-left:-0.0528em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight"><span class="mord mathnormal mtight">t</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.1645em;"><span style="top:-2.357em;margin-left:0em;margin-right:0.0714em;"><span class="pstrut" style="height:2.5em;"></span><span class="sizing reset-size3 size1 mtight"><span class="mord mathnormal mtight">s</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.143em;"><span></span></span></span></span></span></span><span class="mpunct mtight">,</span><span class="mord mathnormal mtight" style="margin-right:0.02691em;">w</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.2861em;"><span></span></span></span></span></span></span><span class="mclose">)</span></span></span></span></span><span>﻿</span></span></p><p id="2467ed88-fb16-805e-b7a9-d7e3bce116e9" class=""><style>@import url('https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.9/katex.min.css')</style><span data-token-index="0" contenteditable="false" class="notion-text-equation-token" style="user-select:all;-webkit-user-select:all;-moz-user-select:all"><span></span><span><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>p</mi><mo stretchy="false">(</mo><msub><mi>t</mi><mi>s</mi></msub><mi mathvariant="normal">∣</mi><msub><mi>t</mi><mrow><mi>s</mi><mo>−</mo><mn>1</mn></mrow></msub><mo stretchy="false">)</mo><mo>∼</mo><mtext>Multinomial</mtext><mo stretchy="false">(</mo><mn>1</mn><mo separator="true">,</mo><msub><mi mathvariant="bold">T</mi><mrow><mi mathvariant="normal">.</mi><mo separator="true">,</mo><msub><mi>t</mi><mrow><mi>s</mi><mo>−</mo><mn>1</mn></mrow></msub></mrow></msub><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">p(t_s | t_{s-1}) \sim \text{Multinomial}(1, \mathbf{T}_{.,t_{s-1}})</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal">p</span><span class="mopen">(</span><span class="mord"><span class="mord mathnormal">t</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.1514em;"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight">s</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mord">∣</span><span class="mord"><span class="mord mathnormal">t</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3011em;"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathnormal mtight">s</span><span class="mbin mtight">−</span><span class="mord mtight">1</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.2083em;"><span></span></span></span></span></span></span><span class="mclose">)</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">∼</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:1.0418em;vertical-align:-0.2918em;"></span><span class="mord text"><span class="mord">Multinomial</span></span><span class="mopen">(</span><span class="mord">1</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord"><span class="mord mathbf">T</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.2806em;"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">.</span><span class="mpunct mtight">,</span><span class="mord mtight"><span class="mord mathnormal mtight">t</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3173em;"><span style="top:-2.357em;margin-left:0em;margin-right:0.0714em;"><span class="pstrut" style="height:2.5em;"></span><span class="sizing reset-size3 size1 mtight"><span class="mord mtight"><span class="mord mathnormal mtight">s</span><span class="mbin mtight">−</span><span class="mord mtight">1</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.2025em;"><span></span></span></span></span></span></span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.2918em;"><span></span></span></span></span></span></span><span class="mclose">)</span></span></span></span></span><span>﻿</span></span></p><p id="2467ed88-fb16-80d4-b692-ded6c682b246" class=""><style>@import url('https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.9/katex.min.css')</style><span data-token-index="0" contenteditable="false" class="notion-text-equation-token" style="user-select:all;-webkit-user-select:all;-moz-user-select:all"><span></span><span><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>p</mi><mo stretchy="false">(</mo><msub><mi mathvariant="bold">T</mi><mrow><mi mathvariant="normal">.</mi><mo separator="true">,</mo><mi>t</mi></mrow></msub><mo stretchy="false">)</mo><mo>∼</mo><mtext>Dirichlet</mtext><mo stretchy="false">(</mo><msub><mi>α</mi><mn>1</mn></msub><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">p(\mathbf{T}_{.,t}) \sim \text{Dirichlet}(\alpha_1)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1.0361em;vertical-align:-0.2861em;"></span><span class="mord mathnormal">p</span><span class="mopen">(</span><span class="mord"><span class="mord mathbf">T</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.2806em;"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">.</span><span class="mpunct mtight">,</span><span class="mord mathnormal mtight">t</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.2861em;"><span></span></span></span></span></span></span><span class="mclose">)</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">∼</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord text"><span class="mord">Dirichlet</span></span><span class="mopen">(</span><span class="mord"><span class="mord mathnormal" style="margin-right:0.0037em;">α</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3011em;"><span style="top:-2.55em;margin-left:-0.0037em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">1</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mclose">)</span></span></span></span></span><span>﻿</span></span></p><p id="2467ed88-fb16-8008-8065-f2d07a61cd43" class=""><style>@import url('https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.9/katex.min.css')</style><span data-token-index="0" contenteditable="false" class="notion-text-equation-token" style="user-select:all;-webkit-user-select:all;-moz-user-select:all"><span></span><span><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>p</mi><mo stretchy="false">(</mo><msub><mi>β</mi><mrow><mi>t</mi><mo separator="true">,</mo><mi>w</mi></mrow></msub><mo stretchy="false">)</mo><mo>∼</mo><mtext>Dirichlet</mtext><mo stretchy="false">(</mo><msub><mi>α</mi><mn>2</mn></msub><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">p(\beta_{t,w}) \sim \text{Dirichlet}(\alpha_2)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1.0361em;vertical-align:-0.2861em;"></span><span class="mord mathnormal">p</span><span class="mopen">(</span><span class="mord"><span class="mord mathnormal" style="margin-right:0.05278em;">β</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.2806em;"><span style="top:-2.55em;margin-left:-0.0528em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathnormal mtight">t</span><span class="mpunct mtight">,</span><span class="mord mathnormal mtight" style="margin-right:0.02691em;">w</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.2861em;"><span></span></span></span></span></span></span><span class="mclose">)</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">∼</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord text"><span class="mord">Dirichlet</span></span><span class="mopen">(</span><span class="mord"><span class="mord mathnormal" style="margin-right:0.0037em;">α</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3011em;"><span style="top:-2.55em;margin-left:-0.0037em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">2</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mclose">)</span></span></span></span></span><span>﻿</span></span></p><p id="2467ed88-fb16-8073-bf8a-d282aeee6852" class=""><strong>여기서:</strong></p><ul id="2467ed88-fb16-80d9-b690-fe8d2b83ff5e" class="bulleted-list"><li style="list-style-type:disc">데이터 행렬 X = 문장 수 × 단어 수</li></ul><ul id="2467ed88-fb16-809a-8f7a-dae5b1c8eb86" class="bulleted-list"><li style="list-style-type:disc">주제-단어 행렬 β = 주제 수 × 단어 수</li></ul><ul id="2467ed88-fb16-80b2-a4b4-f07ad6ebfa72" class="bulleted-list"><li style="list-style-type:disc">주제 전이 행렬 T = 주제 수 × 주제 수</li></ul><hr id="2467ed88-fb16-8002-ab8b-cfb2db919bcd"/><p id="2467ed88-fb16-800a-b498-e6823201582a" class="">이 모델은 표준 MCMC 방법을 사용하여 적합됩니다.</p><p id="2467ed88-fb16-803a-8f3b-eb37858c4edc" class="">비록 추론해야 할 파라미터 수는 많지만 (기본 모델의 경우 약 5,000개, 계층 모델의 경우 10배 이상), 사용자가 정의해야 할 자유 파라미터는 두 개뿐입니다: 하이퍼파라미터 <style>@import url('https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.9/katex.min.css')</style><span data-token-index="0" contenteditable="false" class="notion-text-equation-token" style="user-select:all;-webkit-user-select:all;-moz-user-select:all"><span></span><span><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>α</mi></mrow><annotation encoding="application/x-tex">\alpha</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.4306em;"></span><span class="mord mathnormal" style="margin-right:0.0037em;">α</span></span></span></span></span><span>﻿</span></span>입니다.</p><p id="2467ed88-fb16-805c-a7e0-e77168c3c69e" class="">디리클레 사전 분포는 본질적으로 <style>@import url('https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.9/katex.min.css')</style><span data-token-index="0" contenteditable="false" class="notion-text-equation-token" style="user-select:all;-webkit-user-select:all;-moz-user-select:all"><span></span><span><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi mathvariant="bold">T</mi></mrow><annotation encoding="application/x-tex">\mathbf{T}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6861em;"></span><span class="mord mathbf">T</span></span></span></span></span><span>﻿</span></span> 또는 <style>@import url('https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.9/katex.min.css')</style><span data-token-index="0" contenteditable="false" class="notion-text-equation-token" style="user-select:all;-webkit-user-select:all;-moz-user-select:all"><span></span><span><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>β</mi></mrow><annotation encoding="application/x-tex">\beta</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8889em;vertical-align:-0.1944em;"></span><span class="mord mathnormal" style="margin-right:0.05278em;">β</span></span></span></span></span><span>﻿</span></span>의 행이 1이 되도록 정규화된 확률 분포로 제한하기 위한 역할을 합니다. 하지만 작은 <style>@import url('https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.9/katex.min.css')</style><span data-token-index="0" contenteditable="false" class="notion-text-equation-token" style="user-select:all;-webkit-user-select:all;-moz-user-select:all"><span></span><span><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>α</mi></mrow><annotation encoding="application/x-tex">\alpha</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.4306em;"></span><span class="mord mathnormal" style="margin-right:0.0037em;">α</span></span></span></span></span><span>﻿</span></span> 값은 보통 비정보성 사전분포로 작용하며, 1 이하의 값은 베타 분포에서 제프리스(Jeffries) 또는 할데인(Haldane) 사전분포처럼 동작합니다. 낮은 값은 확률분포를 심플렉스의 모서리 쪽으로 밀어, 소수의 주제나 단어에 질량을 집중시키게 하고, 높은 값은 그 반대입니다.</p><p id="2467ed88-fb16-80e2-94cd-d9646be0f20c" class="">HTMM의 전이 파라미터와 마찬가지로, 이 파라미터는 시간이 지남에 따라 주제의 &quot;고착도?점착?(stickiness)&quot;에도 영향을 줍니다.</p><p id="2467ed88-fb16-80cb-9a5c-ca8f5d312fc1" class="">대부분의 모델에서는 <style>@import url('https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.9/katex.min.css')</style><span data-token-index="0" contenteditable="false" class="notion-text-equation-token" style="user-select:all;-webkit-user-select:all;-moz-user-select:all"><span></span><span><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>α</mi></mrow><annotation encoding="application/x-tex">\alpha</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.4306em;"></span><span class="mord mathnormal" style="margin-right:0.0037em;">α</span></span></span></span></span><span>﻿</span></span> 값을 1 또는 0.1로 설정하고 있으며, 효과는 비교적 작지만 실질적으로 해석 가능한 결과를 얻기 위해 주관적으로 값을 선택하게 됩니다.</p><blockquote id="2467ed88-fb16-8052-87dd-e4fb374efc06" class="">각주 1: 모델은 R 환경의 JAGS를 사용해 단일 체인(보통 10,000번 반복)으로 추정합니다. 혼합 어려움으로 인해 사전 설정된 체인과의 비교는 어렵지만, 체인의 정상성은 Gelman-Rubin 진단으로 검증합니다.</blockquote><blockquote id="2467ed88-fb16-809a-bf58-c86ac65456f8" class="">각주 2: <style>@import url('https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.9/katex.min.css')</style><span data-token-index="0" contenteditable="false" class="notion-text-equation-token" style="user-select:all;-webkit-user-select:all;-moz-user-select:all"><span></span><span><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>α</mi></mrow><annotation encoding="application/x-tex">\alpha</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.4306em;"></span><span class="mord mathnormal" style="margin-right:0.0037em;">α</span></span></span></span></span><span>﻿</span></span>는 파라미터화할 수 있습니다. 이 경우 매우 작은 값(예: 0.01)로 수렴하며, 이는 베이지안 관점에서는 최적일 수 있습니다. 그러나 약간 더 큰 값이 실질적 해석에는 유리할 수 있으며, 제시된 결과는 사전값의 변화에 따라 크게 달라지지 않습니다.</blockquote><hr id="2467ed88-fb16-80a7-8f1d-e31100c6da27"/><h3 id="2467ed88-fb16-80c1-a1e9-f0de15fdb8ad" class="">모델의 확장 버전에서는 다음이 포함됩니다:</h3><p id="2467ed88-fb16-809b-b899-c4fbe8589d70" class=""><strong>2. 개인 전이 네트워크 (전역 네트워크와 병합)</strong></p><ul id="2467ed88-fb16-80d0-9269-e118737d5a1e" class="bulleted-list"><li style="list-style-type:disc"><style>@import url('https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.9/katex.min.css')</style><span data-token-index="0" contenteditable="false" class="notion-text-equation-token" style="user-select:all;-webkit-user-select:all;-moz-user-select:all"><span></span><span><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi mathvariant="bold">T</mi><mi>i</mi></msub></mrow><annotation encoding="application/x-tex">\mathbf{T}_i</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8361em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathbf">T</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3117em;"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight">i</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span></span><span>﻿</span></span> = 주제 수 × 주제 수, 개인 i마다</li></ul><ul id="2467ed88-fb16-8014-9b8e-c8f38bcc75cb" class="bulleted-list"><li style="list-style-type:disc"><style>@import url('https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.9/katex.min.css')</style><span data-token-index="0" contenteditable="false" class="notion-text-equation-token" style="user-select:all;-webkit-user-select:all;-moz-user-select:all"><span></span><span><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>p</mi><mo stretchy="false">(</mo><msub><mi mathvariant="bold">T</mi><mrow><mi mathvariant="normal">.</mi><mo separator="true">,</mo><mi>i</mi><mo separator="true">,</mo><mi>t</mi></mrow></msub><mo stretchy="false">)</mo><mo>∼</mo><mtext>Dirichlet</mtext><mo stretchy="false">(</mo><mi>α</mi><msub><mi mathvariant="bold">T</mi><mrow><mi mathvariant="normal">.</mi><mo separator="true">,</mo><mi>t</mi></mrow></msub><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">p(\mathbf{T}_{.,i,t}) \sim \text{Dirichlet}(\alpha \mathbf{T}_{.,t})</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1.0361em;vertical-align:-0.2861em;"></span><span class="mord mathnormal">p</span><span class="mopen">(</span><span class="mord"><span class="mord mathbf">T</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3117em;"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">.</span><span class="mpunct mtight">,</span><span class="mord mathnormal mtight">i</span><span class="mpunct mtight">,</span><span class="mord mathnormal mtight">t</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.2861em;"><span></span></span></span></span></span></span><span class="mclose">)</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">∼</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:1.0361em;vertical-align:-0.2861em;"></span><span class="mord text"><span class="mord">Dirichlet</span></span><span class="mopen">(</span><span class="mord mathnormal" style="margin-right:0.0037em;">α</span><span class="mord"><span class="mord mathbf">T</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.2806em;"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">.</span><span class="mpunct mtight">,</span><span class="mord mathnormal mtight">t</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.2861em;"><span></span></span></span></span></span></span><span class="mclose">)</span></span></span></span></span><span>﻿</span></span></li></ul><p id="2467ed88-fb16-8098-86b6-ef6de96442b9" class=""><strong>3. 전이 네트워크 간의 시간적 자기상관 (Temporal Autocorrelation)</strong></p><ul id="2467ed88-fb16-80a4-afa6-f3024187d11f" class="bulleted-list"><li style="list-style-type:disc"><style>@import url('https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.9/katex.min.css')</style><span data-token-index="0" contenteditable="false" class="notion-text-equation-token" style="user-select:all;-webkit-user-select:all;-moz-user-select:all"><span></span><span><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi mathvariant="bold">T</mi><mi>τ</mi></msub></mrow><annotation encoding="application/x-tex">\mathbf{T}_\tau</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8361em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathbf">T</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.1514em;"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight" style="margin-right:0.1132em;">τ</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span></span><span>﻿</span></span> = 주제 수 × 주제 수, 시간 단계 <style>@import url('https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.9/katex.min.css')</style><span data-token-index="0" contenteditable="false" class="notion-text-equation-token" style="user-select:all;-webkit-user-select:all;-moz-user-select:all"><span></span><span><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>τ</mi></mrow><annotation encoding="application/x-tex">\tau</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.4306em;"></span><span class="mord mathnormal" style="margin-right:0.1132em;">τ</span></span></span></span></span><span>﻿</span></span>마다</li></ul><ul id="2467ed88-fb16-80f6-902b-f199d7b136dc" class="bulleted-list"><li style="list-style-type:disc"><style>@import url('https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.9/katex.min.css')</style><span data-token-index="0" contenteditable="false" class="notion-text-equation-token" style="user-select:all;-webkit-user-select:all;-moz-user-select:all"><span></span><span><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>p</mi><mo stretchy="false">(</mo><msub><mi mathvariant="bold">T</mi><mrow><mi mathvariant="normal">.</mi><mo separator="true">,</mo><mi>τ</mi><mo separator="true">,</mo><mi>t</mi></mrow></msub><mo stretchy="false">)</mo><mo>∼</mo><mtext>Dirichlet</mtext><mo stretchy="false">(</mo><mi>α</mi><msub><mi mathvariant="bold">T</mi><mrow><mi mathvariant="normal">.</mi><mo separator="true">,</mo><mi>τ</mi><mo>−</mo><mn>1</mn><mo separator="true">,</mo><mi>t</mi></mrow></msub><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">p(\mathbf{T}_{.,\tau,t}) \sim \text{Dirichlet}(\alpha \mathbf{T}_{.,\tau-1,t})</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1.0361em;vertical-align:-0.2861em;"></span><span class="mord mathnormal">p</span><span class="mopen">(</span><span class="mord"><span class="mord mathbf">T</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.2806em;"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">.</span><span class="mpunct mtight">,</span><span class="mord mathnormal mtight" style="margin-right:0.1132em;">τ</span><span class="mpunct mtight">,</span><span class="mord mathnormal mtight">t</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.2861em;"><span></span></span></span></span></span></span><span class="mclose">)</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">∼</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:1.0361em;vertical-align:-0.2861em;"></span><span class="mord text"><span class="mord">Dirichlet</span></span><span class="mopen">(</span><span class="mord mathnormal" style="margin-right:0.0037em;">α</span><span class="mord"><span class="mord mathbf">T</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3011em;"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">.</span><span class="mpunct mtight">,</span><span class="mord mathnormal mtight" style="margin-right:0.1132em;">τ</span><span class="mbin mtight">−</span><span class="mord mtight">1</span><span class="mpunct mtight">,</span><span class="mord mathnormal mtight">t</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.2861em;"><span></span></span></span></span></span></span><span class="mclose">)</span></span></span></span></span><span>﻿</span></span></li></ul><p id="2467ed88-fb16-8001-8197-cb209b61ea0e" class=""><strong>4. 다중 상위 주제 (슈퍼토픽), 각기 다른 전이 네트워크</strong></p><ul id="2467ed88-fb16-8078-bc24-cc998618aa96" class="bulleted-list"><li style="list-style-type:disc"><style>@import url('https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.9/katex.min.css')</style><span data-token-index="0" contenteditable="false" class="notion-text-equation-token" style="user-select:all;-webkit-user-select:all;-moz-user-select:all"><span></span><span><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi mathvariant="bold">T</mi><mrow><mi>s</mi><mo separator="true">,</mo><mi>i</mi></mrow></msub></mrow><annotation encoding="application/x-tex">\mathbf{T}_{s,i}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.9722em;vertical-align:-0.2861em;"></span><span class="mord"><span class="mord mathbf">T</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3117em;"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathnormal mtight">s</span><span class="mpunct mtight">,</span><span class="mord mathnormal mtight">i</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.2861em;"><span></span></span></span></span></span></span></span></span></span></span><span>﻿</span></span> = 주제 수 × 주제 수, 개인 i 및 주제영역 s마다</li></ul><ul id="2467ed88-fb16-805e-88ae-fa45a22f665c" class="bulleted-list"><li style="list-style-type:disc"><style>@import url('https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.9/katex.min.css')</style><span data-token-index="0" contenteditable="false" class="notion-text-equation-token" style="user-select:all;-webkit-user-select:all;-moz-user-select:all"><span></span><span><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>p</mi><mo stretchy="false">(</mo><msub><mi mathvariant="bold">T</mi><mrow><mi mathvariant="normal">.</mi><mo separator="true">,</mo><mi>s</mi><mo separator="true">,</mo><mi>i</mi><mo separator="true">,</mo><mi>t</mi></mrow></msub><mo stretchy="false">)</mo><mo>∼</mo><mtext>Dirichlet</mtext><mo stretchy="false">(</mo><mi>α</mi><msub><mi mathvariant="bold">T</mi><mrow><mi mathvariant="normal">.</mi><mo separator="true">,</mo><mi>s</mi><mo separator="true">,</mo><mi>t</mi></mrow></msub><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">p(\mathbf{T}_{.,s,i,t}) \sim \text{Dirichlet}(\alpha \mathbf{T}_{.,s,t})</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1.0361em;vertical-align:-0.2861em;"></span><span class="mord mathnormal">p</span><span class="mopen">(</span><span class="mord"><span class="mord mathbf">T</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3117em;"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">.</span><span class="mpunct mtight">,</span><span class="mord mathnormal mtight">s</span><span class="mpunct mtight">,</span><span class="mord mathnormal mtight">i</span><span class="mpunct mtight">,</span><span class="mord mathnormal mtight">t</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.2861em;"><span></span></span></span></span></span></span><span class="mclose">)</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">∼</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:1.0361em;vertical-align:-0.2861em;"></span><span class="mord text"><span class="mord">Dirichlet</span></span><span class="mopen">(</span><span class="mord mathnormal" style="margin-right:0.0037em;">α</span><span class="mord"><span class="mord mathbf">T</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.2806em;"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">.</span><span class="mpunct mtight">,</span><span class="mord mathnormal mtight">s</span><span class="mpunct mtight">,</span><span class="mord mathnormal mtight">t</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.2861em;"><span></span></span></span></span></span></span><span class="mclose">)</span></span></span></span></span><span>﻿</span></span></li></ul><ul id="2467ed88-fb16-80b6-9234-e774b3f4dece" class="bulleted-list"><li style="list-style-type:disc">모델 1의 나머지 모든 요소는 동일하게 유지됩니다.</li></ul><p id="1e47ed88-fb16-813c-a346-c83bec5650f1" class=""><br/></p><figure id="1ec7ed88-fb16-80be-9bfd-d40effe95c0a"><div class="source"><a href="BNTM_%EB%B2%88%EC%97%AD.pdf">BNTM 번역.pdf</a></div></figure><figure id="1ec7ed88-fb16-806d-9828-dc44f1c843be"><div class="source"><a href="BNTM.pdf">BNTM.pdf</a></div></figure><p id="1ec7ed88-fb16-8004-bba7-f9a38aec8544" class=""><br/><strong>목차</strong></p><p id="1e47ed88-fb16-80aa-9b48-f256d92714f7" class=""><a href="https://lilys.ai/digest/3785736/2482966#afe8df86-6f1c-45c9-8a3e-8cc541d2b1b1">1. 📊 베이지안 전환 네트워크 주제 모델</a></p><p id="1e47ed88-fb16-80aa-a67d-c2b208ec1b8c" class=""><a href="https://lilys.ai/digest/3785736/2482966#22089eaa-ee47-423d-8e9f-d06173508787">2. 🧠 개념적 네트워크 모델링</a></p><p id="1e47ed88-fb16-806e-aa33-c36db7ecadbd" class=""><a href="https://lilys.ai/digest/3785736/2482966#71774147-dd53-4c3c-aade-009c8a1d9f41">3. 📊 다중 저자 환경에서의 T 매트릭스 추정</a></p><p id="1e47ed88-fb16-8064-b6db-d4b7b2874e1e" class=""><a href="https://lilys.ai/digest/3785736/2482966#062d6c78-8af3-465a-955f-3f4d19dfebf4">4. 📊 주제와 연결 구조의 분석</a></p><p id="1e47ed88-fb16-80ee-9d4c-c007625f6164" class=""><a href="https://lilys.ai/digest/3785736/2482966#bb0b710c-4d7b-4f74-996c-39afef60196c">5. 🧠 정치적 사고의 모델 확장</a></p><p id="1e47ed88-fb16-812b-8dae-df02a0cb0e07" class="">
+</p><p id="1e47ed88-fb16-8121-9b68-d5c230b0a888" class="">이 논문에서는 <strong>베이지안 전이 네트워크 토픽 모델(TNTM)</strong>을 소개하며, 이는 텍스트에서 주제를 추론하고 주제 간의 관계를 네트워크로 표현하는 데 사용됩니다. 이 모델은 <strong>LDA(Latent Dirichlet Allocation)</strong>를 기반으로 하며, 문장별 주제, 주제 간 연결망, 저자별 네트워크의 계층적 구조를 추론합니다. 정치 연설 및 실험 데이터를 사용하여 모델을 테스트한 결과, <strong>이념, 주제 영역 및 시간에 따라 네트워크의 특징이 달라짐</strong>을 보여줍니다.</p><p id="1e47ed88-fb16-8049-8955-e791c94760e8" class=""><strong>사람의 생각 구조 =</strong> &quot;개념 네트워크&quot;<br/></p><h3 id="1e47ed88-fb16-801d-a40f-cdd1b80533e8" class="">1. 📊 베이지안 전환 네트워크 주제 모델</h3><ul id="1e47ed88-fb16-80d4-91dc-ffd28c1b1da5" class="bulleted-list"><li style="list-style-type:disc">이 연구에서는 베이지안 전환 네트워크 주제 모델(TNTM)을 개발하여 정치적 연설 및 실험 데이터를 통해 개별 네트워크의 중심화 통계가 개인, 이념, 주제 및 시간에 따라 달라진다는 것을 보여준다. </li></ul><ul id="1e47ed88-fb16-80f4-a5d5-f0ebe09d3663" class="bulleted-list"><li style="list-style-type:disc">기존의 LDA(Latent Dirichlet Allocation) 모델을 기반으로 하여, 이 모델은 문장의 주제 연결망과 저자별 네트워크의 시간 및 다수준 구조를 추론할 수 있다. </li></ul><ul id="1e47ed88-fb16-80dc-aac2-c532d04de949" class="bulleted-list"><li style="list-style-type:disc">개인의 개념 네트워크를 추론하기 위한 접근법이 다양한 실행 방식에서도 효과적이며, 개별 레벨과 집합 레벨 모두에서 해석 가능한 후행 분포를 제공한다. </li></ul><ul id="1e47ed88-fb16-8015-9dbe-ef0596decafa" class="toggle"><li><details open=""><summary>1.1. 베이지안 전환 네트워크 주제 모델</summary><ul id="1e47ed88-fb16-802a-a992-e0526b805358" class="bulleted-list"><li style="list-style-type:disc"><strong>아이디어와 믿음</strong>은 개인의 마음속에서 복잡한 <strong>네트워크</strong>로 상호 연결되어 있으며, 이를 추론하고 검증하는 것은 여전히 문제이다. </li></ul><ul id="1e47ed88-fb16-809f-b582-f0d3f873bbd4" class="bulleted-list"><li style="list-style-type:disc">새로운 <strong>베이지안 네트워크 주제 모델</strong>인 <strong>전환 네트워크 주제 모델(TNTM)</strong>은 <mark class="highlight-default">짧은 단일 저자 텍스트에서 주제 간의 네트워크를 추론할 수 있도록 개발</mark>되었다.</li></ul><ul id="1e47ed88-fb16-80d5-82a3-c41324b16a5a" class="bulleted-list"><li style="list-style-type:disc">TNTM은 <strong>잠재 디리클레 할당(LDA)</strong> 기반에 기반을 두고 있으며, 개별 문장에 대한 주제와 문장 전환에 따른 주제 간의 연결 네트워크를 추론한다.</li></ul><ul id="1e47ed88-fb16-80a7-a1ac-da3694eace3a" class="bulleted-list"><li style="list-style-type:disc">이 모델은 정치적 연설 및 실험 데이터를 이용하여 <strong>중심화</strong>와 같은 기본적인 네트워크 특성이 개인, 이데올로기, 주제 분야 및 시간에 따라 달라짐을 보여준다. </li></ul><ul id="1e47ed88-fb16-8028-8a62-ff1b60cca5e8" class="bulleted-list"><li style="list-style-type:disc">정치적 의견연구에서 <strong>개별 개념적 네트워크</strong>를 추론할 수 있는 기회를 제공하며, 이는 담론, 심의 및 설득에 미치는 영향을 연구하는 데 유용할 것으로 예상된다.<ul id="1e47ed88-fb16-809a-972f-c651af11f3bd" class="bulleted-list"><li style="list-style-type:circle">TNTM은 단순히 텍스트 내에서 주제를 식별하는 데 그치지 않고, 문장 간의 주제 전환을 통해 개념적 연결망을 형성합니다. 이는 개인의 사고 과정이 주제들 간의 연결을 통해 표현된다는 가정을 바탕으로 하고 있습니다.</li></ul></li></ul></details></li></ul><ul id="1e47ed88-fb16-8005-a6e9-e09c61d851e0" class="toggle"><li><details open=""><summary>1.2. 베이지안 주제 모델의 소개</summary><ul id="1e47ed88-fb16-8069-a601-de76632eb5c8" class="bulleted-list"><li style="list-style-type:disc">본 논문에서는 새로운 <strong>베이지안 주제 모델</strong>을 소개하며, 이는 Latent Dirichlet Allocation을 기반으로 하여 문서에서 주제 간의 <strong>전이 행렬</strong>도 추론한다. </li></ul><ul id="1e47ed88-fb16-800c-b224-fa08440517f8" class="bulleted-list"><li style="list-style-type:disc">모델은 저자에 따른 문서의 클러스터링, 시간에 따른 주제 발전, 다수 저자 및 다수 주제 구조를 포함한 <strong>계층 구조</strong>를 추가로 포함한다. </li></ul><ul id="1e47ed88-fb16-803f-8107-ec35add77ace" class="bulleted-list"><li style="list-style-type:disc">여러 응용 사례를 통해, 이 모델로 유추된 주제들은 단일 문서에서도 <strong>실질적으로 일관성이 있다</strong>는 점을 보여준다.</li></ul><ul id="1e47ed88-fb16-8056-bacc-e1f8a6fe494d" class="bulleted-list"><li style="list-style-type:disc">전이 행렬은 <strong>작가와 그들의 맥락</strong>의 여러 측면을 연결하는 네트워크로 간주될 수 있으며, 예를 들어 당파성, 역사적 기간 및 성격 등이 포함된다.</li></ul><ul id="1e47ed88-fb16-80ea-9bf0-f82087c6d7ba" class="bulleted-list"><li style="list-style-type:disc">이 모델은 주제의 <strong>순차적 상호 관계</strong>에 관심이 있는 모든 분야에 적용 가능하며, 단일 문서에서 신뢰할 수 있는 주제를 추론할 수 있다는 장점이 있다. </li></ul></details></li></ul><ul id="1e47ed88-fb16-80e8-8ca4-d26848702461" class="toggle"><li><details open=""><summary>1.3. 개인 수준의 개념 네트워크 추론 연구</summary><ul id="1e47ed88-fb16-80cc-9446-f429e83b57a2" class="bulleted-list"><li style="list-style-type:disc">본 연구는 <strong>개인 수준</strong>에서 개념 네트워크를 유추하고 개인의 <strong>성격</strong>과 <strong>이념</strong> 간의 관계를 조사하는 이전 프로젝트로부터 시작되었다.</li></ul><ul id="1e47ed88-fb16-809a-bdfd-cea4940ffd11" class="bulleted-list"><li style="list-style-type:disc">여러 분야의 많은 문헌에서 사람들이 가진 생각과 믿음이 <strong>연결된 네트워크</strong>처럼 작용한다고 가정하고 있다. </li></ul><ul id="1e47ed88-fb16-8072-bdbe-c3ea402adb44" class="bulleted-list"><li style="list-style-type:disc">기존 연구들은 일반적으로 집합적인 수준에서 네트워크를 유추했으며, 개인 수준에서의 네트워크 유추는 <strong>상당한 도전 과제</strong>가 된다.</li></ul><ul id="1e47ed88-fb16-807d-9094-e9236e894180" class="bulleted-list"><li style="list-style-type:disc">본 연구에서는 <strong>동적 그래픽 인터페이스</strong>, <strong>챗봇</strong>, 그리고 <strong>자유 형식 에세이</strong> 요청 등을 포함한 여러 접근 방식을 설계하였다.</li></ul><ul id="1e47ed88-fb16-807d-bca2-d8defb2a2b8b" class="bulleted-list"><li style="list-style-type:disc">연구 결과, 개인의 네트워크는 성격 특성 및 이념과 통계적으로 관련이 있었지만, 개별 용어가 <strong>복잡하게</strong> 연결되어 있어 집합적인 구조를 유추하기 어려움을 겪었다. </li></ul></details></li></ul><ul id="1e47ed88-fb16-8016-8d7b-f59e149a4cef" class="toggle"><li><details open=""><summary>1.4. 개인 네트워크의 구조와 접근법</summary><ul id="1e47ed88-fb16-80d8-a9da-ef0ca09894d4" class="bulleted-list"><li style="list-style-type:disc">개인 간의 차이를 이해하기 위해 <strong>네트워크의 전반적인 구조와 노드 간의 연결 방식</strong>에 집중할 필요가 있다.</li></ul><ul id="1e47ed88-fb16-8002-a6e2-df24cf45cf97" class="bulleted-list"><li style="list-style-type:disc">자유 텍스트 접근법은 복잡한 조사 수단 없이도 다양한 환경에서 이용할 수 있는 <strong>장점</strong>이 있다.</li></ul><ul id="1e47ed88-fb16-806e-aa96-df8c4c2fa5d7" class="bulleted-list"><li style="list-style-type:disc">단어를 추출하고 인접한 단어끼리 연결하는 방식은 <strong>강력하고 해석 가능한 네트워크</strong>를 생성하지만, 개인 간의 조화는 매우 어렵다.</li></ul><ul id="1e47ed88-fb16-8000-b00c-e2c70e632013" class="bulleted-list"><li style="list-style-type:disc">주제 모델링 방식으로 각 단어를 주제에 할당하는 접근법(LDA)은 <strong>공유 노드 집합</strong>을 가능하게 하지만, 이러한 주제들은 문장 수준에서 <strong>거칠게 추론</strong>되기 때문에 노이즈가 많다. </li></ul><ul id="1e47ed88-fb16-8004-b1ee-f620a88032dd" class="bulleted-list"><li style="list-style-type:disc">이 연구에서는 <strong>더 이론적으로 의미 있는 연결</strong>을 통해 규모가 큰 주제 노드를 추론할 수 있는 모델의 필요성을 강조한다. </li></ul></details></li></ul><ul id="1e47ed88-fb16-80f0-9328-e5e3c9fdc6b0" class="toggle"><li><details open=""><summary>1.5. LDA와 관련된 모델의 발전</summary><ul id="1e47ed88-fb16-802f-aac6-c0a432102439" class="bulleted-list"><li style="list-style-type:disc">제안된 모델은 <strong>개념적 네트워크</strong>에 대한 특정 응용을 넘어 더 광범위한 적용 가능성을 가지는 것이다. </li></ul><ul id="1e47ed88-fb16-801e-a927-daf37bf00740" class="bulleted-list"><li style="list-style-type:disc">모델은 <strong>latent dirichlet allocation (lda)</strong>의 생성 모델 패밀리에 기반을 두며, 각 문서는 순서 없는 “word of bag&quot;으로 간주된다.</li></ul><ul id="1e47ed88-fb16-8031-bf2f-cdf95094e94d" class="bulleted-list"><li style="list-style-type:disc">문서는 특정 주제를 먼저 선택하고, 그 주제에 연관된 단어 분포에서 단어를 뽑아 생성된다.</li></ul><ul id="1e47ed88-fb16-80f8-829d-fc98a1118d28" class="bulleted-list"><li style="list-style-type:disc">여기서 개발된 모델은 <strong>상관 주제 모델(CTM)</strong>을 기반으로 하여, 짧은 텍스트 조각 간의 주제와 그 사이의 연결성을 추론하고자 한다. </li></ul><ul id="1e47ed88-fb16-80a0-9570-c26d47fb9639" class="bulleted-list"><li style="list-style-type:disc">이 모델은 단순히 관련 주제가 아니라 사고 과정의 반영으로서 <strong>아이디어 간의 특정 연결</strong>을 포착하고자 한다.</li></ul><p id="1ed7ed88-fb16-80b0-a3bf-c7899a0ce6af" class="">
+</p><ul id="1ed7ed88-fb16-804e-b14f-f43ec6a4b309" class="bulleted-list"><li style="list-style-type:disc"><strong>LDA</strong>: 가장 단순하고 빠르지만 토픽 간 독립</li></ul><ul id="1ed7ed88-fb16-807e-9d0d-f2fb6e440044" class="bulleted-list"><li style="list-style-type:disc"><strong>CTM</strong>: 토픽 간 상관관계 학습</li></ul><ul id="1ed7ed88-fb16-802a-879b-e346e208ddf7" class="bulleted-list"><li style="list-style-type:disc"><strong>HTMM</strong>: 토픽 전이를 통한 흐름(시퀀스) 모델링</li></ul><ul id="1ec7ed88-fb16-8040-a682-e35a54214765" class="bulleted-list"><li style="list-style-type:disc">상관 토픽 모델(CTM)이 짧은 텍스트 조각을 가져 이상적으로 보이지만, 두 가지 문제가 있다. 첫째, 주제와 그 상관 관계를 모두 추론하려면 많은 양의 문서가 필요하다. 둘째, 이러한 상관관계는 주제 간의 상관 관계 또는 동시 발생을 단순히 반영하는 경향이 있다.</li></ul><ul id="1ec7ed88-fb16-8018-8530-ec5f8237935b" class="bulleted-list"><li style="list-style-type:disc">더 적절한 선행 모델은 히든 토픽 마르코프 모델(HTMM)일 수 있다. 이 모델에서 각 문장은 문서로 취급되고 단일 주제가 할당되지만, 각 주제/문장 추출은 독립적이지 않다. 그러나 이름과는 달리 HTMM은 독립적인 주제 추출에 문장 간 &quot;고착성&quot;을 가정하여 보강한다. 여기서는 문장마다 동일한 주제를 고수할 가능성이 높지만, 주제를 변경할 때(잠재적 확률로) 새로운 주제가 무작위로 추출되며, 주제 간의 마르코프 전이 행렬은 추론되지 않는다.<p id="1ed7ed88-fb16-8091-a481-fd02a118ac99" class="">⇒ 토픽별 상세 전이를 배우진 않고 오직 “same topic 유지할 확률” 하나만 반영</p></li></ul><ul id="1ec7ed88-fb16-8002-b872-ef4894da2a8c" class="bulleted-list"><li style="list-style-type:disc">따라서 현재 모델은 HTMM에 대한 문장 수준 주제 접근 방식을 채택하는 동시에 CTM과 유사하게 주제 간의 전체 마르코프 전이 행렬을 추론하려고 시도한다. </li></ul></details></li></ul><p id="1e47ed88-fb16-804b-9c51-f1cae947a14e" class="">
+</p><h3 id="1e47ed88-fb16-806d-857b-cd37d5b77057" class="">2. 🧠 개념적 네트워크 모델링</h3><ul id="1e47ed88-fb16-8028-bd09-dce29da05884" class="bulleted-list"><li style="list-style-type:disc">해당 모델은 <strong>Markov 전이 행렬</strong>을 추론하여 각각의 주제가 다른 주제와 어떻게 연관되는지를 분석하며, 이를 통해 개념적 네트워크를 형성하려고 한다.</li></ul><ul id="1e47ed88-fb16-808d-9b1b-d68ef8b779b9" class="bulleted-list"><li style="list-style-type:disc">기본 모델은 단일 문서에서 주제를 추론하며, 제한된 데이터에서도 <strong>의미 있는 주제와 연결</strong>을 발견할 수 있음을 보여준다.</li></ul><ul id="1e47ed88-fb16-8034-bd77-f64c5c70bdaa" class="bulleted-list"><li style="list-style-type:disc">모델은 개별 <strong>개념적 네트워크</strong>를 추론하고, 여러 <strong>문서</strong>에서 시간에 따른 전이 네트워크의 변화를 반영하도록 확장된다.</li></ul><ul id="1e47ed88-fb16-8037-853c-e5ae6dff7b11" class="bulleted-list"><li style="list-style-type:disc">이 모델은 <strong>다양한 응용</strong> 사례를 통해 주제의 변화를 시간과 이데올로기와 연관 지어 분석할 수 있음을 입증하였다.</li></ul><ul id="1e47ed88-fb16-80b5-8989-df0f68289af8" class="toggle"><li><details open=""><summary>2.1. 개별 개념 네트워크의 추론 방법</summary><ul id="1e47ed88-fb16-805c-a9ef-d8dee5cee884" class="bulleted-list"><li style="list-style-type:disc">기본 모델을 여러 방법으로 <strong>확장</strong>하여 개별 개념 네트워크를 유도하고 이를 보다 큰 집합적 네트워크와 연결할 수 있다.</li></ul><ul id="1e47ed88-fb16-80fe-8ac2-c9a9217d3157" class="bulleted-list"><li style="list-style-type:disc">여러 문서가 같은 저자로부터 작성된 경우, <strong>단일 전이 네트워크</strong>가 진화하는 변형 모델을 제안한다. </li></ul><ul id="1e47ed88-fb16-8005-9a65-e4b106f452dc" class="bulleted-list"><li style="list-style-type:disc">사용자들이 다양한 주제에 대해 글을 쓰는 <strong>계층 구조</strong>를 통해 여러 관련 없는 주제 영역을 동시에 다룬다. </li></ul><ul id="1e47ed88-fb16-8099-8287-ee1789bb709f" class="bulleted-list"><li style="list-style-type:disc">이러한 세 가지 확장(저자 계층, 시간적 변화, 주제 영역 클러스터링)은 이전에 개발된 여러 가지 확장을 반영한다.</li></ul><ul id="1e47ed88-fb16-8037-b52d-f18e76684c53" class="bulleted-list"><li style="list-style-type:disc">기본 모델에 대한 공식적인 설명이 제공되며, 각 문장에는 단일 주제가 연관되고 다음 문장의 주제는 전이 행렬에서 추출된다.</li></ul></details></li></ul><ul id="1e47ed88-fb16-80d2-9bea-ea1ad1103db7" class="toggle"><li><details open=""><summary>2.2. 생성 과정 및 파라미터 설명</summary><ul id="1ed7ed88-fb16-8026-9f90-f2ed47fe17d2" class="bulleted-list"><li style="list-style-type:disc"><strong>문장 토픽(tₛ)</strong></li></ul><ul id="1ed7ed88-fb16-80aa-ab71-e92b5d9299a3" class="bulleted-list"><li style="list-style-type:disc"><strong>전이행렬(T)</strong> → 이전→다음 토픽 확률</li></ul><ul id="1ed7ed88-fb16-8043-9da9-edf78fbe6533" class="bulleted-list"><li style="list-style-type:disc"><strong>단어분포(β)</strong> → 토픽별 단어 출현 확률</li></ul><ul id="1ed7ed88-fb16-807f-9e00-f7f1ce9575ce" class="bulleted-list"><li style="list-style-type:disc"><strong>Dirichlet 사전</strong> → T, β를 과도하게 한쪽으로 치우치지 않게 완충</li></ul><ul id="1ed7ed88-fb16-80d8-a9f5-d0e11aa89ddb" class="toggle"><li><details open=""><summary></summary><figure id="1ed7ed88-fb16-8073-b503-cf9846a547df" class="image"><a href="image.png"><img style="width:568px" src="image.png"/></a></figure><figure id="1ed7ed88-fb16-8043-a530-d6f883be536f" class="image"><a href="image%201.png"><img style="width:478px" src="image%201.png"/></a></figure><figure id="1ed7ed88-fb16-8065-b0d3-dee3310acbea" class="image"><a href="image%202.png"><img style="width:579px" src="image%202.png"/></a></figure></details></li></ul><ul id="1ed7ed88-fb16-803a-bab2-f511c67786d8" class="toggle"><li><details open=""><summary></summary><ul id="1ed7ed88-fb16-80e4-b1a6-dc1674919786" class="bulleted-list"><li style="list-style-type:disc"><strong>무엇을 모델링하나요?</strong><ul id="1ed7ed88-fb16-80e8-84fa-f661fa76bc73" class="bulleted-list"><li style="list-style-type:circle">순서가 있는 문장들로 이루어진 한 편의 문서</li></ul></li></ul><ul id="1ed7ed88-fb16-80bc-bcc8-f7e0b48b8ce6" class="bulleted-list"><li style="list-style-type:disc"><strong>핵심 가정</strong><ul id="1ed7ed88-fb16-8001-83d3-db17dc3441e2" class="bulleted-list"><li style="list-style-type:circle"><strong>문장→토픽</strong>: 각 문장에는 하나의 토픽(tₛ)이 붙습니다.</li></ul><ul id="1ed7ed88-fb16-80c2-9dc0-eb8061e9f987" class="bulleted-list"><li style="list-style-type:circle"><strong>토픽 전이</strong>: 이전 문장 토픽에 따라 전이행렬 T 에서 다음 토픽을 확률적으로 선택</li></ul><ul id="1ed7ed88-fb16-802f-8a9c-f149371a6f66" class="bulleted-list"><li style="list-style-type:circle"><strong>단어 생성</strong>: 선택된 토픽에 대응하는 단어분포 βₜₛ 에서 그 문장 길이(nₛ)만큼 단어를 뽑아 문장을 만듭니다.</li></ul></li></ul><ul id="1ed7ed88-fb16-801b-82d7-ca70e77ef673" class="bulleted-list"><li style="list-style-type:disc"><strong>사전분포(딱 한 줄!)</strong><ul id="1ed7ed88-fb16-80db-af03-f8760b7c9a85" class="bulleted-list"><li style="list-style-type:circle">T와 β의 각 확률벡터는 치우치지 않도록 Dirichlet(α)에서 한 번씩 뽑혀요.</li></ul></li></ul><ul id="1ed7ed88-fb16-80e0-8bf4-e66b12320c3a" class="bulleted-list"><li style="list-style-type:disc"><strong>전체 절차 한눈에</strong><ol type="1" id="1ed7ed88-fb16-8061-872b-e66a73c88b8c" class="numbered-list" start="1"><li>T←Dirichlet(α₁), β←Dirichlet(α₂)</li></ol><ol type="1" id="1ed7ed88-fb16-805b-90fa-ea119638bf59" class="numbered-list" start="2"><li>문장 1…S 순서대로<ul id="1ed7ed88-fb16-8008-b79e-f2e37275ffa6" class="bulleted-list"><li style="list-style-type:disc">s=1: 토픽 임의 지정</li></ul><ul id="1ed7ed88-fb16-80ca-a9bb-d2c33bec9aad" class="bulleted-list"><li style="list-style-type:disc">s&gt;1: tₛ∼Categorical(T[:, tₛ₋₁])</li></ul><ul id="1ed7ed88-fb16-80b9-8cf0-fba847b3a3f4" class="bulleted-list"><li style="list-style-type:disc">Xₛ∼Multinomial(nₛ, β[tₛ]) → 관측되는 단어 빈도</li></ul></li></ol><ol type="1" id="1ed7ed88-fb16-807e-9736-e6c3575b44da" class="numbered-list" start="3"><li>결과(X)가 “문장별 단어 빈도표”가 됩니다.</li></ol><p id="1ed7ed88-fb16-8014-a0de-d897a6d63929" class="">
+</p></li></ul><ul id="1ed7ed88-fb16-8011-98e8-fd6988e903b0" class="bulleted-list"><li style="list-style-type:disc"><strong>입력</strong>: 실제로 우리가 관측한 문서의 각 문장별 단어 빈도(문장×단어 행렬)</li></ul><ul id="1ed7ed88-fb16-807b-972b-f51ce8804b97" class="bulleted-list"><li style="list-style-type:disc"><strong>출력</strong>(사후 추정 결과):<ol type="1" id="1ed7ed88-fb16-805b-a48f-e0ca739142d9" class="numbered-list" start="1"><li><strong>문장별 토픽 할당</strong><ul id="1ed7ed88-fb16-80f8-ac9f-c5df9d5ae74c" class="bulleted-list"><li style="list-style-type:disc">각 문장 s가 어떤 토픽 tₛ을 가졌는지</li></ul></li></ol><ol type="1" id="1ed7ed88-fb16-80d9-9208-f6e09633f1c6" class="numbered-list" start="2"><li><strong>토픽 전이 확률</strong> T<ul id="1ed7ed88-fb16-80a6-b6b1-dbe5a1b5d293" class="bulleted-list"><li style="list-style-type:disc">문장 간 토픽이 어떻게 넘어가는지 나타내는 행렬</li></ul></li></ol><ol type="1" id="1ed7ed88-fb16-8032-ab93-ff1c2f37820b" class="numbered-list" start="3"><li><strong>토픽별 단어 분포</strong> β<ul id="1ed7ed88-fb16-801f-af78-cbd4c6c8ce2d" class="bulleted-list"><li style="list-style-type:disc">각 토픽에서 어떤 단어를 얼마나 많이 쓰는지 나타내는 분포</li></ul></li></ol></li></ul><p id="1ed7ed88-fb16-80dc-aa3a-c6e451335bff" class="">즉, “자연어 문장” 그대로를 출력하는 게 아니라, 문서 속에 숨어 있는 <strong>토픽 구조(숫자·확률)와 토픽 할당 정보</strong>를 주로 꺼내 줍니다.</p><blockquote id="1ed7ed88-fb16-80a5-92f5-c1fe8ebff27e" class="">물론 이 결과를 바탕으로<ul id="1ed7ed88-fb16-80b1-afa1-cf53707accc0" class="bulleted-list"><li style="list-style-type:disc">“이 문서의 흐름은 스포츠→정치→경제로 이어졌군요”</li></ul></blockquote></details></li></ul><ul id="1e47ed88-fb16-80f4-9976-e3d7234c243c" class="bulleted-list"><li style="list-style-type:disc"><strong>생성 과정</strong>은 주어진 문서와 단어에 대한 분포, 주제 전환 및 주제-단어 행렬을 포함하며, 여러 확률 분포를 따른다. </li></ul><ul id="1e47ed88-fb16-80d9-91ef-db75043814b7" class="bulleted-list"><li style="list-style-type:disc">모델 적합 시 기본 모델을 위해 약 5000개의 <strong>파라미터</strong>를 추정하고, 계층적 변형 모델은 그보다 10배 많은 파라미터를 요구한다.</li></ul><ul id="1e47ed88-fb16-807f-82c7-c4c1da6f11e9" class="bulleted-list"><li style="list-style-type:disc"><strong>Dirichlet 사전</strong>은 T 또는 β의 행들이 총합이 1이 되도록 제약하며, α값이 낮을 경우 확률 분포를 특정 주제나 단어에 집중시키는 경향이 있다.</li></ul></details></li></ul><ul id="1e47ed88-fb16-8045-bf27-c02dad1c778c" class="toggle"><li><details open=""><summary>2.4. 모델 확장 및 응용 사례</summary><ul id="1e47ed88-fb16-8043-b56b-d295946b7c6f" class="bulleted-list"><li style="list-style-type:disc">모델의 확장은 <strong>개별 전이 네트워크</strong>와 <strong>집계된 글로벌 네트워크</strong> 등을 포함하며, 각 개인을 기준으로 <strong>디리클레(Dirdichlet)</strong> 분포를 따른다. </li></ul><ul id="1e47ed88-fb16-804a-ad4d-faab473eabe1" class="bulleted-list"><li style="list-style-type:disc">특정 시간 단계에서의 <strong>시간적 자기상관</strong>은 전이 네트워크의 변형 중 하나로, 이 또한 디리클레 분포를 따른다. </li></ul><ul id="1e47ed88-fb16-80da-aec2-fbc183b6822a" class="bulleted-list"><li style="list-style-type:disc"><strong>다수의 슈퍼 주제</strong>와 개인 전이 네트워크를 결합하여, 주제와 개인을 기준으로 네트워크를 모델링할 수 있다.</li></ul><ul id="1e47ed88-fb16-808a-bb26-d40456eaf741" class="bulleted-list"><li style="list-style-type:disc">첫 번째 응용 예로 <strong>도널드 트럼프의 첫 번째 국정연설</strong>을 분석하면, 단일 텍스트에서 주제 전이 행렬을 기반으로 해석 가능한 단어 분포가 생성된다. </li></ul><ul id="1e47ed88-fb16-8076-a548-d5af4930a9e6" class="bulleted-list"><li style="list-style-type:disc"><strong>다층 다저자 모델</strong>을 활용하여 1860년부터 2016년까지의 여러 개의 국정연설을 분석하면, 주제 간의 변수와 이데올로기에 따른 중앙 집중화 점수가 변동하는 모습을 관찰할 수 있다.</li></ul></details></li></ul><ul id="1e47ed88-fb16-80aa-9462-e5b125f1a5fa" class="toggle"><li><details open=""><summary>2.5. ️ 트럼프의 첫 번째 취임 연설의 주제 모델링 분석(model 1, 단일 문서)</summary><ul id="1e47ed88-fb16-80b8-a909-dcca17c7484d" class="bulleted-list"><li style="list-style-type:disc">트럼프의 취임 연설은 약 600문장으로 구성되며, 이 분석에서는 문서에서 가장 높은 점수를 받은 단어들과 주제 비율이 나타난다.</li></ul><ul id="1e47ed88-fb16-806e-a78e-d667479f81c4" class="bulleted-list"><li style="list-style-type:disc">주제 모델링에서 10개의 주제가 선택되었으나, 실제로는 모델이 6개의 주제만 필요로 한다는 점이 주목할 만하다. </li></ul><figure id="1ed7ed88-fb16-805c-8126-dcc3443df1a4" class="image" style="text-align:center"><a href="image%203.png"><img style="width:432px" src="image%203.png"/></a></figure><ul id="1e47ed88-fb16-807f-bc92-cb11addbed57" class="bulleted-list"><li style="list-style-type:disc">전문 용어는 피하고, <strong>stop-words</strong>를 제거한 후 500개의 단어만을 남기며, 단어의 우선 순위를 매기기 위해 주의를 기울인다. </li></ul><ul id="1e47ed88-fb16-807c-8f53-e30e280f1698" class="bulleted-list"><li style="list-style-type:disc">연결망은 주제 간의 유사성을 반영하며, 주제 1-4는 <strong>가장 빈번하게</strong> 등장하는 주제들이다. </li></ul><figure id="1ed7ed88-fb16-803b-b5d8-f05855f6e81c" class="image" style="text-align:center"><a href="image%204.png"><img style="width:192px" src="image%204.png"/></a></figure><ul id="1e47ed88-fb16-80fc-9c0c-c0533d3c5814" class="bulleted-list"><li style="list-style-type:disc">주제 10 (경제)은 연설 초반에 간단히 논의되지만, 주제 5 (이민)는 연설의 <strong>전환점 역할</strong>을 하며 연설의 다양한 아이디어를 연결하는 데 기여한다. </li></ul><figure id="1ed7ed88-fb16-8023-9545-d7c9c0da286d" class="image" style="text-align:center"><a href="image%205.png"><img style="width:384px" src="image%205.png"/></a></figure></details></li></ul><h3 id="1e47ed88-fb16-80db-9076-d98c91348f16" class="">3. 📊 다중 저자 환경에서의 T 매트릭스 추정 (model 2)</h3><ul id="1e47ed88-fb16-80e7-a9e9-ce6556353fb6" class="bulleted-list"><li style="list-style-type:disc"><strong>T 매트릭스</strong>의 추정은 단일 저자 환경에서 <strong>노이즈</strong>가 많으며, 특히 문서 길이가 짧을 때 더 그러하다.</li></ul><ul id="1e47ed88-fb16-801c-9496-c967c91eff31" class="bulleted-list"><li style="list-style-type:disc">다중 저자 환경에서 <strong>개별 T 매트릭스와 글로벌 pooled T</strong>를 추정해야 할 필요성이 있다.</li></ul><ul id="1e47ed88-fb16-80bf-a5d5-f24a5bbe6df0" class="bulleted-list"><li style="list-style-type:disc">1860년부터 2016년까지의 <strong>신년사</strong>를 분석하여 다양한 <strong>주제</strong>에 대한 변화를 시각화하였다.</li></ul><figure id="1ed7ed88-fb16-80d2-8a37-c89150244219" class="image"><a href="image%206.png"><img style="width:480px" src="image%206.png"/></a><figcaption>10개 토픽 모델의 단어</figcaption></figure><ul id="1e47ed88-fb16-8062-bd23-eff8a99c48a3" class="bulleted-list"><li style="list-style-type:disc"><strong>주제 추정</strong>은 역사적 시간과 강한 <strong>상관관계</strong>를 보이며, 초기에는 “정부”와 같은 옛 주제가 나타나고 시간이 지남에 따라 “세계”와 관련된 주제가 두드러진다.</li></ul><figure id="1ed7ed88-fb16-805b-96ef-e377866a9d0c" class="image"><a href="image%207.png"><img style="width:192px" src="image%207.png"/></a><figcaption>모든 문장에 대한 토픽 플롯</figcaption></figure><ul id="1ed7ed88-fb16-807e-8dd9-e24b4e298330" class="bulleted-list"><li style="list-style-type:disc">토픽 6을 제외하고는 당파성과 시간 사이에 주목할 만한 상관관계가 있다.</li></ul><ul id="1e47ed88-fb16-80bc-a4a0-ee6c6e934298" class="bulleted-list"><li style="list-style-type:disc">문서 사이의 <strong>장기적 시퀀스</strong>를 결합할 때의 한계를 확인하고, <strong>1950년 이후</strong>의 주소만으로 모델을 재추정할 필요가 있음을 시사한다 .<figure id="1ed7ed88-fb16-80d0-be28-e109e38cc5ae" class="image" style="text-align:center"><a href="image%208.png"><img style="width:240px" src="image%208.png"/></a><figcaption>전체 풀링된 네트워크</figcaption></figure></li></ul><ul id="1ed7ed88-fb16-809e-aefa-d435029e6ccf" class="bulleted-list"><li style="list-style-type:disc">네트워크는 주제 유사성, 당파성, 장기적인 변화 외에도 우리가 가장 관심을 갖는 연설 내 단기 전환도 추론한다는 것</li></ul><ul id="1ed7ed88-fb16-803e-90b5-d83ef2c71dd2" class="bulleted-list"><li style="list-style-type:disc">토픽이 역사적 시간에 따라 이동(Topic 4·7은 19세기, Topic 5는 현대)</li></ul><p id="1e47ed88-fb16-8023-9519-edecff3aed39" class="">
+</p><h3 id="1e47ed88-fb16-80fb-abf8-c3e23c1968a7" class="">4. 📊 주제와 연결 구조의 분석</h3><ul id="1e47ed88-fb16-80c5-8534-e7f882fd4fc0" class="bulleted-list"><li style="list-style-type:disc">본 연구에서는 <strong>베이지안 모델</strong>을 사용하여 문서 내 주제와 주제 간의 <strong>마르코프 전이 행렬</strong>을 추론하였다.</li></ul><ul id="1e47ed88-fb16-80d3-82e8-f56af5c78c12" class="bulleted-list"><li style="list-style-type:disc">각 주제가 연결되는 방식의 <strong>구조적 정보</strong>는 특히 매우 짧은 문서에서도 유의미한 주제를 추론할 수 있게 한다. </li></ul><ul id="1e47ed88-fb16-8013-afe2-d99b855857ab" class="bulleted-list"><li style="list-style-type:disc">분석 결과, <strong>주제 간의 전이</strong>는 문서의 시간적 역학과 주제 간의 잠재 구조를 이해하는 데 필수적이다. </li></ul><ul id="1e47ed88-fb16-8046-a568-e0e9aa00ce47" class="bulleted-list"><li style="list-style-type:disc"><strong>개별 저자</strong>가 생성한 텍스트가 적더라도 의미 있는 주제와 전이 행렬을 추론할 수 있다는 점에서 이 모델의 유용성이 강조된다. </li></ul><ul id="1e47ed88-fb16-805c-80bc-f0e6c8aa7581" class="bulleted-list"><li style="list-style-type:disc">주제 간의 전이 규칙을 통해 생각과 추론의 과정을 시각화할 수 있으며, 이는 언어의 <strong>구문적 구조</strong>와 유사한 방식으로 기능한다.</li></ul><ul id="1e47ed88-fb16-8011-8f62-d3d81cff39c5" class="toggle"><li><details open=""><summary>4.1. 주제와 색깔의 관계</summary><ul id="1e47ed88-fb16-8094-87d3-d821ec260831" class="bulleted-list"><li style="list-style-type:disc"><strong>주제 6</strong>은 다른 주제들과는 달리 <strong>중요한 예외</strong>로 언급되며, 이는 특정 색상을 통해 시각적으로 표현된다.</li></ul><ul id="1e47ed88-fb16-80ee-96b5-c69ff4fe3756" class="bulleted-list"><li style="list-style-type:disc"><strong>1860년부터 2016년까지</strong>의 다양한 주제를 다루는 <strong>단어들이</strong> 전 세계적으로 연결된 네트워크에서 <strong>색깔로 구분된다</strong>.</li></ul><ul id="1e47ed88-fb16-8016-8187-fb47c0435bc3" class="bulleted-list"><li style="list-style-type:disc">네트워크 분석에서는 <strong>주의와 당파성</strong>이 중요한 요소로 작용하며, 이는 시각적으로 표현되는 방식에 영향을 준다. </li></ul><ul id="1e47ed88-fb16-8029-9c41-f77ea09ba82f" class="bulleted-list"><li style="list-style-type:disc">주제에 따라 <strong>지배적인 집합 색깔</strong>이 존재하며, 이는 특정 그래프의 시각적 배열과 연관이 있다. </li></ul><ul id="1e47ed88-fb16-803b-9057-c8c6db18b9c4" class="bulleted-list"><li style="list-style-type:disc">전체적인 맥락에서 각 <strong>주제는 색깔</strong>로 구분되어 시각적으로 강조되며, 정보의 전달에 기여한다. </li></ul></details></li></ul><ul id="1e47ed88-fb16-80a8-b647-ea60a9766b3c" class="toggle"><li><details open=""><summary>4.2. 연설의 주제와 패턴 분석</summary><ul id="1e47ed88-fb16-804b-a444-eec63f3151f8" class="bulleted-list"><li style="list-style-type:disc">주제 6의 <strong>무미건조한 수사</strong>는 중요하며, 이는 연설 간의 <strong>단기적 전환</strong>을 나타내는 대표적인 예이다.</li></ul><ul id="1e47ed88-fb16-8035-848f-de2a71ad2805" class="bulleted-list"><li style="list-style-type:disc">현대 연설에서 <strong>경제</strong>로 시작하는 경향이 뚜렷하며, 이는 주제 3과 2에서 확인된다. </li></ul><ul id="1e47ed88-fb16-80a1-b2c7-c8e79010fccc" class="bulleted-list"><li style="list-style-type:disc">주제 단어들은 다양한 테마에서 <strong>가중치</strong>를 가지며, 예를 들어 &#x27;미국&#x27;, &#x27;무기&#x27;, &#x27;자유&#x27; 등이 중요하게 다뤄진다. </li></ul><ul id="1e47ed88-fb16-80fa-b4fd-cbc78ddde844" class="bulleted-list"><li style="list-style-type:disc">모델 2에서 각 개별 연설자는 동일한 아이디어 <strong>풀</strong>을 활용하지만, <strong>가중치</strong>와 연결 방식에서 차이를 보인다.</li></ul><ul id="1e47ed88-fb16-803d-8de4-cd534bf30090" class="bulleted-list"><li style="list-style-type:disc">오바마와 트럼프의 네트워크는 각기 다른 <strong>토픽 가중치</strong>와 연결 구조를 가지며, 오바마는 더 글로벌한 구조를, 트럼프는 공화당 주제에 집중하는 경향이 있다.</li></ul></details></li></ul><ul id="1e47ed88-fb16-80d4-b7bb-db66bae45ee2" class="toggle"><li><details open=""><summary>4.3. 네트워크 구조와 정치적 분열 <strong>(model 2, 개별 저자, 다수 문서)</strong></summary><ul id="1e47ed88-fb16-8060-944b-c13d8e7176f0" class="bulleted-list"><li style="list-style-type:disc">이전 연구에서는 <strong>성격</strong>과 <strong>인구 통계적 특성</strong>에 따른 네트워크 구조의 변화를 상세히 분석한 결과, 이데올로기와 <strong>도덕적 기초</strong>와 네트워크 구조 간의 강한 상관관계를 발견했다. </li></ul><ul id="1e47ed88-fb16-80f8-9a7c-edd11dbef489" class="bulleted-list"><li style="list-style-type:disc">네트워크의 중앙화 측정값은 중심 노드와 주변 노드가 있을 때 더 높으며, 모든 노드가 고르게 연결되어 있을 때 낮아진다.</li></ul><ul id="1e47ed88-fb16-80e6-a28f-fe1b4c303335" class="bulleted-list"><li style="list-style-type:disc">민주당 네트워크는 공화당 네트워크보다 더 <strong>중앙화</strong>되어 있는 것으로 나타났지만, 이는 통계적으로 유의미한 수치가 아니다. </li></ul><ul id="1e47ed88-fb16-805d-be10-c16b40336994" class="bulleted-list"><li style="list-style-type:disc">연구에서 사용된 네트워크 통계는 가중치 없는 네트워크를 전제로 하며, 5%에서 25%의 다양한 임계값에서도 이 결과가 <strong>robust</strong>하다는 것을 발견했다.</li></ul><ul id="1e47ed88-fb16-80d9-bf75-d1743b61f3b6" class="bulleted-list"><li style="list-style-type:disc">아래 그림 1950-2016년의 <strong>취임 연설</strong>을 시간과 정당에 따라 색칠한 그래프를 보여준다. <figure id="1ed7ed88-fb16-80c9-95c8-eb2444a5dce2" class="image" style="text-align:center"><a href="image%209.png"><img style="width:384px" src="image%209.png"/></a></figure></li></ul><ul id="1ed7ed88-fb16-808f-939c-e741df3ff59e" class="bulleted-list"><li style="list-style-type:disc">오바마 vs 트럼프의 네트워크 구조·토픽 가중치 차이 </li></ul></details></li></ul><ul id="1e47ed88-fb16-806c-a39a-e6deb01d9ccc" class="toggle"><li><details open=""><summary>4.4. 모델의 적용 및 네트워크 분석 결과 <strong>(model 4, 다중 주제 영역·다수 저자 모델)</strong></summary><ul id="1e47ed88-fb16-80de-b0cd-c15dfed3685d" class="bulleted-list"><li style="list-style-type:disc">실험에 참여한 <strong>100명의 피험자</strong>들은 낙태, 자녀 양육 철학, 의료 정책에 대한 의견을 제시하였다. 이 자녀 양육 철학은 <strong>권위주의</strong>의 중요한 예측 요인으로 알려져 있다. </li></ul><ul id="1e47ed88-fb16-807a-9e78-f6ca00d5797f" class="bulleted-list"><li style="list-style-type:disc">피험자들은 <strong>인지 네트워크를 그리도록</strong> 요청받았으며, 챗봇과의 대화에서 키워드를 유도하고 이를 연결한 후, 주제에 대한 50단어의 짧은 에세이를 작성하였다. </li></ul><ul id="1e47ed88-fb16-8070-95c2-faeeba0665ba" class="bulleted-list"><li style="list-style-type:disc">첫 두 접근 방식은 개인 네트워크를 전역적으로 정렬할 수 없어 <strong>통계적 힘</strong>이 제한되며, 개인이 &quot;아이디어&quot;를 다르게 해석할 수 있는 문제를 야기한다. </li></ul><ul id="1e47ed88-fb16-8044-86ce-c0563f02289f" class="bulleted-list"><li style="list-style-type:disc">개인이 다양한 주제 영역에서 일관된 네트워크 구조를 가지는 경우, 각 개인의 영역 및 텍스트 간의 풀링을 허용하는 모델이 <strong>이상적이다</strong>. </li></ul><ul id="1e47ed88-fb16-8077-bae2-f257220f57a7" class="bulleted-list"><li style="list-style-type:disc">모델은 세 가지 주제 영역에 대한 <strong>유의미한 주제</strong>를 추론할 수 있으며, 각 주제는 피험자 질문에 의해 강조된 단어들에 <strong>높은 하중</strong>을 가진다. </li></ul></details></li></ul><ul id="1e47ed88-fb16-8054-8c18-cc4736d18494" class="toggle"><li><details open=""><summary>4.5. 이념별 주제의 차이와 중앙화 구조</summary><ul id="1e47ed88-fb16-8086-89de-cc8e83ec6e19" class="bulleted-list"><li style="list-style-type:disc">보수적 예시는 더 보수적인 주제에 중점을 두며, 중심적으로 연결되어 있는 경향이 있다. 반면, 자유주의적 예시는 &quot;여성, 몸, 선택&quot; 등의 주제를 강조한다. </li></ul><ul id="1e47ed88-fb16-80b0-a579-d10a8ae14924" class="bulleted-list"><li style="list-style-type:disc">아동 양육은 이념에 따라 큰 차이가 없지만, 보수적 예시는 호기심에 대한 강조가 상대적으로 적으며, 이는 <strong>권위주의적 모델</strong>과 일치한다. </li></ul><ul id="1e47ed88-fb16-803d-a844-cd24dd95b4d2" class="bulleted-list"><li style="list-style-type:disc">건강 관리와 관련된 용어는 <strong>낙태</strong>보다 덜 양극화되지만, 자유주의적 예시는 연방 정부의 책임을 강조하는 경향이 있다. </li></ul><ul id="1e47ed88-fb16-80b6-a067-d956f3575b3b" class="bulleted-list"><li style="list-style-type:disc">네트워크 통계는 개인의 성격과 이념에 따라 다르지만, 중앙화 지표는 주제 영역에 따라 차이를 보이며, 건강 관리와 관련된 구조는 더 중앙집중화되어 있다. </li></ul><ul id="1e47ed88-fb16-8062-88c2-c22759203977" class="bulleted-list"><li style="list-style-type:disc">특정 주제에서의 개념들이 더 희소하게 나타나는 이유에 대해 명확한 설명은 어려우나, 건강 관리와 관련된 주제가 그러할 것으로 추정된다. </li></ul></details></li></ul><p id="1ed7ed88-fb16-80f2-870d-e7d9dbf88cb5" class="">
+</p><figure id="1ed7ed88-fb16-80a2-a7be-d24fb0df5173" class="image"><a href="image%2010.png"><img style="width:480px" src="image%2010.png"/></a><figcaption>낙태: 전 세계적 사례, 보수적 사례, 진보적 사례. 노드는 해당 주제 사용자의 평균 이<br/>념에 따라 색상이 지정</figcaption></figure><figure id="1ed7ed88-fb16-80f3-805b-ddac5fda94d9" class="image"><a href="image%2011.png"><img style="width:288px" src="image%2011.png"/></a><figcaption>세 가지 주제 영역에 걸친 토픽 단어, 모두 모델 4를 통해 공동으로 추정</figcaption></figure><figure id="1ed7ed88-fb16-80d6-9f3d-c7684301882e" class="image"><a href="image%2012.png"><img style="width:336px" src="image%2012.png"/></a><figcaption>위: 육아. 글로벌 (왼쪽 위); 보수적 예시 (오른쪽 위). 아래: 의료. 글로벌 (왼쪽 아래);<br/>자유주의적 예시</figcaption></figure><ul id="1e47ed88-fb16-8025-aac3-e97a63c260d8" class="toggle"><li><details open=""><summary>4.6. 주제별 상관관계와 사고의 흐름</summary><ul id="1e47ed88-fb16-80ca-9928-c9635a727171" class="bulleted-list"><li style="list-style-type:disc"><strong>아이들</strong>은 <strong>호기심</strong>을 통해 독립성과 복종을 배우며, 이러한 태도가 성격 형성에 영향을 준다. </li></ul><ul id="1e47ed88-fb16-809b-bea5-d1949caea5c1" class="bulleted-list"><li style="list-style-type:disc">의료 서비스는 건강한 개인을 위한 <strong>삶의 질</strong>을 제공하며, <strong>시민의 권리</strong>로 여겨져야 한다. </li></ul><ul id="1e47ed88-fb16-80b6-8b5f-c29d1ce73392" class="bulleted-list"><li style="list-style-type:disc">미국에서는 연방 정부가 건강 관리에 대한 <strong>책임</strong>을 지고 있으며, 이는 사회가 <strong>건강한 개인</strong>을 믿는 것과 연결된다. </li></ul><ul id="1e47ed88-fb16-80a4-90fa-fd504f04e1c8" class="bulleted-list"><li style="list-style-type:disc">헬스케어는 <strong>비용 통제</strong>를 통해 기본적인 권리로 여겨지며, 이는 의사 결정과 정책의 흐름에 영향을 미친다. </li></ul><ul id="1e47ed88-fb16-8057-9152-cf838a693382" class="bulleted-list"><li style="list-style-type:disc">주제별 상관관계는 단순한 연관성 뿐만 아니라, 사고의 흐름을 나타내며, 각 주제가 서로 어떻게 연결되어 있는지를 설명한다. </li></ul></details></li></ul><ul id="1e47ed88-fb16-8021-bacb-ce8ef96b2e3f" class="toggle"><li><details open=""><summary>4.7. 문법의 추론과 주제 모델링</summary><ul id="1e47ed88-fb16-8054-b3aa-d70ddc6e346e" class="bulleted-list"><li style="list-style-type:disc">이 모델은 <strong>“문법”</strong>의 개념을 통해 의미적 사고를 추론할 수 있으며, 이는 통계적 증거에 의해 뒷받침된다. </li></ul><ul id="1e47ed88-fb16-80e3-a42b-ddbe48c99ca8" class="bulleted-list"><li style="list-style-type:disc">5000개의 단어를 각각 독립적인 문서로 사용하여, 5000x500의 문서-용어 행렬을 형성하고 <strong>주제</strong>를 추론할 수 있다.  (<strong>5,000개 단어</strong>를 각각 “하나의 문서”로 간주, 500은 어휘 크기, 토픽은 문법단위의 역)</li></ul><ul id="1ed7ed88-fb16-804f-90fc-c06b6a06cb83" class="toggle"><li><details open=""><summary></summary><figure id="1ed7ed88-fb16-80be-911f-ccf3df05be46" class="image"><a href="image%2013.png"><img style="width:507px" src="image%2013.png"/></a></figure></details></li></ul><ul id="1e47ed88-fb16-8095-81c3-cf72f7577848" class="bulleted-list"><li style="list-style-type:disc">모델은 발화의 주요 부분인 <strong>동사, 관사, 부사, 형용사, 대명사</strong> 등을 거의 모두 추론할 수 있으며, 이들은 문법의 구성 요소로 작용한다. </li></ul><ul id="1e47ed88-fb16-8082-a389-d3e7c58c5bd7" class="bulleted-list"><li style="list-style-type:disc">이러한 결과는 강력한 시간적 마르코프 구조(문법)가 있다는 것을 확실히 아는 도메인에 적용했을 때 모델이 관련 클러스터와 해당 클러스터를 결합하는 &quot;규칙&quot;(전이 행렬)을 모두 추론할 수 있음을 시사</li></ul><ul id="1ed7ed88-fb16-8029-a39b-c90cdd67141e" class="bulleted-list"><li style="list-style-type:disc">전이행렬을 네트워크로 시각화하면, “명사 → 동사 → 전치사” 같은 <strong>문법적 전환 규칙</strong>을 볼 수 있다.</li></ul><figure id="1ed7ed88-fb16-80fb-9e39-dd22cfcc98b8" class="image" style="text-align:center"><a href="image%2014.png"><img style="width:384px" src="image%2014.png"/></a></figure></details></li></ul><h3 id="1e47ed88-fb16-80d6-8cc5-d1d1ca31e5df" class="">5. 🧠 정치적 사고의 모델 확장</h3><ul id="1e47ed88-fb16-809f-a530-c324126b667a" class="bulleted-list"><li style="list-style-type:disc">정치적 사고의 복잡한 <strong>다층 네트워크</strong>를 매핑하기 위해 모델 확장을 해야 한다. </li></ul><ul id="1e47ed88-fb16-809a-be15-fd5ccba248ec" class="bulleted-list"><li style="list-style-type:disc">이 네트워크는 <strong>이념</strong>과 <strong>성격</strong>에 따라 다양하게 변형된다. </li></ul><ul id="1e47ed88-fb16-80f4-aef5-f4a69160209a" class="bulleted-list"><li style="list-style-type:disc">네트워크 기반 개념 모델이 오랜 질문인 의견 형성과 정치적 행동에 어떻게 기여할 수 있는지를 검증하는 것이 중요하다.</li></ul><p id="1ec7ed88-fb16-8018-9b0b-fd20bf1c85a7" class="">
+</p><p id="1ec7ed88-fb16-8048-b1b6-d621518a6fb8" class="">
+</p></div></article><span class="sans" style="font-size:14px;padding-top:2em"></span></body></html>
