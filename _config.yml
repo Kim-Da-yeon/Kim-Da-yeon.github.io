@@ -26,7 +26,7 @@ url                      : "https://Kim-Da-yeon.github.io"
 baseurl                  : # the subpath of your site, e.g. "/blog"
 repository               : "Kim-Da-yeon/Kim-Da-yeon"
 teaser                   : #"/assets/images/profile.png"
-logo                     : "/assets/images/pofile.png"
+logo                     : #"/assets/images/pofile.png"
 masthead_title           : # overrides the website title displayed in the masthead, use " " for no title
 breadcrumbs              : # true, false (default)
 words_per_minute         : 200
