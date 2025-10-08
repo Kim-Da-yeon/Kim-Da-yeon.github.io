@@ -15,7 +15,7 @@
 minimal_mistakes_skin    : "air" # "default", "aqua", "contrast", "dark", "dirt", "neon", "mint", "plum", "sunrise"
 
 # Site Settings
-locale                   : "ko-KR"
+locale                   : "en-US"
 rtl                      : # true, false (default) # turns direction of the page into right to left for RTL languages
 title                    : "Dani's Data Archive"
 title_separator          : "-"
@@ -25,12 +25,12 @@ description              : "LLM과 최적화 분야 공부 중입니다!"
 url                      : "https://Kim-Da-yeon.github.io"
 baseurl                  : # the subpath of your site, e.g. "/blog"
 repository               : "Kim-Da-yeon/Kim-Da-yeon"
-teaser                   : # path of fallback teaser image, e.g. "/assets/images/500x300.png"
-logo                     : # path of logo image to display in the masthead, e.g. "/assets/images/88x88.png"
+teaser                   : "/assets/images/profile.png"
+logo                     : "/assets/images/pofile.png"
 masthead_title           : # overrides the website title displayed in the masthead, use " " for no title
 breadcrumbs              : # true, false (default)
 words_per_minute         : 200
-enable_copy_code_button  : # true, false (default)
+enable_copy_code_button  : true
 copyright                : # "copyright" name, defaults to site.title
 copyright_url            : # "copyright" URL, defaults to site.url
 comments:
@@ -119,8 +119,8 @@ author:
   location         : "Korea"
   email            :
   links:
-    - label: "Email: abcde0405@naver.com"
-      icon: "fas fa-fw fa-envelope-square"
+    - #label: "Email: abcde0405@naver.com"
+      #icon: "fas fa-fw fa-envelope-square"
       #url: "abcde0405@naver.com"
     - #label: "Website"
       #icon: "fas fa-fw fa-link"
@@ -141,8 +141,8 @@ author:
 # Site Footer
 footer:
   links:
-    - label: "Email: abcde0405@naver.com"
-      icon: "fas fa-fw fa-envelope-square"
+    - #label: "Email: abcde0405@naver.com"
+      #icon: "fas fa-fw fa-envelope-square"
       #url: "abcde0405@naver.com"
     - #label: "Website"
       #icon: "fas fa-fw fa-link"
