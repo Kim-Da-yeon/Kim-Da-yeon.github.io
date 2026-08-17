@@ -685,8 +685,12 @@ footer{padding-top:30px;font-family:var(--mono);font-size:11px;color:rgba(241,24
   const traj=[];let t={x:.10,y:.20,vx:0,vy:0};
   function grad(x,y){const h=.004,c=Math.log(dens(x,y)+1e-9);
     return[(Math.log(dens(x+h,y)+1e-9)-c)/h,(Math.log(dens(x,y+h)+1e-9)-c)/h];}
-  function step(){const g=grad(t.x,t.y),eps=.00016,n=.0075;
-    t.vx=t.vx*.86+eps*g[0]+(Math.random()-.5)*n; t.vy=t.vy*.86+eps*g[1]+(Math.random()-.5)*n;
+  /* 표집기 계수. 모의실험으로 고른 값(5개 씨드 전부 봉우리 4개 방문):
+     eps↑·n↓ 로 gradient 가 노이즈를 이기게 하고, 감쇠를 .86→.985 로 올려
+     속도가 노이즈를 적분하게 만들어 경로를 매끄럽게 한다.
+     감쇠만 낮추고 노이즈를 더 줄이면 봉우리 2~3개에 갇힌다(장벽 못 넘음). */
+  function step(){const g=grad(t.x,t.y),eps=.0009,n=.0034,damp=.985;
+    t.vx=t.vx*damp+eps*g[0]+(Math.random()-.5)*n; t.vy=t.vy*damp+eps*g[1]+(Math.random()-.5)*n;
     t.x+=t.vx;t.y+=t.vy;
     if(t.x<.03||t.x>.97){t.vx*=-.7;t.x=Math.min(.97,Math.max(.03,t.x));}
     if(t.y<.05||t.y>.95){t.vy*=-.7;t.y=Math.min(.95,Math.max(.05,t.y));}
@@ -700,10 +704,10 @@ footer{padding-top:30px;font-family:var(--mono);font-size:11px;color:rgba(241,24
       ctx.strokeStyle='rgba(20,112,106,.26)';ctx.lineWidth=1.1;ctx.stroke();
       const l=traj[traj.length-1];ctx.beginPath();ctx.arc(l[0]*W,l[1]*H,2.4,0,Math.PI*2);
       ctx.fillStyle='rgba(90,43,71,.65)';ctx.fill();}}
-  let raf; function loop(){for(let i=0;i<3;i++)step();draw();raf=requestAnimationFrame(loop);}
+  let raf; function loop(){step();draw();raf=requestAnimationFrame(loop);}
   window.addEventListener('resize',()=>{cache=null;resize();});
   resize();
-  if(reduce){for(let i=0;i<600;i++)step();draw();}else loop();
+  if(reduce){for(let i=0;i<2400;i++)step();draw();}else loop();
   document.addEventListener('visibilitychange',()=>{if(document.hidden)cancelAnimationFrame(raf);else if(!reduce)loop();});
 })();
 /* bars */
