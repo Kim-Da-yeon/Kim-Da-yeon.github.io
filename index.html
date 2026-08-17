@@ -104,7 +104,7 @@ a:focus-visible,button:focus-visible{outline:2px solid var(--plum);outline-offse
 
 /* print */
 @media print{
-  .topbar,#prog,#field,.navlinks,.btn{display:none!important}
+  .topbar,#prog,#field,.field-note,.navlinks,.btn{display:none!important}
   body{background:#fff;font-size:10.5pt}
   .dark{background:#fff!important;color:#16211E!important}
   .dark h2,.dark h3,.dark h4,.dark .rec-t{color:#16211E!important}
@@ -118,6 +118,10 @@ a:focus-visible,button:focus-visible{outline:2px solid var(--plum);outline-offse
 /* hero */
 .hero{position:relative;overflow:hidden;border-bottom:1px solid var(--rule)}
 #field{position:absolute;inset:0;width:100%;height:100%;opacity:.62;pointer-events:none}
+.field-note{position:absolute;right:32px;bottom:16px;z-index:1;max-width:44ch;text-align:right;
+  font-family:var(--mono);font-size:10px;line-height:1.6;letter-spacing:.03em;
+  color:var(--ink-3);opacity:.55;pointer-events:none}
+@media(max-width:900px){.field-note{display:none}}
 .hero .wrap{position:relative;padding-top:104px;padding-bottom:72px}
 .hero-name{display:flex;align-items:baseline;gap:14px;flex-wrap:wrap}
 .hero-name .kr{font-size:19px;font-weight:600}
@@ -302,6 +306,7 @@ footer{padding-top:30px;font-family:var(--mono);font-size:11px;color:rgba(241,24
       <div class="meter"><div class="n">자율주행 sLLM</div><div class="l">어댑터만 학습해 갱신 대상을 0.01%로 줄이고<br>검색 기반 대비 생성 품질 비교</div></div>
     </div>
   </div>
+  <p class="field-note">배경 · 다봉형 분포의 등고선과 그 위를 오가는 MCMC 샘플러의 궤적</p>
 </header>
 
 <!-- CH1 -->
