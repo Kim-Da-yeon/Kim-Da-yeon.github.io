@@ -589,7 +589,7 @@ footer{padding-top:30px;font-family:var(--mono);font-size:11px;color:rgba(241,24
       <div class="repo rv">
         <h4>bntm-topic-model</h4>
         <div class="meta">Python · 석사 학위논문 · SCI급 투고 중</div>
-        <p>문장 단위 토픽 전이 네트워크 모델(BNTM)과 추론 표집기 AWSGHMC. 전이 행렬과 토픽–단어 분포를 모두 logistic-normal로 두고, 전역 토픽 가중치에 희소 사전분포를 걸어 활성 토픽 수가 데이터에서 결정되게 했습니다.</p>
+        <p>문장 단위 토픽 전이 네트워크 모델(BNTM)과 추론 샘플러 AWSGHMC. 전이 행렬과 토픽–단어 분포를 모두 logistic-normal로 두고, 전역 토픽 가중치에 희소 사전분포를 걸어 활성 토픽 수가 데이터에서 결정되게 했습니다.</p>
 <div class="priv">심사 중 비공개 · 게재 후 공개 예정</div>
       </div>
       <div class="repo rv">
@@ -601,7 +601,7 @@ footer{padding-top:30px;font-family:var(--mono);font-size:11px;color:rgba(241,24
       <div class="repo rv">
         <h4>GCIoU-SGMCMC-3D-Detection</h4>
         <div class="meta">Python · PyTorch · KITTI · OpenPCDet · 2025</div>
-        <p>SGLD · SGHMC · SGNHT를 Adam·SGD와 동일한 GCIoU 손실 아래에서 비교했습니다. 학습 손실이 가장 낮은 표집기가 검출 성능은 최고가 아니라는 점, 모멘텀 유무가 성능을 갈랐다는 점이 결과의 핵심입니다.</p>
+        <p>SGLD · SGHMC · SGNHT를 Adam·SGD와 동일한 GCIoU 손실 아래에서 비교했습니다. 학습 손실이 가장 낮은 샘플러가 검출 성능은 최고가 아니라는 점, 모멘텀 유무가 성능을 갈랐다는 점이 결과의 핵심입니다.</p>
 <div class="act"><a class="btn ghost sm" href="https://github.com/Kim-Da-yeon/GCIoU-SGMCMC-3D-Detection" target="_blank" rel="noopener">GitHub &#8599;</a></div>
       </div>
       <div class="repo rv">
@@ -685,7 +685,7 @@ footer{padding-top:30px;font-family:var(--mono);font-size:11px;color:rgba(241,24
   const traj=[];let t={x:.10,y:.20,vx:0,vy:0};
   function grad(x,y){const h=.004,c=Math.log(dens(x,y)+1e-9);
     return[(Math.log(dens(x+h,y)+1e-9)-c)/h,(Math.log(dens(x,y+h)+1e-9)-c)/h];}
-  /* 표집기 계수. 모의실험으로 고른 값(5개 씨드 전부 봉우리 4개 방문):
+  /* 샘플러 계수. 모의실험으로 고른 값(5개 씨드 전부 봉우리 4개 방문):
      eps↑·n↓ 로 gradient 가 노이즈를 이기게 하고, 감쇠를 .86→.985 로 올려
      속도가 노이즈를 적분하게 만들어 경로를 매끄럽게 한다.
      감쇠만 낮추고 노이즈를 더 줄이면 봉우리 2~3개에 갇힌다(장벽 못 넘음). */
