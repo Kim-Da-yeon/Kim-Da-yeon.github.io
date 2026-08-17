@@ -33,16 +33,21 @@
 html{scroll-behavior:smooth}
 body{margin:0;background:var(--paper);color:var(--ink);font-family:var(--sans);
   font-weight:350;font-size:16px;line-height:1.72;-webkit-font-smoothing:antialiased;
-  /* 한글 줄바꿈: 어절(띄어쓰기) 단위로만 끊고, 단어 중간에서 자르지 않는다.
-     overflow-wrap은 URL·긴 영문 식별자가 넘칠 때만 개입한다. */
-  word-break:keep-all;overflow-wrap:break-word}
+  /* 한글 줄바꿈: 어절(띄어쓰기) 단위로만 끊는다.
+     overflow-wrap은 기본값(normal)으로 두어 어절 중간 절단을 원천 차단하고,
+     넘칠 수 있는 영문 식별자에만 아래에서 개별 허용한다. */
+  word-break:keep-all;line-break:strict}
 a{color:inherit}
 .wrap{max-width:var(--maxw);margin:0 auto;padding:0 32px}
 @media(max-width:640px){.wrap{padding:0 20px}}
 .eyebrow{font-family:var(--mono);font-size:11px;font-weight:500;letter-spacing:.18em;
   text-transform:uppercase;color:var(--ink-3)}
 .mono{font-family:var(--mono)}
-h1,h2,h3,h4{font-weight:600;line-height:1.28;letter-spacing:-.022em;margin:0}
+h1,h2,h3,h4{font-weight:600;line-height:1.28;letter-spacing:-.022em;margin:0;
+  /* 한글 제목: 어절 단위로만 끊고, 줄 길이를 고르게 맞춘다 */
+  word-break:keep-all;overflow-wrap:normal;text-wrap:balance}
+p,li,.qa-v,.hero-sub,.small p,.repo p,.step .right p,.panel-foot,.rec-t{
+  word-break:keep-all;text-wrap:pretty}
 p{margin:0}
 
 /* topbar */
@@ -83,7 +88,8 @@ a:focus-visible,button:focus-visible{outline:2px solid var(--plum);outline-offse
 @media(max-width:760px){.repos{grid-template-columns:1fr}}
 .repo{background:var(--paper);padding:26px 26px 28px;display:flex;flex-direction:column}
 .repo h4{font-family:var(--mono);font-size:14.5px;font-weight:600;letter-spacing:-.01em;
-  word-break:break-all}
+  word-break:break-all;text-wrap:auto}
+.repo-link,.repo .meta,.small .meta,.step .meta,.proj-tag,.mono{overflow-wrap:anywhere}
 .repo .meta{font-family:var(--mono);font-size:10.5px;color:var(--ink-3);margin-top:7px}
 .repo p{font-size:13.5px;color:var(--ink-2);margin-top:13px;line-height:1.7;flex:1}
 .repo .act{margin-top:18px}
