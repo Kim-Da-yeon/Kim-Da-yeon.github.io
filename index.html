@@ -4,6 +4,19 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>김다연 데이터 분석 포트폴리오</title>
+<link rel="canonical" href="https://kim-da-yeon.github.io/">
+<meta name="author" content="김다연">
+<meta name="description" content="김다연 데이터 분석 포트폴리오 — 추론 알고리즘을 직접 구현하고 센서·텍스트·교통 데이터를 분석합니다. 고려대학교 빅데이터사이언스학과 석사과정.">
+<meta name="theme-color" content="#F1F2ED">
+<meta property="og:type" content="profile">
+<meta property="og:url" content="https://kim-da-yeon.github.io/">
+<meta property="og:title" content="김다연 데이터 분석 포트폴리오">
+<meta property="og:description" content="추론 알고리즘을 직접 구현하고 센서·텍스트·교통 데이터를 분석합니다. 논문 4편·분석 프로젝트 4건·참여 연구 3건.">
+<meta property="og:locale" content="ko_KR">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="김다연 데이터 분석 포트폴리오">
+<meta name="twitter:description" content="추론 알고리즘을 직접 구현하고 센서·텍스트·교통 데이터를 분석합니다.">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns=&#39;http://www.w3.org/2000/svg&#39; viewBox=&#39;0 0 32 32&#39;%3E%3Crect width=&#39;32&#39; height=&#39;32&#39; rx=&#39;7&#39; fill=&#39;%235A2B47&#39;/%3E%3Ctext x=&#39;16&#39; y=&#39;22.5&#39; font-family=&#39;ui-monospace,monospace&#39; font-size=&#39;17&#39; font-weight=&#39;600&#39; fill=&#39;%23F1F2ED&#39; text-anchor=&#39;middle&#39;%3EK%3C/text%3E%3C/svg%3E">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+KR:wght@200;300;400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
@@ -39,6 +52,58 @@ p{margin:0}
 .navlinks a{text-decoration:none;padding-bottom:2px;border-bottom:1px solid transparent}
 .navlinks a:hover{border-bottom-color:var(--plum);color:var(--plum)}
 @media(max-width:820px){.navlinks{display:none}}
+.navlinks a.active{border-bottom-color:var(--plum);color:var(--plum)}
+
+/* scroll progress */
+#prog{position:fixed;top:0;left:0;height:2px;width:0;background:var(--plum);z-index:99;
+  transition:width .08s linear}
+
+/* selection + focus */
+::selection{background:rgba(90,43,71,.16)}
+a:focus-visible,button:focus-visible{outline:2px solid var(--plum);outline-offset:3px}
+
+/* reveal on scroll */
+.rv{opacity:0;transform:translateY(14px);transition:opacity .6s cubic-bezier(.22,1,.36,1),
+  transform .6s cubic-bezier(.22,1,.36,1)}
+.rv.in{opacity:1;transform:none}
+@media(prefers-reduced-motion:reduce){.rv{opacity:1;transform:none;transition:none}}
+
+/* card hover */
+.small,.repo{transition:background .25s ease,transform .25s ease}
+.small:hover,.repo:hover{background:var(--paper-2);transform:translateY(-2px)}
+.meter{transition:border-color .25s ease}
+.rec-row{transition:background .2s ease}
+
+/* code repositories */
+.repos{display:grid;grid-template-columns:1fr 1fr;gap:1px;background:var(--rule-soft);
+  border:1px solid var(--rule-soft)}
+@media(max-width:760px){.repos{grid-template-columns:1fr}}
+.repo{background:var(--paper);padding:26px 26px 28px;display:flex;flex-direction:column}
+.repo h4{font-family:var(--mono);font-size:14.5px;font-weight:600;letter-spacing:-.01em}
+.repo .meta{font-family:var(--mono);font-size:10.5px;color:var(--ink-3);margin-top:7px}
+.repo p{font-size:13.5px;color:var(--ink-2);margin-top:13px;line-height:1.7;flex:1}
+.repo .act{margin-top:18px}
+.btn.sm{font-size:11px;padding:8px 14px}
+.repo .priv{font-family:var(--mono);font-size:11px;color:var(--ink-3);margin-top:18px;
+  padding:8px 0 0;border-top:1px dashed var(--rule)}
+.repo-link{display:inline-flex;align-items:center;gap:6px;font-family:var(--mono);
+  font-size:11.5px;letter-spacing:.02em;color:var(--plum);text-decoration:none;
+  margin-top:14px;padding-bottom:2px;border-bottom:1px solid rgba(90,43,71,.3)}
+.repo-link:hover{border-bottom-color:var(--plum)}
+.repo-link.on-dark{color:#D8B6C7;border-bottom-color:rgba(216,182,199,.34)}
+
+/* print */
+@media print{
+  .topbar,#prog,#field,.navlinks,.btn{display:none!important}
+  body{background:#fff;font-size:10.5pt}
+  .dark{background:#fff!important;color:#16211E!important}
+  .dark h2,.dark h3,.dark h4,.dark .rec-t{color:#16211E!important}
+  .qa-v,.step .right p{color:#333!important}
+  section{padding:14pt 0!important;break-inside:avoid}
+  .small,.repo,.proj,.step{break-inside:avoid}
+  a{text-decoration:none;color:#16211E!important}
+  .rv{opacity:1!important;transform:none!important}
+}
 
 /* hero */
 .hero{position:relative;overflow:hidden;border-bottom:1px solid var(--rule)}
@@ -196,11 +261,13 @@ footer{padding-top:30px;font-family:var(--mono);font-size:11px;color:rgba(241,24
 </style>
 </head>
 <body>
+<div id="prog"></div>
 
 <div class="topbar"><div class="wrap">
   <div class="brand">KIM DAYEON <span>/ 김다연</span></div>
   <nav class="navlinks">
-    <a href="#ch1">실무</a><a href="#ch2">연구</a><a href="#ch3">프로젝트</a><a href="#record">이력</a><a href="#contact">연락</a>
+    <a href="#ch1">실무</a><a href="#ch2">연구</a><a href="#ch3">프로젝트</a><a href="#record">이력</a>
+        <a href="#code">코드</a><a href="#contact">연락</a>
   </nav>
 </div></div>
 
@@ -366,6 +433,7 @@ footer{padding-top:30px;font-family:var(--mono);font-size:11px;color:rgba(241,24
           <span class="proj-tag">KITTI · OpenPCDet · CT-Stack 백본 · PointPillars · GCIoU · 2025</span>
           <h3>조건을 전부 고정하고 한 가지만 바꿔 원인을 분리했습니다.</h3>
           <div class="sub">SGMCMC 기반 3D 객체 탐지 모델 최적화</div>
+          <a class="repo-link" href="https://github.com/Kim-Da-yeon/GCIoU-SGMCMC-3D-Detection" target="_blank" rel="noopener">GitHub · GCIoU-SGMCMC-3D-Detection &#8599;</a>
         </div>
         <div class="qa">
           <div class="qa-row"><div class="qa-k">질문</div><div class="qa-v">오인식 비용이 큰 자율주행에서 단일 최적점 대신 파라미터 분포를 얻는 학습이 실용적인 대안이 되는가.</div></div>
@@ -442,6 +510,7 @@ footer{padding-top:30px;font-family:var(--mono);font-size:11px;color:rgba(241,24
           <div class="meta">ISO 3166-1 · BCP 47 · LightGCN · 2025</div>
           <p>같은 국가가 USA, United States, America로 흩어지는 표면형 비일관성을 다뤘습니다. 정규화 레이어를 설계해 적합률을 측정하고, 정규화 임베딩으로 추천 성능이 유지되는지 검증했습니다.</p>
           <div class="kpi">표준 적합률 0.484 → 0.914. 추천 성능에는 유의한 변화 없음</div>
+          <a class="repo-link" href="https://github.com/Kim-Da-yeon/llmrec-metadata-standard" target="_blank" rel="noopener">GitHub · llmrec-metadata-standard &#8599;</a>
         </div>
       </div>
     </div>
@@ -496,6 +565,52 @@ footer{padding-top:30px;font-family:var(--mono);font-size:11px;color:rgba(241,24
       <div class="rec-row"><div class="rec-y">2025 – 2026</div><div class="rec-t">연구실 대표<span>안전관리 · 장비 운영 · 세미나 일정 조율</span></div><div class="rec-r">리더십</div></div>
       <div class="rec-row"><div class="rec-y">2022 – 2025</div><div class="rec-t">학습 멘토 (Python · 미적분학 · Excel)<span>실습 중심 커리큘럼 구성 및 개별 상담</span></div><div class="rec-r">교육</div></div>
       <div class="rec-row"><div class="rec-y">2025</div><div class="rec-t">미국 UNLV 4주 연수 + CES 2025 참관<span>자율주행 · 로보틱스 · 온디바이스 AI 동향 조사</span></div><div class="rec-r">기타</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- CODE -->
+<section id="code" style="padding-top:0">
+  <div class="wrap">
+    <div class="sec-head"><span class="eyebrow">Code</span><h2>코드 저장소</h2>
+      <p class="note">위 프로젝트의 구현 코드입니다. 각 저장소 README에 방법과 한계를 적어두었습니다.</p></div>
+    <div class="repos">
+      <div class="repo rv">
+        <h4>bntm-topic-model</h4>
+        <div class="meta">Python · 석사 학위논문 · SCI급 투고 중</div>
+        <p>문장 단위 토픽 전이 네트워크 모델(BNTM)과 추론 표집기 AWSGHMC. 전이 행렬과 토픽–단어 분포를 모두 logistic-normal로 두고, 전역 토픽 가중치에 희소 사전분포를 걸어 활성 토픽 수가 데이터에서 결정되게 했습니다.</p>
+<div class="priv">심사 중 비공개 · 게재 후 공개 예정</div>
+      </div>
+      <div class="repo rv">
+        <h4>llmrec-metadata-standard</h4>
+        <div class="meta">Python · ISO 3166-1 / BCP 47 · 2025</div>
+        <p>LLM이 생성한 추천 메타데이터를 국제 표준으로 정규화하고 적합률을 진단합니다. 한 국가가 1,166개 표면형으로 흩어져 있던 것을 57개 표준 코드로 통합해 상호운용성을 0 → 80.3%로 올렸습니다.</p>
+<div class="act"><a class="btn ghost sm" href="https://github.com/Kim-Da-yeon/llmrec-metadata-standard" target="_blank" rel="noopener">GitHub &#8599;</a></div>
+      </div>
+      <div class="repo rv">
+        <h4>GCIoU-SGMCMC-3D-Detection</h4>
+        <div class="meta">Python · PyTorch · KITTI · OpenPCDet · 2025</div>
+        <p>SGLD · SGHMC · SGNHT를 Adam·SGD와 동일한 GCIoU 손실 아래에서 비교했습니다. 학습 손실이 가장 낮은 표집기가 검출 성능은 최고가 아니라는 점, 모멘텀 유무가 성능을 갈랐다는 점이 결과의 핵심입니다.</p>
+<div class="act"><a class="btn ghost sm" href="https://github.com/Kim-Da-yeon/GCIoU-SGMCMC-3D-Detection" target="_blank" rel="noopener">GitHub &#8599;</a></div>
+      </div>
+      <div class="repo rv">
+        <h4>SONY_Chatbot</h4>
+        <div class="meta">Python · LangChain · Chroma · Streamlit · 2025</div>
+        <p>제품 설명서 PDF를 대상으로 하는 한국어 RAG 질의응답. 페이지 단위 출처를 붙여 답변의 근거를 설명서 특정 페이지까지 되짚을 수 있게 했고, 검색 결과가 없으면 웹 검색으로 넘깁니다.</p>
+<div class="act"><a class="btn ghost sm" href="https://github.com/Kim-Da-yeon/SONY_Chatbot" target="_blank" rel="noopener">GitHub &#8599;</a></div>
+      </div>
+      <div class="repo rv">
+        <h4>mcmc-r-packages</h4>
+        <div class="meta">R · C/Rcpp · Python/reticulate · 2025</div>
+        <p>확률적 근사 몬테카를로(SAMC)를 순수 R, Rcpp를 통한 C, reticulate를 통한 Python 세 백엔드로 각각 R 패키지로 구현했습니다. 같은 알고리즘을 나란히 두었을 때 세 구현이 어디서 갈라지는지를 정리했습니다.</p>
+<div class="act"><a class="btn ghost sm" href="https://github.com/Kim-Da-yeon/mcmc-r-packages" target="_blank" rel="noopener">GitHub &#8599;</a></div>
+      </div>
+      <div class="repo rv">
+        <h4>Pykachu-Volleyball</h4>
+        <div class="meta">Python · gymnasium · Q-learning · 2025</div>
+        <p>역공학된 피카츄 배구 gymnasium 환경에 표 기반 Q-learning을 붙였습니다. 희소한 승패 보상을 밀집 보상으로 재설계한 과정과, 상태에 공의 속도를 넣지 않아 생긴 한계를 기록했습니다.</p>
+<div class="act"><a class="btn ghost sm" href="https://github.com/Kim-Da-yeon/Pykachu-Volleyball" target="_blank" rel="noopener">GitHub &#8599;</a></div>
+      </div>
     </div>
   </div>
 </section>
@@ -585,6 +700,35 @@ footer{padding-top:30px;font-family:var(--mono);font-size:11px;color:rgba(241,24
   const io=new IntersectionObserver(es=>{es.forEach(e=>{if(e.isIntersecting){
     e.target.style.width=e.target.dataset.w+'%';io.unobserve(e.target);}});},{threshold:.35});
   f.forEach(x=>io.observe(x));})();
+
+/* scroll progress */
+(function(){const b=document.getElementById('prog');if(!b)return;
+  const on=()=>{const h=document.documentElement;
+    const m=h.scrollHeight-h.clientHeight;
+    b.style.width=(m>0?(h.scrollTop/m*100):0)+'%';};
+  addEventListener('scroll',on,{passive:true});addEventListener('resize',on);on();})();
+
+/* reveal on scroll */
+(function(){
+  const reduce=matchMedia('(prefers-reduced-motion:reduce)').matches;
+  const els=document.querySelectorAll('.rv, .small, .proj, .step, .repo, .chapcard');
+  if(reduce){els.forEach(e=>e.classList.add('rv','in'));return;}
+  els.forEach(e=>e.classList.add('rv'));
+  const io=new IntersectionObserver(es=>{es.forEach(e=>{if(e.isIntersecting){
+    e.target.classList.add('in');io.unobserve(e.target);}});},{threshold:.12,rootMargin:'0px 0px -6% 0px'});
+  els.forEach(e=>io.observe(e));})();
+
+/* active nav */
+(function(){
+  const links=[...document.querySelectorAll('.navlinks a')].filter(a=>a.hash);
+  if(!links.length)return;
+  const map=new Map();
+  links.forEach(a=>{const t=document.querySelector(a.hash);if(t)map.set(t,a);});
+  const io=new IntersectionObserver(es=>{es.forEach(e=>{
+    if(e.isIntersecting){links.forEach(l=>l.classList.remove('active'));
+      const a=map.get(e.target);if(a)a.classList.add('active');}});},
+    {threshold:0,rootMargin:'-45% 0px -50% 0px'});
+  map.forEach((a,t)=>io.observe(t));})();
 </script>
 </body>
 </html>
