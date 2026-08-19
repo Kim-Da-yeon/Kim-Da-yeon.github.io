@@ -377,29 +377,29 @@ footer{padding-top:30px;font-family:var(--mono);font-size:11px;color:rgba(241,24
   <div class="wrap">
     <div class="chap" style="border-top-color:rgba(241,242,237,.3)">
       <span class="num" style="color:#B99AAC">02</span><h2>연구 · 논문</h2>
-      <p class="d" style="color:rgba(241,242,237,.62)">기존 모델(TNTM)의 제약을 하나씩 풀어 온 연속 연구 3건. 학술지 게재 1 · 학술발표 1 · 투고 중 1. 전부 제1저자.</p>
+      <p class="d" style="color:rgba(241,242,237,.62)">제1저자 논문 3편. 학술지 게재 2 · SCI급 투고 중 1.</p>
     </div>
     <div class="lineage" style="margin-top:30px">
       <div class="step">
         <div class="idx">1</div>
         <div><h4>AWSGLD를 이용한 전이 네트워크 토픽 모델 추론</h4>
           <div class="meta">한국자료분석학회지 28(1) 109–121 게재 · 제1저자 · 2026</div>
-          <div class="left-open">제약: 토픽 수 K 사전 고정</div></div>
+          <div class="left-open">모델: 전이 네트워크 토픽 모델</div></div>
         <div class="right"><p>이산 잠재변수와 연속 모수를 분리했습니다. 각각 MH-within-Gibbs와 AWSGLD로 추론합니다.</p></div>
       </div>
       <div class="step">
         <div class="idx">2</div>
-        <div><h4>Fixed-K Shrinkage BNTM with AWSGLD Inference</h4>
-          <div class="meta">한국자료분석학회 하계학술발표대회 포스터 발표 (초록) · 포스터논문 부문 장려상 · 2026</div>
-          <div class="left-open">제약: 샘플러 수렴 안정성</div></div>
-        <div class="right"><p>Logistic-Normal 모수화와 희소 사전분포를 도입해 활성 토픽 수가 데이터에서 결정되도록 확장했습니다.</p></div>
+        <div><h4>자율주행 도메인에서 LoRA 기반 sLLM 파인튜닝</h4>
+          <div class="meta">한국자료분석학회지 27(3) 769–780 게재 · 제1저자 · 2025</div>
+          <div class="left-open">제약: 임베디드 환경 자원 한계</div></div>
+        <div class="right"><p>Phi-4-mini-instruct(3.8B)에 저차원 어댑터만 학습해 갱신 대상을 전체의 약 0.01%로 축소. <a href="#p-lora" style="border-bottom:1px solid rgba(241,242,237,.3)">상세 →</a></p></div>
       </div>
       <div class="step">
         <div class="idx">3</div>
         <div><h4>Fixed-K Shrinkage BNTM with AWSGHMC Inference</h4>
           <div class="meta">SCI급 학술지 투고 중 · 제1저자 · 석사 학위논문</div>
-          <div class="left-open">현재 진행 중</div></div>
-        <div class="right"><p>샘플러를 모멘텀 기반 AWSGHMC로 교체했습니다. 모의실험(K=30)에서 30.0/30 복원(Sentence Accuracy 1.00). 기존 샘플러는 MH 28.9, SGHMC 19.6, SGLD 계열 14.7입니다. FAERS·NTSB 텍스트에서도 최저 에너지에 도달했습니다.</p></div>
+          <div class="left-open">모델: Fixed-K Shrinkage BNTM</div></div>
+        <div class="right"><p>Logistic-Normal 모수화와 희소 사전분포로 활성 토픽 수를 데이터가 결정하게 하고, 샘플러를 모멘텀 기반 AWSGHMC로 교체. K=30에서 30.0/30 복원(Sentence Accuracy 1.00), 기존 샘플러는 MH 28.9 · SGHMC 19.6 · SGLD 계열 14.7. 중간 단계는 2026년 학회 포스터 발표(장려상).</p></div>
       </div>
     </div>
     <p class="darkfoot">한국연구재단 석사과정생연구장려금 연구책임자(PI, 2025–2026) · NRF 적응적 가중 SGMCMC 알고리즘 참여연구원(2024–2027) · KIAT 표준전문인력양성 참여연구원(2025–2026)</p>
