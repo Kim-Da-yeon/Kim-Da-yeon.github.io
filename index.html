@@ -323,7 +323,7 @@ footer{padding-top:30px;font-family:var(--mono);font-size:13px;color:rgba(241,24
       <a href="#p-tbt"><span class="t">미국 자동차 · 자율주행 TBT 규제 토픽 흐름</span><span class="m">Federal Register 160건</span><span class="r">토픽 8개 · 연도별 전이 행렬</span></a>
       <a href="#p-db"><span class="t">자전거 대여 시스템 DB 설계</span><span class="m">MySQL · ER 모델링</span><span class="r">정규화로 갱신 이상 차단</span></a>
       <a href="#p-sony"><span class="t">제품 설명서 한국어 RAG 질의응답</span><span class="m">bge-m3 · Chroma · KoAlpaca-7b</span><span class="r">페이지 단위 출처 표기</span></a>
-      <a href="#p-samc"><span class="t">SAMC 알고리즘 R 패키지 3종</span><span class="m">R · C/Rcpp · Python</span><span class="r">구현별 산출물 차이 정리</span></a>
+      <a href="#p-samc"><span class="t">SAMC 알고리즘 R 패키지화</span><span class="m">R · Rcpp · reticulate</span><span class="r">설치 가능한 R 패키지 3종</span></a>
       <a href="#p-pika"><span class="t">표 기반 Q-learning 에이전트</span><span class="m">gymnasium · 18개 이산 행동</span><span class="r">희소 보상 → 밀집 보상 재설계</span></a>
       <a href="#p-std"><span class="t">LLM 메타데이터 국제 표준 정규화</span><span class="m">ISO 3166-1 · BCP 47</span><span class="r">표준 적합률 0.484 → 0.914</span></a>
     </div>
@@ -660,23 +660,23 @@ footer{padding-top:30px;font-family:var(--mono);font-size:13px;color:rgba(241,24
       </div>
     </article>
 
-    <div class="subhead"><span>알고리즘 구현</span></div>
+    <div class="subhead"><span>R 패키지 개발</span></div>
 
     <article id="p-samc" class="proj" style="grid-template-columns:1fr">
       <div>
         <div class="proj-head">
-          <span class="proj-tag">R · C/Rcpp · Python/reticulate · 2025</span>
-          <h3>SAMC 알고리즘 R 패키지 3종 구현</h3>
-          <div class="sub">동일 알고리즘의 언어별 백엔드 비교</div>
+          <span class="proj-tag">R · Rcpp · reticulate · 2025</span>
+          <h3>SAMC 알고리즘 R 패키지화</h3>
+          <div class="sub">제공된 알고리즘 코드의 패키지 빌드 구조 구성</div>
           <a class="repo-link" href="https://github.com/Kim-Da-yeon/mcmc-r-packages" target="_blank" rel="noopener">GitHub · mcmc-r-packages &#8599;</a>
         </div>
         <ul class="pl">
-          <li><span class="k">대상</span>Liang, Liu & Carroll (2007) Example 1. 10 상태 · 5 부분집합 · 500,000 반복</li>
-          <li><span class="k">구현</span>순수 R · Rcpp를 통한 C · reticulate를 통한 Python 세 백엔드를 각각 R 패키지화</li>
-          <li><span class="k">검증</span>세 구현의 제안 행렬이 수치적으로 동일함을 확인</li>
-          <li><span class="k">차이</span>반환값 · 수렴표 출력 · 이득계수 오차 보고 · 초기 상태 추출이 구현마다 상이</li>
-          <li><span class="k">정리</span>단일 패키지 저장소 4개를 git subtree로 병합, 커밋 이력 보존</li>
-        </ul><div class="takeaway"><span class="lb">시사점</span><ul><li>같은 알고리즘도 구현체마다 산출물 항목이 달라짐</li><li>재현성 확인은 결과 비교가 아니라 코드 통합 시점에 필요</li></ul></div>
+          <li><span class="k">범위</span>알고리즘 코드는 제공받은 것. 담당 범위는 패키지 빌드 구조 구성</li>
+          <li><span class="k">구성</span>DESCRIPTION · NAMESPACE · man 문서 · inst/extdata 데이터 배치</li>
+          <li><span class="k">백엔드</span>순수 R · Rcpp를 통한 C 연결 · reticulate를 통한 Python 연결, 세 형태로 각각 패키지화</li>
+          <li><span class="k">결과</span>devtools::install 로 설치 · 호출 가능한 R 패키지 3종</li>
+        </ul>
+        <div class="takeaway"><span class="lb">시사점</span><ul><li>R 패키지 빌드 구조와 외부 언어 연결(Rcpp · reticulate) 경험</li></ul></div>
       </div>
     </article>
 
@@ -687,11 +687,11 @@ footer{padding-top:30px;font-family:var(--mono);font-size:13px;color:rgba(241,24
         <div class="proj-head">
           <span class="proj-tag">gymnasium · Q-learning · 2025</span>
           <h3>표 기반 Q-learning 에이전트 학습</h3>
-          <div class="sub">역공학 환경 · 희소 보상 밀집화</div>
+          <div class="sub">환경은 공개 포크 · 에이전트와 보상 설계가 담당 범위</div>
           <a class="repo-link" href="https://github.com/Kim-Da-yeon/Pykachu-Volleyball" target="_blank" rel="noopener">GitHub · Pykachu-Volleyball &#8599;</a>
         </div>
         <ul class="pl">
-          <li><span class="k">환경</span>관측이 432 × 304 × 3 RGB로 표 기반 학습에 직접 사용 불가</li>
+          <li><span class="k">환경</span>공개 gymnasium 환경 포크. 관측이 432 × 304 × 3 RGB로 표 기반 학습에 직접 사용 불가</li>
           <li><span class="k">상태</span>공 · 플레이어 좌표를 20px 격자로 이산화한 4-tuple</li>
           <li><span class="k">행동</span>3 × 3 × 2 = 18개 이산 행동, epsilon-greedy 1.0 → 0.1 (감쇠 0.999)</li>
           <li><span class="k">보상</span>승 +15 / 패 −10 희소 보상에 랠리 · 이동 · 타격 · 근접 항을 더해 밀집화</li>
