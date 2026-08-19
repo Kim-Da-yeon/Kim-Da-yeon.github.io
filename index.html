@@ -466,22 +466,23 @@ footer{padding-top:30px;font-family:var(--mono);font-size:11px;color:rgba(241,24
           <a class="repo-link" href="https://github.com/Kim-Da-yeon/GCIoU-SGMCMC-3D-Detection" target="_blank" rel="noopener">GitHub · GCIoU-SGMCMC-3D-Detection &#8599;</a>
         </div>
         <ul class="pl">
-          <li><span class="k">질문</span>단일 최적점 대신 파라미터 분포를 얻는 학습의 실용성</li>
+          <li><span class="k">질문</span>SGMCMC 계열 안에서 무엇이 성능을 가르는가. 단일 최적점 대신 파라미터 분포를 얻는 학습의 실용성</li>
           <li><span class="k">통제</span>손실 함수 · 네트워크 고정, 최적화기만 교체. 초기 lr 0.00035 · 배치 8 · weight decay 0.01 · OneCycle 동일 적용</li>
-          <li><span class="k">손실</span>낮은 순 SGHMC 0.813 · SGD 0.983 · SGLD 1.135 · Adam 1.149</li>
-          <li><span class="k">성능</span>높은 순 Adam 65.15 · SGHMC 49.59 · SGD 49.07 · SGLD 25.67 (BEV AP Moderate)</li>
-          <li><span class="k">불일치</span>손실 최저인 SGHMC가 성능 2위, 손실 최고인 Adam이 성능 1위. 다중 손실 구조에서 손실 최소화가 과업 성능을 보장하지 않음</li>
+          <li><span class="k">SG 계열 결과</span>SGHMC 49.59 · SGD 49.07 · SGLD 25.67 · SGNHT 25.37 (BEV AP Moderate). SGHMC가 계열 내 최고</li>
+          <li><span class="k">원인</span>모멘텀 유무가 갈랐음. 모멘텀 있는 SGHMC · SGD는 49점대, 없는 SGLD · SGNHT는 25점대로 +93% 차이. SGNHT의 thermostat은 추가 이득 없음</li>
+          <li><span class="k">손실</span>SGHMC 0.813으로 5종 중 최저. Adam 1.149보다 낮음</li>
+          <li><span class="k">불일치</span>손실 최저인 SGHMC가 BEV AP 2위(49.59), 손실 최고인 Adam이 1위(65.15). 다중 손실 구조에서 손실 최소화가 과업 성능을 보장하지 않음</li>
           <li><span class="k">온도 민감도</span>10⁻⁵ 부근에서만 학습 성립. 10⁻³ 이상 발산, 10⁻⁴ 학습 정지</li>
         </ul>
       </div>
       <div class="panel">
-        <div class="cap">BEV AP Moderate (%) · KITTI validation</div>
+        <div class="cap">BEV AP Moderate (%) · KITTI validation · 모멘텀 유무로 갈림</div>
         <div class="bar hi"><div class="bar-top"><span class="bar-lab">Adam</span><span class="bar-val">65.15</span></div><div class="track"><div class="fill" data-w="100"></div></div></div>
-        <div class="bar"><div class="bar-top"><span class="bar-lab">SGHMC</span><span class="bar-val">49.59</span></div><div class="track"><div class="fill" data-w="76"></div></div></div>
-        <div class="bar"><div class="bar-top"><span class="bar-lab">SGD</span><span class="bar-val">49.07</span></div><div class="track"><div class="fill" data-w="75"></div></div></div>
-        <div class="bar"><div class="bar-top"><span class="bar-lab">SGLD</span><span class="bar-val">25.67</span></div><div class="track"><div class="fill" data-w="39"></div></div></div>
-        <div class="bar"><div class="bar-top"><span class="bar-lab">SGNHT</span><span class="bar-val">25.37</span></div><div class="track"><div class="fill" data-w="39"></div></div></div>
-        <div class="panel-foot">이 과제에서는 파라미터별 적응적 학습률이 확률적 탐색보다 결정적이었습니다. 다음 방향은 Adam의 적응적 학습률과 SGHMC의 불확실성 추정을 결합하는 쪽입니다.</div>
+        <div class="bar"><div class="bar-top"><span class="bar-lab">SGHMC <span style="color:var(--ink-3);font-weight:400">· 모멘텀</span></span><span class="bar-val">49.59</span></div><div class="track"><div class="fill" data-w="76"></div></div></div>
+        <div class="bar"><div class="bar-top"><span class="bar-lab">SGD <span style="color:var(--ink-3);font-weight:400">· 모멘텀</span></span><span class="bar-val">49.07</span></div><div class="track"><div class="fill" data-w="75"></div></div></div>
+        <div class="bar"><div class="bar-top"><span class="bar-lab">SGLD <span style="color:var(--ink-3);font-weight:400">· 없음</span></span><span class="bar-val">25.67</span></div><div class="track"><div class="fill" data-w="39"></div></div></div>
+        <div class="bar"><div class="bar-top"><span class="bar-lab">SGNHT <span style="color:var(--ink-3);font-weight:400">· thermostat</span></span><span class="bar-val">25.37</span></div><div class="track"><div class="fill" data-w="39"></div></div></div>
+        <div class="panel-foot">SG 계열에서는 노이즈 주입이 아니라 모멘텀이 성능을 갈랐음. SGHMC는 손실을 5종 중 가장 낮게(0.813) 내렸고 계열 내 최고 성능(49.59). Adam과의 격차는 파라미터별 적응적 학습률에서 발생.</div>
       </div>
     </article>
 
