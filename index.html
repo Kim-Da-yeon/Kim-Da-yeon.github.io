@@ -202,8 +202,11 @@ section{padding:84px 0}
 .bignum{display:flex;align-items:baseline;gap:12px;flex-wrap:wrap}
 .axis{font-size:21px;font-weight:600;letter-spacing:-.025em;line-height:1.35;color:var(--plum);margin-top:10px}
 .awards{margin-top:38px;border-top:1px solid var(--rule)}
-.awards>div{display:grid;grid-template-columns:64px 92px 1fr;gap:22px;align-items:baseline;
-  padding:18px 2px;border-bottom:1px solid var(--rule-soft)}
+.awards>div,.awards>a{display:grid;grid-template-columns:64px 92px 1fr;gap:22px;align-items:baseline;
+  padding:18px 2px;border-bottom:1px solid var(--rule-soft);text-decoration:none;color:inherit}
+.awards>a{transition:background .18s ease}
+.awards>a:hover{background:var(--paper-2)}
+.awards .go{font-family:var(--mono);font-size:11.5px;color:var(--plum);margin-left:8px}
 .awards .yr{font-family:var(--mono);font-size:12.2px;color:var(--ink-3)}
 .awards .rk{font-family:var(--mono);font-size:13px;font-weight:600;color:var(--plum);letter-spacing:.02em}
 .awards .ttl{font-size:16px;font-weight:600;letter-spacing:-.02em;line-height:1.45}
@@ -442,8 +445,8 @@ footer{padding-top:30px;font-family:var(--mono);font-size:11px;color:rgba(241,24
   <div class="wrap">
     <div class="sec-head"><span class="eyebrow">03</span><h2>수상</h2></div>
     <div class="awards">
-      <div><span class="yr">2026</span><span class="rk">장려상</span><span><span class="ttl">한국자료분석학회 하계학술발표대회 포스터논문 부문</span><span class="sub2">Fixed-K Shrinkage BNTM with AWSGLD Inference · 포스터 발표 (초록)</span></span></div>
-      <div><span class="yr">2023</span><span class="rk">최우수상</span><span><span class="ttl">고려대학교 빅데이터사이언스학부 통계학술제</span><span class="sub2">택시 수요 군집 분석</span></span></div>
+      <a href="#p-bntm"><span class="yr">2026</span><span class="rk">장려상</span><span><span class="ttl">한국자료분석학회 하계학술발표대회 포스터논문 부문<span class="go">02장 →</span></span><span class="sub2">Fixed-K Shrinkage BNTM with AWSGLD Inference · 포스터 발표 (초록)</span></span></a>
+      <a href="#p-taxi"><span class="yr">2023</span><span class="rk">최우수상</span><span><span class="ttl">고려대학교 빅데이터사이언스학부 통계학술제<span class="go">04장 →</span></span><span class="sub2">택시 수요 군집 분석</span></span></a>
       <div><span class="yr">2023</span><span class="rk">장려상</span><span><span class="ttl">미래모빌리티 및 세종지역혁신 아이디어 공모전</span><span class="sub2">친환경 스마트 정류소</span></span></div>
     </div>
   </div>
