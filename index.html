@@ -77,7 +77,6 @@ a:focus-visible,button:focus-visible{outline:2px solid var(--plum);outline-offse
 /* card hover */
 .small,.repo{transition:background .25s ease,transform .25s ease}
 .small:hover,.repo:hover{background:var(--paper-2);transform:translateY(-2px)}
-.meter{transition:border-color .25s ease}
 .rec-row{transition:background .2s ease}
 
 /* code repositories */
@@ -124,13 +123,17 @@ a:focus-visible,button:focus-visible{outline:2px solid var(--plum);outline-offse
 @media(max-width:560px){.hero h1{max-width:none}.hero h1 br{display:none}}
 .hero h1 .u{background-image:linear-gradient(transparent 66%, rgba(90,43,71,.15) 66%)}
 .hero-sub{margin-top:26px;font-size:16px;line-height:1.85;color:var(--ink-2);max-width:640px}
-.meters{display:grid;grid-template-columns:repeat(4,1fr);margin-top:56px;border-top:1px solid var(--rule)}
-.meter{padding:22px 22px 4px 0;border-right:1px solid var(--rule-soft)}
-.meter:last-child{border-right:0}
-.meter .n{font-family:var(--sans);font-size:15.5px;font-weight:600;letter-spacing:-.02em;line-height:1.4}
-.meter .l{font-size:12.5px;color:var(--ink-2);margin-top:5px;line-height:1.55}
-@media(max-width:760px){.meters{grid-template-columns:1fr 1fr}
-  .meter{border-right:0;border-bottom:1px solid var(--rule-soft);padding-right:0;padding-bottom:14px}}
+.idx{margin-top:52px;border-top:1px solid var(--rule)}
+.idx a{display:grid;grid-template-columns:minmax(210px,1.25fr) minmax(150px,1fr) minmax(150px,1fr);
+  gap:20px;padding:13px 2px;border-bottom:1px solid var(--rule-soft);text-decoration:none;
+  align-items:baseline;transition:background .18s ease}
+.idx a:hover{background:var(--paper-2)}
+.idx .t{font-size:14.5px;font-weight:600;letter-spacing:-.02em;line-height:1.4}
+.idx .m,.idx .r{font-family:var(--mono);font-size:11.5px;line-height:1.55;color:var(--ink-3)}
+.idx .r{color:var(--plum)}
+@media(max-width:820px){.idx a{grid-template-columns:1fr;gap:3px;padding:12px 2px}
+  .idx .m,.idx .r{font-size:11px}}
+@media(max-width:760px){  }
 
 /* sections */
 section{padding:84px 0}
@@ -289,11 +292,16 @@ footer{padding-top:30px;font-family:var(--mono);font-size:11px;color:rgba(241,24
       고려대학교 빅데이터사이언스학과 석사과정 · 2027.02. 졸업예정<br>
       고려대학교 빅데이터사이언스학부 자율주행시스템학과 융합전공 · 2025.02. 졸업
     </p>
-    <div class="meters">
-      <div class="meter"><div class="n">스마트팜 작물 적합도 분류</div><div class="l">현장 데이터의 한계를 정량 확인한 뒤<br>공공 데이터로 재접근해 6개 모델 비교</div></div>
-      <div class="meter"><div class="n">택시 수요 군집화</div><div class="l">대중교통·유동인구·택시 이용량 3개 변수로<br>자치구 25개를 운영 군집 8개로 축소</div></div>
-      <div class="meter"><div class="n">규제 원문 토픽 모델링</div><div class="l">문서 160건에서 토픽 8개를 뽑고<br>연도별 강도와 전이 행렬을 구성</div></div>
-      <div class="meter"><div class="n">자율주행 sLLM</div><div class="l">어댑터만 학습해 갱신 대상을 0.01%로 줄이고<br>검색 기반 대비 생성 품질 비교</div></div>
+    <div class="idx">
+      <a href="#p-farm"><span class="t">작물 생육 데이터 분석 가능 여부 판정</span><span class="m">센서 18개체 · 20일 · VAR / VECM</span><span class="r">유의 변수 미도출을 정량 확인</span></a>
+      <a href="#p-crop"><span class="t">6종 작물 적합도 다중 분류</span><span class="m">농촌진흥청 공공데이터 · 모델 6종</span><span class="r">LGBM 선정 (과적합 격차 최소)</span></a>
+      <a href="#p-bntm"><span class="t">문장 토픽 전이 네트워크 모델 BNTM</span><span class="m">모의실험 · FAERS · NTSB</span><span class="r">토픽 30/30 복원 · 혼란도 최저</span></a>
+      <a href="#p-taxi"><span class="t">서울시 자치구 25개 택시 수요 군집화</span><span class="m">공공데이터 6종 병합 · Ward.D</span><span class="r">25개 구 → 운영 군집 6개</span></a>
+      <a href="#p-sgmcmc"><span class="t">3D 객체 탐지 최적화기 5종 비교</span><span class="m">KITTI · PointPillars · GCIoU</span><span class="r">손실 순위 ≠ 검출 성능 순위</span></a>
+      <a href="#p-lora"><span class="t">자율주행 sLLM LoRA 파인튜닝</span><span class="m">Phi-4-mini 3.8B · 영상 6,970</span><span class="r">갱신 0.01% · Accuracy 0.745</span></a>
+      <a href="#p-tbt"><span class="t">미국 TBT 규제 원문 토픽 흐름 분석</span><span class="m">Federal Register 160건</span><span class="r">토픽 8개 · 연도별 전이 행렬</span></a>
+      <a href="#p-db"><span class="t">자전거 대여 시스템 DB 설계</span><span class="m">MySQL · ER 모델링</span><span class="r">정규화로 갱신 이상 차단</span></a>
+      <a href="#p-std"><span class="t">LLM 메타데이터 국제 표준 정규화</span><span class="m">ISO 3166-1 · BCP 47</span><span class="r">표준 적합률 0.484 → 0.914</span></a>
     </div>
   </div>
 </header>
@@ -304,7 +312,7 @@ footer{padding-top:30px;font-family:var(--mono);font-size:11px;color:rgba(241,24
     <div class="chap"><span class="num">01</span><h2>실무 경험</h2>
       <p class="d">JERESFARM 데이터 사이언티스트 인턴 (2023.12 – 2024.03) 및 후속 연구. 결측이 잦은 단기 센서 데이터 기반 예측 파이프라인 구축.</p></div>
 
-    <article class="proj">
+    <article id="p-farm" class="proj">
       <div>
         <div class="proj-head">
           <span class="proj-tag">JERESFARM 인턴 · 2023.12 – 2024.03</span>
@@ -331,7 +339,7 @@ footer{padding-top:30px;font-family:var(--mono);font-size:11px;color:rgba(241,24
       </div>
     </article>
 
-    <article class="proj">
+    <article id="p-crop" class="proj">
       <div>
         <div class="proj-head">
           <span class="proj-tag">농촌진흥청 공공 데이터 · 6종 작물 다중 분류</span>
@@ -387,7 +395,7 @@ footer{padding-top:30px;font-family:var(--mono);font-size:11px;color:rgba(241,24
     </div>
     <p class="darkfoot">한국연구재단 석사과정생연구장려금 연구책임자(PI, 2025–2026) · NRF 적응적 가중 SGMCMC 알고리즘 참여연구원(2024–2027) · KIAT 표준전문인력양성 참여연구원(2025–2026)</p>
 
-    <article class="proj" style="border-bottom:0;padding-bottom:0">
+    <article id="p-bntm" class="proj" style="border-bottom:0;padding-bottom:0">
       <div>
         <div class="proj-head" style="margin-top:34px">
           <span class="proj-tag" style="border-color:rgba(241,242,237,.24);color:rgba(241,242,237,.62)">석사 학위논문 · 모의실험 K=30 · FAERS 이상반응 보고서 · NTSB 사고 서술문</span>
@@ -429,7 +437,7 @@ footer{padding-top:30px;font-family:var(--mono);font-size:11px;color:rgba(241,24
     <div class="chap"><span class="num">03</span><h2>분석 프로젝트</h2>
       <p class="d">군집 · 통제 실험 · 파인튜닝 · 토픽 모델링.</p></div>
 
-    <article class="proj">
+    <article id="p-taxi" class="proj">
       <div>
         <div class="proj-head">
           <span class="proj-tag">고려대학교 통계학술제 최우수상 · 2023 · Python · R · QGIS</span>
@@ -451,7 +459,7 @@ footer{padding-top:30px;font-family:var(--mono);font-size:11px;color:rgba(241,24
       </div>
     </article>
 
-    <article class="proj">
+    <article id="p-sgmcmc" class="proj">
       <div>
         <div class="proj-head">
           <span class="proj-tag">KITTI · OpenPCDet · CT-Stack 백본 · PointPillars · GCIoU · 2025</span>
@@ -478,7 +486,7 @@ footer{padding-top:30px;font-family:var(--mono);font-size:11px;color:rgba(241,24
       </div>
     </article>
 
-    <article class="proj">
+    <article id="p-lora" class="proj">
       <div>
         <div class="proj-head">
           <span class="proj-tag">한국자료분석학회지 27(3) 769–780 · 제1저자 · 2025</span>
@@ -504,7 +512,7 @@ footer{padding-top:30px;font-family:var(--mono);font-size:11px;color:rgba(241,24
       </div>
     </article>
 
-    <article class="proj">
+    <article id="p-tbt" class="proj">
       <div>
         <div class="proj-head">
           <span class="proj-tag">무역기술장벽(TBT) 수업 기말 프로젝트 · 2025</span>
@@ -530,13 +538,13 @@ footer{padding-top:30px;font-family:var(--mono);font-size:11px;color:rgba(241,24
     <div style="padding-top:44px">
       <div class="sec-head"><span class="eyebrow">04</span><h2>데이터 설계 · 품질</h2></div>
       <div class="small-grid">
-        <div class="small">
+        <div id="p-db" class="small">
           <h4>자전거 대여 시스템 데이터베이스 설계</h4>
           <div class="meta">MySQL · ER-Diagram · 2024</div>
           <p>요구사항에서 논리·물리 모델을 설계하고 정규화를 적용했습니다. 대여, 반납, 회원 관리 시나리오를 JOIN과 서브쿼리로 검증하면서 중복과 갱신 이상이 생기는 지점을 스키마에서 막았습니다.</p>
           <div class="kpi">스키마에서 막으면 쿼리로 보정할 일이 줄어듭니다</div>
         </div>
-        <div class="small">
+        <div id="p-std" class="small">
           <h4>LLM 생성 메타데이터의 국제 표준 정규화</h4>
           <div class="meta">ISO 3166-1 · BCP 47 · LightGCN · 2025</div>
           <p>같은 국가가 USA, United States, America로 흩어지는 표면형 비일관성을 다뤘습니다. 정규화 레이어를 설계해 적합률을 측정하고, 정규화 임베딩으로 추천 성능이 유지되는지 검증했습니다.</p>
