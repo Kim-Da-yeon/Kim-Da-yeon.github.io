@@ -46,9 +46,7 @@ a{color:inherit}
 h1,h2,h3,h4{font-weight:600;line-height:1.28;letter-spacing:-.022em;margin:0;
   /* 한글 제목: 어절 단위로만 끊고, 줄 길이를 고르게 맞춘다 */
   word-break:keep-all;overflow-wrap:normal;text-wrap:balance}
-p,li,.qa-v,.hero-sub,.small p,.repo p,.step .right p,.panel-foot,.rec-t{
-  word-break:keep-all;text-wrap:pretty}
-p{margin:0}
+p,li,p{margin:0}
 
 /* topbar */
 .topbar{position:sticky;top:0;z-index:50;background:rgba(241,242,237,.9);
@@ -108,8 +106,7 @@ a:focus-visible,button:focus-visible{outline:2px solid var(--plum);outline-offse
   body{background:#fff;font-size:10.5pt}
   .dark{background:#fff!important;color:#16211E!important}
   .dark h2,.dark h3,.dark h4,.dark .rec-t{color:#16211E!important}
-  .qa-v,.step .right p{color:#333!important}
-  section{padding:14pt 0!important;break-inside:avoid}
+    section{padding:14pt 0!important;break-inside:avoid}
   .small,.repo,.proj,.step{break-inside:avoid}
   a{text-decoration:none;color:#16211E!important}
   .rv{opacity:1!important;transform:none!important}
@@ -169,7 +166,6 @@ section{padding:84px 0}
   color:var(--ink-2);border:1px solid var(--rule);padding:2px 7px;border-radius:2px;margin-bottom:10px}
 .proj h3{font-size:clamp(18px,2.1vw,23px);letter-spacing:-.028em;line-height:1.36}
 .proj .sub{font-family:var(--mono);font-size:11.5px;color:var(--ink-3);margin-top:9px}
-.qa{margin-top:24px;display:grid;gap:16px}
 .pl{list-style:none;margin:22px 0 0;padding:0}
 .pl li{position:relative;padding-left:15px;margin-top:8px;font-size:14px;line-height:1.72;color:var(--ink-2)}
 .pl li:first-child{margin-top:0}
@@ -178,13 +174,7 @@ section{padding:84px 0}
 .dark .pl li{color:rgba(241,242,237,.72)}
 .dark .pl li:before{background:rgba(241,242,237,.4)}
 .dark .pl .k{color:#B99AAC}
-.qa-row{display:grid;grid-template-columns:70px 1fr;gap:18px;align-items:start}
-.qa-k{font-family:var(--mono);font-size:10.5px;letter-spacing:.1em;text-transform:uppercase;color:var(--ink-3);padding-top:6px}
-.qa-v{font-size:15px;line-height:1.78;color:var(--ink-2)}
-.qa-v strong{font-weight:600;color:var(--ink)}
-.qa-row.limit .qa-k{color:var(--teal)}
-.qa-row.limit .qa-v{border-left:2px solid var(--teal);padding-left:16px;font-size:14.5px}
-@media(max-width:560px){.qa-row{grid-template-columns:1fr;gap:5px}.qa-k{padding-top:0}}
+@media(max-width:560px){}
 
 .panel{border:1px solid var(--rule);background:var(--paper-2);padding:24px;align-self:start}
 .panel .cap{font-family:var(--mono);font-size:10.5px;letter-spacing:.1em;text-transform:uppercase;color:var(--ink-3);margin-bottom:18px}
