@@ -363,14 +363,14 @@ footer{padding-top:30px;font-family:var(--mono);font-size:13px;color:rgba(241,24
           <li>현장 데이터 관측 부족 → 관측이 충분한 공공 데이터로 재설계</li>
           <li>Decision Tree · SVM · K-NN · Bagging · Random Forest · LGBM</li>
           <li>정확도 + Train–Test 성능 격차. 앙상블 3종 중 격차 최소인 LGBM 선정</li>
-          <li>Feature Importance 영향력 순위, PDP 임계 구간 도출</li>
+          <li>Feature Importance로 변수 영향력 순위, Partial Dependence Plot(PDP)으로 임계 구간 도출</li>
         </ul>
       </div>
       <div class="panel">
         <div class="cap">환경 변수 영향력</div>
         <div class="bignum"><b class="hi" style="font-size:22px">온도 &gt; 일사량 &gt; CO₂</b></div>
         <p style="font-size:13.8px;color:var(--ink-2);margin-top:8px">Feature Importance 기준 영향력 순위</p>
-        <div class="panel-foot">PDP 기반 변수별 임계 구간 도출. 최종 모델 LGBM.</div>
+        <div class="panel-foot">PDP 기반 변수별 임계 구간 도출 — 온도 25°C · CO₂ 400ppm. 최종 모델 LGBM.</div>
       </div>
     </article>
   </div>
