@@ -172,7 +172,12 @@ img{max-width:100%}button{font-family:inherit}
 .sq.n{background:var(--gray);color:var(--gray-i)}
 
 /* ── about ───────────────────────────── */
-.about-grid{display:grid;grid-template-columns:1fr 1.05fr;gap:74px}
+.about-intro{max-width:880px;margin:0 auto;text-align:center}
+.about-intro .eyebrow{justify-content:center}
+.about-intro .lead{margin:16px auto 0;max-width:44em}
+.about-intro .topics{grid-template-columns:1fr 1fr;margin-top:36px;text-align:left}
+.about-tl{max-width:880px;margin:70px auto 0}
+@media(max-width:760px){.about-intro .topics{grid-template-columns:1fr}.about-tl{margin-top:46px}}
 @media(max-width:1000px){.about-grid{grid-template-columns:1fr;gap:48px}}
 .topics{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:36px}
 @media(max-width:560px){.topics{grid-template-columns:1fr}}
@@ -629,8 +634,8 @@ a.dcard.award:hover .sq{transform:scale(1.06) rotate(-3deg);background:rgba(233,
 
   <!-- ══ ABOUT ══ -->
   <section class="sec" id="about">
-    <div class="wrap about-grid">
-      <div>
+    <div class="wrap">
+      <div class="about-intro">
         <p class="eyebrow"><svg class="ic"><use href="#i-user"/></svg>About</p>
         <p class="lead">KCI 등재지 한국자료분석학회지 제1저자 논문 2편 게재, SCI급 학술지 1편 투고 예정. NRF 석사과정생연구장려금 연구책임자(PI)로 BNTM 확장 연구를 진행 중입니다.</p>
         <div class="topics">
@@ -639,13 +644,8 @@ a.dcard.award:hover .sq{transform:scale(1.06) rotate(-3deg);background:rgba(233,
           <div><svg class="ic"><use href="#i-arrow"/></svg>LoRA 기반 sLLM 파인튜닝 · RAG</div>
           <div><svg class="ic"><use href="#i-arrow"/></svg>국제 표준 데이터 정규화 · 규제 문서 분석</div>
         </div>
-        <div class="statcards">
-          <div><b>3</b><span>참여 연구</span></div>
-          <div><b>3</b><span>논문</span></div>
-          <div><b>12</b><span>프로젝트</span></div>
-        </div>
       </div>
-      <div>
+      <div class="about-tl">
         <p class="tl-head"><svg class="ic"><use href="#i-doc"/></svg>이력</p>
         <div class="tline">
           <div class="tl-item"><p class="y">2025.03 – 현재</p><h4>고려대학교 일반대학원 빅데이터사이언스학과 석사과정</h4>
@@ -836,9 +836,13 @@ a.dcard.award:hover .sq{transform:scale(1.06) rotate(-3deg);background:rgba(233,
             <span class="sq"><svg class="ic"><use href="#i-mail"/></svg></span>
             <div><b>Email</b><span>dayun0405@korea.ac.kr</span></div>
             <span class="ext"><svg class="ic"><use href="#i-ext"/></svg></span></a>
-          <a class="linkcard" href="resume.pdf?v=20260819" download="김다연_이력서.pdf">
+          <a class="linkcard" href="resume.pdf?v=20260901" download="김다연_이력서.pdf">
             <span class="sq"><svg class="ic"><use href="#i-doc"/></svg></span>
-            <div><b>이력서 · 경력기술서</b><span>PDF 내려받기</span></div>
+            <div><b>이력서</b><span>PDF 내려받기</span></div>
+            <span class="ext"><svg class="ic"><use href="#i-down"/></svg></span></a>
+          <a class="linkcard" href="career.pdf?v=20260901" download="김다연_경력기술서.pdf">
+            <span class="sq"><svg class="ic"><use href="#i-edit"/></svg></span>
+            <div><b>경력기술서</b><span>PDF 내려받기</span></div>
             <span class="ext"><svg class="ic"><use href="#i-down"/></svg></span></a>
         </div>
       </div>
