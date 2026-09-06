@@ -374,8 +374,12 @@ a.dcard.award:hover .sq{transform:scale(1.06) rotate(-3deg);background:rgba(176,
   text-transform:uppercase;color:var(--ink-3)}
 .dt-info dd{margin:9px 0 0;font-size:16px;font-weight:600;letter-spacing:-.02em;line-height:1.5}
 @media(max-width:760px){
-  .dt-info{grid-template-columns:1fr;margin-top:24px}
-  .dt-info > div{border-right:0;border-bottom:1px solid var(--line-2);padding:14px 0}
+  .dt-info{grid-template-columns:1fr 1fr;margin-top:22px;border-bottom:1px solid var(--line)}
+  .dt-info > div{border-right:1px solid var(--line);border-bottom:0;padding:13px 14px 13px 0}
+  .dt-info > div:nth-child(2n){border-right:0;padding-left:14px}
+  .dt-info > div:last-child{grid-column:1 / -1;border-right:0;border-top:1px solid var(--line-2);padding-left:0}
+  .dt-info dt{font-size:10.5px}
+  .dt-info dd{font-size:14.5px;margin-top:6px}
   .dt-info > div:last-child{border-bottom:0}
   .dt-info > div:not(:first-child){padding-left:0}
 }
@@ -460,19 +464,18 @@ a.dcard.award:hover .sq{transform:scale(1.06) rotate(-3deg);background:rgba(176,
 }
 
 @media(max-width:760px){
-  .hero{padding:26px 0 60px}
+  .hero{padding:20px 0 52px}
   .wm{display:none}
-  .blob{display:block;opacity:.5}
-  .blob.b1{width:120px;height:120px;right:-20px;top:12%}
-  .blob.b2,.blob.b4{display:none}
-  .blob.b3{width:86px;height:86px;right:-16px;top:5%}
+  .blob{display:none}
   .badge{display:block;font-size:14px;line-height:1.62;padding:14px 20px;text-align:left;border-radius:4px}
   .badge i{display:inline-block;margin-right:9px;vertical-align:2px}
   .hero h1{font-size:clamp(58px,17vw,84px);margin-top:24px}
   .hero .en{font-size:24px;margin-top:8px}
   .chipstat{gap:10px;margin-top:26px}
-  .chipstat div{flex:1 1 calc(50% - 5px);padding:14px 16px;border-radius:4px}
-  .chipstat b{font-size:20px}
+  .chipstat{gap:8px}
+  .chipstat div{flex:1 1 calc(50% - 4px);min-width:0;padding:12px 12px;border-radius:4px;gap:7px}
+  .chipstat b{font-size:18px}
+  .chipstat span{font-size:12.5px;white-space:nowrap}
   .hero .desc{font-size:19px;line-height:1.72;margin-top:28px}
   .tagrow{margin-top:22px}
   .tagrow span{font-size:14px;padding:9px 16px}
@@ -491,8 +494,8 @@ a.dcard.award:hover .sq{transform:scale(1.06) rotate(-3deg);background:rgba(176,
   .idrow{gap:12px;padding:14px 0 15px}
   .idrow .sq{width:30px;height:30px}
   .idrow dd{font-size:14.8px;line-height:1.6}
-  .idcard:before{inset:-18px 14px -6px -16px;border-radius:4px}
-  .idcard:after{left:-18px;bottom:-28px;width:98px;height:98px;border-radius:4px}
+  .idcard:before{inset:-10px 8px -12px -8px;border-radius:4px;transform:rotate(1deg)}
+  .idcard:after{display:none}
   .idlayer{left:-22px;top:36px;width:88px;height:88px;border-radius:4px}
   .idcard .top{gap:16px;padding:2px 2px 18px}
   .idcard .av{width:86px;height:86px;border-radius:4px}
@@ -502,8 +505,8 @@ a.dcard.award:hover .sq{transform:scale(1.06) rotate(-3deg);background:rgba(176,
   .sec .lead{font-size:16.5px;margin-top:16px}
   .eyebrow{font-size:12.5px;margin-bottom:12px}
   .sechead{gap:20px;margin-bottom:30px}
-  .filters{gap:9px}.chip{padding:10px 18px;font-size:14.5px}
-  .pcard{padding:24px 22px;border-radius:4px}
+  .filters{gap:7px;margin-bottom:14px}.chip{padding:9px 15px;font-size:13.5px}
+  .pcard{padding:22px 18px;border-radius:4px}
   .pcard h3{font-size:19.5px}
   .pcard .head{margin-bottom:18px}
   .pcard .sq{width:48px;height:48px;border-radius:4px}
@@ -520,8 +523,9 @@ a.dcard.award:hover .sq{transform:scale(1.06) rotate(-3deg);background:rgba(176,
   .award,.grant{gap:14px}
   .award .sq,.grant .sq{width:42px;height:42px;border-radius:4px}
   .award .rk{font-size:14px}
-  .skcard{padding:24px 22px;border-radius:4px}
-  .skcard .chips span{font-size:13.5px;padding:6px 13px}
+  .skcard{padding:22px 18px;border-radius:4px}
+  .skcard .chips{gap:7px}
+  .skcard .chips span{font-size:13px;padding:6px 11px}
   .rcard{padding:22px;border-radius:4px}
   .rcard h4{font-size:15.5px}
   .cta-grid{gap:34px}
@@ -531,7 +535,9 @@ a.dcard.award:hover .sq{transform:scale(1.06) rotate(-3deg);background:rgba(176,
   .dt-head .sq{width:50px;height:50px;border-radius:4px}
   .dt h1{margin-top:20px;font-size:clamp(27px,7.6vw,34px)}
   .dt .dt-meta{font-size:15.5px;margin-top:12px}
-  .sumcard{flex-direction:column;align-items:flex-start;gap:16px;padding:22px 22px;border-radius:4px;margin-top:28px}
+  .sumcard{flex-direction:row;align-items:flex-start;gap:14px;padding:20px 18px;border-radius:4px;margin-top:26px}
+  .sumcard .sq{width:44px;height:44px;border-radius:3px}
+  .sumcard .sq .ic{width:19px;height:19px}
   .sumcard p{font-size:16.5px}
   .hsec{margin:44px 0 18px;gap:11px}
   .hsec .ic{width:24px;height:24px}
