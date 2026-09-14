@@ -317,10 +317,12 @@ a.dcard.award .sq{transition:transform .3s var(--ease),background .3s var(--ease
 a.dcard.award:hover .sq{transform:scale(1.06) rotate(-3deg);background:rgba(176,69,59,.28)}
 .subhead{display:flex;align-items:center;gap:9px;font-size:15.5px;font-weight:700;color:rgba(246,239,236,.78);margin:38px 0 18px}
 .subhead .ic{width:18px;height:18px;color:#FF9B92}
-.grant .sq{width:46px;height:46px;border-radius:4px;background:rgba(255,255,255,.07);color:#C9C7C3;display:grid;place-items:center;flex:none}
-.grant{display:flex;align-items:center;gap:18px}
+.grant .sq{width:46px;height:46px;border-radius:4px;background:rgba(255,255,255,.07);color:#C9C7C3;margin-top:2px;display:grid;place-items:center;flex:none}
+.grant{display:flex;align-items:flex-start;gap:18px}
 .grant b{display:block;font-size:16.5px;letter-spacing:-.028em}
-.grant span{display:block;font-size:14px;font-weight:600;color:rgba(246,239,236,.72);margin-top:4px}
+.grant span{display:block;font-size:13px;font-weight:600;color:rgba(246,239,236,.55);margin-top:4px;
+  font-family:var(--mono);letter-spacing:-.01em}
+.grant span.gm{font-family:var(--sans);font-size:14px;color:rgba(246,239,236,.78);margin-top:6px}
 
 /* ── skills ──────────────────────────── */
 .skgrid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
@@ -745,7 +747,7 @@ a.dcard.award:hover .sq{transform:scale(1.06) rotate(-3deg);background:rgba(176,
         <p class="tl-head"><svg class="ic"><use href="#i-doc"/></svg>이력</p>
         <div class="tline">
           <div class="tl-item"><p class="y">2025.03 – 현재</p><h4>고려대학교 일반대학원 빅데이터사이언스학과 석사과정</h4>
-            <p>2027.02 졸업예정 · 석사 학위논문: Fixed-K Shrinkage BNTM with AWSGHMC Inference (SCI 투고 예정)</p></div>
+            <p>2027.02 졸업예정 · 석사 학위논문: Fixed-K Shrinkage BNTM with AWSGHMC Inference (2026.09 투고 예정 · 심사 전)</p></div>
           <div class="tl-item"><p class="y">2021.03 – 2025.02</p><h4>고려대학교 세종캠퍼스 빅데이터사이언스학부 학사</h4>
             <p>자율주행시스템학과 융합전공</p></div>
           <div class="tl-item"><p class="y">2023.12 – 2024.03</p><h4>JERESFARM 데이터 사이언티스트 인턴</h4>
@@ -779,15 +781,15 @@ a.dcard.award:hover .sq{transform:scale(1.06) rotate(-3deg);background:rgba(176,
         <p class="subhead" style="margin-top:0"><svg class="ic"><use href="#i-flask"/></svg>연구 과제</p>
         <div class="dcard grant">
           <span class="sq"><svg class="ic"><use href="#i-user"/></svg></span>
-          <div><b>석사과정생연구장려금</b><span>한국연구재단(NRF) · 연구책임자(PI) · 2025–2026</span></div>
+          <div><b>TNTM을 활용한 임베디드 시스템 문서의 주제 흐름 분석</b><span class="gm">한국연구재단 석사과정생연구장려금 · 연구책임자(PI)</span><span>RS-2025-25437035 · 2025–2026</span></div>
         </div>
         <div class="dcard grant">
           <span class="sq"><svg class="ic"><use href="#i-flask"/></svg></span>
-          <div><b>적응적 가중 SGMCMC 알고리즘</b><span>한국연구재단(NRF) · 참여연구원 · 2024–2027</span></div>
+          <div><b>베이지안 추론을 위한 적응적 가중 SGMCMC 알고리즘</b><span class="gm">한국연구재단 · 참여연구원</span><span>RS-2024-00352792 · 2024–2027</span></div>
         </div>
         <div class="dcard grant">
           <span class="sq"><svg class="ic"><use href="#i-layers"/></svg></span>
-          <div><b>초격차산업기반 표준전문인력양성</b><span>KIAT · 참여연구원 · 2025–2026</span></div>
+          <div><b>초격차산업기반 표준전문인력양성</b><span class="gm">KIAT · 참여연구원 · 표준학 융합전공</span><span>RS-2025-02215617 · 2025–2026</span></div>
         </div>
         <p class="subhead"><svg class="ic"><use href="#i-award"/></svg>수상</p>
         <a class="dcard award" href="#/p/bntm">
@@ -1107,7 +1109,7 @@ const EV={
  tbt:[['논문 DOI','https://doi.org/10.37727/jkdas.2026.28.1.109']],
  lora:[['논문 DOI','https://doi.org/10.37727/jkdas.2025.27.3.769']],
  bntm:[['학회 포스터 PDF','assets/poster-bntm-2026.pdf'],['저장소 게재 후 공개','']],
- taxi:[['발표 포스터 PDF','assets/taxi-demand-2023.pdf']],
+ taxi:[['발표 포스터 PDF','assets/poster-taxi-2023.pdf']],
  sony:[['저장소','https://github.com/Kim-Da-yeon/SONY_Chatbot']],
  std:[['저장소','https://github.com/Kim-Da-yeon/llmrec-metadata-standard']],
  sgmcmc:[['저장소','https://github.com/Kim-Da-yeon/GCIoU-SGMCMC-3D-Detection']],
@@ -1335,7 +1337,7 @@ const FEAT=[
   problem:'요금 인상 이후 기사와 이용자가 함께 이탈했으나, 자치구별 수요 · 공급 불균형을 판단할 데이터 기준이 없었습니다.',
   role:'팀 3명 중 QGIS 공간 시각화와 분석 코드 구현을 담당했습니다.',
   result:'공공데이터 6종 병합, 계층적 군집(Ward.D)으로 25개 자치구를 6개 운영 군집에 배정. 고려대학교 통계학술제 최우수상.',
-  links:[['상세 보기','#/p/taxi'],['발표 포스터 PDF','assets/taxi-demand-2023.pdf']]},
+  links:[['상세 보기','#/p/taxi'],['발표 포스터 PDF','assets/poster-taxi-2023.pdf']]},
  {id:'bntm', cat:'연구 · 학위논문', title:'Fixed-K Shrinkage BNTM with AWSGHMC Inference',
   problem:'기존 토픽 모델은 주제 개수를 미리 정해야 하고, 노이즈가 섞이면 성능 이점이 상쇄됐습니다.',
   role:'제1저자. 모델 설계, 정답을 아는 모의 코퍼스 설계, 샘플러 구현, 실험 전 과정을 수행했습니다.',
