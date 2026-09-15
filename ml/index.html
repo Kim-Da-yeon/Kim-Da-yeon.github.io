@@ -817,6 +817,23 @@ a.dcard.award:hover .sq{transform:scale(1.06) rotate(-3deg);background:rgba(176,
 .hkey .c{color:rgba(255,255,255,.92);font-size:clamp(11px,.95vw,13.5px);text-shadow:0 1px 6px rgba(0,40,120,.6);animation:kpulse 2s ease-in-out infinite}
 @keyframes kpulse{0%,100%{opacity:.78;filter:drop-shadow(0 0 0 rgba(255,255,255,0))}50%{opacity:1;filter:drop-shadow(0 0 10px rgba(255,255,255,.75))}}
 @media(prefers-reduced-motion:reduce){.hkey .k,.hkey .c{animation:none;opacity:1}}
+
+/* keyword lies on the tile's top face (isometric) */
+.hkey{width:auto;white-space:nowrap;transform:translate(-50%,-50%) scale(1,.78) rotate(-45deg);transform-origin:center}
+.hkey .k{font-size:clamp(20px,2.3vw,36px)}
+
+.hkey .k{font-size:clamp(28px,3.2vw,48px);font-weight:600;letter-spacing:.02em}
+.hkey .c{font-size:clamp(12px,1.05vw,15px);letter-spacing:.04em}
+
+.hkey{gap:2px}
+.hkey .k{font-size:clamp(15px,1.55vw,23px);font-weight:600;letter-spacing:-.01em;line-height:1.25}
+
+.hkey{gap:8px}
+.hkey .k{font-size:clamp(20px,2.1vw,31px);font-weight:600;letter-spacing:-.015em;line-height:1.08}
+.hcontent .pitch{line-height:1.75;color:#334155}
+
+.hkey{left:65%;top:52%}
+.hcontent .hcta{margin-top:30px}
 </style>
 </head>
 <body>
@@ -887,18 +904,17 @@ a.dcard.award:hover .sq{transform:scale(1.06) rotate(-3deg);background:rgba(176,
 
         <div class="hcontent">
           <h1>김다연<small>Kim Dayeon</small></h1>
-          <p class="rolename" id="rolename">Research-oriented Data Scientist</p>
-          <p class="pitch" id="rolesub">Bayesian Inference · Topic Modeling · NLP / LLM<br class="brk">
-            논문 · 과제 · 실무 프로젝트를 통해 방법론 개발부터 검증, 서비스형 적용까지 수행했습니다.</p>
+          <p class="rolename" id="rolename">Data Scientist</p>
           <div class="hcta">
             <a class="hbtn" href="#projects">프로젝트 보기 <svg class="ic"><use href="#i-down"/></svg></a>
             <a class="hbtn ghost" href="#contact">연락하기 <svg class="ic"><use href="#i-mail"/></svg></a>
           </div>
         </div>
 
-        <div class="hkey" aria-label="키워드">
-          <span class="k" id="hkey">Bayesian</span>
-          <span class="c" id="hkeyc">불확실성을 정량화하는 분석</span>
+        <div class="hkey" aria-label="키워드" id="hkey">
+          <span class="k">Bayesian<br>Inference</span>
+          <span class="k">Topic<br>Modeling</span>
+          <span class="k">NLP · LLM</span>
         </div>
 
         <div class="hnavwrap">
@@ -1658,21 +1674,21 @@ const FEAT=[
 
 /* 직무별 첫인상 — ?role=ds / ml / nlp */
 const ROLES={
- '':    {title:'Research-oriented Data Scientist',
-         sub:'Bayesian Inference · Topic Modeling · NLP / LLM',
+ '':    {title:'Data Scientist',
+         sub:'베이지안 추론 · 토픽 모델링 · LLM 파인튜닝 · 데이터 분석',
          feat:['farm','taxi','bntm'], res:'resume.pdf', car:'career.pdf'},
- 'ds':  {title:'Data Scientist',
+ 'ds':  {title:'Data Scientist', key:['Time Series','Clustering','Public Data'],
          sub:'공공데이터 · 센서 · 교통 데이터 분석과 지표 설계',
-         key:['Evidence','수치로 검증한 결론만 내놓는 분석'], feat:['farm','taxi','std'], res:'resume-ds.pdf', car:'career-ds.pdf'},
- 'ml':  {title:'ML Researcher · Applied Scientist',
+         feat:['farm','taxi','std'], res:'resume-ds.pdf', car:'career-ds.pdf'},
+ 'ml':  {title:'ML Researcher · Applied Scientist', key:['Bayesian Inference','SGMCMC','Topic Modeling'],
          sub:'베이지안 추론 · SGMCMC 샘플러 설계와 실험 검증',
-         key:['Sampling','불확실성을 샘플링으로 다루는 연구'], feat:['bntm','sgmcmc','lora'], res:'resume-ml.pdf', car:'career-ml.pdf'},
- 'av':  {title:'Autonomous Driving · Data Scientist',
+         feat:['bntm','sgmcmc','lora'], res:'resume-ml.pdf', car:'career-ml.pdf'},
+ 'av':  {title:'Autonomous Driving · Data Scientist', key:['3D LiDAR Perception','Driving-domain LLM','Regulation Text'],
          sub:'자율주행 도메인 sLLM 파인튜닝 · 3D 객체 탐지 최적화 · 자율주행 규제 텍스트 분석',
-         key:['Perception','주행 데이터에서 의미를 읽어내는 분석'], feat:['lora','sgmcmc','tbt'], res:'resume-av.pdf', car:'career-av.pdf'},
- 'nlp': {title:'NLP · LLM Engineer',
+         feat:['lora','sgmcmc','tbt'], res:'resume-av.pdf', car:'career-av.pdf'},
+ 'nlp': {title:'NLP · LLM Engineer', key:['LLM Fine-tuning','RAG','Topic Modeling'],
          sub:'LoRA 파인튜닝 · RAG 검색 · 출처 표기 구현',
-         key:['Fine-tuning','도메인에 맞게 모델을 조정하는 일'], feat:['sony','lora','std'], res:'resume-nlp.pdf', car:'career-nlp.pdf'}
+         feat:['sony','lora','std'], res:'resume-nlp.pdf', car:'career-nlp.pdf'}
 };
 const ROLE_META=document.querySelector('meta[name="role"]');
 const ROLE=((ROLE_META&&ROLE_META.content)||new URLSearchParams(location.search).get('role')||'').toLowerCase();
@@ -1776,8 +1792,7 @@ function applyRole(){
   const pick=RC.feat.map(id=>FEAT.find(f=>f.id===id)).filter(Boolean);
   $('#fgrid').innerHTML=pick.map(featHTML).join('');
   $('#rolename').textContent=RC.title;
-  if(RC.key){$('#hkey').textContent=RC.key[0];$('#hkeyc').textContent=RC.key[1];}
-  $('#rolesub').innerHTML=esc(RC.sub)+'<br class="brk">논문 · 과제 · 실무 프로젝트를 통해 방법론 개발부터 검증, 서비스형 적용까지 수행했습니다.';
+  if(RC.key){$('#hkey').innerHTML=RC.key.map(k=>'<span class="k">'+esc(k).replace(/ /g,'<br>')+'</span>').join('');}
   document.querySelectorAll('#roles a').forEach(a=>a.classList.toggle('on', a.dataset.r===ROLE));
   const lead=$('#featlead');
   if(lead) lead.textContent = ROLE
