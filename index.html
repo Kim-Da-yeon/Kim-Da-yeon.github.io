@@ -831,8 +831,20 @@ a.dcard.award:hover .sq{transform:scale(1.06) rotate(-3deg);background:rgba(176,
 .hkey .k{font-size:clamp(20px,2.1vw,31px);font-weight:600;letter-spacing:-.015em;line-height:1.08}
 .hcontent .pitch{line-height:1.75;color:#334155}
 
-.hkey{left:65%;top:52%}
+.hkey{left:65.6%;top:52%}
 .hcontent .hcta{margin-top:30px}
+
+/* mobile: keep tile + keywords visible below the text */
+@media(max-width:899px){
+  .hcard{min-height:660px}
+  .hcontent{padding:40px 24px 120px;max-width:100%}
+  .hcontent h1{font-size:40px}
+  .hcontent .rolename{margin-top:10px}
+  .hcta{margin-top:18px}
+  .hkey{display:flex;left:66%;top:55%}
+  .hkey .k{font-size:17px}
+}
+@media(max-width:480px){.hkey .k{font-size:15px}.hcard{min-height:640px}}
 </style>
 </head>
 <body>
@@ -1707,17 +1719,13 @@ const ROLES={
  '':    {title:'Data Scientist',
          sub:'베이지안 추론 · 토픽 모델링 · LLM 파인튜닝 · 데이터 분석',
          feat:['farm','taxi','bntm'], res:'resume.pdf', car:'career.pdf'},
- 'ds':  {title:'Data Scientist', key:['Time Series','Clustering','Public Data'],
-         sub:'공공데이터 · 센서 · 교통 데이터 분석과 지표 설계',
+ 'ds':  {title:'Data Scientist', sub:'공공데이터 · 센서 · 교통 데이터 분석과 지표 설계',
          feat:['farm','taxi','std'], res:'resume-ds.pdf', car:'career-ds.pdf'},
- 'ml':  {title:'ML Researcher · Applied Scientist', key:['Bayesian Inference','SGMCMC','Topic Modeling'],
-         sub:'베이지안 추론 · SGMCMC 샘플러 설계와 실험 검증',
+ 'ml':  {title:'ML Researcher · Applied Scientist', sub:'베이지안 추론 · SGMCMC 샘플러 설계와 실험 검증',
          feat:['bntm','sgmcmc','lora'], res:'resume-ml.pdf', car:'career-ml.pdf'},
- 'av':  {title:'Autonomous Driving · Data Scientist', key:['3D LiDAR Perception','Driving-domain LLM','Regulation Text'],
-         sub:'자율주행 도메인 sLLM 파인튜닝 · 3D 객체 탐지 최적화 · 자율주행 규제 텍스트 분석',
+ 'av':  {title:'Autonomous Driving · Data Scientist', sub:'자율주행 도메인 sLLM 파인튜닝 · 3D 객체 탐지 최적화 · 자율주행 규제 텍스트 분석',
          feat:['lora','sgmcmc','tbt'], res:'resume-av.pdf', car:'career-av.pdf'},
- 'nlp': {title:'NLP · LLM Engineer', key:['LLM Fine-tuning','RAG','Topic Modeling'],
-         sub:'LoRA 파인튜닝 · RAG 검색 · 출처 표기 구현',
+ 'nlp': {title:'NLP · LLM Engineer', sub:'LoRA 파인튜닝 · RAG 검색 · 출처 표기 구현',
          feat:['sony','lora','std'], res:'resume-nlp.pdf', car:'career-nlp.pdf'}
 };
 const ROLE_META=document.querySelector('meta[name="role"]');
