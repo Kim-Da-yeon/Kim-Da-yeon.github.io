@@ -4,14 +4,14 @@
 <meta charset="utf-8">
 <meta name="role" content="av">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>김다연 · 자율주행 · Data & AI</title>
+<title>김다연 · 자율주행 Research Engineer</title>
 <link rel="canonical" href="https://kim-da-yeon.github.io/av/">
 <meta name="author" content="김다연">
-<meta name="description" content="김다연 · 자율주행 · Data & AI — 센서·텍스트·교통 데이터를 분석하고, 토픽 모델링·베이지안 추론·임베디드 LLM을 연구합니다.">
+<meta name="description" content="김다연 · 자율주행 Research Engineer — 센서·텍스트·교통 데이터를 분석하고, 토픽 모델링·베이지안 추론·임베디드 LLM을 연구합니다.">
 <meta name="theme-color" content="#FFFFFF">
 <meta property="og:type" content="profile">
 <meta property="og:url" content="https://kim-da-yeon.github.io/av/">
-<meta property="og:title" content="김다연 · 자율주행 · Data & AI">
+<meta property="og:title" content="김다연 · 자율주행 Research Engineer">
 <meta property="og:description" content="학술지 게재 2편 · SCI급 투고 1편 · 분석 프로젝트 15건 · 참여 연구 3건.">
 <meta property="og:locale" content="ko_KR">
 <meta name="twitter:card" content="summary">
@@ -880,6 +880,11 @@ a.dcard.award:hover .sq{transform:scale(1.06) rotate(-3deg);background:rgba(176,
 .avgrid{display:block;margin-top:26px}
 .avsub{font-size:17px;font-weight:700;letter-spacing:-.01em;color:var(--ink-2);margin:26px 0 14px;padding-left:12px;border-left:3px solid var(--point)}
 .avrow{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:18px}
+
+.avqa{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:16px;margin-top:30px}
+.avq{background:var(--tint);border-left:3px solid var(--point);padding:18px 20px;border-radius:4px}
+.avq b{display:block;font-size:15px;letter-spacing:-.01em;color:var(--ink);margin-bottom:8px}
+.avq p{font-size:14px;line-height:1.7;color:var(--ink-2)}
 </style>
 </head>
 <body>
@@ -919,7 +924,7 @@ a.dcard.award:hover .sq{transform:scale(1.06) rotate(-3deg);background:rgba(176,
 
 <header class="topbar" id="topbar">
   <div class="wrap">
-    <a class="brand" href="#/">김다연 <span>·</span> <em>자율주행 · Data & AI</em></a>
+    <a class="brand" href="#/">김다연 <span>·</span> <em>자율주행 Research Engineer</em></a>
     <button class="navtoggle" id="navtoggle" aria-label="메뉴 열기" aria-expanded="false">
       <svg class="ic" style="width:22px;height:22px" viewBox="0 0 24 24"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
     </button>
@@ -1014,6 +1019,11 @@ a.dcard.award:hover .sq{transform:scale(1.06) rotate(-3deg);background:rgba(176,
       <p class="eyebrow">Autonomous Driving</p>
       <h2>자율주행 트랙별 경험 <span class="num" id="avcount"></span></h2>
       <p class="lead">자율주행시스템학과 융합전공 이수 · ROS · Autoware 학부 실습. KITTI 라이다 3D 탐지, 시뮬레이션 데이터 설계와 Ground-truth 검증, 주행 영상 기반 sLLM 평가, 양자화·경량 파인튜닝, 강화학습 의사결정까지 — 트랙별로 직접 해본 것만 적었습니다.</p>
+      <div class="avqa">
+        <div class="avq"><b>학습 기반 모델의 성능을 보증 가능한 형태로</b><p>정답을 아는 시뮬레이션 데이터를 직접 설계해 복원 성능을 Ground-truth 기준으로 검증하는 체계를 만들었습니다(5개 환경, 10 seed 편차 0). 3D 객체 탐지에서는 점추정 대신 베이지안 샘플링으로 파라미터 불확실성을 다루는 대안을 실험했습니다.</p></div>
+        <div class="avq"><b>롱테일 상황을 찾아내고 재현하고 검증</b><p>파라미터 중첩 · 희소 토픽 · 토픽 수 변동처럼 모델이 실패하기 쉬운 조건을 골라 검증 목적별 환경 5종으로 재현했고, 노이즈 50개 조건에서 샘플러가 무너지는 지점을 Perplexity로 정량 비교했습니다.</p></div>
+        <div class="avq"><b>차량 연산 · 메모리 안에서 성능을 높이며 경량화</b><p>임베디드 자원 제약을 전제로 3.8B sLLM을 고르고 LoRA로 전체 파라미터의 0.01%만 조정해 응답 1.145초를 확보했습니다. QLoRA 4bit 양자화 + CAG 결합도 6종 지표로 검증했습니다.</p></div>
+      </div>
       <div class="avgrid" id="avgrid"></div>
     </div>
   </section>
@@ -1767,7 +1777,7 @@ const ROLES={
          feat:['farm','taxi','std'], res:'resume-ds.pdf', car:'career-ds.pdf'},
  'ml':  {title:'ML Researcher · Applied Scientist', sub:'베이지안 추론 · SGMCMC 샘플러 설계와 실험 검증',
          feat:['bntm','sgmcmc','lora'], res:'resume-ml.pdf', car:'career-ml.pdf'},
- 'av':  {title:'Autonomous Driving · Data & AI', tag:'시뮬레이션 데이터 설계와 모델 · 알고리즘 검증을 수행하는 자율주행 도메인 석사과정 연구자', key:['3D Perception','Simulation & Data','Foundation Models'], sub:'자율주행 도메인 sLLM 파인튜닝 · 3D 객체 탐지 최적화 · 자율주행 규제 텍스트 분석',
+ 'av':  {title:'Autonomous Driving · Research Engineer', tag:'시뮬레이션 데이터 설계와 모델 · 알고리즘 검증을 수행하는 자율주행 도메인 석사과정 연구자', key:['3D Perception','Simulation & Data','Foundation Models'], sub:'자율주행 도메인 sLLM 파인튜닝 · 3D 객체 탐지 최적화 · 자율주행 규제 텍스트 분석',
          feat:['sgmcmc','bntm','lora'], res:'resume-av.pdf', car:'career-av.pdf'},
  'nlp': {title:'NLP · LLM Engineer', sub:'LoRA 파인튜닝 · RAG 검색 · 출처 표기 구현',
          feat:['sony','lora','std'], res:'resume-nlp.pdf', car:'career-nlp.pdf'}
