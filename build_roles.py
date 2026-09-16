@@ -8,7 +8,7 @@ ROLES = {
     'ml':  {'name': 'ML Researcher',              'card': 'ML Researcher · 베이지안 추론'},
     'nlp': {'name': 'NLP · LLM Engineer',         'card': 'NLP · LLM Engineer · RAG'},
     'ds':  {'name': 'Data Scientist',             'card': 'Data Scientist · 데이터 분석'},
-    'av':  {'name': '자율주행 AI · Data Scientist', 'card': '자율주행 AI · 데이터 분석'},
+    'av':  {'name': '자율주행 · Data & AI', 'card': '자율주행 · Data & AI'},
 }
 
 here = os.path.dirname(os.path.abspath(__file__))

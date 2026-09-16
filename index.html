@@ -875,6 +875,10 @@ a.dcard.award:hover .sq{transform:scale(1.06) rotate(-3deg);background:rgba(176,
   .hvideo video{position:absolute;top:0;left:50%;height:100%;width:auto;transform:translateX(-66%);object-fit:unset}
   .hkey{left:48.8%;top:51.5%}
 }
+
+.avgrid{display:block;margin-top:26px}
+.avsub{font-size:17px;font-weight:700;letter-spacing:-.01em;color:var(--ink-2);margin:26px 0 14px;padding-left:12px;border-left:3px solid var(--point)}
+.avrow{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:18px}
 </style>
 </head>
 <body>
@@ -1014,8 +1018,8 @@ a.dcard.award:hover .sq{transform:scale(1.06) rotate(-3deg);background:rgba(176,
   <section class="sec" id="avdomain" hidden>
     <div class="wrap">
       <p class="eyebrow">Autonomous Driving</p>
-      <h2>자율주행 도메인 <span class="num" id="avcount"></span></h2>
-      <p class="lead">자율주행시스템학과 융합전공 이수 · ROS · Autoware 학부 실습. BDD-X 주행 영상, KITTI 라이다 점구름, 미국 Federal Register 규제 문서, 서울시 택시 운행 데이터까지 자율주행·모빌리티 데이터를 직접 다뤘습니다.</p>
+      <h2>자율주행 트랙별 경험 <span class="num" id="avcount"></span></h2>
+      <p class="lead">자율주행시스템학과 융합전공 이수 · ROS · Autoware 학부 실습. KITTI 라이다 3D 탐지, 시뮬레이션 데이터 설계와 Ground-truth 검증, 주행 영상 기반 sLLM 평가, 양자화·경량 파인튜닝, 강화학습 의사결정까지 — 트랙별로 직접 해본 것만 적었습니다.</p>
       <div class="avgrid" id="avgrid"></div>
     </div>
   </section>
@@ -1748,6 +1752,11 @@ const FEAT=[
   role:'미국 Federal Register의 다년간 규제 문서에 AWSGLD-TNTM을 적용해 K=8 토픽을 도출하고 연도별 토픽 강도와 네트워크를 구축했습니다.',
   result:'LDA 대비 Topic Coherence 0.42 → 0.5743(약 37% 향상), Topic Diversity 0.82. 2020–25 규제 패러다임을 3단계로 정량 규명.',
   links:[['상세 보기','#/p/tbt'],['논문 DOI','https://doi.org/10.37727/jkdas.2026.28.1.109']]},
+ {id:'gan', cat:'생성 모델 · 합성 데이터', title:'GAN 기반 손글씨 폰트 생성 및 로봇팔 제어',
+  problem:'로봇팔 내장 Drawing 기능은 도형과 간단한 글씨만 가능해, 임의의 한글 손글씨를 생성해 쓰게 하려면 학습 데이터부터 만들어야 했습니다.',
+  role:'폰트 25종 × 한글 75,000장(128 × 256px)으로 zi2zi 기반 GAN(pix2pix + AC-GAN + DTN Constant Loss)을 사전학습하고, 직접 작성한 210자로 Transfer Learning을 수행했습니다.',
+  result:'손글씨 스타일 이미지 생성 성공. 로봇팔 연동은 API 호환 문제로 미완, OpenCV 기반 이미지 → 경로 변환을 해결 방향으로 도출.',
+  links:[['상세 보기','#/p/gan']]},
  {id:'std', cat:'데이터 품질', title:'국제 메타데이터 표준 통합 LLM 기반 그래프 증강 추천시스템',
   problem:'LLM이 생성한 메타데이터가 자유 텍스트라 같은 국가가 USA · United States로 분산돼 시스템 간 결합이 불가능했습니다.',
   role:'ISO 3166-1 · BCP 47 정규화 레이어를 설계하고 적합률 지표를 정의했습니다.',
@@ -1764,8 +1773,8 @@ const ROLES={
          feat:['farm','taxi','std'], res:'resume-ds.pdf', car:'career-ds.pdf'},
  'ml':  {title:'ML Researcher · Applied Scientist', sub:'베이지안 추론 · SGMCMC 샘플러 설계와 실험 검증',
          feat:['bntm','sgmcmc','lora'], res:'resume-ml.pdf', car:'career-ml.pdf'},
- 'av':  {title:'Autonomous Driving · Data Scientist', tag:'시뮬레이션 데이터 설계와 모델 · 알고리즘 검증을 수행하는 자율주행 도메인 석사과정 연구자', sub:'자율주행 도메인 sLLM 파인튜닝 · 3D 객체 탐지 최적화 · 자율주행 규제 텍스트 분석',
-         feat:['lora','sgmcmc','tbt'], res:'resume-av.pdf', car:'career-av.pdf'},
+ 'av':  {title:'Autonomous Driving · Data & AI', tag:'시뮬레이션 데이터 설계와 모델 · 알고리즘 검증을 수행하는 자율주행 도메인 석사과정 연구자', key:['3D Perception','Simulation & Data','Foundation Models'], sub:'자율주행 도메인 sLLM 파인튜닝 · 3D 객체 탐지 최적화 · 자율주행 규제 텍스트 분석',
+         feat:['sgmcmc','bntm','lora'], res:'resume-av.pdf', car:'career-av.pdf'},
  'nlp': {title:'NLP · LLM Engineer', sub:'LoRA 파인튜닝 · RAG 검색 · 출처 표기 구현',
          feat:['sony','lora','std'], res:'resume-nlp.pdf', car:'career-nlp.pdf'}
 };
@@ -1869,31 +1878,46 @@ function featHTML(f,i){
 }
 
 const AV_ITEMS=[
- {id:'lora', tag:'주행 영상 · sLLM', title:'자율주행 도메인에서 LoRA 기반 sLLM 파인튜닝 연구',
-  line:'BDD-X 주행 영상 6,970개 · 주석 26,228개로 Phi-4-mini LoRA 파인튜닝. 동일 조건 RAG 대비 ROUGE-1 0.0888 → 0.1495, Traffic violations 7만 건 확장 실험 Accuracy 0.745 · JKDAS 27(3) 게재'},
- {id:'sgmcmc', tag:'3D 라이다 인지', title:'SGMCMC 기반 3D 객체 탐지 최적화',
-  line:'KITTI · OpenPCDet · PointPillars · CUDA. Adam 기준 모델과 SGMCMC 계열을 동일 조건(80 epoch)으로 비교, 최저 손실과 최고 성능이 불일치함을 규명'},
- {id:'tbt', tag:'규제 문서', title:'미국 자율주행·자동차 TBT 규제 트렌드 분석',
-  line:'Federal Register 160건 · AWSGLD-TNTM K=8 토픽. LDA 대비 Coherence 37% 향상(0.42 → 0.57), 2020–25 규제 패러다임 3단계 정량 규명 · JKDAS 게재'},
- {id:'taxi', tag:'교통 데이터', title:'택시 수요 분석 기반 배차 전략',
-  line:'서울시 공공데이터 6종 병합 · 자치구 군집 분석 · QGIS 공간 시각화 · 공차율 웹 인터페이스. 통계학술제 최우수상'},
- {id:null, href:'#research', tag:'미래 모빌리티', title:'Smart Green-STOP · 친환경 스마트 정류소',
-  line:'세종특별자치시 미래모빌리티 및 지역혁신 아이디어 공모전 장려상 · 3D 구현 담당. 압전 하베스팅 + 태양광 자가발전 데이터 수집 노드 컨셉'}
+ {g:'perc', id:'sgmcmc', tag:'3D object detection', title:'SGMCMC 기반 3D 객체 탐지 최적화 (KITTI · PointPillars)',
+  line:'KITTI 라이다 점구름 · OpenPCDet · PointPillars · CUDA 환경 고정 후 Adam 기준 모델과 SGMCMC 계열을 동일 조건(80 epoch)으로 비교. BEV AP Moderate 기준 최저 손실과 최고 성능이 불일치함을 규명'},
+ {g:'sim', id:'bntm', tag:'데이터 합성 · 시나리오 설계', title:'검증용 시뮬레이션 환경 5종 설계 · Ground-truth 기준 검증',
+  line:'정답을 아는 시뮬레이션 데이터를 직접 설계 — 파라미터 중첩 · 희소 토픽 · 토픽 수 변동 등 검증 목적별 5종, K_true 8~40. 전 환경 정확 복원(10 seed 편차 0) 확인 후 실제 코퍼스에 적용'},
+ {g:'sim', id:'gan', tag:'데이터 합성', title:'GAN 기반 손글씨 데이터 생성',
+  line:'폰트 25종 × 75,000장으로 zi2zi GAN 사전학습, 직접 작성한 210자로 Transfer Learning. 학습 데이터가 없는 스타일을 생성 모델로 합성'},
+ {g:'fm', id:'lora', tag:'주행 도메인 평가 방법론', title:'BDD-X 주행 영상 기반 sLLM 파인튜닝 vs 검색 증강 정량 비교',
+  line:'Phi-4-mini(3.8B)를 BDD-X 주행 영상 6,970개 · 주석 26,228개로 LoRA 파인튜닝. 동일 조건 RAG(k=1) 대비 ROUGE-1 0.0888 → 0.1495, Traffic violations 7만 건 확장 실험 Accuracy 0.745 · JKDAS 27(3) 게재'},
+ {g:'onv', id:'cag', tag:'quantization', title:'QLoRA 4bit 양자화 + CAG 결합 대화형 AI',
+  line:'4bit 양자화로 자원 부담을 줄이면서 도메인 적합성을 확보하고, 외부 문서를 캐시에 선적재해 검색 지연 없이 응답. BLEU · ROUGE · BERTScore 등 6종 지표로 검증 (멘토 공동 연구)'},
+ {g:'onv', id:'lora', tag:'parameter-efficient', title:'임베디드 자원 제약을 전제로 한 sLLM 선정 · LoRA 적용',
+  line:'전체 파라미터의 약 0.01%만 조정, 응답 시간 평균 1.145초. 전체 파인튜닝 대신 LoRA를 고른 이유가 임베디드 환경 자원 부담'},
+ {g:'plan', id:'gan', tag:'motion · path generation', title:'생성 이미지 → 로봇팔 경로 변환 파이프라인 (WLKATA Mirobot · RoboDK)',
+  line:'GAN으로 생성한 손글씨 이미지를 로봇팔이 쓰게 하는 통합 파이프라인. RoboDK · WLKATA Studio API 연동을 시도했고, 호환 문제로 완결하지 못한 구간을 OpenCV 기반 이미지 → 경로 변환으로 푸는 방향까지 도출'},
+ {g:'plan', id:'rl', tag:'learning-based decision', title:'강화학습 기반 배구 Agent 학습',
+  line:'432×304 RGB 관측을 20px 격자로 이산화한 4-tuple 상태, 18개 이산 행동, Epsilon-Greedy 1.0→0.1, 희소 보상을 밀집 보상으로 재설계. 5,000+ 에피소드부터 전략 정교화 확인'},
+ {g:'dom', id:'tbt', tag:'규제 문서', title:'미국 자율주행·자동차 TBT 규제 트렌드 분석',
+  line:'Federal Register 160건 · AWSGLD-TNTM K=8. LDA 대비 Coherence 37% 향상, 2020–25 규제 패러다임 3단계 정량 규명'},
+ {g:'dom', id:'taxi', tag:'교통 데이터', title:'택시 수요 분석 기반 배차 전략',
+  line:'서울시 공공데이터 6종 병합 · 자치구 군집 분석 · QGIS 공간 시각화. 통계학술제 최우수상'},
+ {g:'dom', id:null, href:'#research', tag:'미래 모빌리티', title:'Smart Green-STOP · 친환경 스마트 정류소',
+  line:'세종특별자치시 미래모빌리티 아이디어 공모전 장려상 · 3D 구현 담당'}
 ];
-const AV_IDS=AV_ITEMS.filter(x=>x.id).map(x=>x.id);
+const AV_GROUPS=[['perc','Perception'],['sim','Simulation & Data'],['fm','E2E / Foundation models'],['onv','On-vehicle System'],['plan','Prediction & Planning'],['dom','자율주행 도메인 데이터']];
+const AV_IDS=[...new Set(AV_ITEMS.filter(x=>x.id).map(x=>x.id))];
 function renderAV(){
   if(ROLE!=='av') return;
   const sec=$('#avdomain'); if(!sec) return; sec.hidden=false;
-  $('#avcount').textContent=AV_ITEMS.length+'건';
-  $('#avgrid').innerHTML=AV_ITEMS.map(x=>`<a class="avcard" href="${x.id?'#/p/'+x.id:x.href}">
+  $('#avcount').textContent=AV_GROUPS.length+'개 트랙';
+  const card=x=>`<a class="avcard" href="${x.id?'#/p/'+x.id:x.href}">
     <span class="tag">${esc(x.tag)}</span><h3>${esc(x.title)}</h3><p>${esc(x.line)}</p>
-    <span class="go">${x.id?'자세히 보기':'수상 내역 보기'} ${svg('i-arrow')}</span></a>`).join('');
+    <span class="go">${x.id?'자세히 보기':'수상 내역 보기'} ${svg('i-arrow')}</span></a>`;
+  $('#avgrid').innerHTML=AV_GROUPS.map(([g,name])=>`<h3 class="avsub">${name}</h3><div class="avrow">${AV_ITEMS.filter(x=>x.g===g).map(card).join('')}</div>`).join('');
 }
 function applyRole(){
   const pick=RC.feat.map(id=>FEAT.find(f=>f.id===id)).filter(Boolean);
   $('#fgrid').innerHTML=pick.map(featHTML).join('');
   $('#rolename').textContent=RC.title;
   if(RC.tag){const t=$('#rolesub');t.textContent=RC.tag;t.hidden=false;}
+  if(RC.key){$('#hkey').innerHTML=RC.key.map(k=>'<span class="k">'+esc(k).replace(/ /g,'<br>')+'</span>').join('');}
   document.querySelectorAll('#roles a').forEach(a=>a.classList.toggle('on', a.dataset.r===ROLE));
   const lead=$('#featlead');
   if(lead) lead.textContent = ROLE
