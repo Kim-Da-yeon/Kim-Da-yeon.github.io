@@ -885,6 +885,22 @@ a.dcard.award:hover .sq{transform:scale(1.06) rotate(-3deg);background:rgba(176,
 .avq{background:var(--tint);border-left:3px solid var(--point);padding:18px 20px;border-radius:4px}
 .avq b{display:block;font-size:15px;letter-spacing:-.01em;color:var(--ink);margin-bottom:8px}
 .avq p{font-size:14px;line-height:1.7;color:var(--ink-2)}
+
+.hkey.compact{gap:5px}
+.hkey.compact .k{font-size:clamp(15px,1.6vw,24px)}
+@media(max-width:899px){.hkey.compact .k{font-size:16px}}
+@media(max-width:480px){.hkey.compact .k{font-size:14.5px}}
+
+@media(max-width:899px){.hcard:has(#rolesub:not([hidden])){min-height:760px}}
+@media(max-width:480px){.hcard:has(#rolesub:not([hidden])){min-height:740px}}
+
+@media(max-width:899px){
+  .hcard:has(#rolesub:not([hidden])) .hvideo::before,.hcard:has(#rolesub:not([hidden])) .hvideo video{height:86%;top:14%}
+  .hcard:has(#rolesub:not([hidden])) .hkey{top:58.3%}
+  .hcard:has(#rolesub:not([hidden])) .hvideo{background:linear-gradient(#ededf0,#e6e7ea)}
+  .hcard:has(#rolesub:not([hidden])) .hvideo::after{content:'';position:absolute;left:0;right:0;top:calc(14% - 10px);height:70px;
+    background:linear-gradient(#e7e8eb 0%,rgba(231,232,235,.85) 35%,rgba(231,232,235,0) 100%);pointer-events:none}
+}
 </style>
 </head>
 <body>
@@ -1368,7 +1384,7 @@ const P=[
  id:'std', cat:'nlp', yr:'2025',
  title:'국제 메타데이터 표준 통합 LLM 기반 그래프 증강 추천시스템',
  meta:'ISO 3166-1 · BCP 47 · Netflix 17,366건 · LightGCN 검증',
- sum:'LLM이 생성한 자유 텍스트 메타데이터를 국제 표준으로 정규화하고, 하위 태스크 성능 손실이 없음을 검증한 프로젝트.',
+ sum:'LLMRec으로 생성한 Netflix 메타데이터를 국제 표준으로 정규화하고, 정규화 전후 임베딩으로 LightGCN 추천 모델을 직접 학습·비교해 하위 태스크 성능 손실이 없음을 검증한 프로젝트.',
  techs:['Python','LLM','LightGCN','ISO 3166-1','BCP 47','메타데이터'],
  repo:{name:'llmrec-metadata-standard',url:'https://github.com/Kim-Da-yeon/llmrec-metadata-standard'}
 },
@@ -1606,7 +1622,7 @@ std:{
  r:['국제 표준(ISO 3166-1 alpha-2, BCP 47) 정규화 레이어를 설계하고 필드별 형식 적합률 지표를 정의했습니다.',
     '표준 적합률이 0.484에서 0.914로 향상됐습니다. country 표면형 1,166개 → 표준 코드 57개, language 326개 → 52개입니다.',
     '상호운용성이 0에서 80.3%로 올랐고, column-shift 724건을 자동 검출했습니다.',
-    'Netflix 17,366건을 대상으로 정규화 후 LightGCN 추천 성능을 seed 10회 반복 검증한 결과, 7개 지표 전부 p &gt; 0.05로 성능 손실이 없음을 입증했습니다.'],
+    '정규화 전후 임베딩으로 LightGCN 추천 성능을 seed 10회 반복 측정하고 recall@k · ndcg@k를 대응표본 t-검정으로 비교 — 7개 지표 전부 p &gt; 0.05로 성능 손실이 없음을 입증했습니다 (Netflix 17,366건).'],
  d:['LLM으로 생성한 데이터는 편리하지만, 같은 의미를 다른 표면형으로 표현하는 특유의 비일관성 문제가 있습니다. LLMRec으로 만든 Netflix 메타데이터에서 같은 국가가 USA · United States · America로 분산되어 시스템 간 결합이 불가능한 상황을 발견하고, 국제 표준(ISO 3166-1, BCP 47)을 기준으로 삼아 정규화 레이어를 설계했습니다.',
     '정규화 이후 하위 태스크 성능 손실이 없음을 확인하면서, 이 연구의 핵심 기여를 추천 성능 향상이 아니라 데이터 품질과 상호운용성 개선으로 확정했습니다.'],
  panel:`<div class="panel"><div class="cap">표면형 → 표준 코드 통합</div>
@@ -1777,7 +1793,7 @@ const ROLES={
          feat:['farm','taxi','std'], res:'resume-ds.pdf', car:'career-ds.pdf'},
  'ml':  {title:'ML Researcher · Applied Scientist', sub:'베이지안 추론 · SGMCMC 샘플러 설계와 실험 검증',
          feat:['bntm','sgmcmc','lora'], res:'resume-ml.pdf', car:'career-ml.pdf'},
- 'av':  {title:'Autonomous Driving · Research Engineer', tag:'시뮬레이션 데이터 설계와 모델 · 알고리즘 검증을 수행하는 자율주행 도메인 석사과정 연구자', key:['3D Perception','Simulation & Data','Foundation Models'], sub:'자율주행 도메인 sLLM 파인튜닝 · 3D 객체 탐지 최적화 · 자율주행 규제 텍스트 분석',
+ 'av':  {title:'Autonomous Driving · Research Engineer', tag:'시뮬레이션 데이터 설계와 모델 · 알고리즘 검증을 수행하는 자율주행 도메인 석사과정 연구자', key:['3D Perception','Sim & Data','Foundation Models'], sub:'자율주행 도메인 sLLM 파인튜닝 · 3D 객체 탐지 최적화 · 자율주행 규제 텍스트 분석',
          feat:['sgmcmc','bntm','lora'], res:'resume-av.pdf', car:'career-av.pdf'},
  'nlp': {title:'NLP · LLM Engineer', sub:'LoRA 파인튜닝 · RAG 검색 · 출처 표기 구현',
          feat:['sony','lora','std'], res:'resume-nlp.pdf', car:'career-nlp.pdf'}
@@ -1893,7 +1909,7 @@ const AV_ITEMS=[
  {g:'onv', id:'lora', tag:'parameter-efficient', title:'임베디드 자원 제약을 전제로 한 sLLM 선정 · LoRA 적용',
   line:'전체 파라미터의 약 0.01%만 조정, 응답 시간 평균 1.145초. 전체 파인튜닝 대신 LoRA를 고른 이유가 임베디드 환경 자원 부담'},
  {g:'plan', id:'gan', tag:'motion · path generation', title:'생성 이미지 → 로봇팔 경로 변환 파이프라인 (WLKATA Mirobot · RoboDK)',
-  line:'폰트 25종 × 75,000장으로 zi2zi GAN을 사전학습하고 직접 작성한 210자로 전이학습해 손글씨 이미지를 합성한 뒤, 그 이미지를 로봇팔이 쓰게 하는 파이프라인을 시도. RoboDK · WLKATA Studio API 호환 문제로 완결하지 못한 구간은 OpenCV 기반 이미지 → 경로 변환으로 푸는 방향까지 도출'},
+  line:'폰트 25종 × 75,000장으로 zi2zi GAN 사전학습 후 직접 작성한 210자로 전이. 생성 이미지를 로봇팔 경로로 변환하는 파이프라인 시도 — WLKATA Studio API와 RoboDK 간 호환 문제로 미완, OpenCV 기반 변환으로 푸는 방향 도출'},
  {g:'plan', id:'rl', tag:'learning-based decision', title:'강화학습 기반 배구 Agent 학습',
   line:'432×304 RGB 관측을 20px 격자로 이산화한 4-tuple 상태, 18개 이산 행동, Epsilon-Greedy 1.0→0.1, 희소 보상을 밀집 보상으로 재설계. 5,000+ 에피소드부터 전략 정교화 확인'},
  {g:'dom', id:'tbt', tag:'규제 문서', title:'미국 자율주행·자동차 TBT 규제 트렌드 분석',
@@ -1919,7 +1935,7 @@ function applyRole(){
   $('#fgrid').innerHTML=pick.map(featHTML).join('');
   $('#rolename').textContent=RC.title;
   if(RC.tag){const t=$('#rolesub');t.textContent=RC.tag;t.hidden=false;}
-  if(RC.key){$('#hkey').innerHTML=RC.key.map(k=>'<span class="k">'+esc(k).replace(/ /g,'<br>')+'</span>').join('');}
+  if(RC.key){$('#hkey').classList.add('compact');$('#hkey').innerHTML=RC.key.map(k=>'<span class="k">'+esc(k).replace(/ (?!&amp;)(?<!&amp; )/g,'<br>')+'</span>').join('');}
   document.querySelectorAll('#roles a').forEach(a=>a.classList.toggle('on', a.dataset.r===ROLE));
   const lead=$('#featlead');
   if(lead) lead.textContent = ROLE
