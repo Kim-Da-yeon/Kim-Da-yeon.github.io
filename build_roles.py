@@ -26,6 +26,8 @@ for key, r in ROLES.items():
     s = s.replace('<span>Data Scientist · 데이터 분석</span>', '<span>%s</span>' % r['card'], 1)
     s = s.replace('<link rel="canonical" href="https://kim-da-yeon.github.io/">', '<link rel="canonical" href="https://kim-da-yeon.github.io/%s/">' % key, 1)
     s = s.replace('<meta property="og:url" content="https://kim-da-yeon.github.io/">', '<meta property="og:url" content="https://kim-da-yeon.github.io/%s/">' % key, 1)
+    # 2.5) 정적 자산은 루트 기준 상대경로
+    s = s.replace('src="assets/hero.mp4"', 'src="../assets/hero.mp4"', 1)
     # 3) 직무별 페이지에서는 "다른 직무 기준으로 보기" 전환 링크 제거
     s = re.sub(r'\s*<div class="roleview">.*?</nav></div>', '', s, count=1, flags=re.S)
     os.makedirs(os.path.join(here, key), exist_ok=True)
