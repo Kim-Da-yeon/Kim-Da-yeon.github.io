@@ -942,6 +942,23 @@ a.dcard.award:hover .sq{transform:scale(1.06) rotate(-3deg);background:rgba(176,
   .hcontent{padding:88px 64px 96px;max-width:560px}
   .hcontent h1{font-size:56px}
 }
+
+/* desktop = same stage as mobile: tile sits at a fixed spot right of the text, text sizes fixed */
+@media(min-width:900px){
+  .hcard{height:660px;min-height:0;aspect-ratio:auto}
+  .hvideo{background-image:none;background-color:#e9ebee}
+  .hvideo::before{content:'';position:absolute;top:0;left:56%;height:100%;aspect-ratio:16/9;transform:translateX(-65.5%);background:var(--poster) center/cover no-repeat}
+  .hvideo video{position:absolute;top:0;left:56%;height:100%;width:auto;transform:translateX(-65.5%);object-fit:unset}
+  .hvideo::after{content:'';display:block;position:absolute;top:0;bottom:0;left:calc(56% + 660px * 16 / 9 * 0.345 - 240px);width:240px;background:linear-gradient(90deg,rgba(233,235,238,0),#e9ebee 90%);pointer-events:none}
+  .hkey{left:55.4%;top:52%;transform:translate(-50%,-50%) scale(1,.78) rotate(-45deg)}
+  .hkey .k{font-size:26px}
+  .hkey.compact .k{font-size:21px}
+  .hkey.compact.three .k{font-size:27px}
+  .hkey.tight .k{font-size:17px}
+  .hcontent{padding:56px 48px 60px;max-width:min(520px,46%)}
+  .hcontent h1{font-size:48px}
+  .hcontent .rolename{font-size:24px}
+}
 </style>
 </head>
 <body>
