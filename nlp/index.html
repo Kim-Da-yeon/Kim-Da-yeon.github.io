@@ -926,6 +926,22 @@ a.dcard.award:hover .sq{transform:scale(1.06) rotate(-3deg);background:rgba(176,
 }
 
 @media(min-width:900px) and (max-width:1180px){.hcontent{padding-top:44px}.hcontent h1{font-size:44px}}
+
+/* desktop: fixed-size stage anchored left — the tile never moves when the window is resized */
+@media(min-width:900px){
+  .hcard{height:600px;min-height:0;aspect-ratio:auto}
+  .hvideo{background-color:#e9ebee;background-image:var(--poster);background-size:auto 100%;background-position:left top;background-repeat:no-repeat}
+  .hvideo video{position:absolute;left:0;top:0;height:100%;width:auto;object-fit:unset;object-position:0 0;transform:none}
+  .hvideo::after{content:'';position:absolute;top:0;bottom:0;left:calc(600px * 16 / 9 - 220px);width:220px;
+    background:linear-gradient(90deg,rgba(233,235,238,0),#e9ebee 92%);pointer-events:none}
+  .hkey{left:calc(600px * 16 / 9 * 0.656);top:52%;transform:translate(-50%,-50%) scale(1,.78) rotate(-45deg)}
+  .hkey .k{font-size:34px}
+  .hkey.compact .k{font-size:26px}
+  .hkey.compact.three .k{font-size:34px}
+  .hkey.tight .k{font-size:22px}
+  .hcontent{padding:88px 64px 96px;max-width:560px}
+  .hcontent h1{font-size:56px}
+}
 </style>
 </head>
 <body>
