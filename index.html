@@ -904,6 +904,10 @@ a.dcard.award:hover .sq{transform:scale(1.06) rotate(-3deg);background:rgba(176,
 .skcard .chiplab{font-size:12.5px;font-weight:700;color:var(--ink-3);margin:12px 0 6px}
 .skcard .chiplab:first-of-type{margin-top:0}
 .skcard .chipnote{margin-top:12px;font-size:13px;color:var(--ink-2);line-height:1.6}
+
+.hkey.tight .k{font-size:clamp(12.5px,1.3vw,19px)}
+@media(max-width:899px){.hkey.tight .k{font-size:13.5px}}
+@media(max-width:480px){.hkey.tight .k{font-size:12.5px}}
 </style>
 </head>
 <body>
@@ -1072,10 +1076,14 @@ a.dcard.award:hover .sq{transform:scale(1.06) rotate(-3deg);background:rgba(176,
             <p>참여연구원 · 한국연구재단 · RS-2024-00352792</p></div>
           <div class="tl-item"><p class="y">2025 – 2026</p><h4>초격차산업기반 표준전문인력양성</h4>
             <p>참여연구원 · KIAT · 표준학 융합전공 · RS-2025-02215617</p></div>
+          <div class="tl-item"><p class="y">2025.01</p><h4>미국 UNLV 4주 연수 · CES 2025 현장 참관</h4>
+            <p>미래 모빌리티 · AI 기술 글로벌 연수 (AI+IoT Communication 트랙) · 자율주행 · 로보틱스 · 온디바이스 AI 산업 적용 사례</p></div>
           <div class="tl-item"><p class="y">2025.03 – 2025.09</p><h4>에코업혁신융합대학사업단 학부생 연구원 프로그램 · 대학원생 멘토</h4>
             <p>멘티 1명과 공동 연구 — QLoRA 파인튜닝 + CAG 결합 대화형 AI, 기후정책 도메인 · 진학박람회 포스터 발표</p></div>
           <div class="tl-item"><p class="y">2026</p><h4>한국자료분석학회 하계학술대회 포스터 발표</h4>
             <p>Fixed-K Shrinkage BNTM with AWSGLD Inference · 장려상</p></div>
+          <div class="tl-item"><p class="y">2025 – 2026</p><h4>산업 컨퍼런스 참관</h4>
+            <p>SK AI Summit 2025 · LG AI · GenCon · AI 포럼 — LLM · 자율주행 · 데이터 플랫폼 세션</p></div>
         </div>
       </div>
     </div>
@@ -1169,9 +1177,9 @@ a.dcard.award:hover .sq{transform:scale(1.06) rotate(-3deg);background:rgba(176,
         <div class="skcard">
           <div class="h"><span class="sq n"><svg class="ic"><use href="#i-share"/></svg></span><h3>확률적 추론</h3></div>
           <p class="chiplab">직접 구현</p>
-          <div class="chips"><span>AWSGLD</span><span>AWSGHMC</span><span>MH-within-Gibbs</span><span>SAMC</span><span>SGLD</span><span>SGHMC</span></div>
+          <div class="chips"><span>AWSGLD</span><span>AWSGHMC</span><span>MH-within-Gibbs</span><span>SAMC</span><span>SGLD</span><span>SGHMC</span><span>SGNHT</span></div>
           <p class="chiplab">비교 기준</p>
-          <div class="chips"><span>Adam</span><span>SGD</span><span>SGNHT</span></div>
+          <div class="chips"><span>Adam</span><span>SGD</span></div>
           <p class="chipnote">SAMC는 순수 R · Rcpp · reticulate 3종 백엔드로 각각 재구현</p>
         </div>
         <div class="skcard">
@@ -1342,7 +1350,7 @@ const P=[
 {
  id:'lora', cat:'nlp', yr:'2025',
  title:'자율주행 도메인에서 LoRA 기반 sLLM 파인튜닝 연구',
- meta:'JKDAS 27(3), 769–780 게재 · 제1저자 · BDD-X',
+ meta:'JKDAS 27(3), 769–780 게재 · 제1저자 · BDD-X 주행 영상 6,970개 · 주석 26,228개',
  sum:'임베디드 환경의 자원 제약 아래에서 도메인 특화 sLLM의 응답 품질을 높이기 위해, LoRA 파인튜닝과 RAG를 정량 비교한 학술지 게재 연구.',
  techs:['Python','PyTorch','LoRA','Phi-4-mini','RAG','BDD-X']
 },
@@ -1494,7 +1502,8 @@ bntm:{
     '5개 환경 전부에서 활성 토픽 수를 정확히 복원했습니다 (K_eff = K_true, 10 seed 편차 0).',
     '다른 샘플러는 로컬 트랩에 갇혀 과다 또는 과소 추정했습니다. K_true=20 환경에서 MH 23.4(과다) · SGHMC 15.4 · SGLD 14.7(과소), Hellinger 거리 0.09~0.17.',
     'FAERS · NTSB · 모의실험 세 도메인 모두에서 AWSGHMC가 최저 에너지에 도달했습니다.'],
- d:['토픽 모델링은 정답 라벨이 없어 모델이 실제로 잘 작동하는지 검증하기 어렵다는 근본적 한계가 있습니다. 이 문제를 해결하기 위해 진짜 토픽 수를 알고 있는 시뮬레이션 환경 5종(K_true 8~40)을 직접 설계했고, 파라미터 중첩 · 희소 토픽 · 토픽 수 변동 같은 까다로운 조건을 통제했습니다. AWSGHMC가 다섯 환경 모두에서 활성 토픽 수를 정확히 복원하는지(K_eff = K_true) 확인한 뒤에야 실제 코퍼스에 적용했습니다. 이 검증 체계는 LDA · HTMM · TNTM · BNTM 전반에 재사용할 수 있습니다. 연구 가설 수립, 모델 구조 설계, 데이터 생성, 평가 지표 정의, 샘플러 구현, 실험, 논문 작성까지 지도교수 자문 하에 전 과정을 직접 수행했습니다.',
+ d:['구현을 마친 뒤에도 seed와 설정에 따라 토픽 구조가 크게 흔들렸습니다. 처음에는 구현을 의심해 코드와 수식을 재확인하고 학습률 · 하이퍼파라미터 · prior를 바꿔가며 실험했지만 해결되지 않았고, prior를 수정하면 생성 구조와 추론 과정까지 함께 손봐야 해서 작업량만 커졌습니다. 결국 문제의 핵심이 튜닝이 아니라 TNTM 구조 자체에 있다고 판단하고 모델을 다시 설계했습니다.',
+    '토픽 모델링은 정답 라벨이 없어 모델이 실제로 잘 작동하는지 검증하기 어렵다는 근본적 한계가 있습니다. 이 문제를 해결하기 위해 진짜 토픽 수를 알고 있는 시뮬레이션 환경 5종(K_true 8~40)을 직접 설계했고, 파라미터 중첩 · 희소 토픽 · 토픽 수 변동 같은 까다로운 조건을 통제했습니다. AWSGHMC가 다섯 환경 모두에서 활성 토픽 수를 정확히 복원하는지(K_eff = K_true) 확인한 뒤에야 실제 코퍼스에 적용했습니다. 이 검증 체계는 LDA · HTMM · TNTM · BNTM 전반에 재사용할 수 있습니다. 연구 가설 수립, 모델 구조 설계, 데이터 생성, 평가 지표 정의, 샘플러 구현, 실험, 논문 작성까지 지도교수 자문 하에 전 과정을 직접 수행했습니다.',
     'Logistic-Normal 모수화 · Sparse Dirichlet Prior · AWSGHMC 하이브리드 추론을 고른 이유는 세 가지입니다. Simplex 제약이 경사 기반 추론의 근본 걸림돌이라 무제약 공간 변환이 필요했고, K 사전 고정 문제를 데이터가 결정하게 하려면 희소 사전분포가 이론적으로 가장 안전하며, 이산 잠재변수와 연속 모수를 각각 다른 방식으로 처리해야 로컬 트랩을 넘을 수 있기 때문입니다.',
     '검증은 두 단계로 나눴습니다. 먼저 정답을 아는 시뮬레이션 환경 5종에서 복원 정확도를 재고, 그다음 FAERS 이상반응 보고서와 NTSB 사고 서술문이라는 실제 코퍼스에서 에너지 수렴을 확인했습니다. 2026년 한국자료분석학회 하계학술대회 포스터논문 부문 장려상을 받았고, 2026년 9월 SCI급 학술지에 투고 예정입니다 (심사 전).'],
  panel:`<div class="panel"><div class="cap">활성 토픽 복원 개수 · 시뮬레이션 환경 예시 (정답 K_true = 20)</div>
@@ -1511,7 +1520,7 @@ lora:{
  r:['Phi-4-mini(3.8B)를 임베디드 환경의 자원 제약에 맞춰 선정하고, LoRA로 전체 파라미터의 약 0.01%만 조정했습니다.',
     'BDD-X 자율주행 데이터셋(주행 영상 6,970개 · 주석 26,228개)으로 파인튜닝했습니다.',
     '동일 조건 RAG(k=1) 대비 ROUGE-1이 0.0888에서 0.1495로 향상됐습니다. 응답 시간은 평균 1.145초입니다.',
-    'Traffic violations 7만 건 확장 실험에서 Accuracy 0.745 · Macro F1 0.731을 기록했습니다.'],
+    '교통법규 분류(Traffic violations 약 7만 건)로 확장한 실험에서 Accuracy 0.745, Macro F1 0.731을 기록했습니다.'],
  d:['도메인 특화 sLLM의 응답 품질을 높여야 하는데 전체 파라미터 파인튜닝은 임베디드 환경에서 자원 부담이 큽니다. LoRA를 고른 이유는 자원 효율과 도메인 적응의 균형이었습니다.',
     '검증 방식으로 RAG와의 정량 비교를 택한 것은, 파인튜닝과 검색 증강 사이의 트레이드오프가 이 과제의 핵심 의사결정 지점이기 때문입니다. 결과는 한국자료분석학회지 27(3) 769–780에 제1저자로 게재했습니다.'],
  panel:`<div class="panel"><div class="cap">ROUGE-1 · 동일 조건 비교 · BDD-X</div>
@@ -1523,7 +1532,7 @@ lora:{
 
 sgmcmc:{
  r:['KITTI + OpenPCDet + CT-Stack 백본 + PointPillars + GCIoU 손실로 실험 환경을 고정했습니다.',
-    'SGMCMC 기법 4종을 동일 조건(80 epoch, batch 8, OneCycle LR)으로 적용하고 Adam 기준 모델과 비교했습니다.',
+    'Adam을 기준으로 두고 SGLD·SGHMC·SGNHT를 직접 구현해 동일 조건(80 epoch, batch 8, OneCycle LR)으로 적용하고 비교했습니다.',
     'BEV AP Moderate 기준 Adam 65.15% 대 SGHMC 49.59%로, 이 과제에서는 확률적 탐색보다 적응적 학습률이 결정적이었습니다.',
     'SGMCMC 계열 안에서는 모멘텀 기반 SGHMC(49.59%)가 무작위 보행 방식 SGLD(25.67%) 대비 뚜렷한 우위를 보였습니다.',
     '최저 손실(SGHMC 0.813)과 최고 성능(Adam)이 불일치했습니다. 손실 최소화와 과업 성능 보장이 다르다는 점을 확인했습니다.'],
@@ -1581,7 +1590,8 @@ dorm:{
   <div class="panel-foot">재학생 수가 늘수록 수익형 확률이 오르고, 운영비 · 인건비 · 경쟁률이 높을수록 낮아집니다. 이 회귀 분석은 팀원이 수행했습니다.</div></div>`},
 
 tbt:{
- r:['미국 Federal Register의 다년간 규제 문서에 AWSGLD-TNTM을 적용해 K=8 토픽을 도출하고 연도별 토픽 강도와 네트워크를 구축했습니다.',
+ r:['TNTM 원 논문에 세부 구조와 추론 수식이 충분히 제시되지 않아, 생성과정을 다시 정리하고 필요한 미분식을 직접 유도해 구현했습니다.',
+    '미국 Federal Register의 다년간 규제 문서에 AWSGLD-TNTM을 적용해 K=8 토픽을 도출하고 연도별 토픽 강도와 네트워크를 구축했습니다.',
     'LDA 대비 Topic Coherence가 약 37% 향상됐습니다. 0.42 → 0.5743.',
     'Topic Diversity 0.82로 토픽 중복도가 감소했습니다.',
     '팬데믹 영향 유예기(2020–21) → 환경·화학 규제 강화(2022–23) → 연비·디지털 안전 확산기(2024–25, TBT 통보 각 212건 · 203건)의 3단계 규제 패러다임을 정량 규명했습니다.'],
@@ -1802,7 +1812,12 @@ const ROLES={
  'av':  {title:'Autonomous Driving · Research Engineer', tag:'시뮬레이션 데이터 설계와 모델 · 알고리즘 검증을 수행하는 자율주행 도메인 석사과정 연구자', key:['3D Perception','Sim & Data','Foundation Models'], sub:'자율주행 도메인 sLLM 파인튜닝 · 3D 객체 탐지 최적화 · 자율주행 규제 텍스트 분석',
          feat:['sgmcmc','bntm','lora'], res:'resume-av.pdf', car:'career-av.pdf'},
  'nlp': {title:'NLP · LLM Engineer', sub:'LoRA 파인튜닝 · RAG 검색 · 출처 표기 구현',
-         feat:['sony','lora','std'], res:'resume-nlp.pdf', car:'career-nlp.pdf'}
+         feat:['sony','lora','std'], res:'resume-nlp.pdf', car:'career-nlp.pdf'},
+ 'cj':  {title:'AI Engineer', sub:'RAG 기반 Language AI · 수요 군집화 기반 배차 전략 · 그래프 추천',
+         key:['RAG · LLM','Graph Recommendation','Reinforcement Learning'],
+         lead:'Language AI, 수요 기반 배차, 그래프 추천에서 하나씩 골랐습니다. 전체 목록은 아래 프로젝트 섹션에 있습니다.',
+         order:['sony','taxi','std','cag','pika'],
+         feat:['sony','taxi','std'], res:'resume-cj.pdf', car:'career-cj.pdf'}
 };
 const ROLE_META=document.querySelector('meta[name="role"]');
 const ROLE=((ROLE_META&&ROLE_META.content)||new URLSearchParams(location.search).get('role')||'').toLowerCase();
@@ -1887,6 +1902,7 @@ function detailHTML(p){
 function draw(k){
   let list=k==='all'?P:P.filter(p=>p.cat===k);
   if(ROLE==='av'){const rank=id=>{const i=AV_IDS.indexOf(id);return i<0?99:i;};list=[...list].sort((a,b)=>rank(a.id)-rank(b.id));}
+  if(RC.order){const rank=id=>{const i=RC.order.indexOf(id);return i<0?99:i;};list=[...list].sort((a,b)=>rank(a.id)-rank(b.id));}
   $('#pgrid').innerHTML=list.map(pcardHTML).join('');
   $('#pcount').textContent=list.length+'건';
 }
@@ -1941,10 +1957,14 @@ function applyRole(){
   $('#fgrid').innerHTML=pick.map(featHTML).join('');
   $('#rolename').textContent=RC.title;
   if(RC.tag){const t=$('#rolesub');t.textContent=RC.tag;t.hidden=false;}
-  if(RC.key){$('#hkey').classList.add('compact');$('#hkey').innerHTML=RC.key.map(k=>'<span class="k">'+esc(k).replace(/ (?!&amp;)(?<!&amp; )/g,'<br>')+'</span>').join('');}
+  if(RC.key){
+    const brk=k=>{const w=esc(k).split(' '),out=[];for(let i=0;i<w.length;i++){const g=w[i]==='&amp;'||w[i]==='·';if(g){out[out.length-1]+=' '+w[i]+' '+w[++i];}else out.push(w[i]);}return out.join('<br>');};
+    $('#hkey').classList.add('compact');if(RC.key.some(k=>k.split(' ').some(w=>w.length>=12)))$('#hkey').classList.add('tight');
+    $('#hkey').innerHTML=RC.key.map(k=>'<span class="k">'+brk(k)+'</span>').join('');
+  }
   document.querySelectorAll('#roles a').forEach(a=>a.classList.toggle('on', a.dataset.r===ROLE));
   const lead=$('#featlead');
-  if(lead) lead.textContent = ROLE
+  if(lead) lead.textContent = RC.lead ? RC.lead : ROLE
     ? RC.title+' 지원 기준으로 고른 3건입니다. 전체 목록은 아래 프로젝트 섹션에 있습니다.'
     : '실무 · 공공데이터 분석 · 연구에서 각각 하나씩 골랐습니다. 전체 목록은 아래 프로젝트 섹션에 있습니다.';
   document.querySelectorAll('a[download]').forEach(a=>{
