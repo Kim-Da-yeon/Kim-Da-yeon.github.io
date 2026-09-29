@@ -1020,7 +1020,7 @@ a.dcard.award:hover .sq{transform:scale(1.06) rotate(-3deg);background:rgba(176,
   <section class="sec tint" id="featured">
     <div class="wrap">
       <p class="eyebrow"><svg class="ic"><use href="#i-award"/></svg>Featured Work</p>
-      <h2 class="title" style="margin-bottom:10px">대표 프로젝트 <span class="num">3</span></h2>
+      <h2 class="title" style="margin-bottom:10px">대표 프로젝트 <span class="num" id="featnum">3</span></h2>
       <p class="lead" id="featlead">실무 · 공공데이터 분석 · 연구에서 각각 하나씩 골랐습니다. 전체 목록은 아래 프로젝트 섹션에 있습니다.</p>
       <div class="roleview"><span>다른 직무 기준으로 보기</span>
         <nav class="roles" id="roles">
@@ -1793,6 +1793,11 @@ const FEAT=[
   role:'폰트 25종 × 한글 75,000장(128 × 256px)으로 zi2zi 기반 GAN(pix2pix + AC-GAN + DTN Constant Loss)을 사전학습하고, 직접 작성한 210자로 Transfer Learning을 수행했습니다.',
   result:'손글씨 스타일 이미지 생성 성공. 로봇팔 연동은 API 호환 문제로 미완, OpenCV 기반 이미지 → 경로 변환을 해결 방향으로 도출.',
   links:[['상세 보기','#/p/gan']]},
+ {id:'cag', cat:'구현 · 경량 파인튜닝 + CAG', title:'파인튜닝과 CAG 결합 대화형 AI 성능 개선 연구',
+  problem:'파인튜닝 단독 모델은 실제 근거 문서를 인용·저장하기 어렵고, 학습 범위를 벗어난 질문에 사실과 다른 답을 생성할 위험이 있었습니다.',
+  role:'학부생 연구원 프로그램 멘토로 멘티 1명과 공동 수행. QLoRA 4bit 양자화로 도메인 적합성을 높이고, 외부 문서를 캐시에 선적재해 검색 지연 없이 응답하는 CAG를 결합했습니다.',
+  result:'질문 5개 × 5회 반복, BLEU · ROUGE · BERTScore · CHRF · METEOR · TER 6종 지표에서 FT 단독 대비 품질 · 일관성 · 문맥 반영이 전반적으로 우수. 기후정책 도메인 · 진학박람회 포스터 발표.',
+  links:[['상세 보기','#/p/cag']]},
  {id:'std', cat:'데이터 품질', title:'국제 메타데이터 표준 통합 LLM 기반 그래프 증강 추천시스템',
   problem:'LLM이 생성한 메타데이터가 자유 텍스트라 같은 국가가 USA · United States로 분산돼 시스템 간 결합이 불가능했습니다.',
   role:'ISO 3166-1 · BCP 47 정규화 레이어를 설계하고 적합률 지표를 정의했습니다.',
@@ -1814,10 +1819,10 @@ const ROLES={
  'nlp': {title:'NLP · LLM Engineer', sub:'LoRA 파인튜닝 · RAG 검색 · 출처 표기 구현',
          feat:['sony','lora','std'], res:'resume-nlp.pdf', car:'career-nlp.pdf'},
  'cj':  {title:'AI Engineer', sub:'RAG 기반 Language AI · 수요 군집화 기반 배차 전략 · 그래프 추천',
-         key:['RAG · LLM','Graph Recommendation','Reinforcement Learning'],
-         lead:'Language AI, 수요 기반 배차, 그래프 추천에서 하나씩 골랐습니다. 전체 목록은 아래 프로젝트 섹션에 있습니다.',
-         order:['sony','taxi','std','cag','pika'],
-         feat:['sony','taxi','std'], res:'resume-cj.pdf', car:'career-cj.pdf'}
+         key:['RAG · LLM','Graph Rec.','RL'],
+         lead:'RAG 챗봇, 그래프 추천, sLLM 파인튜닝, 경량 파인튜닝 + CAG, 수요 기반 배차 — AI Engineer 지원 기준으로 고른 5건입니다. 전체 목록은 아래 프로젝트 섹션에 있습니다.',
+         order:['sony','std','lora','cag','taxi','pika'],
+         feat:['sony','std','lora','cag','taxi'], res:'resume-cj.pdf', car:'career-cj.pdf'}
 };
 const ROLE_META=document.querySelector('meta[name="role"]');
 const ROLE=((ROLE_META&&ROLE_META.content)||new URLSearchParams(location.search).get('role')||'').toLowerCase();
@@ -1955,6 +1960,7 @@ function renderAV(){
 function applyRole(){
   const pick=RC.feat.map(id=>FEAT.find(f=>f.id===id)).filter(Boolean);
   $('#fgrid').innerHTML=pick.map(featHTML).join('');
+  const fn=$('#featnum'); if(fn) fn.textContent=pick.length;
   $('#rolename').textContent=RC.title;
   if(RC.tag){const t=$('#rolesub');t.textContent=RC.tag;t.hidden=false;}
   if(RC.key){
