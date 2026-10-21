@@ -27,14 +27,15 @@ A candidate who validates models against ground truth: she designs simulation en
 - Static single `index.html` (inline CSS/JS) + `build_roles.py` that clones it into role folders by string replacement. Keep that workflow working.
 - Hash router: `#/p/<id>` project detail pages, keyboard ←/→ navigation, project filters.
 - Project data lives in JS arrays (`P`, `D`, `FEAT`, `PAPERS`, `ROLES`, `AV_ITEMS`).
-- SCI-level journal paper (BNTM, master's thesis) is **not yet submitted** — must read "투고 준비 중", never a past date. *(confirmed by owner 2026-10-21)*
+- BNTM paper: SCI-level journal, **투고 예정** (not yet submitted). TNTM growth-forecast paper: 투고 예정. Never write a past submission date. *(confirmed by owner 2026-10-21)*
+- Never mention a master's thesis (not yet written). The TBT regulation analysis is a KIAT project, not a paper. *(confirmed by owner 2026-10-21)*
 
 ## Brand Commitments
 - Name 김다연 / Kim Dayeon; existing point color green `#3B7A57` was a prior choice, not a binding commitment. *(inferred)*
 - The 3D blue chip hero video is decorative and may be removed. *(confirmed by owner)*
 
 ## Evidence on Hand
-- Papers: JKDAS 28(1) 109–121 (DOI 10.37727/jkdas.2026.28.1.109), JKDAS 27(3) 769–780 (DOI 10.37727/jkdas.2025.27.3.769); BNTM thesis paper in preparation.
+- Papers: JKDAS 28(1) 109–121 (DOI 10.37727/jkdas.2026.28.1.109), JKDAS 27(3) 769–780 (DOI 10.37727/jkdas.2025.27.3.769); BNTM (SCI-level) and TNTM growth-forecast papers 투고 예정.
 - Grants: NRF 석사과정생연구장려금 PI (RS-2025-25437035), NRF 참여 (RS-2024-00352792), KIAT 참여 (RS-2025-02215617).
 - Awards: KDAS 2026 포스터 장려상, 고려대 통계학술제 최우수상 2023, 세종 미래모빌리티 공모전 장려상 2023.
 - 15 projects with metrics; real figures embedded (FAERS topic path graph, KITTI detection comparison, taxi cluster/QGIS maps, dorm charts, SONY chatbot screenshots, metadata normalization diagrams), profile photo.
