@@ -6,13 +6,13 @@
 <title>김다연 · Data Scientist · ML Researcher</title>
 <link rel="canonical" href="https://kim-da-yeon.github.io/">
 <meta name="author" content="김다연">
-<meta name="description" content="김다연 · Data Scientist · ML Researcher — 정답을 아는 실험으로 모델을 검증하고, 결과를 기준선과 함께 숫자로 보고합니다. 토픽 모델링 · 베이지안 추론 · sLLM 파인튜닝 · 데이터 분석.">
+<meta name="description" content="김다연 · Data Scientist · ML Researcher — 토픽 모델 · MCMC 샘플러 설계, 기술 성장 예측 모형, sLLM 파인튜닝, 공공데이터 분석.">
 <meta name="theme-color" content="#F6F7F9">
 <meta name="color-scheme" content="light">
 <meta property="og:type" content="profile">
 <meta property="og:url" content="https://kim-da-yeon.github.io/">
 <meta property="og:title" content="김다연 · Data Scientist · ML Researcher">
-<meta property="og:description" content="제1저자 학술지 논문 2편 · SCI급 1편 투고 준비 중 · 한국연구재단 과제 연구책임자 · 분석 프로젝트 15건.">
+<meta property="og:description" content="제1저자 학술지 논문 2편 · 투고 준비 2편 · 한국연구재단 과제 연구책임자 · 분석 프로젝트 16건.">
 <meta property="og:locale" content="ko_KR">
 <meta name="twitter:card" content="summary">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%2313151A'/%3E%3Cline x1='7' y1='22' x2='19' y2='22' stroke='%23A0A7B4' stroke-width='2'/%3E%3Ccircle cx='22' cy='22' r='3.5' fill='%232B45D4'/%3E%3Cline x1='7' y1='12' x2='13' y2='12' stroke='%23A0A7B4' stroke-width='2'/%3E%3Ccircle cx='16' cy='12' r='3.5' fill='%23A0A7B4'/%3E%3C/svg%3E">
@@ -89,22 +89,22 @@ html{scrollbar-color:var(--base-2) var(--bg)}
 @media (hover:hover) and (pointer:fine){.btn:hover{background:var(--ink-2)}.btn.line:hover{background:var(--plate);box-shadow:inset 0 0 0 1px var(--base)}}
 
 /* ══ 첫 화면 ══ */
-.hero{padding:calc(var(--bar) + clamp(40px,7vh,80px)) 0 clamp(64px,9vh,104px)}
+.hero{padding:calc(var(--bar) + clamp(32px,5vh,64px)) 0 clamp(64px,9vh,104px)}
 .hgrid{display:grid;grid-template-columns:repeat(12,minmax(0,1fr));gap:0 24px;align-items:start}
 .hl{grid-column:1/6}
 .hf{grid-column:6/13;padding-left:clamp(0px,2vw,24px)}
-.hid{display:flex;align-items:center;gap:14px}
-.hid img{width:52px;height:64px;object-fit:cover;border-radius:6px;background:var(--sunk)}
-.hid b{display:block;font-size:17px;letter-spacing:-.01em}
-.hid span{display:block;font-size:13.5px;color:var(--ink-3);line-height:1.5}
-.hl h1{font-size:clamp(2.35rem,4.3vw,3.75rem);line-height:1.08;letter-spacing:-.035em;font-weight:760;margin:34px 0 20px}
-.claim{font-size:clamp(1.06rem,1.25vw,1.19rem);line-height:1.65;color:var(--ink-2);max-width:31em}
-.evid{list-style:none;margin:30px 0 0;padding:0;border-top:1px solid var(--line)}
-.evid li{display:grid;grid-template-columns:18px 1fr;gap:0 12px;padding:13px 0;border-bottom:1px solid var(--line)}
+.hid{display:flex;align-items:flex-end;gap:20px}
+.hid img{width:104px;height:130px;object-fit:cover;border-radius:8px;background:var(--sunk);box-shadow:0 1px 2px rgba(19,21,26,.06),0 8px 24px -12px rgba(19,21,26,.22)}
+.hid b{display:block;font-size:22px;letter-spacing:-.02em;line-height:1.3}
+.hid span{display:block;font-size:14px;color:var(--ink-3);line-height:1.55;margin-top:4px}
+.hl h1{font-size:clamp(2.1rem,3.6vw,3.15rem);line-height:1.1;letter-spacing:-.035em;font-weight:760;margin:26px 0 16px}
+.claim{font-size:clamp(1.02rem,1.15vw,1.1rem);line-height:1.68;color:var(--ink-2);max-width:31em}
+.evid{list-style:none;margin:24px 0 0;padding:0;border-top:1px solid var(--line)}
+.evid li{display:grid;grid-template-columns:18px 1fr;gap:0 12px;padding:11px 0;border-bottom:1px solid var(--line)}
 .evid li::before{content:"";width:7px;height:7px;border-radius:50%;background:var(--ink);margin-top:9px}
 .evid b{font-weight:650;font-size:15.5px;line-height:1.55;display:block}
-.evid span{font-size:13.5px;color:var(--ink-3);line-height:1.5}
-.acts{display:flex;flex-wrap:wrap;gap:10px;margin-top:30px}
+.evid span{display:block;font-size:13.5px;color:var(--ink-3);line-height:1.5;margin-top:2px}
+.acts{display:flex;flex-wrap:wrap;gap:10px;margin-top:24px}
 .roleview{margin-top:30px;display:flex;flex-wrap:wrap;align-items:baseline;gap:6px 14px;font-size:13.5px;color:var(--ink-3)}
 .roles{display:flex;flex-wrap:wrap;gap:4px 14px}
 .roles a{color:var(--ink-2)}
@@ -117,9 +117,13 @@ html{scrollbar-color:var(--base-2) var(--bg)}
 .figp-h h2{font-size:16.5px;font-weight:650;letter-spacing:-.01em;line-height:1.45}
 .fg{margin:0;overflow:hidden}
 .fg+.fg{margin-top:28px;padding-top:24px;border-top:1px solid var(--grid)}
-.fg-t{font-size:14px;color:var(--ink-2);margin-bottom:12px;line-height:1.5}
+.fg-t{display:block;margin-bottom:14px;line-height:1.5}
+.fg-p{display:inline;font-size:15px;font-weight:650;color:var(--ink);letter-spacing:-.01em;transition:color .2s ease}
+.fg-p .pa-x{margin:0 0 0 8px;font-size:12px;vertical-align:.1em}
+@media (hover:hover) and (pointer:fine){.fg-p:hover{color:var(--ink-2);text-decoration:underline;text-underline-offset:3px}}
+.fg-d{display:block;font-size:13px;color:var(--ink-3);margin-top:3px}
 .fgno{font-family:var(--mono);font-size:12.5px;font-weight:500;color:var(--ink-2);margin-right:10px}
-.fg-t b{font-family:var(--mono);font-weight:500;color:var(--ink);margin-right:6px}
+.fg-t b{font-family:var(--mono);font-weight:500;color:var(--ink);margin-right:8px}
 .fg-g{display:grid;grid-template-columns:minmax(96px,32%) minmax(0,1fr) 64px;column-gap:14px;position:relative}
 .fr{display:contents}
 .fr>*{grid-row:var(--r)}
@@ -138,6 +142,8 @@ html{scrollbar-color:var(--base-2) var(--bg)}
 .fr.me .fr-v{color:var(--acc-ink);font-weight:500}
 .fr.me .fr-stem{height:2px;top:calc(50% - 1px);background:var(--acc)}
 .fr.me .fr-mk i{background:var(--acc);box-shadow:0 0 0 3px var(--acc-soft)}
+.fr.ci .fr-stem{height:5px;top:calc(50% - 2.5px);border-radius:3px;opacity:.35}
+.fr-v small{display:block;font-size:10.5px;color:var(--ink-3);font-weight:400}
 .fr.me .fr-from i{box-shadow:inset 0 0 0 1.5px var(--acc)}
 .fg-ov{grid-column:2;position:relative;pointer-events:none}
 .fg-ov .gl{position:absolute;top:0;bottom:0;width:1px;background:var(--grid)}
@@ -150,12 +156,13 @@ html{scrollbar-color:var(--base-2) var(--bg)}
 .fg-ax span{position:absolute;top:2px;transform:translateX(-50%);font-family:var(--mono);font-size:11px;color:var(--ink-3)}
 .fg-ax span:first-child{transform:none}.fg-ax span:last-child{transform:translateX(-100%)}
 .fg-u{grid-column:3;font-family:var(--mono);font-size:11px;color:var(--ink-3);text-align:right;padding-top:4px}
-.fg.has-ref .fg-g{margin-top:16px}
+.fg.has-ref .fg-g{margin-top:24px}
 .fg-n{font-size:12.5px;color:var(--ink-3);margin-top:10px;line-height:1.55}
 .figp-f{margin-top:22px;padding-top:16px;border-top:1px solid var(--grid);display:flex;flex-wrap:wrap;gap:6px 18px;font-size:12px;color:var(--ink-3);line-height:1.5}
 .figp-f i{display:inline-block;width:9px;height:9px;border-radius:50%;vertical-align:-1px;margin-right:6px;background:var(--base)}
 .figp-f i.me{background:var(--acc)}
 .figp-f i.rl{width:14px;height:0;border-radius:0;background:none;border-top:1.25px dashed var(--ink);vertical-align:3px}
+.figp-f i.cil{width:16px;height:5px;border-radius:3px;background:var(--acc);opacity:.35;vertical-align:1px}
 .figp-f i.rl.me{border-top-color:var(--acc)}
 .figp-f i.from{background:var(--plate);box-shadow:inset 0 0 0 1.5px var(--base)}
 /* 진입 모션: 기본값은 최종 위치(JS 없이도 정확), .pre 는 기준선에서 출발 */
@@ -173,6 +180,8 @@ html{scrollbar-color:var(--base-2) var(--bg)}
 .sh{grid-column:1/4;align-self:start;position:sticky;top:calc(var(--bar) + 32px)}
 .sh h2{font-size:clamp(1.55rem,2.2vw,1.95rem);line-height:1.25;letter-spacing:-.025em;font-weight:730}
 .sh p{font-size:14.5px;color:var(--ink-3);margin-top:12px;line-height:1.6;max-width:19em}
+.topics{list-style:none;margin:8px 0 0;padding:0;font-size:14.5px;color:var(--ink-2);line-height:1.6}
+.topics li{padding:7px 0;border-bottom:1px solid var(--grid)}
 .sh .cnt{font-family:var(--mono);font-size:13px;color:var(--ink-3);margin-left:8px;font-weight:400;letter-spacing:0}
 .sb{grid-column:4/13;min-width:0}
 
@@ -202,6 +211,7 @@ html{scrollbar-color:var(--base-2) var(--bg)}
 .figcap b{font-family:var(--mono);font-weight:500;color:var(--ink-2);margin-right:8px}
 .tbl.mini{font-size:14px}.tbl.mini td{padding:10px 12px 10px 0}.tbl.mini td:first-child{font-weight:500;color:var(--ink-3);width:46%}.tbl.mini td:last-child{color:var(--ink);font-weight:600}
 .tbl.mini tr:last-child td{border-bottom:0}
+.tbl.mini.sim{font-size:13.5px}.tbl.mini.sim th{padding:8px 10px 8px 0;font-size:12px}.tbl.mini.sim td{padding:9px 10px 9px 0}.tbl.mini.sim td:first-child{width:auto;color:var(--ink);font-weight:600}.tbl.mini.sim td:last-child{font-weight:400;color:var(--ink-2)}.tbl.mini.sim td.pi{color:var(--acc-ink);font-weight:650}
 .xref{border:1px dashed var(--base-2);border-radius:8px;padding:18px 20px;font-size:14px;color:var(--ink-3);line-height:1.6}
 .xref a{color:var(--ink);font-weight:600;text-decoration:underline;text-underline-offset:3px}
 
@@ -389,6 +399,8 @@ html{scrollbar-color:var(--base-2) var(--bg)}
 }
 @media (max-width:720px){
   body{font-size:15.5px}
+  .hid img{width:92px;height:115px}
+  .hid b{font-size:19px}
   .brand em,.brand span{display:none}
   .ref,.trk-r,.dl>div,.tline .dl>div{grid-template-columns:minmax(0,1fr);gap:6px}
   .ref .st{padding-top:0}
@@ -404,7 +416,8 @@ html{scrollbar-color:var(--base-2) var(--bg)}
   .dt-info{grid-template-columns:1fr 1fr}
   .nextnav{grid-template-columns:1fr}
   .nextnav .next{text-align:left;align-items:flex-start}
-  .fg-g{grid-template-columns:minmax(84px,34%) minmax(0,1fr) 52px;column-gap:10px}
+  .fg-g{grid-template-columns:minmax(84px,32%) minmax(0,1fr) 64px;column-gap:10px}
+  .fr-v small{font-size:10px}
   .bar{grid-template-columns:minmax(96px,38%) minmax(0,1fr) 58px}
 }
 @media (prefers-reduced-motion:reduce){
@@ -430,7 +443,7 @@ html{scrollbar-color:var(--base-2) var(--bg)}
       <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
     </button>
     <nav class="nav" id="nav" aria-label="주요 섹션">
-      <a href="#fit">지원 근거</a>
+      <a href="#fit">대표 프로젝트</a>
       <a href="#research">연구</a>
       <a href="#projects">프로젝트</a>
       <a href="#skills">역량</a>
@@ -449,9 +462,9 @@ html{scrollbar-color:var(--base-2) var(--bg)}
     <div class="wrap hgrid">
       <div class="hl">
         <div class="hid">
-          <img src="assets/img/profile.jpg" alt="김다연 프로필 사진" width="52" height="64">
-          <div><b>김다연 <span style="display:inline;font-size:13.5px;color:var(--ink-3);font-weight:500;margin-left:4px">Kim Dayeon</span></b>
-            <span>고려대학교 빅데이터사이언스학과 석사과정 · 2027.02 졸업예정</span></div>
+          <img src="assets/img/profile.jpg" alt="김다연 프로필 사진" width="104" height="130">
+          <div><b>김다연 <span style="display:inline;font-size:15px;color:var(--ink-3);font-weight:500;margin-left:6px">Kim Dayeon</span></b>
+            <span>고려대학교 일반대학원 빅데이터사이언스학과 석사과정<br>2027.02 졸업예정</span></div>
         </div>
         <h1 id="rolename">Data Scientist · ML Researcher</h1>
         <p class="claim" id="roleclaim"></p>
@@ -472,7 +485,7 @@ html{scrollbar-color:var(--base-2) var(--bg)}
   <section class="sec" id="fit">
     <div class="wrap sgrid">
       <div class="sh">
-        <h2>지원 근거</h2>
+        <h2>대표 프로젝트</h2>
         <p id="fitlead"></p>
       </div>
       <div class="sb" id="fgrid"></div>
@@ -484,13 +497,13 @@ html{scrollbar-color:var(--base-2) var(--bg)}
     <div class="wrap sgrid">
       <div class="sh">
         <h2>자율주행 트랙별 경험<span class="cnt" id="avcount"></span></h2>
-        <p>자율주행시스템학과 융합전공 이수 · ROS · Autoware 학부 실습. 트랙별로 직접 해본 것만 적었습니다.</p>
+        <p>자율주행시스템학과 융합전공 · ROS · Autoware 학부 실습. 트랙별로 직접 해 본 것만 적었습니다.</p>
       </div>
       <div class="sb">
         <div class="avq">
-          <div><b>학습 기반 모델의 성능을 보증 가능한 형태로</b><p>정답을 아는 시뮬레이션 데이터를 직접 설계해 복원 성능을 Ground-truth 기준으로 검증하는 체계를 만들었습니다(5개 환경, 10 seed 편차 0). 3D 객체 탐지에서는 점추정 대신 베이지안 샘플링으로 파라미터 불확실성을 다루는 대안을 실험했습니다.</p></div>
-          <div><b>롱테일 상황을 찾아내고 재현하고 검증</b><p>파라미터 중첩 · 희소 토픽 · 토픽 수 변동처럼 모델이 실패하기 쉬운 조건을 골라 검증 목적별 환경 5종으로 재현했고, 노이즈 50개 조건에서 샘플러가 무너지는 지점을 Perplexity로 정량 비교했습니다.</p></div>
-          <div><b>차량 연산 · 메모리 안에서 경량화</b><p>임베디드 자원 제약을 전제로 3.8B sLLM을 고르고 LoRA로 전체 파라미터의 0.01%만 조정해 응답 1.145초를 확보했습니다. QLoRA 4bit 양자화 + CAG 결합도 6종 지표로 검증했습니다.</p></div>
+          <div><b>정답을 아는 데이터로 검증</b><p>정답 토픽 · 전이를 아는 모의 말뭉치를 생성해 복원 성능을 Ground-truth와 비교했습니다(환경 5종, 10개 seed 모두 정확). 3D 객체 탐지에서는 점추정 대신 베이지안 샘플링 최적화기를 비교했습니다.</p></div>
+          <div><b>어려운 조건을 환경별로 분리</b><p>초과 용량 · 많은 토픽 · 적은 문서 · 대규모 미니배치 잡음을 환경마다 하나씩 키워 샘플러가 실패하는 조건을 확인했습니다. 잡음 문서 50개 조건은 Perplexity로 비교했습니다.</p></div>
+          <div><b>차량 연산 · 메모리 제약 안에서 경량화</b><p>임베디드 제약을 전제로 3.8B sLLM을 고르고 LoRA로 파라미터의 0.01%만 학습해 평균 응답 1.145초를 얻었습니다. QLoRA 4bit 양자화 + CAG 결합도 지표 6종으로 비교했습니다.</p></div>
         </div>
         <div class="trk" id="avgrid"></div>
       </div>
@@ -502,7 +515,7 @@ html{scrollbar-color:var(--base-2) var(--bg)}
     <div class="wrap sgrid">
       <div class="sh">
         <h2>연구 · 논문</h2>
-        <p>KCI 등재지 제1저자 논문 2편 게재 · SCI급 학술지 1편 투고 준비 중 · 한국연구재단 석사과정생연구장려금 연구책임자</p>
+        <p>KCI 등재지 제1저자 논문 2편 게재 · 투고 준비 2편(SCI급 1, KCI 1) · 한국연구재단 석사과정생연구장려금 연구책임자</p>
       </div>
       <div class="sb">
         <div class="refs" id="papers"></div>
@@ -511,7 +524,7 @@ html{scrollbar-color:var(--base-2) var(--bg)}
         <table class="tbl">
           <thead><tr><th>과제</th><th>역할</th><th>과제번호 · 기간</th></tr></thead>
           <tbody>
-            <tr><td>TNTM을 활용한 임베디드 시스템 문서의 주제 흐름 분석</td><td class="pi">한국연구재단 석사과정생연구장려금 · 연구책임자(PI)</td><td class="k">RS-2025-25437035 · 2025–2026</td></tr>
+            <tr><td>TNTM을 활용한 임베디드 시스템 문서의 주제 흐름 분석 · 성과 <a class="tl" href="#/p/emerg">P16</a></td><td class="pi">한국연구재단 석사과정생연구장려금 · 연구책임자(PI)</td><td class="k">RS-2025-25437035 · 2025–2026</td></tr>
             <tr><td>베이지안 추론을 위한 적응적 가중 SGMCMC 알고리즘</td><td>한국연구재단 · 참여연구원</td><td class="k">RS-2024-00352792 · 2024–2027</td></tr>
             <tr><td>초격차산업기반 표준전문인력양성</td><td>KIAT · 참여연구원 · 표준학 융합전공</td><td class="k">RS-2025-02215617 · 2025–2026</td></tr>
           </tbody>
@@ -534,8 +547,8 @@ html{scrollbar-color:var(--base-2) var(--bg)}
   <section class="sec" id="projects">
     <div class="wrap sgrid">
       <div class="sh">
-        <h2>전체 프로젝트<span class="cnt" id="pcount">15건</span></h2>
-        <p>P 번호는 고정 주소입니다. 번호 옆 점(●)은 이 페이지의 지원 근거로 고른 프로젝트입니다.</p>
+        <h2>전체 프로젝트<span class="cnt" id="pcount">16건</span></h2>
+        <p>번호 옆 점(●)은 위 대표 프로젝트입니다. 행을 누르면 상세 내용으로 이동합니다.</p>
       </div>
       <div class="sb">
         <div class="filters" id="filters" role="group" aria-label="분류 필터"></div>
@@ -550,7 +563,7 @@ html{scrollbar-color:var(--base-2) var(--bg)}
     <div class="wrap sgrid">
       <div class="sh">
         <h2>역량</h2>
-        <p>도구 이름보다, 직접 구현해 본 것과 비교 기준으로 써 본 것을 나눠 적었습니다.</p>
+        <p>파란 글씨는 논문 · 프로젝트에서 직접 구현한 알고리즘입니다.</p>
       </div>
       <div class="sb">
         <dl class="dl">
@@ -569,7 +582,9 @@ html{scrollbar-color:var(--base-2) var(--bg)}
     <div class="wrap sgrid">
       <div class="sh">
         <h2>이력</h2>
-        <p>LLM 어댑터, 토픽 모델 모수화, 샘플러 추론기, 3D 탐지 손실 함수와 최적화기까지 모델 내부를 구성요소 단위로 바꿔 가며 검증해 왔습니다.</p>
+        <p>연구 주제</p>
+        <ul class="topics"><li>SGMCMC 샘플러 설계 · 베이지안 추론</li><li>전이 네트워크 토픽 모델 (TNTM · BNTM)</li><li>LoRA 기반 sLLM 파인튜닝 · RAG</li><li>LightGCN 추천 실험 · 국제 표준 데이터 정규화</li></ul>
+        <p style="margin-top:14px">현재 BNTM 확장 연구 진행 중</p>
       </div>
       <div class="sb tline">
         <dl class="dl">
@@ -607,7 +622,7 @@ html{scrollbar-color:var(--base-2) var(--bg)}
     <div class="wrap sgrid">
       <div class="sh" style="position:static">
         <h2>연락하기</h2>
-        <p class="lead">면접 · 커피챗 · 연구 협업 모두 환영합니다. 메일로 연락 주시면 빠르게 답장드립니다.</p>
+        <p class="lead">메일로 연락 주세요. 이력서와 경력기술서는 아래에서 받을 수 있습니다.</p>
       </div>
       <div class="sb">
         <a class="mailbig" href="mailto:dayun0405@gmail.com">dayun0405@gmail.com</a>
@@ -619,7 +634,7 @@ html{scrollbar-color:var(--base-2) var(--bg)}
       </div>
       <div class="foot" style="grid-column:1/-1">
         <span>© 2026 김다연</span>
-        <nav aria-label="하단 메뉴"><a href="#fit">지원 근거</a><a href="#research">연구</a><a href="#projects">프로젝트</a><a href="#skills">역량</a><a href="#about">이력</a><a href="#code">코드</a></nav>
+        <nav aria-label="하단 메뉴"><a href="#fit">대표 프로젝트</a><a href="#research">연구</a><a href="#projects">프로젝트</a><a href="#skills">역량</a><a href="#about">이력</a><a href="#code">코드</a></nav>
       </div>
     </div>
   </section>
@@ -656,22 +671,27 @@ const CATMAP={field:{n:'실무'},stat:{n:'통계·ML'},nlp:{n:'NLP·LLM'},db:{n:
 
 const PAPERS=[
  {st:'ok', who:'제1저자 · 2026', tag:'게재', t:'AWSGLD를 이용한 전이 네트워크 토픽 모델 추론',
-  src:'JKDAS 28(1), 109–121 · 한국자료분석학회지',
-  p:'노이즈가 많은 문서 집합에서도 주제 변화를 안정적으로 추적하는 베이지안 토픽 모델. 기존 방식 대비 토픽 다양성 0.48 → 0.96, 노이즈 50개 조건에서 Perplexity 약 10배 우수.',
+  src:'한국자료분석학회지 28(1), 109–121',
+  p:'잡음 문서가 섞인 문서 집합에서 문장 간 토픽 전이를 추정하는 베이지안 토픽 모델. 기존 방식 대비 토픽 다양성 0.48 → 0.96, 잡음 문서 50개 조건에서 Perplexity 약 10배 개선.',
   meth:'TNTM · AWSGLD · SGMCMC · PyTorch',
   doi:'10.37727/jkdas.2026.28.1.109',
   go:'#/p/tbt'},
  {st:'ok', who:'제1저자 · 2025', tag:'게재', t:'자율주행 도메인에서 LoRA 기반 sLLM 파인튜닝 연구',
-  src:'JKDAS 27(3), 769–780 · 한국자료분석학회지',
-  p:'자원이 제한된 임베디드 환경에서도 도메인 특화 응답 품질을 확보하는 소형 LLM 학습 방법. 전체 파라미터의 약 0.01%만 조정해 검색 증강 대비 ROUGE-1 0.0888 → 0.1495, 평균 응답 1.145초.',
+  src:'한국자료분석학회지 27(3), 769–780',
+  p:'임베디드 환경을 전제로 3.8B sLLM을 LoRA로 파인튜닝. 전체 파라미터의 약 0.01%만 학습해 같은 조건의 RAG 대비 ROUGE-1 0.0888 → 0.1495, 평균 응답 1.145초.',
   meth:'LoRA · Phi-4-mini(3.8B) · RAG · PyTorch',
   doi:'10.37727/jkdas.2025.27.3.769',
   go:'#/p/lora'},
  {st:'pend', who:'제1저자 · 석사 학위논문', tag:'투고 준비 중', t:'Fixed-K Shrinkage BNTM with AWSGHMC Inference',
   src:'SCI급 학술지 투고 준비 중 · Kim, D. & Cheon, S.',
-  p:'토픽 개수를 미리 정하지 않아도 데이터가 스스로 주제 수를 찾는 토픽 모델. 검증 목적이 다른 시뮬레이션 환경 5종(K_true 8~40)에서 전부 정확 복원, 기존 샘플러는 과다·과소 추정.',
+  p:'토픽 수를 미리 정하지 않아도 활성 토픽 수를 데이터로 정하는 토픽 모델. 정답을 아는 모의 말뭉치를 환경 5종으로 생성해 검증했고, 다섯 환경 모두 10개 seed에서 토픽 수를 정확히 복원.',
   meth:'BNTM · AWSGHMC · Logistic-Normal · Sparse Prior · PyTorch',
-  go:'#/p/bntm'}
+  go:'#/p/bntm'},
+ {st:'pend', who:'제1저자 · 2026', tag:'투고 예정', t:'전이 네트워크 토픽 모델을 이용한 임베디드 기술의 성장 예측',
+  src:'한국자료분석학회지 투고 예정 · 김다연, 전수영',
+  p:'논문 초록 114,066건과 미국 특허 21,028건에서 3년 뒤 성장할 기술 토픽을 예측. 토픽 비중 · 인용 변수와 TNTM 전이 구조 변수 22개로 만든 로지스틱 회귀 모형이 과거 자료만으로 학습하는 평가에서 AUC 논문 0.876, 특허 0.746.',
+  meth:'TNTM · AWSGLD · L2 로지스틱 회귀 · rolling-origin 평가',
+  go:'#/p/emerg'}
 ];
 
 const P=[
@@ -679,7 +699,7 @@ const P=[
  id:'farm', cat:'field', yr:'2023–24',
  title:'작물 생육 센서 데이터 시계열 분석',
  meta:'JERESFARM 데이터 분석 인턴 · 2023.12 – 2024.03 · 팀 2명',
- sum:'하루 1회 수기 측정으로 관측이 부족한 생육 데이터에서 최적 생장 환경 도출을 시도하고, 그 한계를 정량 검증한 인턴 실무 프로젝트.',
+ sum:'하루 1회 수기 측정으로 쌓인 생육 데이터로 최적 생장 환경을 찾으려 했고, 이 데이터로는 결론을 낼 수 없다는 점을 검정으로 확인한 인턴 프로젝트.',
  techs:['Python','scikit-learn','statsmodels','ARIMA','VAR','VECM','Lasso'],
  repo:null
 },
@@ -687,29 +707,29 @@ const P=[
  id:'crop', cat:'field', yr:'2024',
  title:'농촌진흥청 공공 데이터 기반 6종 작물 다중 분류',
  meta:'JERESFARM 인턴 후속 · 모델 6종 비교 · LGBM 최종 선정',
- sum:'현장 데이터의 관측 한계를 근거로 공공 데이터로 방향을 바꿔, 분류 모델 6종을 비교하고 임계 구간까지 찾은 프로젝트.',
+ sum:'현장 데이터 대신 농촌진흥청 공공 데이터로 6종 작물 분류 모델 6개를 비교하고, 환경 변수별 임계 구간을 찾은 프로젝트.',
  techs:['Python','LGBM','Random Forest','Bagging','SVM','K-NN','Decision Tree']
 },
 {
  id:'bntm', cat:'stat', yr:'2025–26',
  title:'Fixed-K Shrinkage BNTM with AWSGHMC Inference',
- meta:'석사 학위논문 · SCI급 학술지 투고 준비 중 · 제1저자 · 시뮬레이션 환경 5종 설계',
- sum:'정답 토픽을 알고 있는 시뮬레이션 환경 5종을 직접 설계해 복원 능력을 검증하고, 토픽 수 K를 미리 정해야 하는 문제와 노이즈가 섞이면 이점이 사라지는 문제를 해결한 석사 학위논문.',
+ meta:'석사 학위논문 · SCI급 학술지 투고 준비 중 · 제1저자 · 모의 말뭉치 생성기 설계',
+ sum:'정답 토픽을 아는 모의 말뭉치를 환경 5종으로 생성해 샘플러의 복원 성능을 검증한 석사 학위논문. 토픽 수 K를 미리 정해야 하는 문제와, 잡음이 섞이면 기존 모델의 이점이 사라지는 문제를 다룸.',
  techs:['Python','PyTorch','NumPy','SciPy','Logistic-Normal','AWSGHMC'],
  repo:{name:'bntm-topic-model · 심사 중 비공개'}
 },
 {
  id:'lora', cat:'nlp', yr:'2025',
  title:'자율주행 도메인에서 LoRA 기반 sLLM 파인튜닝 연구',
- meta:'JKDAS 27(3), 769–780 게재 · 제1저자 · BDD-X 주행 영상 6,970개 · 주석 26,228개',
- sum:'임베디드 환경의 자원 제약 아래에서 도메인 특화 sLLM의 응답 품질을 높이기 위해, LoRA 파인튜닝과 RAG를 정량 비교한 학술지 게재 연구.',
+ meta:'한국자료분석학회지 27(3) 게재 · 제1저자 · BDD-X 주행 영상 6,970개 · 주석 26,228개',
+ sum:'임베디드 자원 제약을 전제로 도메인 특화 sLLM의 응답 품질을 높이기 위해 LoRA 파인튜닝과 RAG를 같은 조건에서 비교한 학술지 게재 연구.',
  techs:['Python','PyTorch','LoRA','Phi-4-mini','RAG','BDD-X']
 },
 {
  id:'sgmcmc', cat:'stat', yr:'2025',
  title:'SGMCMC 기반 3D 객체 탐지 최적화',
  meta:'KITTI · OpenPCDet · PointPillars · CT-Stack · GCIoU',
- sum:'점추정만 가능한 Adam 기반 학습의 한계를 두고, 베이지안 샘플링 기반 대안을 동일 조건에서 검증한 수업 프로젝트.',
+ sum:'점추정만 하는 Adam 학습 대신 베이지안 샘플링 최적화기를 같은 조건에서 비교한 수업 프로젝트.',
  techs:['PyTorch','OpenPCDet','KITTI','CUDA','SGHMC','SGLD','SGNHT'],
  repo:{name:'GCIoU-SGMCMC-3D-Detection',url:'https://github.com/Kim-Da-yeon/GCIoU-SGMCMC-3D-Detection'}
 },
@@ -717,28 +737,28 @@ const P=[
  id:'taxi', cat:'stat', yr:'2023',
  title:'택시 수요 분석 기반 배차 전략',
  meta:'통계학술제 최우수상 · 팀 3명 · QGIS 시각화 · 분석 코드 구현 담당',
- sum:'요금 인상 이후의 수요·공급 불균형을 자치구 단위로 군집화해 배차 전략을 제안한 분석.',
+ sum:'요금 인상 이후 생긴 수요·공급 불균형을 자치구 단위로 군집화해 배차 전략을 제안한 분석.',
  techs:['Python','R','QGIS','Ward.D','계층적 군집','공공데이터']
 },
 {
  id:'dorm', cat:'stat', yr:'2025',
  title:'대학 기숙사 운영 유형 분류 (대학알리미 공시 데이터)',
  meta:'2025 대학알리미 데이터 아이디어 공모전 참가작 · 팀 4명 · 데이터 수집·전처리 · 지표 정의 · 발표 담당',
- sum:'대학 공시 데이터로 기숙사 수용률과 이익률을 지표화하고, 운영 유형을 4분면으로 분류한 공공데이터 분석.',
+ sum:'대학 공시 데이터로 기숙사 수용률과 이익률 지표를 정의하고 운영 유형을 4분면으로 분류한 분석.',
  techs:['Python','공공데이터','지표 설계','4분면 분류','로지스틱 회귀','데이터 시각화']
 },
 {
  id:'tbt', cat:'nlp', yr:'2025',
  title:'AWSGLD-TNTM 기반 미국 자율주행·자동차 TBT 규제 분석',
  meta:'Federal Register 160건 · K=8 토픽 · 연도별 전이 행렬',
- sum:'LDA의 한계를 넘어 규제 문서의 주제 흐름을 도출하고, 5년간의 규제 패러다임을 3단계로 정량 규명한 분석.',
+ sum:'미국 규제 문서 원문에 AWSGLD-TNTM을 적용해 주제 흐름을 추정하고, 5년간의 규제 변화를 3단계로 나눈 분석.',
  techs:['Python','PyTorch','NumPy','AWSGLD-TNTM','토픽 모델링','정책 분석']
 },
 {
  id:'sony', cat:'nlp', yr:'2024–25',
  title:'sLLM + Advanced RAG 기반 SONY 브랜드 AI 챗봇',
  meta:'제품 매뉴얼 6종 · Re-rank · 페이지 단위 출처 표기 · Tavily Web-Search fallback',
- sum:'분리된 제품 설명서를 하나의 창구로 묶고, sLLM의 할루시네이션을 출처 표기로 통제한 챗봇 구현.',
+ sum:'제품별로 나뉜 설명서를 한 창구에서 검색하고, 답변마다 근거 페이지를 함께 보여 주는 RAG 챗봇.',
  techs:['Python','LangChain','Chroma','bge-m3','KoAlpaca-7b','PyMuPDF','Streamlit'],
  repo:{name:'SONY_Chatbot',url:'https://github.com/Kim-Da-yeon/SONY_Chatbot'}
 },
@@ -746,7 +766,7 @@ const P=[
  id:'std', cat:'nlp', yr:'2025',
  title:'국제 메타데이터 표준 통합 LLM 기반 그래프 증강 추천시스템',
  meta:'LightGCN 추천 모델 · Netflix 17,366건 · seed 10회 대응표본 t-검정',
- sum:'LLMRec으로 생성한 Netflix 메타데이터를 국제 표준으로 정규화하고, 정규화 전후 임베딩으로 LightGCN 추천 모델을 직접 학습·비교해 하위 태스크 성능 손실이 없음을 검증한 프로젝트.',
+ sum:'LLMRec으로 생성한 Netflix 메타데이터를 국제 표준 코드로 정규화하고, 정규화 전후로 LightGCN 추천 모델을 학습해 성능 손실이 없는지 검정한 프로젝트.',
  techs:['Python','LLM','LightGCN','ISO 3166-1','BCP 47','메타데이터'],
  repo:{name:'llmrec-metadata-standard',url:'https://github.com/Kim-Da-yeon/llmrec-metadata-standard'}
 },
@@ -754,28 +774,28 @@ const P=[
  id:'cag', cat:'nlp', yr:'2025',
  title:'파인튜닝과 CAG 결합 대화형 AI 성능 개선 연구',
  meta:'학부생 연구원 프로그램 멘토 · 2025.03 – 2025.09 · 멘티 1명',
- sum:'파인튜닝 단독 모델의 출처 부재와 할루시네이션 문제를 캐시 증강 생성으로 보완한 FT+CAG 구조를 제안하고, 기후정책 도메인에서 6종 지표로 검증한 공동 연구.',
+ sum:'파인튜닝 단독 모델의 출처 부재와 할루시네이션을 캐시 증강 생성(CAG)으로 보완하고, 기후정책 도메인에서 지표 6종으로 비교한 공동 연구.',
  techs:['QLoRA','CAG','BLEU','ROUGE','BERTScore']
 },
 {
  id:'gan', cat:'stat', yr:'2023',
  title:'GAN 기반 손글씨 폰트 생성 및 로봇팔 제어',
  meta:'다가치 로봇 소모임 · 팀 2명 · zi2zi 기반 GAN · WLKATA Mirobot',
- sum:'임의의 한글 손글씨를 학습·생성해 로봇팔이 쓰게 하는 통합 파이프라인을 시도한 프로젝트.',
+ sum:'한글 손글씨를 GAN으로 생성하고 로봇팔이 따라 쓰게 하는 파이프라인을 시도한 프로젝트.',
  techs:['Python','TensorFlow','GAN','zi2zi','pix2pix','RoboDK','WLKATA Mirobot']
 },
 {
  id:'db', cat:'db', yr:'2023',
  title:'자전거 대여 시스템 데이터베이스 설계',
  meta:'MySQL · E-R 다이어그램 · 정규화 · 복합 SQL',
- sum:'요구사항 명세에서 출발해 논리·물리 모델을 설계하고 데이터 무결성과 조회 효율을 확보한 수업 프로젝트.',
+ sum:'요구사항 명세에서 논리·물리 모델까지 설계하고 정규화로 중복과 갱신 이상을 없앤 수업 프로젝트.',
  techs:['MySQL','SQL','E-R 모델링','정규화','JOIN','서브쿼리']
 },
 {
  id:'samc', cat:'stat', yr:'2025',
  title:'SAMC 알고리즘 R 패키지화',
  meta:'순수 R · Rcpp/C · reticulate/Python 3종 백엔드',
- sum:'같은 SAMC 알고리즘을 순수 R · Rcpp/C · reticulate/Python 세 가지로 각각 재구현해 설치·호출 가능한 패키지로 만든 프로젝트.',
+ sum:'SAMC 알고리즘을 순수 R · Rcpp/C · reticulate/Python 세 방식으로 구현해 설치 가능한 R 패키지로 만든 프로젝트.',
  techs:['R','Rcpp','reticulate','devtools','SAMC','MCMC'],
  repo:{name:'mcmc-r-packages',url:'https://github.com/Kim-Da-yeon/mcmc-r-packages'}
 },
@@ -783,17 +803,25 @@ const P=[
  id:'pika', cat:'stat', yr:'2025',
  title:'강화학습 기반 피카츄 배구 Agent 학습',
  meta:'gymnasium · 18개 이산 행동 · Epsilon-Greedy 1.0 → 0.1',
- sum:'규칙 기반 상대 AI를 상대로 배구 전략을 스스로 학습하는 표 기반 Q-learning 에이전트 설계.',
+ sum:'규칙 기반 상대 AI와 경기하며 배구 전략을 학습하는 표 기반 Q-learning 에이전트.',
  techs:['Python','gymnasium','Q-learning','Epsilon-Greedy','보상 설계'],
  repo:{name:'Pykachu-Volleyball',url:'https://github.com/Kim-Da-yeon/Pykachu-Volleyball'}
+},
+{
+ id:'emerg', cat:'stat', yr:'2025–26',
+ title:'전이 네트워크 토픽 모델을 이용한 임베디드 기술의 성장 예측',
+ meta:'한국자료분석학회지 투고 예정 · 제1저자 · 논문 초록 114,066건 · 미국 특허 21,028건 · 연구재단 과제(연구책임자) 성과',
+ sum:'임베디드 분야 논문 초록과 특허에 TNTM을 적용하고, 토픽 비중 · 인용 · 전이 구조 변수로 3년 뒤 성장할 기술 토픽을 예측하는 모형을 만든 연구. 과거 자료로만 학습하는 rolling-origin 평가에서 AUC 논문 0.876, 특허 0.746.',
+ techs:['Python','PyTorch','TNTM','AWSGLD','로지스틱 회귀','OpenAlex','BigQuery']
 }
 ];
 
-/* 상세 페이지 본문 — 주요 결과 · 프로젝트 상세 · 지표 */
+/* 상세 페이지 근거 자료 */
 const EV={
  tbt:[['논문 DOI','https://doi.org/10.37727/jkdas.2026.28.1.109']],
  lora:[['논문 DOI','https://doi.org/10.37727/jkdas.2025.27.3.769']],
  bntm:[['학회 포스터 PDF','assets/poster-bntm-2026.pdf'],['저장소 게재 후 공개','']],
+ emerg:[['논문 투고 예정 · 코드 게재 후 공개','']],
  cag:[['포스터 PDF','']],
  taxi:[['발표 포스터 PDF','assets/poster-taxi-2023.pdf']],
  dorm:[['공모전 제출 카드뉴스 11장','']],
@@ -808,10 +836,10 @@ const EV={
 
 const D={
 cag:{
- r:['파인튜닝 단독 모델은 실제 근거 문서를 인용·저장하기 어렵고, 학습 범위를 벗어난 질문에 사실과 다른 답을 생성할 위험이 있었습니다.',
-    'QLoRA 4bit 양자화로 도메인 적합성을 높이고, 외부 문서를 미리 KV 캐시에 올려 두어 검색 없이 바로 응답하는 CAG를 결합했습니다.',
-    '질문 5개 × 5회 반복 실행, BLEU · ROUGE · BERTScore · CHRF · METEOR · TER 6종 지표에서 FT 단독 대비 품질 · 일관성 · 문맥 반영이 전반적으로 우수했습니다.'],
- d:['에코업혁신융합대학사업단 학부생 연구원 프로그램에서 대학원생 멘토로 참여해 멘티 1명과 공동으로 수행한 연구입니다. 기후정책 도메인을 대상으로 파인튜닝 단독 구조와 FT+CAG 결합 구조를 같은 질문 세트로 비교했습니다.'],
+ r:['파인튜닝 단독 모델은 근거 문서를 인용하지 못하고, 학습 범위 밖 질문에 사실과 다른 답을 냈습니다.',
+    'QLoRA 4bit 양자화로 도메인에 맞추고, 외부 문서를 KV 캐시에 미리 올려 검색 없이 답하는 CAG를 붙였습니다.',
+    '질문 5개 × 5회 반복, BLEU · ROUGE · BERTScore · CHRF · METEOR · TER 6종 지표에서 FT 단독보다 품질 · 일관성 · 문맥 반영이 높았습니다.'],
+ d:['에코업혁신융합대학사업단 학부생 연구원 프로그램에 대학원생 멘토로 참여해 멘티 1명과 수행한 연구입니다. 기후정책 도메인에서 파인튜닝 단독 구조와 FT+CAG 구조를 같은 질문 세트로 비교했습니다.'],
  panel:`<div class="panel"><div class="cap">비교 구조</div>
   <div class="phases">
     <div><span class="yr">기준</span><span>QLoRA 파인튜닝 단독</span></div>
@@ -820,178 +848,229 @@ cag:{
   </div></div>`
 },
 farm:{
- r:['개체 18개 · 관측 20일 · 하루 1회 수기 측정 구조에서 종속변수 관측이 크게 부족하다는 점을 확인했습니다.',
-    'ARIMA · VAR · VECM 여러 시계열 기법으로 최적 생장 환경 도출을 시도하고, 결측 구간 보간 후 유의성 검정으로 독립변수가 유의한지 정량 검증했습니다.',
-    'Lasso 회귀로 유의 변수 15개 후보를 추출하고, 종속변수 관측 부족이라는 구조적 한계를 결론에 명시했습니다.',
-    '다음 작물인 딸기의 정확한 측정을 위해 회사 인원과 함께 농장 사전 조사를 진행하고 카메라 센서 구성 방식을 협의했습니다.'],
- d:['회사에 데이터 분석팀이 없어 외부 자문을 병행하고 자체 조사로 분석을 수행했습니다. 팀원 2명이 최적 환경 도출과 데이터 구축을 위한 센서 환경 세팅 방안 결정을 공동으로 담당했습니다.',
-    '작물 생육 데이터가 하루 1회 사람이 줄자로 직접 측정하는 수준에 그쳐, 예측 모델을 세우기 전에 이 데이터로 결론을 낼 수 있는지부터 검증하는 방향으로 과제를 정리했습니다. 데이터 한계의 원인을 측정 설계 단계로 규명한 것이 이 프로젝트의 결론입니다.'],
+ r:['개체 18개 · 관측 20일 · 하루 1회 수기 측정이라 종속변수 관측이 부족했습니다.',
+    'ARIMA · VAR · VECM으로 최적 생장 환경을 추정하고, 결측 구간 보간 후 독립변수의 유의성을 검정했습니다.',
+    'Lasso 회귀로 변수 후보 15개를 추렸고, 종속변수 관측 부족이라는 한계를 결론에 적었습니다.',
+    '다음 작물인 딸기를 정확히 측정하기 위해 회사와 농장 사전 조사를 하고 카메라 센서 구성을 협의했습니다.'],
+ d:['회사에 데이터 분석팀이 없어 외부 자문과 자체 조사로 분석했습니다. 팀원 2명이 최적 환경 도출과 센서 환경 설정 방안을 함께 맡았습니다.',
+    '생육 데이터는 사람이 하루 한 번 줄자로 잰 값이었습니다. 그래서 예측 모델보다 먼저, 이 데이터로 결론을 낼 수 있는지를 검정했습니다. 결론은 측정 설계 단계의 한계였습니다.'],
  panel:`<div class="panel"><div class="cap">적용한 시계열 · 변수 선택 기법</div>
   <div class="cand">
-    <div class="on"><span><span class="nm">Lasso</span><span class="ro">규제 회귀 · 변수 선택 내장</span></span><span class="pick">유의 변수 15개 후보 추출</span></div>
+    <div class="on"><span><span class="nm">Lasso</span><span class="ro">규제 회귀 · 변수 선택</span></span><span class="pick">변수 후보 15개</span></div>
     <div><span><span class="nm">ARIMA</span><span class="ro">단변량 시계열</span></span><span></span></div>
     <div><span><span class="nm">VAR</span><span class="ro">다변량 시계열</span></span><span></span></div>
     <div><span><span class="nm">VECM</span><span class="ro">공적분 · 오차수정</span></span><span></span></div>
   </div>
-  <div class="panel-foot">종속변수 관측 부족으로 예측 정확도 기준의 우열 판정은 불가능. 독립변수의 유의성을 검증하는 데 사용.</div></div>`},
+  <div class="panel-foot">종속변수 관측이 부족해 예측 정확도로 기법의 우열을 가릴 수 없었고, 독립변수 유의성 검정에 사용.</div></div>`},
 
 crop:{
- r:['현장 데이터의 한계를 근거로 농촌진흥청 공공 데이터로 방향을 바꿔 6종 작물 다중 분류로 과제를 다시 잡았습니다.',
+ r:['현장 데이터의 한계를 근거로 농촌진흥청 공공 데이터로 바꿔 6종 작물 다중 분류로 과제를 다시 정했습니다.',
     'Decision Tree · SVM · K-NN · Bagging · Random Forest · LGBM 6개 모델을 비교했습니다.',
-    'LGBM을 최종 선정했습니다. Test F1은 0.81이지만 Train–Test 격차가 세 앙상블 중 가장 작아 과적합 위험이 최소였습니다.',
-    'Feature Importance로 온도 &gt; 일사량 &gt; CO₂ 순의 영향력을 규명하고, Partial Dependence Plot으로 온도 25°C · CO₂ 400ppm 등 변수별 임계 구간을 도출했습니다.'],
- d:['정확도 최고치가 아니라 일반화 성능을 기준으로 모델을 골랐습니다. 세 앙상블 모델의 Train 정확도와 Test 정확도 격차를 함께 비교해 과적합 위험이 가장 작은 쪽을 선택했습니다.',
-    '선택한 모델에서 변수 영향력 순위와 변수별 임계 구간까지 해석해, 현장에서 조절 가능한 환경 값으로 연결했습니다.'],
+    'LGBM을 골랐습니다. Test F1은 0.81이고, 세 앙상블 가운데 Train–Test 격차가 가장 작았습니다.',
+    'Feature Importance로 온도 &gt; 일사량 &gt; CO₂ 순의 영향력을, Partial Dependence Plot으로 온도 25°C · CO₂ 400ppm 등 임계 구간을 찾았습니다.'],
+ d:['최고 정확도보다 일반화 성능을 기준으로 모델을 골랐습니다. 세 앙상블의 Train · Test 정확도 격차를 비교해 과적합 위험이 가장 작은 모델을 택했습니다.',
+    '고른 모델에서 변수 영향력 순위와 임계 구간을 해석해 현장에서 조절할 수 있는 환경 값으로 정리했습니다.'],
  panel:`<div class="panel"><div class="cap">환경 변수 영향력 · Feature Importance 기준</div>
   <p class="axis">온도 &gt; 일사량 &gt; CO₂</p>
   <div class="panel-foot">PDP 기반 임계 구간 — 온도 25°C · CO₂ 400ppm. 최종 모델 LGBM (Test F1 0.81).</div></div>`},
 
 bntm:{
- r:['정답 토픽이 알려진 상태에서 복원 능력을 측정하기 위해, 검증 목적이 서로 다른 시뮬레이션 환경 5종(K_true 8~40)을 직접 설계했습니다. 실제 데이터에는 정답 토픽이 없어 모델 간 비교가 불가능하기 때문입니다.',
-    '선행 연구(JKDAS 28(1), AWSGLD)에서 남은 두 한계, 토픽 수 K를 미리 정해야 하는 것과 노이즈가 섞이면 이점이 사라지는 것을 문제로 삼아 확장했습니다.',
-    'Logistic-Normal 모수화로 Simplex 제약을 무제약 공간으로 옮기고, Sparse Dirichlet Prior로 활성 토픽 수를 데이터가 결정하도록 했습니다.',
-    '5개 환경 전부에서 활성 토픽 수를 정확히 복원했습니다 (K_eff = K_true, 10 seed 편차 0).',
-    '다른 샘플러는 로컬 트랩에 갇혀 과다 또는 과소 추정했습니다. K_true=20 환경에서 MH 23.4(과다) · SGHMC 15.4 · SGLD 14.7(과소), Hellinger 거리 0.09~0.17.',
-    'FAERS · NTSB · 모의실험 세 도메인 모두에서 AWSGHMC가 최저 에너지에 도달했습니다.'],
- d:['구현을 마친 뒤에도 seed와 설정에 따라 토픽 구조가 크게 흔들렸습니다. 처음에는 구현을 의심해 코드와 수식을 재확인하고 학습률 · 하이퍼파라미터 · prior를 바꿔가며 실험했지만 해결되지 않았고, prior를 수정하면 생성 구조와 추론 과정까지 함께 손봐야 해서 작업량만 커졌습니다. 결국 문제의 핵심이 튜닝이 아니라 TNTM 구조 자체에 있다고 판단하고 모델을 다시 설계했습니다.',
-    '토픽 모델링은 정답 라벨이 없어 모델이 실제로 잘 작동하는지 검증하기 어렵다는 근본적 한계가 있습니다. 이 문제를 해결하기 위해 진짜 토픽 수를 알고 있는 시뮬레이션 환경 5종(K_true 8~40)을 직접 설계했고, 파라미터 중첩 · 희소 토픽 · 토픽 수 변동 같은 까다로운 조건을 통제했습니다. AWSGHMC가 다섯 환경 모두에서 활성 토픽 수를 정확히 복원하는지(K_eff = K_true) 확인한 뒤에야 실제 코퍼스에 적용했습니다. 이 검증 체계는 LDA · HTMM · TNTM · BNTM 전반에 재사용할 수 있습니다. 연구 가설 수립, 모델 구조 설계, 데이터 생성, 평가 지표 정의, 샘플러 구현, 실험, 논문 작성까지 지도교수 자문 하에 전 과정을 직접 수행했습니다.',
-    'Logistic-Normal 모수화 · Sparse Dirichlet Prior · AWSGHMC 하이브리드 추론을 고른 이유는 세 가지입니다. Simplex 제약이 경사 기반 추론의 근본 걸림돌이라 무제약 공간 변환이 필요했고, K 사전 고정 문제를 데이터가 결정하게 하려면 희소 사전분포가 이론적으로 가장 안전하며, 이산 잠재변수와 연속 모수를 각각 다른 방식으로 처리해야 로컬 트랩을 넘을 수 있기 때문입니다.',
-    '검증은 두 단계로 나눴습니다. 먼저 정답을 아는 시뮬레이션 환경 5종에서 복원 정확도를 재고, 그다음 FAERS 이상반응 보고서와 NTSB 사고 서술문이라는 실제 코퍼스에서 에너지 수렴을 확인했습니다. 2026년 한국자료분석학회 하계학술대회 포스터논문 부문 장려상을 받았고, 현재 SCI급 학술지 투고를 준비하고 있습니다.'],
- panel:`<div class="panel"><div class="cap">활성 토픽 복원 개수 · 시뮬레이션 환경 예시 (정답 K_true = 20)</div>
+ r:['실제 데이터에는 정답 토픽이 없어 샘플러를 비교할 기준이 없습니다. 그래서 BNTM 생성 과정으로 정답 토픽 · 전이 · 비중을 아는 모의 말뭉치를 만드는 생성기를 직접 설계했습니다.',
+    '말뭉치 설계: 문서 800건(소표본 200, 대규모 10,000), 문서당 문장 수 4+Poisson(12), 문장 길이 4+Poisson(30), 어휘 3,000(대규모 5,000). 토픽마다 앵커 단어 30개에 확률 질량 약 0.8을 둡니다.',
+    '토픽을 그룹으로 묶고 문서는 한 그룹 안에서만 전이하게 해(그룹 간 전이 0, 자기 전이 약 0.95) 사후분포를 일부러 다봉으로 만들었습니다. 샘플러가 한 그룹만 찾고 멈추는 로컬 트랩을 재현하기 위해서입니다.',
+    '검증 목적이 다른 환경 5종을 만들었습니다: 기본(K_true 8), 초과 용량(K 40 ≫ K_true 8), 다수 토픽(20), 소표본(문서 200), 대규모(40토픽 · 문서 10,000).',
+    'AWSGHMC는 다섯 환경 모두 10개 seed에서 토픽 수를 정확히 복원했습니다. 다른 샘플러는 다수 토픽 환경에서 MH 23.4(과다) · SGHMC 15.4 · SGLD 14.7(과소)로 추정했고, 토픽-단어 Hellinger 거리는 AWSGHMC 0.09~0.17로 가장 작았습니다.',
+    'FAERS 이상반응 보고서와 NTSB 사고 서술문 실데이터에서도 AWSGHMC가 가장 낮은 에너지에 도달했습니다.'],
+ d:['구현 후에도 seed와 설정에 따라 토픽 구조가 크게 달라졌습니다. 처음에는 코드와 수식을 재확인하고 학습률 · 하이퍼파라미터 · prior를 바꿔 실험했지만 해결되지 않았습니다. prior를 고치면 생성 구조와 추론 과정까지 바꿔야 했습니다. 문제가 튜닝이 아니라 TNTM 구조에 있다고 보고 모델을 다시 설계했습니다.',
+    '토픽 모델은 정답 라벨이 없어 모델이 제대로 작동하는지 확인하기 어렵습니다. 그래서 정답을 아는 모의 말뭉치 생성기를 먼저 만들고, 환경마다 하나의 어려움(초과 용량, 많은 토픽, 적은 문서, 미니배치 잡음)만 키워 비교했습니다. 다섯 환경 모두 정확히 복원하는 것을 확인한 뒤 실제 말뭉치에 적용했습니다. 이 생성기와 평가 지표는 LDA · HTMM · TNTM · BNTM 비교에 그대로 쓸 수 있습니다. 가설 수립, 모델 설계, 데이터 생성, 평가 지표 정의, 샘플러 구현, 실험, 논문 작성을 지도교수 자문 아래 모두 맡았습니다.',
+    'Logistic-Normal 모수화 · Sparse Dirichlet Prior · AWSGHMC를 고른 이유는 세 가지입니다. Simplex 제약이 경사 기반 추론을 막아 무제약 공간으로 옮겨야 했고, K를 데이터로 정하려면 희소 사전분포가 필요했고, 이산 잠재변수와 연속 모수를 다른 방식으로 다뤄야 로컬 트랩을 넘을 수 있었습니다.',
+    '2026년 한국자료분석학회 하계학술대회에서 AWSGLD 버전으로 포스터논문 장려상을 받았고, 이후 추론기를 AWSGHMC로 바꿔 SCI급 학술지 투고를 준비하고 있습니다.'],
+ panel:`<div class="panel"><div class="cap">모의 말뭉치 환경 5종 · 정답 토픽 수와 샘플러별 추정 활성 토픽 수 (10 seed 평균)</div>
+  <table class="tbl mini sim"><thead><tr><th>환경</th><th>검증 목적</th><th>K_true</th><th>AWSGHMC</th><th>SGHMC</th><th>SGLD</th><th>MH</th></tr></thead><tbody>
+  <tr><td>기본</td><td>로컬 트랩 탈출</td><td>8</td><td class="pi">8.0</td><td>7.4</td><td>6.9</td><td>14.8</td></tr>
+  <tr><td>초과 용량</td><td>남는 토픽 슬롯 비활성화 (K 40)</td><td>8</td><td class="pi">8.0</td><td>7.8</td><td>7.4</td><td>19.4</td></tr>
+  <tr><td>다수 토픽</td><td>많은 토픽 · 전이 구분</td><td>20</td><td class="pi">20.0</td><td>15.4</td><td>14.7</td><td>23.4</td></tr>
+  <tr><td>소표본</td><td>문서 200건</td><td>8</td><td class="pi">8.0</td><td>7.0</td><td>7.0</td><td>9.4</td></tr>
+  <tr><td>대규모</td><td>문서 10,000건 · 미니배치 잡음</td><td>40</td><td class="pi">40.0</td><td>35.1</td><td>28.1</td><td>44.6</td></tr>
+  </tbody></table>
+  <div class="panel-foot">AWSGHMC만 다섯 환경 모두 10개 seed에서 K_true를 정확히 복원. SGHMC · SGLD는 토픽 8개 환경의 일부 seed에서만 정확.</div></div>
+  <div class="panel"><div class="cap">활성 토픽 복원 개수 · 다수 토픽 환경 (정답 K_true = 20)</div>
   <div class="bar hi"><div class="bar-top"><span class="bar-lab">AWSGHMC (제안)</span><span class="bar-val">20.0</span></div><div class="track"><div class="fill" data-w="85"></div></div></div>
   <div class="bar"><div class="bar-top"><span class="bar-lab">MH</span><span class="bar-val">23.4</span></div><div class="track"><div class="fill" data-w="100"></div></div></div>
   <div class="bar"><div class="bar-top"><span class="bar-lab">SGHMC</span><span class="bar-val">15.4</span></div><div class="track"><div class="fill" data-w="66"></div></div></div>
   <div class="bar"><div class="bar-top"><span class="bar-lab">SGLD</span><span class="bar-val">14.7</span></div><div class="track"><div class="fill" data-w="63"></div></div></div>
-  <div class="panel-foot">정답 20을 AWSGHMC만 정확히 복원. MH는 과다, SGHMC · SGLD는 과소 추정. 5개 환경(K_true 8~40) 전부 K_eff = K_true, 10 seed 편차 0.</div></div>
+  <div class="panel-foot">MH는 과다, SGHMC · SGLD는 과소 추정.</div></div>
   <div class="panel"><div class="cap">학습된 단계 경로 · FAERS</div>
   <div class="plate"><img src="${A}img/bntm-faers-path.png" loading="lazy" decoding="async" alt="FAERS 데이터에서 학습된 토픽 전이 경로 그래프"></div>
-  <div class="panel-foot">경로: 투약 → 적응증 → 증상 → 조치 → 결과. 노드 = 토픽(크기 ∝ √문장 점유), 화살표 = 최강 전이 및 확률.</div></div>`},
+  <div class="panel-foot">경로: 투약 → 적응증 → 증상 → 조치 → 결과. 노드 = 토픽(크기 ∝ √문장 점유), 화살표 = 최강 전이와 확률.</div></div>`},
+
+emerg:{
+ r:['OpenAlex에서 임베디드 관련 12개 구문으로 2002–2025년 논문 초록 114,066건(972,092문장)을, Google BigQuery에서 미국 특허 21,028건(524,424문장)을 모았습니다.',
+    '연도별 전이행렬을 계층 사전분포로 묶은 TNTM을 AWSGLD로 추정했습니다(K=40, 10개 초기값, 5만 회). 문서완성 혼란도는 논문 TNTM 1172 · HTMM 1223 · LDA 2149, 특허 618 · 648 · 1357로 TNTM이 가장 낮았습니다.',
+    '성장 토픽을 "3년 로그 성장률이 그 해 상위 20%"로 정의하고, 데이터 변수 14개(비중 · 확산 · 인용 · 저자)와 전이 구조 변수 8개(유입 · 자기전이 · 유입 출처 · 구조 변화)로 L2 로지스틱 회귀 모형을 만들었습니다.',
+    '결과연도마다 그 이전에 확정된 관측으로만 학습하는 rolling-origin 평가에서 AUC 논문 0.876(95% CI 0.80–0.93), 특허 0.746(0.67–0.81)였습니다. 기준을 상위 10% · 30%로 바꿔도 논문 0.896 · 0.881, 특허 0.743 · 0.724였습니다.',
+    '토픽 모델까지 기준연도마다 다시 추정해 미래 문헌을 완전히 뺀 경우에도 AUC 논문 0.828, 특허 0.691이었습니다.',
+    '논문 모형에서 5년 추세(+0.33) 다음으로 유입 증가(+0.31) · 자기전이(−0.28) · 자기전이 변화(+0.21)가 큰 계수였습니다. 다른 토픽에서 넘어오는 문장이 늘어난 토픽이 성장했습니다.',
+    '2025년까지의 자료로 2028년을 전망하면 전력 설비 고장 감시(예측 확률 0.50), 스마트 에너지 계량(0.48), 대기·화재 감시(0.40)가 상위였고, 세 토픽 모두 엣지 AI에서의 유입이 늘었습니다.'],
+ d:['한국연구재단 석사과정생연구장려금(연구책임자) 과제의 성과입니다. 목표는 두 가지였습니다. 3년 뒤 성장할 기술 토픽을 맞히는 것, 그리고 왜 성장하는지를 문장 사이의 토픽 전이로 설명하는 것입니다.',
+    '예측 평가는 시간 순서를 지켰습니다. 시점을 섞은 교차검증은 미래 정보가 학습에 섞여 성능이 부풀기 때문에, 과거 자료로만 학습해 다음 결과연도를 맞히는 rolling-origin 평가를 논문 13개, 특허 11개 결과연도에 반복했습니다. 같은 토픽이 여러 해 반복 관측되므로 신뢰구간은 토픽 단위 붓스트랩으로 구했습니다. 특허는 공개 지연(약 18개월)을 고려해 2024–2025년을 평가에서 뺐습니다.',
+    '전이 구조 변수 8개는 직접 정의했습니다. 연도별 전이행렬을 방향성 네트워크로 보고, 각 토픽으로 들어오는 연결의 강도 · 출처 · 변화를 측정합니다. 계수의 부호와 크기로 성장 이유를 해석할 수 있어, 특허 지표를 신경망에 넣어 분류만 하는 기존 연구와 다릅니다.',
+    '데이터 수집, 정제, 모델 구현(GPU 샘플러), 변수 정의, 평가 설계, 논문 작성을 맡았습니다. 특허는 BigQuery 무료 사용량 안에서 SQL로 추출했습니다.'],
+ panel:`<div class="panel"><div class="cap">성장 토픽 예측 성능 · rolling-origin 평가</div>
+  <table class="tbl mini sim"><thead><tr><th></th><th>논문 초록</th><th>특허</th></tr></thead><tbody>
+  <tr><td>AUC</td><td class="pi">0.876</td><td class="pi">0.746</td></tr>
+  <tr><td>95% 신뢰구간 (토픽 붓스트랩)</td><td>0.80–0.93</td><td>0.67–0.81</td></tr>
+  <tr><td>평가 연도별 AUC 평균</td><td>0.883</td><td>0.760</td></tr>
+  <tr><td>성장 기준 상위 10% · 30%</td><td>0.896 · 0.881</td><td>0.743 · 0.724</td></tr>
+  <tr><td>토픽 모델도 시점별 재추정</td><td>0.828</td><td>0.691</td></tr>
+  <tr><td>평가 관측 수</td><td>520 (2013–2025)</td><td>429 (2013–2023)</td></tr>
+  </tbody></table>
+  <div class="panel-foot">로지스틱 회귀(L2), 변수 22개 표준화, 성장 토픽 20% 불균형은 관측 가중으로 보정, 벌점 강도는 학습 구간 내부 rolling 검증으로 선택.</div></div>
+  <div class="panel"><div class="cap">전이 구조 변수 8개 · 직접 정의</div>
+  <div class="phases">
+    <div><span class="yr">유입</span><span>다른 토픽 문장 다음에 이 토픽 문장이 오는 정도 · 3년간 유입 증가</span></div>
+    <div><span class="yr">자기전이</span><span>같은 토픽 문장이 이어질 확률 · 그 변화 (낮을수록 다른 기술과 함께 논의)</span></div>
+    <div><span class="yr">유입 출처</span><span>유입이 여러 토픽에 고르게 퍼진 정도 · 출처 토픽들의 최근 성장세</span></div>
+    <div><span class="yr">구조 변화</span><span>현재 전이가 유지될 때의 장기 비중과 현재 비중의 차이 · 새로 생긴 강한 유입 경로 수</span></div>
+  </div></div>
+  <div class="panel"><div class="cap">문서완성 혼란도 (N=0, 10회 평균, 낮을수록 좋음)</div>
+  <div class="bar hi"><div class="bar-top"><span class="bar-lab">TNTM <em>· 논문</em></span><span class="bar-val">1172</span></div><div class="track"><div class="fill" data-w="55"></div></div></div>
+  <div class="bar"><div class="bar-top"><span class="bar-lab">HTMM <em>· 논문</em></span><span class="bar-val">1223</span></div><div class="track"><div class="fill" data-w="57"></div></div></div>
+  <div class="bar"><div class="bar-top"><span class="bar-lab">LDA <em>· 논문</em></span><span class="bar-val">2149</span></div><div class="track"><div class="fill" data-w="100"></div></div></div>
+  <div class="panel-foot">특허: TNTM 618 · HTMM 648 · LDA 1357.</div></div>
+  <div class="panel"><div class="cap">2028년 성장 전망 상위 3개 토픽 (2025년까지 자료로 예측)</div>
+  <div class="phases">
+    <div><span class="yr">0.50</span><span>전력 설비 고장 감시 · 비중 2019년 1.9% → 2025년 2.8%</span></div>
+    <div><span class="yr">0.48</span><span>스마트 에너지 계량 · 2.2% → 4.3%</span></div>
+    <div><span class="yr">0.40</span><span>대기 · 화재 감시 · 1.6% → 5.7%</span></div>
+  </div>
+  <div class="panel-foot">왼쪽 수치 = 예측 확률. 세 토픽 모두 가장 큰 기여 변수는 유입 증가이고, 엣지 AI(신경망 추론)에서의 유입이 3년 전보다 늘었음.</div></div>`},
 
 lora:{
- r:['Phi-4-mini(3.8B)를 임베디드 환경의 자원 제약에 맞춰 선정하고, LoRA로 전체 파라미터의 약 0.01%만 조정했습니다.',
+ r:['임베디드 자원 제약에 맞춰 Phi-4-mini(3.8B)를 고르고, LoRA로 전체 파라미터의 약 0.01%만 학습했습니다.',
     'BDD-X 자율주행 데이터셋(주행 영상 6,970개 · 주석 26,228개)으로 파인튜닝했습니다.',
-    '동일 조건 RAG(k=1) 대비 ROUGE-1이 0.0888에서 0.1495로 향상됐습니다. 응답 시간은 평균 1.145초입니다.',
-    '교통법규 분류(Traffic violations 약 7만 건)로 확장한 실험에서 Accuracy 0.745, Macro F1 0.731을 기록했습니다.'],
- d:['도메인 특화 sLLM의 응답 품질을 높여야 하는데 전체 파라미터 파인튜닝은 임베디드 환경에서 자원 부담이 큽니다. LoRA를 고른 이유는 자원 효율과 도메인 적응의 균형이었습니다.',
-    '검증 방식으로 RAG와의 정량 비교를 택한 것은, 파인튜닝과 검색 증강 사이의 트레이드오프가 이 과제의 핵심 의사결정 지점이기 때문입니다. 결과는 한국자료분석학회지 27(3) 769–780에 제1저자로 게재했습니다.'],
- panel:`<div class="panel"><div class="cap">ROUGE-1 · 동일 조건 비교 · BDD-X</div>
+    '같은 조건의 RAG(k=1) 대비 ROUGE-1이 0.0888에서 0.1495로 올랐고, 평균 응답 시간은 1.145초였습니다.',
+    '교통법규 분류(Traffic violations 약 7만 건)로 넓힌 실험에서 Accuracy 0.745, Macro F1 0.731이었습니다.'],
+ d:['전체 파라미터 파인튜닝은 임베디드 환경에서 자원 부담이 큽니다. 자원 사용과 도메인 적응을 함께 고려해 LoRA를 골랐습니다.',
+    '파인튜닝과 검색 증강 중 무엇을 쓸지가 이 과제의 핵심 결정이라, RAG와 같은 조건에서 정량 비교했습니다. 결과는 한국자료분석학회지 27(3) 769–780에 제1저자로 실었습니다.'],
+ panel:`<div class="panel"><div class="cap">ROUGE-1 · 같은 조건 비교 · BDD-X</div>
   <div class="bar hi"><div class="bar-top"><span class="bar-lab">LoRA 파인튜닝</span><span class="bar-val">0.1495</span></div><div class="track"><div class="fill" data-w="100"></div></div></div>
   <div class="bar"><div class="bar-top"><span class="bar-lab">RAG (k=1)</span><span class="bar-val">0.0888</span></div><div class="track"><div class="fill" data-w="59"></div></div></div>
   <div class="bar"><div class="bar-top"><span class="bar-lab">RAG (k=3)</span><span class="bar-val">0.0770</span></div><div class="track"><div class="fill" data-w="52"></div></div></div>
   <div class="bar"><div class="bar-top"><span class="bar-lab">RAG (k=5)</span><span class="bar-val">0.0693</span></div><div class="track"><div class="fill" data-w="46"></div></div></div>
-  <div class="panel-foot">참조 문서 수가 늘수록 점수 하락. 관련성 낮은 문서 혼입의 영향으로 해석.</div></div>`},
+  <div class="panel-foot">참조 문서가 많을수록 점수가 낮아짐. 관련 없는 문서가 섞인 영향으로 해석.</div></div>`},
 
 sgmcmc:{
  r:['KITTI + OpenPCDet + CT-Stack 백본 + PointPillars + GCIoU 손실로 실험 환경을 고정했습니다.',
-    'Adam을 기준으로 두고 SGLD·SGHMC·SGNHT를 직접 구현해 동일 조건(80 epoch, batch 8, OneCycle LR)으로 적용하고 비교했습니다.',
-    'BEV AP Moderate 기준 Adam 65.15% 대 SGHMC 49.59%로, 이 과제에서는 확률적 탐색보다 적응적 학습률이 결정적이었습니다.',
-    'SGMCMC 계열 안에서는 모멘텀 기반 SGHMC(49.59%)가 무작위 보행 방식 SGLD(25.67%) 대비 뚜렷한 우위를 보였습니다.',
-    '최저 손실(SGHMC 0.813)과 최고 성능(Adam)이 불일치했습니다. 손실을 낮추는 것과 실제 성능을 보장하는 것이 다르다는 점을 확인했습니다.'],
- d:['기존 Adam 기반 3D 객체 탐지는 점추정만 가능해 파라미터 불확실성 추정과 다중 모드 탐색에 한계가 있습니다. 베이지안 샘플링 기반 대안이 실제로 쓸 만한지 확인하는 것이 목적이었습니다. 백본(CT-Stack) · 아키텍처(PointPillars) · 손실(GCIoU) · 학습 조건(80 epoch, batch 8, OneCycle LR)을 전부 고정하고 최적화기만 교체해 비교했습니다.',
-    '손실 함수와 네트워크를 고정한 채 최적화기만 교체했기 때문에, 성능 차이의 원인을 최적화 방식으로 좁힐 수 있었습니다. Adam과 SGHMC를 결합한 하이브리드는 향후 과제로 제시했습니다.'],
+    'Adam을 기준으로 두고 SGLD · SGHMC · SGNHT를 구현해 같은 조건(80 epoch, batch 8, OneCycle LR)에서 비교했습니다.',
+    'BEV AP Moderate는 Adam 65.15%, SGHMC 49.59%로, 이 과제에서는 확률적 탐색보다 적응적 학습률이 더 중요했습니다.',
+    'SGMCMC 계열 안에서는 모멘텀이 있는 SGHMC(49.59%)가 SGLD(25.67%)보다 높았습니다.',
+    '학습 손실은 SGHMC가 0.813으로 가장 낮았지만 검출 성능은 Adam이 가장 높았습니다. 손실이 낮다고 성능이 높지는 않았습니다.'],
+ d:['Adam 기반 3D 객체 탐지는 점추정만 해 파라미터 불확실성과 여러 모드를 다루지 못합니다. 베이지안 샘플링 최적화기가 실제로 쓸 만한지 확인하려고, 백본(CT-Stack) · 구조(PointPillars) · 손실(GCIoU) · 학습 조건(80 epoch, batch 8, OneCycle LR)을 고정하고 최적화기만 바꿨습니다.',
+    '최적화기만 바꿨으므로 성능 차이를 최적화 방식의 차이로 볼 수 있습니다. Adam과 SGHMC를 결합한 방식은 향후 과제로 남겼습니다.'],
  panel:`<div class="panel"><div class="cap">BEV AP Moderate (%) · KITTI validation</div>
-  <div class="bar hi"><div class="bar-top"><span class="bar-lab">Adam <em>· 기준 모델</em></span><span class="bar-val">65.15</span></div><div class="track"><div class="fill" data-w="100"></div></div></div>
-  <div class="bar"><div class="bar-top"><span class="bar-lab">SGHMC <em>· 모멘텀</em></span><span class="bar-val">49.59</span></div><div class="track"><div class="fill" data-w="76"></div></div></div>
+  <div class="bar"><div class="bar-top"><span class="bar-lab">Adam <em>· 기준</em></span><span class="bar-val">65.15</span></div><div class="track"><div class="fill" data-w="100"></div></div></div>
+  <div class="bar hi"><div class="bar-top"><span class="bar-lab">SGHMC <em>· 직접 구현</em></span><span class="bar-val">49.59</span></div><div class="track"><div class="fill" data-w="76"></div></div></div>
   <div class="bar"><div class="bar-top"><span class="bar-lab">SGD <em>· 모멘텀</em></span><span class="bar-val">49.07</span></div><div class="track"><div class="fill" data-w="75"></div></div></div>
-  <div class="bar"><div class="bar-top"><span class="bar-lab">SGLD <em>· 무작위 보행</em></span><span class="bar-val">25.67</span></div><div class="track"><div class="fill" data-w="39"></div></div></div>
-  <div class="bar"><div class="bar-top"><span class="bar-lab">SGNHT <em>· thermostat</em></span><span class="bar-val">25.37</span></div><div class="track"><div class="fill" data-w="39"></div></div></div>
-  <div class="panel-foot">학습 손실은 SGHMC가 0.813으로 최저. 손실 순위와 검출 성능 순위가 일치하지 않음.</div></div>
-  <div class="panel"><div class="cap">동일 장면 검출 결과 · Adam 대 SGLD</div>
+  <div class="bar hi"><div class="bar-top"><span class="bar-lab">SGLD <em>· 직접 구현</em></span><span class="bar-val">25.67</span></div><div class="track"><div class="fill" data-w="39"></div></div></div>
+  <div class="bar hi"><div class="bar-top"><span class="bar-lab">SGNHT <em>· 직접 구현</em></span><span class="bar-val">25.37</span></div><div class="track"><div class="fill" data-w="39"></div></div></div>
+  <div class="panel-foot">학습 손실은 SGHMC가 0.813으로 최저. 손실 순위와 검출 성능 순위가 다름.</div></div>
+  <div class="panel"><div class="cap">같은 장면 검출 결과 · Adam 대 SGLD</div>
   <div class="plate"><img src="${A}img/sgmcmc-kitti-compare.jpg" loading="lazy" decoding="async" alt="같은 KITTI 장면에서 Adam은 13건, SGLD는 3건을 검출한 비교 이미지"></div>
-  <div class="panel-foot">같은 장면에서 Adam 13건, SGLD 3건 검출. 수치 차이가 실제 탐지 결과에서 어떻게 나타나는지 보여줍니다.</div></div>`},
+  <div class="panel-foot">같은 장면에서 Adam 13건, SGLD 3건 검출.</div></div>`},
 
 taxi:{
- r:['서울시 6종 공공 데이터를 병합하고 계층적 군집분석(Ward.D)에 3변수 증감 조합을 더해 자치구를 분류했습니다.',
-    'QGIS로 자치구별 공간 분포를 시각화하고 공차율 웹 인터페이스를 제작했습니다.',
-    '25개 자치구를 8개 조합 중 6개 군집에 배정했습니다. B · G 군집은 공집합입니다.',
-    '강남·서초(전 지표 상승), 중구(관광·업무 특성), 저조 지역(광진·중랑·도봉 등)으로 나눠 차별화된 배차·서비스 전략을 제안했습니다.'],
- d:['택시 요금 인상 이후 기사와 이용자가 함께 이탈해 이용률이 떨어졌고, 자치구별 수요·공급 불균형을 해소할 데이터 기반 배차 전략이 없다는 문제에서 출발했습니다.',
-    '팀 3명 중 QGIS 시각화와 분석 코드 구현을 담당했습니다. 고려대학교 빅데이터사이언스학부 통계학술제에서 최우수상을 받았습니다.'],
+ r:['서울시 공공 데이터 6종을 병합하고, 3개 변수의 증감 조합과 계층적 군집분석(Ward.D)으로 자치구를 분류했습니다.',
+    'QGIS로 자치구별 분포를 시각화하고 공차율 조회 웹 화면을 만들었습니다.',
+    '25개 자치구를 8개 조합 중 6개 군집에 배정했습니다(B · G 군집은 해당 구 없음).',
+    '강남 · 서초(전 지표 상승), 중구(관광 · 업무 지역), 저조 지역(광진 · 중랑 · 도봉 등)으로 나눠 배차 · 서비스 전략을 제안했습니다.'],
+ d:['택시 요금 인상 이후 기사와 이용자가 함께 줄어 이용률이 떨어졌는데, 자치구별 수요 · 공급 불균형을 판단할 기준이 없었습니다.',
+    '팀 3명 중 QGIS 시각화와 분석 코드 구현을 맡았습니다. 고려대학교 빅데이터사이언스학부 통계학술제에서 최우수상을 받았습니다.'],
  panel:`<div class="panel"><div class="cap">3개 변수의 증감 조합으로 나눈 8개 군집</div>
   <div class="plate"><img src="${A}img/taxi-clusters.jpg" loading="lazy" decoding="async" alt="자치구 군집 분류 결과 도표"></div>
   <div class="panel-foot">자치구가 배정된 군집은 6개. 세 지표 모두 높은 A는 강남 · 서초, 모두 낮은 H는 8개 구.</div></div>
   <div class="panel"><div class="cap">자치구별 택시 건수 분포 · QGIS</div>
   <div class="plate"><img src="${A}img/taxi-map-arrivals.jpg" loading="lazy" decoding="async" alt="서울 자치구별 택시 도착 건수를 색 농도로 표현한 지도"></div>
-  <div class="panel-foot">각 목적지에 도착한 인구 수 기준. 강남 · 서초 · 송파에 집중됩니다.</div></div>
+  <div class="panel-foot">목적지에 도착한 인구 수 기준. 강남 · 서초 · 송파에 집중.</div></div>
   <div class="panel"><div class="cap">공차율 시각화 · 공차건수 / (승차 + 공차) × 100</div>
   <div class="plate"><img src="${A}img/taxi-map-vacancy.jpg" loading="lazy" decoding="async" alt="구역별 공차율을 색으로 표현한 지도"></div>
-  <div class="panel-foot">직접 정의한 지표입니다. 조회용 웹 인터페이스도 함께 제작했습니다.</div></div>
+  <div class="panel-foot">직접 정의한 지표. 조회용 웹 화면도 함께 제작.</div></div>
 `},
 
 dorm:{
- r:['수용률과 이익률 두 지표를 직접 정의했습니다. 수용률 = 수용가능인원 / 재학생 × 100, 이익률 = (수익총계 − 비용총계) / 수익총계 × 100.',
-    '대학 기숙사 수용률은 23.4%(재학생 1,561,661명 대비 수용 가능 364,794명), 전문대학은 18.0%(374,878명 대비 67,413명)였습니다.',
-    '최근 5년간 수용률은 23.2 → 23.0 → 23.8 → 23.5 → 23.4%로 정체 상태였습니다.',
-    '수용률 30%, 이익률 20%를 기준선으로 잡아 공공복지형 · 균형형 · 수익중심형 · 형식적 운영형 네 유형으로 분류했습니다.',
-    '지역별 · 설립구분별 분포를 확인했습니다. 공립은 전부 형식적 운영형, 국립과 국립대법인은 대부분 공공복지형, 특별법국립은 균형형 비중이 높았습니다.'],
- d:['담당 범위는 데이터 수집 · 전처리, 두 지표의 정의와 4분면 기준선 설정, 카드뉴스 기획 · 디자인, 발표입니다. 이항 로지스틱 회귀 분석은 팀원이 수행했으며, 인건비 · 운영비가 높을수록 수익형 확률이 낮고 재학생 수 · 경쟁률이 높을수록 수익형 확률이 높다는 결과가 나왔습니다.',
-    '분석 결과를 경쟁률 문제(시설 확충 · 입사 기준 개선 · 수익 재투자)와 비용 문제(예산 투명화 · 학생 참여 운영 · 인력 효율 분석)로 나눠 제안으로 정리했습니다. 2025 대학알리미 데이터 아이디어 공모전(교육부 · 한국대학교육협의회)에 카드뉴스 11장으로 제출했고, 수상하지는 못했습니다.'],
+ r:['수용률과 이익률 지표를 정의했습니다. 수용률 = 수용가능인원 / 재학생 × 100, 이익률 = (수익총계 − 비용총계) / 수익총계 × 100.',
+    '기숙사 수용률은 대학 23.4%(재학생 1,561,661명 중 364,794명), 전문대학 18.0%(374,878명 중 67,413명)였습니다.',
+    '최근 5년 수용률은 23.2 → 23.0 → 23.8 → 23.5 → 23.4%로 거의 변하지 않았습니다.',
+    '수용률 30%, 이익률 20%를 기준선으로 공공복지형 · 균형형 · 수익중심형 · 형식적 운영형 네 유형으로 나눴습니다.',
+    '공립은 모두 형식적 운영형, 국립과 국립대법인은 대부분 공공복지형, 특별법국립은 균형형 비중이 높았습니다.'],
+ d:['데이터 수집 · 전처리, 두 지표의 정의와 4분면 기준선 설정, 카드뉴스 기획 · 디자인, 발표를 맡았습니다. 이항 로지스틱 회귀는 팀원이 했고, 인건비 · 운영비가 높을수록 수익형 확률이 낮고 재학생 수 · 경쟁률이 높을수록 높았습니다.',
+    '결과를 경쟁률 문제(시설 확충 · 입사 기준 개선 · 수익 재투자)와 비용 문제(예산 공개 · 학생 참여 운영 · 인력 효율 분석)로 나눠 제안했습니다. 2025 대학알리미 데이터 아이디어 공모전(교육부 · 한국대학교육협의회)에 카드뉴스 11장으로 제출했고, 수상하지는 못했습니다.'],
  panel:`<div class="panel"><div class="cap">기숙사 수용률 (%) · 2024년 기준</div>
-  <div class="bar hi"><div class="bar-top"><span class="bar-lab">대학 <em>· 재학생 1,561,661명</em></span><span class="bar-val">23.4</span></div><div class="track"><div class="fill" data-w="78"></div></div></div>
+  <div class="bar"><div class="bar-top"><span class="bar-lab">대학 <em>· 재학생 1,561,661명</em></span><span class="bar-val">23.4</span></div><div class="track"><div class="fill" data-w="78"></div></div></div>
   <div class="bar"><div class="bar-top"><span class="bar-lab">전문대학 <em>· 재학생 374,878명</em></span><span class="bar-val">18.0</span></div><div class="track"><div class="fill" data-w="60"></div></div></div>
-  <div class="panel-foot">5년간 추이 23.2 → 23.0 → 23.8 → 23.5 → 23.4%. 수용 인원 확대 없이 정체.</div></div>
+  <div class="panel-foot">5년 추이 23.2 → 23.0 → 23.8 → 23.5 → 23.4%.</div></div>
   <div class="panel"><div class="cap">운영 유형 4분면 · 기준선 수용률 30% · 이익률 20%</div>
   <div class="plate"><img src="${A}img/dorm-quadrant.jpg" loading="lazy" decoding="async" alt="수용률과 이익률 기준 기숙사 유형 4분면 분류"></div>
-  <div class="panel-foot">수용률 = 수용가능인원 / 재학생 × 100, 이익률 = (수익총계 − 비용총계) / 수익총계 × 100. 공립은 전부 형식적 운영형, 국립 · 국립대법인은 대부분 공공복지형, 특별법국립은 균형형 비중이 높습니다.</div></div>
+  <div class="panel-foot">공립은 모두 형식적 운영형, 국립 · 국립대법인은 대부분 공공복지형, 특별법국립은 균형형 비중이 높음.</div></div>
   <div class="panel"><div class="cap">지역별 기숙사 유형 분포</div>
   <div class="plate"><img src="${A}img/dorm-regions.jpg" loading="lazy" decoding="async" alt="17개 시도별 기숙사 유형 구성비 누적 막대그래프"></div>
-  <div class="panel-foot">서울은 형식적 운영형 비중이 가장 높고, 세종 · 울산 · 전남은 공공복지형만 나타납니다.</div></div>
-  <div class="panel"><div class="cap">변수별 수익형 기숙사 확률 · 이항 로지스틱 회귀</div>
+  <div class="panel-foot">서울은 형식적 운영형 비중이 가장 높고, 세종 · 울산 · 전남은 공공복지형만 있음.</div></div>
+  <div class="panel"><div class="cap">변수별 수익형 기숙사 확률 · 이항 로지스틱 회귀 (팀원 수행)</div>
   <div class="plate"><img src="${A}img/dorm-logit.jpg" loading="lazy" decoding="async" alt="재학생 수 · 운영비 · 인건비 · 경쟁률에 따른 수익형 확률 곡선"></div>
-  <div class="panel-foot">재학생 수가 늘수록 수익형 확률이 오르고, 운영비 · 인건비 · 경쟁률이 높을수록 낮아집니다. 이 회귀 분석은 팀원이 수행했습니다.</div></div>`},
+  <div class="panel-foot">재학생 수가 많을수록 수익형 확률이 높고, 운영비 · 인건비 · 경쟁률이 높을수록 낮음.</div></div>`},
 
 tbt:{
- r:['TNTM 원 논문에 세부 구조와 추론 수식이 충분히 제시되지 않아, 생성과정을 다시 정리하고 필요한 미분식을 직접 유도해 구현했습니다.',
-    '미국 Federal Register의 다년간 규제 문서에 AWSGLD-TNTM을 적용해 K=8 토픽을 도출하고 연도별 토픽 강도와 네트워크를 구축했습니다.',
-    'LDA 대비 Topic Coherence가 약 37% 향상됐습니다. 0.42 → 0.5743.',
-    'Topic Diversity 0.82로 토픽 중복도가 감소했습니다.',
-    '팬데믹 영향 유예기(2020–21) → 환경·화학 규제 강화(2022–23) → 연비·디지털 안전 확산기(2024–25, TBT 통보 각 212건 · 203건)의 3단계 규제 패러다임을 정량 규명했습니다.'],
- d:['통보문 요약만으로는 규제 방향을 판단할 수 없어 원문을 분석 대상으로 삼았고, LDA로는 노이즈 주제가 상위에 노출되는 한계가 있었습니다.',
-    '결과는 국내 자율주행·자동차 산업의 TBT 대응 전략 수립을 위한 데이터 근거로 정리했습니다. KIAT 표준전문인력양성 과제의 성과 프로젝트 2건 중 하나입니다.'],
+ r:['TNTM 원 논문에 세부 구조와 추론 수식이 충분하지 않아, 생성 과정을 다시 정리하고 필요한 미분식을 유도해 구현했습니다.',
+    '미국 Federal Register 규제 문서에 AWSGLD-TNTM을 적용해 K=8 토픽을 뽑고 연도별 토픽 강도와 네트워크를 만들었습니다.',
+    'Topic Coherence가 LDA 0.42에서 0.5743으로 약 37% 높았습니다.',
+    'Topic Diversity는 0.82였습니다.',
+    '팬데믹 유예기(2020–21) → 환경 · 화학 규제 강화(2022–23) → 연비 · 디지털 안전 확산기(2024–25, TBT 통보 각 212건 · 203건)의 3단계로 규제 흐름을 나눴습니다.'],
+ d:['통보문 요약만으로는 규제 방향을 판단할 수 없어 원문을 분석했습니다. LDA로는 잡음 토픽이 상위에 나왔습니다.',
+    '결과는 국내 자율주행 · 자동차 산업의 TBT 대응 자료로 정리했습니다. KIAT 표준전문인력양성 과제의 성과 프로젝트 2건 중 하나입니다.'],
  panel:`<div class="panel"><div class="cap">Topic Coherence · AWSGLD-TNTM 대 LDA</div>
   <div class="bar hi"><div class="bar-top"><span class="bar-lab">AWSGLD-TNTM</span><span class="bar-val">0.5743</span></div><div class="track"><div class="fill" data-w="100"></div></div></div>
   <div class="bar"><div class="bar-top"><span class="bar-lab">LDA</span><span class="bar-val">0.42</span></div><div class="track"><div class="fill" data-w="73"></div></div></div>
   <div class="phases" style="margin-top:24px">
-    <div><span class="yr">2020–21</span><span>팬데믹 영향 유예기</span></div>
+    <div><span class="yr">2020–21</span><span>팬데믹 유예기</span></div>
     <div><span class="yr">2022–23</span><span>환경 · 화학 규제 강화</span></div>
     <div><span class="yr">2024–25</span><span>연비 · 디지털 안전 확산기 · TBT 통보 212건 · 203건</span></div>
   </div>
-  <div class="panel-foot">Topic Diversity 0.82로 토픽 중복도 감소.</div></div>`},
+  <div class="panel-foot">Topic Diversity 0.82.</div></div>`},
 
 sony:{
- r:['PyMuPDF로 설명서를 페이지 단위 로드하고 청크 500 / overlap 50으로 분할했습니다.',
-    'bge-m3 임베딩을 Chroma에 영속화하고, 유사도 top-5 검색 후 제품명 필터(cos ≥ 0.7)를 적용했습니다.',
-    '코사인 유사도로 top-5를 뽑은 뒤 Re-rank로 질의 관련도 순으로 재정렬했습니다. 긴 컨텍스트 중간에 놓인 근거가 답변에 반영되지 않는 현상을 막기 위한 선택입니다.',
-    'SONY 6개 제품(카메라 · 헤드폰 · 스피커) 매뉴얼 기반 챗봇을 구현했습니다.',
-    '답변마다 근거 청크의 파일명과 페이지 번호를 반환해 출처를 추적할 수 있게 했습니다. 검색 실패 시에는 Tavily 웹 검색으로 전환합니다.'],
- d:['제품별 설명서 PDF가 분리되어 있어 사용자가 해당 문서와 페이지를 직접 탐색해야 했고, sLLM에는 할루시네이션 한계가 있었습니다. 출처 표기를 기본값으로 두는 방향으로 설계했습니다.',
-    '생성은 KoAlpaca-llama-7b, 인터페이스는 Streamlit으로 구성했습니다. 정량 평가, 한국어 특화 임베딩 도입, 필터 임계 튜닝을 다음 단계로 정리했습니다.'],
+ r:['PyMuPDF로 설명서를 페이지 단위로 읽고 청크 500 / overlap 50으로 나눴습니다.',
+    'bge-m3 임베딩을 Chroma에 저장하고, 유사도 top-5 검색 뒤 제품명 필터(cos ≥ 0.7)를 걸었습니다.',
+    'top-5를 Re-rank로 질의 관련도 순으로 다시 정렬했습니다. 긴 컨텍스트 중간의 근거가 답변에서 빠지는 문제를 줄이기 위해서입니다.',
+    'SONY 6개 제품(카메라 · 헤드폰 · 스피커) 매뉴얼로 챗봇을 만들었습니다.',
+    '답변마다 근거 청크의 파일명과 페이지 번호를 함께 반환하고, 검색에 실패하면 Tavily 웹 검색으로 넘어갑니다.'],
+ d:['설명서 PDF가 제품별로 나뉘어 있어 사용자가 문서와 페이지를 직접 찾아야 했고, sLLM은 사실과 다른 답을 낼 수 있었습니다. 그래서 출처 표기를 기본으로 설계했습니다.',
+    '생성 모델은 KoAlpaca-llama-7b, 화면은 Streamlit입니다. 정량 평가, 한국어 임베딩 적용, 필터 임계값 조정은 다음 단계로 남겼습니다.'],
  panel:`<div class="panel"><div class="cap">파이프라인 구성</div>
   <div class="phases">
     <div><span class="yr">로드</span><span>PyMuPDF · 페이지 단위</span></div>
     <div><span class="yr">청킹</span><span>size 500 · overlap 50</span></div>
-    <div><span class="yr">임베딩</span><span>BAAI/bge-m3 · Chroma 영속화</span></div>
+    <div><span class="yr">임베딩</span><span>BAAI/bge-m3 · Chroma 저장</span></div>
     <div><span class="yr">검색</span><span>top-5 · 제품명 필터 cos ≥ 0.7</span></div>
     <div><span class="yr">재정렬</span><span>Re-rank · 질의 관련도 순</span></div>
     <div><span class="yr">생성</span><span>KoAlpaca-llama-7b · 페이지 번호 반환</span></div>
     <div><span class="yr">대체</span><span>Tavily 웹 검색 fallback</span></div>
   </div>
-  <div class="panel-foot">설명서 PDF는 저작권상 저장소에 포함하지 않음.</div></div>
-  <div class="panel"><div class="cap">질의 화면 · 제품 선택 후 자연어 질문 입력</div>
+  <div class="panel-foot">설명서 PDF는 저작권 때문에 저장소에 넣지 않음.</div></div>
+  <div class="panel"><div class="cap">질의 화면 · 제품 선택 후 질문 입력</div>
   <div class="plate"><img src="${A}img/sony-query.jpg" loading="lazy" decoding="async" alt="제품 선택 드롭다운과 질문 입력 화면"></div>
-  <div class="panel-foot">제품 6종 중 하나를 고르면 해당 매뉴얼로 검색 범위가 좁혀집니다.</div></div>
-  <div class="panel"><div class="cap">답변 · 출처 표기 검증</div>
+  <div class="panel-foot">제품 6종 중 하나를 고르면 그 매뉴얼로 검색 범위가 좁혀짐.</div></div>
+  <div class="panel"><div class="cap">답변 · 출처 표기 확인</div>
   <div class="plate"><img src="${A}img/sony-answer.jpg" loading="lazy" decoding="async" alt="답변과 출처 정보, 대조한 실제 매뉴얼 페이지"></div>
-  <div class="panel-foot">왼쪽은 챗봇 답변과 출처 정보(파일명 · 페이지 번호), 오른쪽은 그 페이지의 실제 매뉴얼 원문. 답변 근거를 원문에서 직접 확인할 수 있습니다.</div></div>`},
+  <div class="panel-foot">왼쪽은 챗봇 답변과 출처(파일명 · 페이지 번호), 오른쪽은 그 페이지의 매뉴얼 원문.</div></div>`},
 
 std:{
  r:['국제 표준(ISO 3166-1 alpha-2, BCP 47) 정규화 레이어를 설계하고 필드별 형식 적합률 지표를 정의했습니다.',
-    '표준 적합률이 0.484에서 0.914로 향상됐습니다. country 표면형 1,166개 → 표준 코드 57개, language 326개 → 52개입니다.',
-    '상호운용성이 0에서 80.3%로 올랐고, column-shift 724건을 자동 검출했습니다.',
-    '정규화 전후 임베딩으로 LightGCN 추천 성능을 seed 10회 반복 측정하고 recall@k · ndcg@k를 대응표본 t-검정으로 비교했습니다 (Netflix 17,366건).',
-    'recall@k · ndcg@k 7개 지표 전부 p &gt; 0.05로 성능 손실 없음.'],
- d:['LLM으로 생성한 데이터는 편리하지만, 같은 의미를 다른 표면형으로 표현하는 특유의 비일관성 문제가 있습니다. LLMRec으로 만든 Netflix 메타데이터에서 같은 국가가 USA · United States · America로 분산되어 시스템 간 결합이 불가능한 상황을 발견하고, 국제 표준(ISO 3166-1, BCP 47)을 기준으로 삼아 정규화 레이어를 설계했습니다.',
-    '정규화 이후 하위 태스크 성능 손실이 없음을 확인하면서, 이 연구의 기여를 추천 성능 향상이 아니라 데이터 품질과 상호운용성 개선으로 정했습니다.'],
+    '표준 적합률이 0.484에서 0.914로 올랐습니다. country 표면형 1,166개 → 표준 코드 57개, language 326개 → 52개입니다.',
+    '상호운용성이 0에서 80.3%로 올랐고, column-shift 724건을 자동으로 찾았습니다.',
+    '정규화 전후 임베딩으로 LightGCN을 seed 10회 학습하고 recall@k · ndcg@k를 대응표본 t-검정으로 비교했습니다(Netflix 17,366건).',
+    'recall@k · ndcg@k 7개 지표 모두 p &gt; 0.05로 성능 손실이 없었습니다.'],
+ d:['LLM으로 만든 메타데이터는 같은 의미를 다른 표면형으로 씁니다. LLMRec으로 만든 Netflix 메타데이터에서 같은 국가가 USA · United States · America로 나뉘어 시스템 간 결합이 안 되는 것을 확인하고, ISO 3166-1 · BCP 47 기준 정규화 레이어를 만들었습니다.',
+    '정규화 후에도 추천 성능이 떨어지지 않음을 확인해, 이 프로젝트의 기여를 추천 성능이 아니라 데이터 품질과 상호운용성으로 정했습니다.'],
  panel:`<div class="panel"><div class="cap">표면형 → 표준 코드 통합</div>
   <div class="phases">
     <div><span class="yr">country</span><span>표면형 1,166 → 표준 코드 57</span></div>
@@ -1000,124 +1079,130 @@ std:{
     <div><span class="yr">상호운용성</span><span>0 → 80.3%</span></div>
     <div><span class="yr">품질 진단</span><span>column-shift 724건 자동 검출</span></div>
   </div>
-  <div class="panel-foot">LightGCN 추천 성능 seed 10회 반복 검증 — 7개 지표 전부 p &gt; 0.05.</div></div>
-  <div class="panel"><div class="cap">표면형 → 정준 코드 통합</div>
+  <div class="panel-foot">LightGCN 추천 성능 seed 10회 반복 — 7개 지표 모두 p &gt; 0.05.</div></div>
+  <div class="panel"><div class="cap">표면형 → 정준 코드 통합 예시</div>
   <div class="plate"><img src="${A}img/std-canonical.jpg" loading="lazy" decoding="async" alt="USA · United States · America 등 표면형이 정준 코드 US로 통합되는 구조"></div>
-  <div class="panel-foot">국가 표면형 1,166종이 ISO 3166-1 정준 코드 57종으로 수렴합니다.</div></div>
+  <div class="panel-foot">국가 표면형 1,166종이 ISO 3166-1 코드 57종으로 모임.</div></div>
   <div class="panel"><div class="cap">별칭 사전 예시</div>
   <div class="plate"><img src="${A}img/std-alias.jpg" loading="lazy" decoding="async" alt="입력 표면형과 정준 코드, 적용 표준을 정리한 별칭 사전 표"></div>
-  <div class="panel-foot">국가는 ISO 3166-1, 언어는 BCP 47을 기준으로 별칭 사전을 구성했습니다.</div></div>`},
+  <div class="panel-foot">국가는 ISO 3166-1, 언어는 BCP 47 기준.</div></div>`},
 
 gan:{
- r:['WLKATA Mirobot의 내장 Drawing 기능은 도형과 간단한 글씨만 가능해, 임의의 한글 손글씨를 생성해 로봇팔이 쓰게 하는 통합 파이프라인을 시도했습니다.',
-    '폰트 25종 × 한글 글자 75,000장(128 × 256px)으로 zi2zi 기반 GAN을 사전학습했습니다. 구성은 pix2pix + AC-GAN + DTN Constant Loss입니다.',
-    '직접 작성한 210자 손글씨로 Transfer Learning을 수행해 손글씨 스타일 이미지 생성에 성공했습니다.',
-    'WLKATA Studio API와 RoboDK 코드 간 호환 문제로 로봇팔 연동은 완결하지 못했고, OpenCV 기반 이미지 → 경로 변환 방식을 해결 방향으로 도출했습니다.'],
- d:['팀 2명이 역할 분담 없이 공동으로 진행했습니다.',
-    '생성 모델 학습까지는 목표한 결과가 나왔지만, 생성된 이미지를 로봇팔 제어 명령으로 옮기는 구간에서 API 호환 문제에 막혔습니다. 이 구간을 남은 과제로 정리한 상태입니다.'],
+ r:['WLKATA Mirobot의 내장 Drawing은 도형과 간단한 글씨만 그릴 수 있어, 한글 손글씨를 생성해 로봇팔이 쓰게 하는 파이프라인을 시도했습니다.',
+    '폰트 25종 × 한글 75,000장(128 × 256px)으로 zi2zi 기반 GAN을 사전학습했습니다. 구성은 pix2pix + AC-GAN + DTN Constant Loss입니다.',
+    '직접 쓴 210자로 전이학습해 손글씨 스타일 이미지를 생성했습니다.',
+    'WLKATA Studio API와 RoboDK 코드가 호환되지 않아 로봇팔 연동은 마치지 못했고, OpenCV로 이미지를 경로로 바꾸는 방식을 해결 방향으로 정했습니다.'],
+ d:['팀 2명이 역할 구분 없이 함께 진행했습니다.',
+    '생성 모델 학습은 목표대로 됐지만, 생성 이미지를 로봇팔 제어 명령으로 바꾸는 단계에서 API 호환 문제로 멈췄습니다. 이 단계를 남은 과제로 정리했습니다.'],
  panel:`<div class="panel"><div class="cap">학습 파이프라인</div>
   <div class="phases">
     <div><span class="yr">사전학습</span><span>폰트 25종 × 한글 75,000장 · 128 × 256px</span></div>
     <div><span class="yr">모델</span><span>zi2zi 기반 GAN · pix2pix + AC-GAN + DTN Constant Loss</span></div>
-    <div><span class="yr">전이학습</span><span>직접 작성한 손글씨 210자</span></div>
-    <div><span class="yr">출력</span><span>손글씨 스타일 이미지 생성 성공</span></div>
+    <div><span class="yr">전이학습</span><span>직접 쓴 손글씨 210자</span></div>
+    <div><span class="yr">출력</span><span>손글씨 스타일 이미지 생성</span></div>
     <div><span class="yr">미완</span><span>WLKATA Studio API ↔ RoboDK 호환 문제</span></div>
   </div>
-  <div class="panel-foot">이미지 → 경로 변환을 OpenCV 기반으로 처리하는 방식을 해결 방향으로 도출.</div></div>`},
+  <div class="panel-foot">이미지 → 경로 변환을 OpenCV로 처리하는 방식을 해결 방향으로 정함.</div></div>`},
 
 db:{
- r:['E-R 다이어그램 기반으로 논리 · 물리 모델을 설계하고 정규화를 적용했습니다.',
-    'JOIN · 서브쿼리 · 집계함수를 포함한 복합 SQL 쿼리를 구현했습니다.',
-    '대여 · 반납 · 회원 관리 등 일반 운영 시나리오 처리를 검증하고, 정규화를 통해 중복과 이상을 방지했습니다.'],
- d:['자전거 대여 서비스 요구사항을 기반으로 데이터 무결성과 조회 효율을 확보하는 것이 과제였습니다.',
-    '중복과 갱신 이상이 생길 수 있는 구조를 쿼리 단계에서 보정하지 않고 스키마 설계 단계에서 제거했습니다.']},
+ r:['E-R 다이어그램으로 논리 · 물리 모델을 설계하고 정규화를 적용했습니다.',
+    'JOIN · 서브쿼리 · 집계함수를 쓰는 복합 SQL 쿼리를 작성했습니다.',
+    '대여 · 반납 · 회원 관리 시나리오를 검증하고, 정규화로 중복과 이상을 막았습니다.'],
+ d:['자전거 대여 서비스 요구사항을 바탕으로 데이터 무결성과 조회 효율을 맞추는 과제였습니다.',
+    '중복과 갱신 이상은 쿼리에서 보정하지 않고 스키마 설계 단계에서 없앴습니다.']},
 
 samc:{
- r:['확률적 근사 몬테카를로(SAMC) 알고리즘을 순수 R · Rcpp를 통한 C 연결 · reticulate를 통한 Python 연결 세 형태로 각각 패키지화했습니다.',
-    'devtools::install로 설치하고 호출할 수 있는 R 패키지 3종을 완성했습니다.',
-    '동일 알고리즘의 세 구현 방식별 차이를 정리했습니다.'],
- d:['R 패키지 빌드 구조 구성을 담당했습니다.',
-    '같은 알고리즘을 세 가지 백엔드로 만들어, 언어 간 연결 방식과 그에 따른 차이를 비교할 수 있게 했습니다.']},
+ r:['확률적 근사 몬테카를로(SAMC) 알고리즘을 순수 R · Rcpp(C) · reticulate(Python) 세 형태로 패키지화했습니다.',
+    'devtools::install로 설치해 호출할 수 있는 R 패키지 3종을 만들었습니다.',
+    '같은 알고리즘의 세 구현 방식을 비교 정리했습니다.'],
+ d:['R 패키지 빌드 구조를 맡았습니다.',
+    '같은 알고리즘을 세 백엔드로 만들어 언어 간 연결 방식의 차이를 비교할 수 있게 했습니다.']},
 
 pika:{
- r:['gymnasium PykachuVolleyball 환경에서, 432×304×3 RGB 관측을 공·플레이어 좌표의 20px 격자 4-tuple 상태로 이산화했습니다.',
-    '총 18개 이산 행동(좌우 · 상하 · 파워히트 조합)을 정의하고 Epsilon-Greedy를 1.0에서 0.1까지 감쇠했습니다.',
-    '승 +15 / 패 −10의 희소 보상에 랠리 · 이동 · 타격 · 근접 항을 더해 밀집 보상으로 재설계했습니다.',
-    '초기 4,000+ 에피소드에서는 전략이 형성되지 않았고, 5,000+ 에피소드부터 점프 · 이동 · 파워히트가 정교해지는 것을 확인했습니다.'],
- d:['규칙 기반으로 하드코딩된 상대 AI를 상대로, 공 위치 추적 · 점프 · 파워히트 같은 배구 전략을 스스로 학습하는 에이전트를 설계했습니다.',
-    '관측을 그대로 쓸 수 없어 상태 공간을 직접 정의해야 했습니다. 상태에 공의 속도를 추가해 Markov 성질을 확보하는 것을 개선 방향으로 정리했습니다.']}
+ r:['gymnasium PykachuVolleyball 환경의 432×304×3 RGB 관측을 공 · 플레이어 좌표의 20px 격자 4-tuple 상태로 이산화했습니다.',
+    '이산 행동 18개(좌우 · 상하 · 파워히트 조합)를 정의하고 Epsilon-Greedy를 1.0에서 0.1까지 줄였습니다.',
+    '승 +15 / 패 −10의 희소 보상에 랠리 · 이동 · 타격 · 근접 항을 더해 밀집 보상으로 바꿨습니다.',
+    '4,000 에피소드까지는 전략이 생기지 않았고, 5,000 에피소드부터 점프 · 이동 · 파워히트가 나아졌습니다.'],
+ d:['규칙 기반 상대 AI와 경기하며 공 추적 · 점프 · 파워히트를 학습하는 에이전트를 설계했습니다.',
+    '관측을 그대로 쓸 수 없어 상태 공간을 직접 정의했습니다. 상태에 공의 속도를 넣어 Markov 성질을 맞추는 것을 개선 방향으로 남겼습니다.']}
 };
 
+/* 대표 프로젝트 — 문제 · 역할 · 결과 */
 const FEAT=[
- {id:'farm', cat:'실무', title:'작물 생육 센서 데이터 시계열 분석',
-  problem:'하루 1회 수기 측정 · 18개체 · 20일 데이터. 생육 예측 가능 여부 자체가 불확실, 사내 데이터 분석팀 부재',
-  role:'팀 2명 중 시계열 분석 설계·구현, 센서 환경 요건 협의 담당',
-  result:'ARIMA · VAR · VECM 검정으로 유의한 독립변수가 없음을 정량 확인, Lasso 변수 후보 15개 추출. 공공 데이터로 다시 접근해 모델 6종 비교 후 LGBM 선정 (Test F1 0.81)',
+ {id:'farm', cat:'실무 · 인턴', title:'작물 생육 센서 데이터 시계열 분석',
+  problem:'하루 1회 수기 측정 · 18개체 · 20일 데이터. 생육 예측이 가능한지부터 불확실했고, 사내 분석팀이 없었음',
+  role:'팀 2명 중 시계열 분석 설계 · 구현, 센서 환경 요건 협의',
+  result:'ARIMA · VAR · VECM 검정으로 유의한 독립변수가 없음을 확인, Lasso 변수 후보 15개 추출. 공공 데이터로 바꿔 모델 6종 비교 후 LGBM 선정 (Test F1 0.81)',
   links:[['상세 보기','#/p/farm'],['코드 비공개 · 사내 데이터','']]},
- {id:'taxi', cat:'공공데이터 분석', title:'택시 수요 분석 기반 배차 전략',
-  problem:'요금 인상 이후 기사·이용자 동반 이탈. 자치구별 수요·공급 불균형을 판단할 데이터 기준 부재',
-  role:'팀 3명 중 QGIS 공간 시각화, 분석 코드 구현 담당',
+ {id:'taxi', cat:'공공데이터 분석 · 수상', title:'택시 수요 분석 기반 배차 전략',
+  problem:'요금 인상 이후 기사 · 이용자가 함께 줄었고, 자치구별 수요 · 공급 불균형을 판단할 기준이 없었음',
+  role:'팀 3명 중 QGIS 공간 시각화, 분석 코드 구현',
   result:'공공데이터 6종 병합, 계층적 군집(Ward.D)으로 25개 자치구를 6개 운영 군집에 배정. 고려대학교 통계학술제 최우수상',
   links:[['상세 보기','#/p/taxi'],['발표 포스터 PDF','assets/poster-taxi-2023.pdf']]},
- {id:'bntm', cat:'연구 · 학위논문', title:'Fixed-K Shrinkage BNTM with AWSGHMC Inference',
-  problem:'기존 토픽 모델은 주제 개수를 미리 정해야 하고, 노이즈가 섞이면 이점이 사라짐',
-  role:'제1저자. 가설 수립 · 모델 설계 · 시뮬레이션 데이터 생성 · 평가 지표 정의 · 샘플러 구현 · 실험 · 논문 작성 전 과정 (지도교수 자문)',
-  result:'시뮬레이션 환경 5종(K_true 8~40) 전부 정확 복원(K_eff = K_true, 10 seed 편차 0). K_true=20에서 MH 23.4(과다) · SGHMC 15.4 · SGLD 14.7(과소), Hellinger 0.09~0.17',
+ {id:'bntm', cat:'연구 · 석사 학위논문', title:'Fixed-K Shrinkage BNTM with AWSGHMC Inference',
+  problem:'토픽 모델은 정답이 없어 샘플러가 맞게 작동하는지 확인할 방법이 없고, 기존 모델은 토픽 수를 미리 정해야 했음',
+  role:'제1저자. 정답을 아는 모의 말뭉치 생성기 설계(환경 5종, 다봉 사후분포를 의도적으로 구성), 모델 설계, 샘플러 구현, 평가 지표 정의, 실험, 논문 작성 (지도교수 자문)',
+  result:'환경 5종(K_true 8 · 20 · 40, 문서 200~10,000건) 모두 10개 seed에서 토픽 수 정확 복원. 다수 토픽 환경에서 MH 23.4(과다) · SGHMC 15.4 · SGLD 14.7(과소)',
   links:[['상세 보기','#/p/bntm'],['학회 포스터 PDF','assets/poster-bntm-2026.pdf'],['저장소 게재 후 공개','']]},
+ {id:'emerg', cat:'연구 · 예측 모형 · 투고 예정', title:'전이 네트워크 토픽 모델을 이용한 임베디드 기술의 성장 예측',
+  problem:'3년 뒤 성장할 기술 토픽을 맞히고 그 이유를 설명하는 것. 기존 연구는 시점을 섞은 교차검증이라 실제 예측력을 알기 어려웠음',
+  role:'제1저자. 논문 초록 11.4만 건 · 특허 2.1만 건 수집 · 정제, TNTM GPU 샘플러 구현, 전이 구조 변수 8개 정의, 로지스틱 회귀 예측 모형과 rolling-origin 평가 설계',
+  result:'과거 자료로만 학습하는 평가에서 AUC 논문 0.876(95% CI 0.80–0.93) · 특허 0.746. 유입 증가가 성장의 주요 신호. 2028년 전망 상위: 전력 설비 고장 감시 · 스마트 에너지 계량 · 대기·화재 감시',
+  links:[['상세 보기','#/p/emerg'],['논문 투고 예정','']]},
  {id:'lora', cat:'연구 · 학술지 게재', title:'자율주행 도메인에서 LoRA 기반 sLLM 파인튜닝 연구',
-  problem:'임베디드 환경에서 전체 파라미터 파인튜닝 부담, 검색 증강만으로는 세부 상황 묘사 품질 부족',
-  role:'제1저자. 모델 선정 · LoRA 학습 설계 · 검색 증강과의 비교 실험 · 논문 작성',
-  result:'전체 파라미터의 약 0.01%만 조정해 ROUGE-1 0.0888 → 0.1495, 평균 응답 1.145초. JKDAS 27(3) 게재',
+  problem:'임베디드 환경에서 전체 파라미터 파인튜닝은 부담이 크고, 검색 증강만으로는 주행 상황 설명 품질이 낮았음',
+  role:'제1저자. 모델 선정, LoRA 학습 설계, 검색 증강과의 비교 실험, 논문 작성',
+  result:'전체 파라미터의 약 0.01%만 학습해 ROUGE-1 0.0888 → 0.1495, 평균 응답 1.145초. 한국자료분석학회지 27(3) 게재',
   links:[['상세 보기','#/p/lora'],['논문 DOI','https://doi.org/10.37727/jkdas.2025.27.3.769']]},
  {id:'sony', cat:'구현 · RAG', title:'sLLM + Advanced RAG 기반 SONY 브랜드 AI 챗봇',
-  problem:'제품별 설명서 분리로 사용자가 문서·페이지를 직접 탐색, sLLM 할루시네이션 위험',
-  role:'파이프라인 전 구간 설계·구현: 청킹 · 임베딩 · 검색 필터 · Re-rank · 생성 · 출처 표기 · 웹 검색 대체',
-  result:'답변마다 근거 청크 파일명·페이지 번호 반환으로 원문 대조 가능. 제품 매뉴얼 6종 기반',
+  problem:'설명서가 제품별로 나뉘어 사용자가 문서 · 페이지를 직접 찾아야 했고, sLLM은 사실과 다른 답을 낼 수 있었음',
+  role:'파이프라인 전 구간 설계 · 구현: 청킹 · 임베딩 · 검색 필터 · Re-rank · 생성 · 출처 표기 · 웹 검색 대체',
+  result:'답변마다 근거 청크의 파일명 · 페이지 번호를 반환해 원문과 대조 가능. 제품 매뉴얼 6종',
   links:[['상세 보기','#/p/sony'],['저장소','https://github.com/Kim-Da-yeon/SONY_Chatbot']]},
  {id:'sgmcmc', cat:'연구 · 실험 설계', title:'SGMCMC 기반 3D 객체 탐지 최적화',
-  problem:'Adam 기반 학습은 점추정만 가능, 파라미터 불확실성 추정과 다중 모드 탐색에 한계',
-  role:'손실 함수·네트워크 고정, 최적화기만 교체하는 실험 설계·수행. SGLD · SGHMC · SGNHT 직접 구현',
-  result:'BEV AP Adam 65.15 · SGHMC 49.59 · SGLD 25.67. 손실 최저(SGHMC 0.813)와 최고 성능 불일치 규명',
+  problem:'Adam 학습은 점추정만 해 파라미터 불확실성과 여러 모드를 다루지 못함',
+  role:'손실 함수 · 네트워크를 고정하고 최적화기만 바꾸는 실험 설계 · 수행. SGLD · SGHMC · SGNHT 구현',
+  result:'BEV AP Adam 65.15 · SGHMC 49.59 · SGLD 25.67. 학습 손실 최저(SGHMC 0.813)와 최고 성능(Adam)이 다름을 확인',
   links:[['상세 보기','#/p/sgmcmc'],['저장소','https://github.com/Kim-Da-yeon/GCIoU-SGMCMC-3D-Detection']]},
  {id:'tbt', cat:'연구 · 학술지 게재', title:'AWSGLD-TNTM 기반 미국 자율주행·자동차 TBT 규제 분석',
-  problem:'통보문 요약만으로 규제 방향 판단 불가, LDA는 노이즈 주제가 상위 노출',
-  role:'Federal Register 규제 문서에 AWSGLD-TNTM 적용, K=8 토픽 도출, 연도별 토픽 강도·전이 네트워크 구축',
-  result:'LDA 대비 Topic Coherence 0.42 → 0.5743(약 37% 향상), Topic Diversity 0.82. 2020–25 규제 패러다임 3단계 정량 규명',
+  problem:'통보문 요약만으로 규제 방향을 판단할 수 없었고, LDA는 잡음 토픽이 상위에 나왔음',
+  role:'Federal Register 규제 문서에 AWSGLD-TNTM 적용, K=8 토픽 추출, 연도별 토픽 강도 · 전이 네트워크 작성',
+  result:'Topic Coherence LDA 0.42 → 0.5743(약 37% 향상), Topic Diversity 0.82. 2020–25 규제 흐름을 3단계로 정리',
   links:[['상세 보기','#/p/tbt'],['논문 DOI','https://doi.org/10.37727/jkdas.2026.28.1.109']]},
- {id:'gan', cat:'생성 모델 · 합성 데이터', title:'GAN 기반 손글씨 폰트 생성 및 로봇팔 제어',
-  problem:'로봇팔 내장 Drawing은 도형·간단한 글씨만 가능. 임의의 한글 손글씨 생성에는 학습 데이터부터 필요',
-  role:'폰트 25종 × 한글 75,000장(128 × 256px)으로 zi2zi 기반 GAN(pix2pix + AC-GAN + DTN Constant Loss) 사전학습, 직접 작성한 210자로 Transfer Learning',
-  result:'손글씨 스타일 이미지 생성 성공. 로봇팔 연동은 API 호환 문제로 미완, OpenCV 기반 이미지 → 경로 변환을 해결 방향으로 도출',
+ {id:'gan', cat:'생성 모델', title:'GAN 기반 손글씨 폰트 생성 및 로봇팔 제어',
+  problem:'로봇팔 내장 Drawing은 도형 · 간단한 글씨만 가능. 한글 손글씨 생성에는 학습 데이터부터 필요',
+  role:'폰트 25종 × 한글 75,000장으로 zi2zi 기반 GAN 사전학습, 직접 쓴 210자로 전이학습',
+  result:'손글씨 스타일 이미지 생성. 로봇팔 연동은 API 호환 문제로 미완, OpenCV 기반 경로 변환을 해결 방향으로 정함',
   links:[['상세 보기','#/p/gan']]},
  {id:'cag', cat:'구현 · 경량 파인튜닝 + CAG', title:'파인튜닝과 CAG 결합 대화형 AI 성능 개선 연구',
-  problem:'파인튜닝만으로는 근거 문서를 인용하거나 저장하기 어렵고, 학습 범위 밖 질문에 할루시네이션 위험',
-  role:'학부생 연구원 프로그램 멘토, 멘티 1명과 공동 수행. QLoRA 4bit 양자화 + 문서를 미리 캐시에 올리는 CAG 결합',
-  result:'질문 5개 × 5회 반복, BLEU · ROUGE · BERTScore · CHRF · METEOR · TER 6종 지표에서 FT 단독 대비 품질 · 일관성 · 문맥 반영 우수. 기후정책 도메인',
+  problem:'파인튜닝만으로는 근거 문서를 인용하지 못하고, 학습 범위 밖 질문에 사실과 다른 답을 냄',
+  role:'학부생 연구원 프로그램 멘토로 멘티 1명과 수행. QLoRA 4bit 양자화 + 문서를 캐시에 미리 올리는 CAG 결합',
+  result:'질문 5개 × 5회 반복, 지표 6종에서 FT 단독보다 품질 · 일관성 · 문맥 반영이 높음. 기후정책 도메인',
   links:[['상세 보기','#/p/cag']]},
  {id:'std', cat:'데이터 품질', title:'국제 메타데이터 표준 통합 LLM 기반 그래프 증강 추천시스템',
-  problem:'LLM 생성 메타데이터가 자유 텍스트라 같은 국가가 USA · United States로 분산, 시스템 간 결합 불가',
+  problem:'LLM이 만든 메타데이터에서 같은 국가가 USA · United States 등으로 나뉘어 시스템 간 결합이 안 됨',
   role:'ISO 3166-1 · BCP 47 정규화 레이어 설계, 적합률 지표 정의, 정규화 전후 LightGCN 추천 성능 비교',
-  result:'표준 적합률 0.484 → 0.914, column-shift 724건 자동 검출. 추천 성능은 7개 지표 전부 p > 0.05로 손실 없음',
+  result:'표준 적합률 0.484 → 0.914, column-shift 724건 자동 검출. 추천 성능 7개 지표 모두 p > 0.05로 손실 없음',
   links:[['상세 보기','#/p/std'],['저장소','https://github.com/Kim-Da-yeon/llmrec-metadata-standard']]}
 ];
 
 const AV_ITEMS=[
  {g:'perc', id:'sgmcmc', tag:'3D object detection', title:'SGMCMC 기반 3D 객체 탐지 최적화 (KITTI · PointPillars)',
-  line:'KITTI 라이다 점구름 · OpenPCDet · PointPillars · CUDA 환경 고정 후 Adam 기준 모델과 SGMCMC 계열을 동일 조건(80 epoch)으로 비교. BEV AP Moderate 기준 최저 손실과 최고 성능이 불일치함을 규명'},
- {g:'sim', id:'bntm', tag:'데이터 합성 · 시나리오 설계', title:'검증용 시뮬레이션 환경 5종 설계 · Ground-truth 기준 검증',
-  line:'정답을 아는 시뮬레이션 데이터를 직접 설계 — 파라미터 중첩 · 희소 토픽 · 토픽 수 변동 등 검증 목적별 5종, K_true 8~40. 전 환경 정확 복원(10 seed 편차 0) 확인 후 실제 코퍼스에 적용'},
- {g:'fm', id:'lora', tag:'주행 도메인 평가 방법론', title:'BDD-X 주행 영상 기반 sLLM 파인튜닝 vs 검색 증강 정량 비교',
-  line:'Phi-4-mini(3.8B)를 BDD-X 주행 영상 6,970개 · 주석 26,228개로 LoRA 파인튜닝. 동일 조건 RAG(k=1) 대비 ROUGE-1 0.0888 → 0.1495, Traffic violations 7만 건 확장 실험 Accuracy 0.745 · JKDAS 27(3) 게재'},
+  line:'KITTI 라이다 점구름 · OpenPCDet · PointPillars · CUDA 환경을 고정하고 Adam과 SGMCMC 계열을 같은 조건(80 epoch)에서 비교. 학습 손실 최저와 BEV AP 최고가 다름을 확인'},
+ {g:'sim', id:'bntm', tag:'모의 데이터 생성 · 시나리오 설계', title:'정답을 아는 모의 말뭉치 생성기 · 환경 5종',
+  line:'정답 토픽 · 전이 · 비중을 아는 데이터를 생성 — 기본 · 초과 용량 · 다수 토픽 · 소표본 · 대규모(문서 10,000건) 5종, K_true 8~40. 다봉 사후분포를 의도적으로 만들어 로컬 트랩을 재현하고, 모든 환경에서 10개 seed 정확 복원을 확인한 뒤 실데이터에 적용'},
+ {g:'fm', id:'lora', tag:'주행 도메인 평가', title:'BDD-X 주행 영상 기반 sLLM 파인튜닝 vs 검색 증강 비교',
+  line:'Phi-4-mini(3.8B)를 BDD-X 주행 영상 6,970개 · 주석 26,228개로 LoRA 파인튜닝. 같은 조건 RAG(k=1) 대비 ROUGE-1 0.0888 → 0.1495, Traffic violations 7만 건 확장 실험 Accuracy 0.745 · 한국자료분석학회지 27(3) 게재'},
  {g:'onv', id:'cag', tag:'quantization', title:'QLoRA 4bit 양자화 + CAG 결합 대화형 AI',
-  line:'4bit 양자화로 자원 부담을 줄이면서 도메인 적합성을 확보하고, 외부 문서를 미리 캐시에 올려 검색 없이 바로 응답. BLEU · ROUGE · BERTScore 등 6종 지표로 검증 (멘토 공동 연구)'},
+  line:'4bit 양자화로 자원 사용을 줄이고, 외부 문서를 캐시에 미리 올려 검색 없이 응답. BLEU · ROUGE · BERTScore 등 지표 6종으로 비교 (멘토 공동 연구)'},
  {g:'onv', id:'lora', tag:'parameter-efficient', title:'임베디드 자원 제약을 전제로 한 sLLM 선정 · LoRA 적용',
-  line:'전체 파라미터의 약 0.01%만 조정, 응답 시간 평균 1.145초. 전체 파인튜닝 대신 LoRA를 고른 이유가 임베디드 환경 자원 부담'},
+  line:'전체 파라미터의 약 0.01%만 학습, 평균 응답 1.145초. 임베디드 자원 부담 때문에 전체 파인튜닝 대신 LoRA 선택'},
  {g:'plan', id:'gan', tag:'motion · path generation', title:'생성 이미지 → 로봇팔 경로 변환 파이프라인 (WLKATA Mirobot · RoboDK)',
-  line:'폰트 25종 × 75,000장으로 zi2zi GAN 사전학습 후 직접 작성한 210자로 전이. 생성 이미지를 로봇팔 경로로 변환하는 파이프라인 시도 — WLKATA Studio API와 RoboDK 간 호환 문제로 미완, OpenCV 기반 변환으로 푸는 방향 도출'},
+  line:'폰트 25종 × 75,000장으로 zi2zi GAN 사전학습 후 직접 쓴 210자로 전이. 생성 이미지를 로봇팔 경로로 바꾸는 파이프라인 시도 — WLKATA Studio API와 RoboDK 호환 문제로 미완, OpenCV 기반 변환을 해결 방향으로 정함'},
  {g:'plan', id:'pika', tag:'learning-based decision', title:'강화학습 기반 배구 Agent 학습',
-  line:'432×304 RGB 관측을 20px 격자로 이산화한 4-tuple 상태, 18개 이산 행동, Epsilon-Greedy 1.0→0.1, 희소 보상을 밀집 보상으로 재설계. 5,000+ 에피소드부터 전략 정교화 확인'},
- {g:'dom', id:'tbt', tag:'규제 문서', title:'미국 자율주행·자동차 TBT 규제 트렌드 분석',
-  line:'AWSGLD-TNTM K=8 · Coherence 0.5743 — LDA 0.42 대비 37% 향상, 2020–25 규제 패러다임 3단계 정량 규명'},
+  line:'432×304 RGB 관측을 20px 격자 4-tuple 상태로 이산화, 이산 행동 18개, Epsilon-Greedy 1.0→0.1, 희소 보상을 밀집 보상으로 변경. 5,000 에피소드부터 전략 형성'},
+ {g:'dom', id:'tbt', tag:'규제 문서', title:'미국 자율주행·자동차 TBT 규제 분석',
+  line:'AWSGLD-TNTM K=8 · Coherence 0.5743 — LDA 0.42 대비 37% 향상, 2020–25 규제 흐름 3단계'},
  {g:'dom', id:'taxi', tag:'교통 데이터', title:'택시 수요 분석 기반 배차 전략',
   line:'서울시 공공데이터 6종 병합 · 자치구 군집 분석 · QGIS 공간 시각화. 통계학술제 최우수상'},
  {g:'dom', id:null, href:'#research', tag:'미래 모빌리티', title:'Smart Green-STOP · 친환경 스마트 정류소',
@@ -1125,8 +1210,11 @@ const AV_ITEMS=[
 ];
 const AV_GROUPS=[['perc','Perception'],['sim','Simulation & Data'],['fm','E2E / Foundation models'],['onv','On-vehicle System'],['plan','Prediction & Planning'],['dom','자율주행 도메인 데이터']];
 
+
+
+
 /* 프로젝트 목록에서 한눈에 보는 핵심 결과 — 상세 페이지 수치와 동일 */
-const KPI={farm:'유의 변수 후보 15개 · 데이터 한계 정량화',crop:'모델 6종 비교 · Test F1 0.81',bntm:'5개 환경 전부 K 정확 복원',
+const KPI={emerg:'성장 토픽 예측 AUC 0.876 · 0.746',farm:'변수 후보 15개 · 데이터 한계 확인',crop:'모델 6종 비교 · Test F1 0.81',bntm:'모의 말뭉치 5종 모두 K 정확 복원',
  lora:'ROUGE-1 0.0888 → 0.1495',sgmcmc:'BEV AP Adam 65.15 · SGHMC 49.59',taxi:'통계학술제 최우수상',
  dorm:'수용률 23.4% · 운영 유형 4분류',tbt:'Coherence 0.42 → 0.5743',sony:'답변마다 출처 페이지 반환',
  std:'표준 적합률 0.484 → 0.914',cag:'지표 6종에서 FT 단독 대비 우수',gan:'한글 75,000장 사전학습',
@@ -1137,23 +1225,27 @@ const KPI={farm:'유의 변수 후보 15개 · 데이터 한계 정량화',crop:
    rows[].from  : 변화 점그래프(이전값 → 이후값)
    me           : 본인 방법 · 결과 (울트라마린) */
 const FIGS={
- bntm_k:{t:'활성 토픽 수 복원 · 시뮬레이션 환경 K_true = 20',d:[10,25],ticks:[10,15,20,25],fmt:v=>v.toFixed(1),
+ bntm_k:{p:'석사 학위논문 · Fixed-K Shrinkage BNTM with AWSGHMC',t:'직접 생성한 모의 말뭉치(정답 토픽 20개)에서 샘플러별로 찾아낸 토픽 수',d:[10,25],ticks:[10,15,20,25],fmt:v=>v.toFixed(1),
    ref:{v:20,l:'정답 K = 20'},stem:20,
    rows:[{l:'AWSGHMC',s:'제안 샘플러',v:20.0,me:1},{l:'MH',s:'과다 추정 +3.4',v:23.4},{l:'SGHMC',s:'과소 추정 −4.6',v:15.4},{l:'SGLD',s:'과소 추정 −5.3',v:14.7}],
-   n:'5개 환경(K_true 8~40) 전부 K_eff = K_true, 10 seed 편차 0.',go:'bntm'},
- sg_bev:{t:'BEV AP Moderate (%) · KITTI — 직접 구현 SGMCMC 3종 대 기준 최적화기',d:[0,70],ticks:[0,35,70],fmt:v=>v.toFixed(2),
+   n:'모의 말뭉치 환경 5종(정답 토픽 8~40개, 문서 200~10,000건) 모두 10개 seed에서 정확 복원.',go:'bntm'},
+ tntm_auc:{p:'투고 예정 논문 · 임베디드 기술의 성장 예측',t:'3년 뒤 성장할 토픽 예측 AUC · 과거 자료로만 학습하는 rolling-origin 평가',d:[.4,1],ticks:[.4,.6,.8,1],fmt:v=>v.toFixed(3),tfmt:v=>v.toFixed(1),
+   ref:{v:.5,l:'무작위 0.5',lg:'무작위 예측 기준'},
+   rows:[{l:'논문 초록',s:'114,066건 · 평가 520건',v:.876,lo:.80,hi:.93,me:1},{l:'특허',s:'21,028건 · 평가 429건',v:.746,lo:.67,hi:.81,me:1}],
+   n:'토픽 비중 · 인용 변수 14개와 직접 정의한 전이 구조 변수 8개로 만든 L2 로지스틱 회귀.',go:'emerg'},
+ sg_bev:{p:'SGMCMC 기반 3D 객체 탐지 최적화 · KITTI',t:'최적화기만 바꿔 학습한 PointPillars의 BEV AP Moderate (%) · 직접 구현 3종 대 기준 최적화기',d:[0,70],ticks:[0,35,70],fmt:v=>v.toFixed(2),
    rows:[{l:'SGHMC',s:'직접 구현 · 학습 손실 최저 0.813',v:49.59,me:1},{l:'SGLD',s:'직접 구현',v:25.67,me:1},{l:'SGNHT',s:'직접 구현',v:25.37,me:1},{l:'Adam',s:'기준 최적화기',v:65.15},{l:'SGD',s:'기준 · 모멘텀',v:49.07}],
-   n:'네트워크·손실을 고정하고 최적화기만 교체한 통제 실험. 손실이 가장 낮은 SGHMC가 AP 최고는 아님 — 손실과 성능의 불일치를 규명.',go:'sgmcmc'},
- lora_rouge:{t:'ROUGE-1 · BDD-X 주행 영상 설명, 동일 조건',d:[0,.16],ticks:[0,.08,.16],fmt:v=>v.toFixed(4),tfmt:v=>v.toFixed(2),
+   n:'네트워크 · 손실을 고정하고 최적화기만 바꾼 실험. 학습 손실이 가장 낮은 SGHMC도 AP는 Adam보다 낮음.',go:'sgmcmc'},
+ lora_rouge:{p:'학술지 논문 · 자율주행 도메인 LoRA 기반 sLLM 파인튜닝',t:'BDD-X 주행 영상 설명 생성 품질(ROUGE-1) · LoRA 파인튜닝 대 RAG, 같은 조건',d:[0,.16],ticks:[0,.08,.16],fmt:v=>v.toFixed(4),tfmt:v=>v.toFixed(2),
    rows:[{l:'LoRA 파인튜닝',s:'Phi-4-mini 3.8B · 파라미터 0.01%',v:.1495,me:1},{l:'RAG k=1',v:.0888},{l:'RAG k=3',v:.0770},{l:'RAG k=5',v:.0693}],
-   n:'평균 응답 1.145초. 참조 문서가 늘수록 RAG 점수 하락. JKDAS 27(3) 제1저자.',go:'lora'},
- tntm_coh:{t:'Topic Coherence · 미국 규제 문서(Federal Register) 160건',d:[0,.6],ticks:[0,.3,.6],fmt:v=>v.toFixed(4).replace(/0+$/,'').replace(/\.$/,''),tfmt:v=>v.toFixed(1),
+   n:'평균 응답 1.145초. 참조 문서가 많을수록 RAG 점수가 낮아짐.',go:'lora'},
+ tntm_coh:{p:'학술지 논문 · AWSGLD-TNTM 미국 자율주행 규제 문서 분석',t:'규제 문서 160건에서 뽑은 토픽의 품질(Topic Coherence) · 제안 모델 대 LDA',d:[0,.6],ticks:[0,.3,.6],fmt:v=>v.toFixed(4).replace(/0+$/,'').replace(/\.$/,''),tfmt:v=>v.toFixed(1),
    rows:[{l:'AWSGLD-TNTM',s:'직접 유도·구현',v:.5743,me:1},{l:'LDA',s:'기준 모델',v:.42}],
-   n:'약 37% 향상, Topic Diversity 0.82. 2020–25 규제 패러다임 3단계 규명.',go:'tbt'},
- std_fit:{t:'LLM 생성 메타데이터 정규화 전 → 후',d:[0,1],ticks:[0,.5,1],fmt:v=>v.toFixed(3),tfmt:v=>v===0?'0':v===1?'1':v.toFixed(1),
-   rows:[{l:'표준 적합률',s:'정규화 전 0.484 · ISO 3166-1 · BCP 47',from:.484,v:.914,me:1,txt:'0.914'},{l:'상호운용성',s:'정규화 전 0% · 시스템 간 결합',from:0,v:.803,me:1,txt:'80.3%'}],
+   n:'약 37% 향상, Topic Diversity 0.82.',go:'tbt'},
+ std_fit:{p:'LLM 메타데이터 국제 표준 정규화 + 그래프 추천',t:'ISO 3166-1 · BCP 47 기준 정규화 전(빈 원) → 후(채운 원)',d:[0,1],ticks:[0,.5,1],fmt:v=>v.toFixed(3),tfmt:v=>v===0?'0':v===1?'1':v.toFixed(1),
+   rows:[{l:'표준 적합률',s:'정규화 전 0.484',from:.484,v:.914,me:1,txt:'0.914'},{l:'상호운용성',s:'정규화 전 0%',from:0,v:.803,me:1,txt:'80.3%'}],
    n:'정규화 후 LightGCN 추천 성능 7개 지표 전부 p > 0.05(seed 10회) — 하위 태스크 손실 없음.',go:'std'},
- dorm_rate:{t:'기숙사 수용률 (%) · 2024 대학알리미 공시',d:[0,35],ticks:[0,10,20,30],fmt:v=>v.toFixed(1),
+ dorm_rate:{p:'대학 기숙사 운영 유형 분류 · 대학알리미 공시',t:'2024년 기숙사 수용률 (%)과 직접 정한 유형 기준선',d:[0,35],ticks:[0,10,20,30],fmt:v=>v.toFixed(1),
    ref:{v:30,l:'직접 설정한 유형 기준선 30%',r:1,me:1},
    rows:[{l:'대학',s:'재학생 1,561,661명',v:23.4},{l:'전문대학',s:'재학생 374,878명',v:18.0}],
    n:'수용률 지표 정의와 4분면 기준선(수용률 30% · 이익률 20%) 설정 담당. 5년 추이 23.2 → 23.4%로 정체.',go:'dorm'}
@@ -1162,34 +1254,34 @@ const FIGS={
 /* ══ 직무별 첫인상 — 제목 · 한 줄 주장 · 근거 3줄 · Fig. 1 · 지원 근거 3건 ══ */
 const ROLES={
  '':   {title:'Data Scientist · ML Researcher', card:'종합',
-        claim:'정답을 아는 실험으로 모델을 검증하고, 결과를 기준선과 함께 숫자로 보고합니다. 토픽 모델링 · 베이지안 추론 · sLLM 파인튜닝 · 데이터 분석.',
-        ev:[['제1저자 학술지 논문 2편 게재','한국자료분석학회지 27(3) · 28(1) · SCI급 1편 투고 준비 중'],['한국연구재단 과제 연구책임자(PI)','석사과정생연구장려금 RS-2025-25437035'],['분석 프로젝트 15건 · 수상 3회','실무 인턴 · 공공데이터 · 연구 · 통계학술제 최우수상']],
-        fig:['bntm_k','lora_rouge'], figt:'두 연구의 핵심 결과 — 기준선 대비',
-        feat:['bntm','taxi','farm'], res:'resume.pdf', car:'career.pdf'},
+        claim:'토픽 모델과 MCMC 샘플러를 설계해 석사 학위논문을 쓰고 있습니다. 학술지에 제1저자로 2편을 냈고, 논문 초록 11만 건과 특허 2만 건으로 3년 뒤 성장할 기술을 예측하는 모형(AUC 0.876)을 만들어 투고를 앞두고 있습니다.',
+        ev:[['제1저자 학술지 논문 2편 · 투고 준비 2편','한국자료분석학회지 27(3) · 28(1) · SCI급 1편 · KCI 1편'],['한국연구재단 석사과정생연구장려금 연구책임자','TNTM 기반 임베디드 기술 문서 분석 · 2025–2026'],['고려대 통계학술제 최우수상 외 수상 2회','택시 수요 분석 기반 배차 전략 · 2023']],
+        fig:['bntm_k','tntm_auc'], figt:'학위논문 · 투고 예정 논문 결과',
+        feat:['bntm','emerg','taxi'], res:'resume.pdf', car:'career.pdf'},
  'ds': {title:'Data Scientist', card:'Data Scientist',
-        claim:'지표를 직접 정의하고, 데이터가 결론을 낼 수 있는지부터 검증하는 분석을 합니다.',
-        ev:[['공공데이터 6종 병합 · 25개 자치구 군집화로 배차 전략 제안','고려대학교 통계학술제 최우수상 · QGIS 공간 시각화'],['LLM 메타데이터 표준 적합률 0.484 → 0.914','seed 10회 대응표본 t-검정으로 추천 성능 손실 없음 확인'],['스마트팜 인턴: 데이터 한계를 측정 설계 단계까지 정량 규명','JERESFARM · 시계열 분석 · 모델 6종 비교']],
-        fig:['std_fit','dorm_rate'], figt:'지표 설계와 데이터 품질 — 실측값',
-        feat:['taxi','std','farm'], res:'resume-ds.pdf', car:'career-ds.pdf'},
+        claim:'논문 초록 114,066건과 특허 21,028건으로 3년 뒤 성장할 기술 토픽을 예측하는 모형을 만들었습니다. 과거 자료로만 학습하는 평가에서 AUC는 논문 0.876, 특허 0.746이었습니다. 서울시 택시 공공데이터 분석으로 통계학술제 최우수상을 받았습니다.',
+        ev:[['성장 기술 예측 모형 (투고 예정 · 제1저자)','로지스틱 회귀 · 변수 22개 · rolling-origin 평가 · 토픽 붓스트랩 신뢰구간'],['통계학술제 최우수상: 택시 수요 분석','공공데이터 6종 병합 · 25개 구 계층적 군집 · QGIS 시각화'],['JERESFARM 데이터 분석 인턴','센서 데이터 시계열 분석 · 공공데이터 작물 분류 모델 6종 비교']],
+        fig:['tntm_auc','std_fit'], figt:'예측 모형 · 데이터 품질 결과',
+        feat:['emerg','taxi','std'], res:'resume-ds.pdf', car:'career-ds.pdf'},
  'ml': {title:'ML Researcher · Applied Scientist', card:'ML Researcher',
-        claim:'샘플러와 모델 구조를 직접 설계하고, 정답을 아는 시뮬레이션으로 복원 성능을 검증합니다.',
-        ev:[['시뮬레이션 환경 5종 전부 토픽 수 정확 복원','K_true 8~40 · 10 seed 편차 0 · 석사 학위논문'],['SGMCMC 샘플러 7종 직접 구현 · 동일 조건 비교','AWSGLD · AWSGHMC · SGHMC · SGLD · SGNHT 등'],['제1저자 학술지 2편 · 연구재단 과제 연구책임자','JKDAS 27(3) · 28(1) · RS-2025-25437035']],
-        fig:['bntm_k','tntm_coh'], figt:'샘플러 설계와 검증 — 기준선 대비',
-        feat:['bntm','tbt','sgmcmc'], res:'resume-ml.pdf', car:'career-ml.pdf'},
+        claim:'석사 학위논문에서 토픽 모델 BNTM과 샘플러 AWSGHMC를 설계했습니다. 검증을 위해 정답을 아는 모의 말뭉치 생성기를 만들고 환경 5종(토픽 8~40개, 문서 200~10,000건)을 구성했습니다. 기존 샘플러는 토픽 수를 많거나 적게 잡았고, AWSGHMC는 다섯 환경 모두 정확히 맞혔습니다.',
+        ev:[['정답을 아는 모의 말뭉치 생성기 · 환경 5종','다봉 사후분포를 의도적으로 구성 · 10개 seed 모두 정확 복원'],['샘플러 7종 직접 구현','AWSGLD · AWSGHMC · SGHMC · SGLD · SGNHT · MH-within-Gibbs · SAMC'],['제1저자 학술지 2편 · 투고 준비 2편','한국자료분석학회지 27(3) · 28(1) · 연구재단 과제 연구책임자']],
+        fig:['bntm_k','tntm_coh'], figt:'학위논문 · 학술지 논문 결과',
+        feat:['bntm','emerg','sgmcmc'], res:'resume-ml.pdf', car:'career-ml.pdf'},
  'av': {title:'자율주행 Research Engineer', card:'자율주행 Research Engineer',
-        claim:'시뮬레이션 데이터 설계와 모델 · 알고리즘 검증을 수행하는 자율주행 도메인 석사과정 연구자입니다.',
-        ev:[['KITTI 3D 탐지: 최적화기 5종을 동일 조건으로 비교','PointPillars · OpenPCDet · CUDA · 공개 저장소'],['BDD-X 주행 영상 6,970개로 sLLM LoRA 파인튜닝','임베디드 제약 · 응답 1.145초 · JKDAS 27(3) 제1저자'],['자율주행시스템학과 융합전공 · ROS · Autoware 실습','고려대학교 2025.02 졸업']],
-        fig:['lora_rouge','sg_bev'], figt:'주행 도메인 모델 검증 — 실측값',
+        claim:'자율주행시스템학과 융합전공으로 학부를 마쳤습니다. KITTI 3D 객체 탐지에서 최적화기 5종을 같은 조건으로 비교했고, BDD-X 주행 영상 설명 데이터로 3.8B sLLM을 LoRA 파인튜닝해 학술지에 제1저자로 실었습니다.',
+        ev:[['자율주행시스템학과 융합전공','고려대학교 2025.02 졸업 · ROS · Autoware 실습'],['KITTI 3D 객체 탐지 최적화기 비교','PointPillars · OpenPCDet · SGLD · SGHMC · SGNHT 직접 구현 · 공개 저장소'],['BDD-X 주행 영상 sLLM 파인튜닝 논문 (제1저자)','한국자료분석학회지 27(3) · 임베디드 제약 · 평균 응답 1.145초']],
+        fig:['lora_rouge','sg_bev'], figt:'자율주행 관련 연구 결과',
         feat:['sgmcmc','lora','bntm'], res:'resume-av.pdf', car:'career-av.pdf'},
  'nlp':{title:'NLP · LLM Engineer', card:'NLP · LLM Engineer',
-        claim:'sLLM 파인튜닝과 RAG를 같은 조건에서 비교하고, 답변마다 출처를 추적할 수 있게 만듭니다.',
-        ev:[['LoRA로 파라미터 0.01%만 조정 · ROUGE-1 0.0888 → 0.1495','Phi-4-mini 3.8B · BDD-X · JKDAS 27(3) 제1저자'],['RAG 챗봇: 답변마다 파일명 · 페이지 출처 반환','bge-m3 · Chroma · Re-rank · 공개 저장소'],['토픽 모델로 규제 문서 160건 분석 · Coherence +37%','AWSGLD-TNTM · JKDAS 28(1) 제1저자']],
-        fig:['lora_rouge','tntm_coh'], figt:'파인튜닝 · 텍스트 모델링 — 기준선 대비',
-        feat:['sony','lora','tbt'], res:'resume-nlp.pdf', car:'career-nlp.pdf'},
+        claim:'Phi-4-mini(3.8B)를 LoRA로 파인튜닝해 같은 조건의 RAG보다 ROUGE-1을 0.089에서 0.150으로 올렸습니다(학술지 제1저자). 제품 설명서 RAG 챗봇은 답변마다 근거 문서와 페이지 번호를 함께 보여 줍니다. 문서 13만 건에 토픽 모델을 적용한 예측 연구도 투고를 앞두고 있습니다.',
+        ev:[['LoRA sLLM 파인튜닝 논문 (제1저자)','한국자료분석학회지 27(3) · BDD-X 주행 영상 6,970개 · 평균 응답 1.145초'],['SONY 제품 설명서 RAG 챗봇','bge-m3 · Chroma · Re-rank · 출처 페이지 표기 · 공개 저장소'],['규제 문서 토픽 모델링 논문 (제1저자)','한국자료분석학회지 28(1) · Federal Register 160건 · LDA 대비 Coherence 37% 향상']],
+        fig:['lora_rouge','tntm_coh'], figt:'학술지 논문 2편의 결과',
+        feat:['sony','lora','emerg'], res:'resume-nlp.pdf', car:'career-nlp.pdf'},
  'cj': {title:'AI Engineer', card:'AI Engineer · Language AI',
-        claim:'RAG · 파인튜닝 · 추천까지 Language AI 파이프라인을 끝까지 구현하고, 결과를 지표로 검증합니다.',
-        ev:[['RAG 챗봇 전 구간 구현 · 답변마다 출처 페이지 반환','청킹 · bge-m3 · 제품명 필터 · Re-rank · 웹 검색 대체'],['sLLM LoRA 파인튜닝 · 평균 응답 1.145초','JKDAS 27(3) 제1저자 · 임베디드 자원 제약'],['LLM 메타데이터 정규화 + LightGCN 추천 검증','Netflix 17,366건 · 7개 지표 성능 손실 없음']],
-        fig:['lora_rouge','std_fit'], figt:'Language AI 파이프라인 검증 — 실측값',
+        claim:'제품 설명서 6종을 묶은 RAG 챗봇을 청킹부터 검색 · 재정렬 · 출처 표기까지 직접 구현했습니다. sLLM LoRA 파인튜닝 논문을 제1저자로 냈고, LLM이 만든 메타데이터를 국제 표준으로 정규화해 추천 모델에서 성능 손실이 없음을 확인했습니다.',
+        ev:[['SONY 제품 설명서 RAG 챗봇','청킹 · bge-m3 검색 · 제품명 필터 · Re-rank · 출처 표기 · 웹 검색 대체'],['sLLM LoRA 파인튜닝 논문 (제1저자)','한국자료분석학회지 27(3) · RAG와 같은 조건에서 비교'],['LLM 메타데이터 정규화 + LightGCN 추천','Netflix 17,366건 · 7개 지표 성능 손실 없음']],
+        fig:['lora_rouge','std_fit'], figt:'대표 프로젝트 결과',
         order:['sony','std','lora','cag','taxi','pika'],
         feat:['sony','lora','std'], res:'resume-cj.pdf', car:'career-cj.pdf'}
 };
@@ -1197,10 +1289,11 @@ const RC=ROLES[ROLE]||ROLES[''];
 const HOME_TITLE=document.title;
 
 /* 대표 프로젝트 그림 — 첫 화면 Fig. 1 에 이미 있으면 교차 참조로 대신함 */
-const FEATALT={bntm:{img:'img/bntm-faers-path.png',w:1500,h:1457,alt:'FAERS 데이터에서 학습된 토픽 전이 경로 그래프',cap:'실제 코퍼스(FAERS)에서 학습된 단계 경로 · 투약 → 적응증 → 증상 → 조치 → 결과'},
+const FEATALT={bntm:{th:['환경','정답 K','AWSGHMC','SGHMC','MH'],tbl:[['기본','8','8.0','7.4','14.8'],['초과 용량 (K 40)','8','8.0','7.8','19.4'],['다수 토픽','20','20.0','15.4','23.4'],['소표본 (문서 200)','8','8.0','7.0','9.4'],['대규모 (문서 10,000)','40','40.0','35.1','44.6']],cap:'직접 생성한 모의 말뭉치 환경 5종 · 추정 활성 토픽 수 (10 seed 평균)'},
+ emerg:{th:null,tbl:[['예측 대상','3년 뒤 성장률 상위 20% 토픽'],['변수','데이터 14개 + 전이 구조 8개 (직접 정의)'],['모형','L2 로지스틱 회귀 · 불균형 가중'],['평가','rolling-origin · 결과연도 논문 13개 · 특허 11개'],['2028 전망 1위','전력 설비 고장 감시 (확률 0.50)']],cap:'예측 모형 설계'},
  sgmcmc:{img:'img/sgmcmc-kitti-compare.jpg',w:746,h:180,alt:'같은 KITTI 장면에서 Adam은 13건, SGLD는 3건을 검출한 비교 이미지',cap:'같은 KITTI 장면 · Adam 13건 대 SGLD 3건 검출'}};
-const FEATFIG={bntm:'bntm_k',lora:'lora_rouge',sgmcmc:'sg_bev',tbt:'tntm_coh',std:'std_fit',
- taxi:{img:'img/taxi-map-arrivals.jpg',w:828,h:581,alt:'서울 자치구별 택시 도착 건수를 색 농도로 표현한 QGIS 지도',cap:'자치구별 택시 도착 건수 분포 · QGIS (직접 시각화)'},
+const FEATFIG={emerg:'tntm_auc',bntm:'bntm_k',lora:'lora_rouge',sgmcmc:'sg_bev',tbt:'tntm_coh',std:'std_fit',
+ taxi:{img:'img/taxi-map-arrivals.jpg',w:828,h:581,alt:'서울 자치구별 택시 도착 건수를 색 농도로 표현한 QGIS 지도',cap:'자치구별 택시 도착 건수 분포 · QGIS'},
  sony:{img:'img/sony-answer.jpg',w:1000,h:341,alt:'챗봇 답변과 출처 정보, 대조한 실제 매뉴얼 페이지',cap:'답변 · 출처(파일명 · 페이지)와 매뉴얼 원문 대조'},
  farm:{tbl:[['환경 변수 영향력','온도 > 일사량 > CO₂'],['PDP 임계 구간','온도 25°C · CO₂ 400ppm'],['모델 선정 기준','Train–Test 격차 최소 (과적합 위험 최소)'],['후속 조치','다음 작물(딸기) 측정용 카메라 센서 구성 협의']],cap:'공공데이터 재접근 후 해석 결과 · P02 연계'}};
 
@@ -1217,45 +1310,47 @@ function figHTML(key,letter,lab){
   const [lo,hi]=f.d, r=v=>Math.max(0,Math.min(1,(v-lo)/(hi-lo)));
   const tf=f.tfmt||(v=>String(v));
   const rows=f.rows.map((x,i)=>{
-    const a=x.from!=null?r(x.from):(f.stem!=null?r(f.stem):0), b=r(x.v);
+    const ci=x.lo!=null, a=ci?r(x.lo):x.from!=null?r(x.from):(f.stem!=null?r(f.stem):0), b=ci?r(x.hi):r(x.v), xx=r(x.v);
     const val=x.txt||f.fmt(x.v), fromTxt=x.from!=null?`${f.fmt(x.from).replace(/^0\.000$/,'0')} → `:'';
-    return `<div class="fr${x.me?' me':''}" style="--r:${i+1};--i:${i};--a:${a.toFixed(4)};--b:${b.toFixed(4)};--x:${b.toFixed(4)}">
+    return `<div class="fr${x.me?' me':''}${ci?' ci':''}" style="--r:${i+1};--i:${i};--a:${a.toFixed(4)};--b:${b.toFixed(4)};--x:${xx.toFixed(4)}">
       <span class="fr-l">${esc(x.l)}${x.s?`<small>${esc(x.s)}</small>`:''}</span>
       <span class="fr-tr" aria-hidden="true"><span class="fr-stem"></span>${x.from!=null?'<span class="fr-from"><i></i></span>':''}<span class="fr-mk"><i></i></span></span>
-      <span class="fr-v">${x.from!=null&&!x.txt?fromTxt:''}${esc(val)}</span></div>`;
+      <span class="fr-v">${x.from!=null&&!x.txt?fromTxt:''}${esc(val)}${ci?`<small>${f.fmt(x.lo).replace(/0+$/,'')}–${f.fmt(x.hi).replace(/0+$/,'')}</small>`:''}</span></div>`;
   }).join('');
   const grid=f.ticks.map(t=>`<span class="gl" style="left:${(r(t)*100).toFixed(2)}%"></span>`).join('');
   const ref=f.ref?`<span class="refl${f.ref.r?' r':''}${f.ref.me?' me':''}" style="left:${(r(f.ref.v)*100).toFixed(2)}%"><span>${esc(f.ref.l)}</span></span>`:'';
   const ticks=f.ticks.map(t=>`<span style="left:${(r(t)*100).toFixed(2)}%">${tf(t)}</span>`).join('');
-  const sr=f.rows.map(x=>`${x.l} ${x.from!=null?(x.txt?'':f.fmt(x.from)+'에서 '):''}${x.txt||f.fmt(x.v)}`).join(', ');
+  const sr0=f.rows.map(x=>`${x.l} ${x.from!=null?(x.txt?'':f.fmt(x.from)+'에서 '):''}${x.txt||f.fmt(x.v)}`).join(', ');
+  const sr=sr0;
   return `<figure class="fg${f.ref?' has-ref':''}" data-fig="${key}">
-    <figcaption class="fg-t">${lab?`<span class="fgno">${lab}</span>`:''}${letter?`<b>(${letter})</b>`:''}${esc(f.t)}</figcaption>
-    <div class="fg-g" style="--rn:${f.rows.length+1}" role="img" aria-label="${esc(f.t)}: ${esc(sr)}">${rows}
+    <figcaption class="fg-t">${lab?`<span class="fgno">${lab}</span>`:''}<a class="fg-p" href="#/p/${f.go}">${letter?`<b>(${letter})</b>`:''}${esc(f.p)}<span class="pa-x">${pa(f.go)}</span></a><span class="fg-d">${esc(f.t)}</span></figcaption>
+    <div class="fg-g" style="--rn:${f.rows.length+1}" role="img" aria-label="${esc(f.p)} — ${esc(f.t)}: ${esc(sr)}">${rows}
       <div class="fg-ov" style="grid-row:1/${f.rows.length+1}">${grid}${ref}</div>
       <div class="fg-ax">${ticks}</div></div>
     ${f.n?`<p class="fg-n">${esc(f.n)} <a class="tl" href="#/p/${f.go}">${pa(f.go)} 상세</a></p>`:''}
   </figure>`;
 }
 function fig1HTML(){
-  const keys=RC.fig, hasRef=keys.some(k=>FIGS[k].ref&&!FIGS[k].ref.me), hasMyRef=keys.some(k=>FIGS[k].ref&&FIGS[k].ref.me), hasFrom=keys.some(k=>FIGS[k].rows.some(x=>x.from!=null));
+  const refLabs=[...new Set(RC.fig.map(k=>FIGS[k].ref&&!FIGS[k].ref.me?(FIGS[k].ref.lg||'정답'):null).filter(Boolean))];
+  const keys=RC.fig, hasCI=keys.some(k=>FIGS[k].rows.some(x=>x.lo!=null)), hasRef=keys.some(k=>FIGS[k].ref&&!FIGS[k].ref.me), hasMyRef=keys.some(k=>FIGS[k].ref&&FIGS[k].ref.me), hasFrom=keys.some(k=>FIGS[k].rows.some(x=>x.from!=null));
   return `<div class="figp-h"><span class="no">Fig. 1</span><h2>${esc(RC.figt)}</h2></div>
     ${keys.map((k,i)=>figHTML(k,'ab'[i])).join('')}
-    <div class="figp-f"><span><i class="me"></i>본인 방법 · 결과</span><span><i></i>비교 기준</span>${hasFrom?'<span><i class="from"></i>이전 값</span>':''}${hasRef?'<span><i class="rl"></i>정답</span>':''}${hasMyRef?'<span><i class="rl me"></i>직접 설정한 기준선</span>':''}<span>모든 값은 논문 · 실험 실측치</span></div>`;
+    <div class="figp-f"><span><i class="me"></i>본인 방법 · 결과</span><span><i></i>비교 기준</span>${hasFrom?'<span><i class="from"></i>이전 값</span>':''}${hasRef?refLabs.map(l=>`<span><i class="rl"></i>${l}</span>`).join(''):''}${hasMyRef?'<span><i class="rl me"></i>직접 설정한 기준선</span>':''}${hasCI?'<span><i class="cil"></i>95% 신뢰구간</span>':''}<span>수치는 논문 · 실험 결과 그대로</span></div>`;
 }
 
 /* 지원 근거 한 건 */
-let FIGN=1;
+let FIGN=1, TABN=0;
 function routeHTML(f,i){
   let ff=FEATFIG[f.id]; let fig='';
   if(typeof ff==='string'&&RC.fig.includes(ff)&&FEATALT[f.id]) ff=FEATALT[f.id];
   if(typeof ff==='string'){
     const pos=RC.fig.indexOf(ff);
-    fig=pos>=0?`<p class="xref">이 프로젝트의 핵심 수치는 첫 화면 <a href="#top">Fig. 1(${'ab'[pos]})</a>에 있습니다.</p>`
+    fig=pos>=0?`<p class="xref">결과 그래프는 첫 화면 <a href="#top">Fig. 1(${'ab'[pos]})</a>에 있습니다.</p>`
               :`<div class="figp">${figHTML(ff,'','Fig. '+(++FIGN))}</div>`;
   }else if(ff&&ff.img){
     fig=`<figure style="margin:0"><div class="plate-img"><img src="${A+ff.img}" alt="${esc(ff.alt)}" width="${ff.w}" height="${ff.h}" loading="lazy" decoding="async"></div><figcaption class="figcap"><b>Fig. ${++FIGN}</b>${esc(ff.cap)}</figcaption></figure>`;
   }else if(ff&&ff.tbl){
-    fig=`<figure class="figp" style="margin:0"><div class="figp-h"><span class="no">Table 1</span><h2>${esc(ff.cap)}</h2></div><table class="tbl mini"><tbody>${ff.tbl.map(([k,v])=>`<tr><td>${esc(k)}</td><td>${esc(v)}</td></tr>`).join('')}</tbody></table></figure>`;
+    fig=`<figure class="figp" style="margin:0"><div class="figp-h"><span class="no">Table ${++TABN}</span><h2>${esc(ff.cap)}</h2></div><table class="tbl mini${ff.th?' sim':''}">${ff.th?`<thead><tr>${ff.th.map(h=>`<th>${esc(h)}</th>`).join('')}</tr></thead>`:''}<tbody>${ff.tbl.map(r=>`<tr>${r.map((c,j)=>`<td${ff.th&&j===2?' class="pi"':''}>${esc(c)}</td>`).join('')}</tr>`).join('')}</tbody></table></figure>`;
   }
   const rows=[['문제',f.problem],['역할',f.role],['결과',f.result]].map(([k,v])=>`<div><dt>${k}</dt><dd>${k==='결과'?'<strong>'+esc(v)+'</strong>':esc(v)}</dd></div>`).join('');
   const links=f.links.map(([t,h])=>h?`<a class="tl" href="${h.startsWith('assets/')?ROOT+h:h}"${h.startsWith('http')?' target="_blank" rel="noopener"':''}>${esc(t)}${ic('i-arrow')}</a>`:`<span>${esc(t)}</span>`).join('');
@@ -1279,7 +1374,7 @@ function paperHTML(x){
   const pend=x.st==='pend';
   const yr=(x.who.match(/\d{4}/)||[''])[0];
   return `<article class="ref${pend?' pend':''}">
-    <p class="st">${pend?'투고 준비 중':'게재 '+yr}<small>${esc(x.who.replace(/ · \d{4}$/,''))}</small></p>
+    <p class="st">${pend?esc(x.tag):'게재 '+yr}<small>${esc(x.who.replace(/ · \d{4}$/,''))}</small></p>
     <div><h3><a class="tl" href="${x.go}">${esc(x.t)}</a></h3>
       <p class="src">${esc(x.src)}</p>
       <p class="ab">${esc(x.p)}</p>
@@ -1346,8 +1441,8 @@ function applyRole(){
   $('#evid').innerHTML=RC.ev.map(([b,s])=>`<li><div><b>${esc(b)}</b><span>${esc(s)}</span></div></li>`).join('');
   $('#fig1').innerHTML=fig1HTML();
   const pick=RC.feat.map(id=>FEAT.find(f=>f.id===id)).filter(Boolean);
-  FIGN=1; $('#fgrid').innerHTML=pick.map(routeHTML).join('');
-  $('#fitlead').textContent=(ROLE?RC.title+' 지원 기준으로':'실무 · 공공데이터 · 연구에서')+' 고른 프로젝트 '+pick.length+'건. 문제 · 역할 · 결과 순으로 적었습니다.';
+  FIGN=1; TABN=0; $('#fgrid').innerHTML=pick.map(routeHTML).join('');
+  $('#fitlead').textContent=ROLE?RC.title+' 직무와 가장 관련 있는 프로젝트 '+pick.length+'건입니다.':'학위논문 · 예측 연구 · 공공데이터 분석에서 하나씩 골랐습니다.';
   document.querySelectorAll('#roles a').forEach(a=>a.classList.toggle('on',a.dataset.r===ROLE));
   document.querySelectorAll('a[download]').forEach(a=>{
     const f=a.getAttribute('download')||'';
