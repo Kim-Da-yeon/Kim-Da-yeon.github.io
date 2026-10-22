@@ -30,7 +30,7 @@
    ══════════════════════════════════════════════ */
 :root{
   --bg:#F6F7F9; --plate:#FFFFFF; --sunk:#EEF0F3;
-  --ink:#13151A; --ink-2:#3A3F49; --ink-3:#5F6673;
+  --ink:#13151A; --ink-2:#3A3F49; --ink-3:#4D535E;
   --line:#DCE0E6; --grid:#E9ECF0;
   --acc:#2B45D4; --acc-ink:#2238B8; --acc-soft:#E9ECFB;
   --base:#A0A7B4; --base-2:#C9CED6;
@@ -260,59 +260,38 @@ html{scrollbar-color:var(--base-2) var(--bg)}
 .chip.on{color:var(--ink);font-weight:600}
 .chip.on::after{transform:scaleX(1)}
 @media (hover:hover) and (pointer:fine){.chip:hover{color:var(--ink)}}
-.plist-h,.prow{display:grid;grid-template-columns:52px 88px minmax(0,1fr) minmax(0,.62fr) 76px 66px;gap:0 18px;align-items:center}
-.th{width:88px;height:60px;border-radius:6px;border:1px solid var(--line);background:var(--plate);overflow:hidden;display:flex;align-items:center;justify-content:center;color:var(--ink-3)}
-.th img{width:100%;height:100%;object-fit:cover}
-.th .gl{width:24px;height:24px}
-.th svg.mf{width:100%;height:100%;display:block;font-feature-settings:normal}
-/* ── 다룬 데이터 ── */
+.pg{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:22px 18px}
+.pc{display:flex;flex-direction:column;background:var(--plate);border:1px solid var(--line);border-radius:12px;overflow:hidden;transition:border-color .2s ease,box-shadow .25s var(--ease),transform .16s var(--ease)}
+.pc-img{position:relative;aspect-ratio:16/10;background:var(--sunk);overflow:hidden}
+.pc-img img{width:100%;height:100%;object-fit:cover;transition:transform .5s var(--ease)}
+.pc-tag{position:absolute;left:10px;top:10px;font-family:var(--mono);font-size:11.5px;font-weight:500;background:rgba(255,255,255,.94);color:var(--ink);padding:3px 9px;border-radius:999px;box-shadow:0 1px 2px rgba(19,21,26,.12)}
+.pc.fit .pc-tag{background:var(--ink);color:#fff}
+.pc-b{padding:14px 16px 16px;display:flex;flex-direction:column;gap:6px;flex:1}
+.pc-c{font-size:12.5px;color:var(--ink-3);display:flex;justify-content:space-between;gap:8px}
+.pc h3{font-size:15.5px;font-weight:680;line-height:1.42;letter-spacing:-.015em;text-wrap:pretty}
+.pc .kpi{margin-top:auto;padding-top:10px;font-size:13.5px;font-weight:600;line-height:1.45;color:var(--ink);border-top:1px solid var(--grid)}
+.pc:active{transform:scale(.99)}
+@media (hover:hover) and (pointer:fine){.pc:hover{border-color:var(--base-2);box-shadow:0 1px 2px rgba(19,21,26,.05),0 16px 32px -20px rgba(19,21,26,.3)}.pc:hover .pc-img img{transform:scale(1.03)}}
 .gl{width:20px;height:20px;fill:none;stroke:currentColor;stroke-width:1.6;stroke-linecap:round;stroke-linejoin:round;flex:none}
-.dg{background:var(--plate);border:1px solid var(--line);border-radius:8px;padding:clamp(18px,2.2vw,28px)}
-.dg-h{display:flex;flex-wrap:wrap;align-items:baseline;justify-content:space-between;gap:6px 16px;margin-bottom:14px}
-.dg-h b{font-size:15px;font-weight:650}
-.dg-h span{font-size:12.5px;color:var(--ink-3)}
-.dr{display:grid;grid-template-columns:24px minmax(140px,26%) minmax(0,1fr) 92px 34px;column-gap:14px;align-items:center;min-height:44px;padding:4px 6px;margin:0 -6px;border-radius:6px;color:var(--ink-3);transition:background-color .15s ease}
-.dr .gl{color:var(--base)}
-.dr-l{display:flex;flex-direction:column;line-height:1.3;min-width:0}
-.dr-l b{font-size:14px;font-weight:560;color:var(--ink-2)}
-.dr-l small{font-size:11.5px;color:var(--ink-3);margin-top:2px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
-.dr-tr{position:relative;height:30px;background-image:linear-gradient(90deg,var(--grid) 1px,transparent 1px);background-size:calc(100% / 6) 100%}
-.dr-tr::before{content:"";position:absolute;left:0;right:0;top:50%;height:1px;background:var(--grid)}
-.dr .fr-stem{background:var(--base-2)}
-.dr .fr-mk i{background:var(--base)}
-.dr-v{font-size:14px;font-weight:600;color:var(--ink-2);text-align:right;white-space:nowrap}
-.dr-v em{font-style:normal;font-size:11.5px;font-weight:400;color:var(--ink-3);margin-left:2px}
-.dr-p{font-family:var(--mono);font-size:11.5px;color:var(--ink-3);text-align:right}
-.dr.fit .gl{color:var(--ink)}
-.dr.fit .dr-l b{color:var(--ink);font-weight:680}
-.dr.fit .fr-stem{background:var(--ink);height:2px;top:calc(50% - 1px)}
-.dr.fit .fr-mk i{background:var(--ink)}
-.dr.fit .dr-v,.dr.fit .dr-p{color:var(--ink)}
-@media (hover:hover) and (pointer:fine){.dr:hover{background:var(--sunk)}}
-.dg-ax{display:grid;grid-template-columns:24px minmax(140px,26%) minmax(0,1fr) 92px 34px;column-gap:14px;margin-top:4px}
-.dg-ax div{grid-column:3;position:relative;height:18px}
-.dg-ax span{position:absolute;top:2px;transform:translateX(-50%);font-family:var(--mono);font-size:11px;color:var(--ink-3)}
-.dg-ax span:first-child{transform:none}.dg-ax span:last-child{transform:translateX(-100%)}
-.dx{margin-top:22px;padding-top:16px;border-top:1px solid var(--grid)}
-.dx p{font-size:12.5px;color:var(--ink-3);margin-bottom:10px}
-.dx-l{display:flex;flex-wrap:wrap;gap:8px 10px}
-.dx-l a{display:inline-flex;align-items:center;gap:8px;font-size:13.5px;color:var(--ink-2);padding:7px 12px 7px 10px;border:1px solid var(--line);border-radius:999px;transition:background-color .15s ease,border-color .15s ease}
-.dx-l a .gl{width:17px;height:17px;color:var(--ink-3)}
-.dx-l a.fit{color:var(--ink);font-weight:620;border-color:var(--ink-3)}
-.dx-l a em{font-style:normal;font-family:var(--mono);font-size:11px;color:var(--ink-3)}
-@media (hover:hover) and (pointer:fine){.dx-l a:hover{background:var(--sunk);border-color:var(--base)}}
-.plist-h{font-size:12px;color:var(--ink-3);padding:0 12px 10px;}
-.prow{padding:17px 12px;border-top:1px solid var(--line);border-radius:6px;transition:background-color .15s ease}
-.prow:last-child{border-bottom:1px solid var(--line)}
-.prow .pa{font-family:var(--mono);font-size:12.5px;color:var(--ink-3)}
-.prow.fit .pa{color:var(--ink);font-weight:600}
-.prow.fit .pa::after{content:"";display:inline-block;width:6px;height:6px;border-radius:50%;background:var(--ink);margin-left:6px;vertical-align:.15em}
-.prow h3{font-size:15.5px;font-weight:620;line-height:1.45;letter-spacing:-.01em;text-wrap:pretty}
-.prow .m{display:block;font-size:12.5px;color:var(--ink-3);margin-top:3px;line-height:1.5;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
-.prow .kpi{font-size:14px;color:var(--ink);line-height:1.45}
-.prow .ct{font-size:12.5px;color:var(--ink-3)}
-.prow .yr{font-size:13px;color:var(--ink-3);text-align:right}
-@media (hover:hover) and (pointer:fine){.prow:hover{background:var(--plate)}}
+/* ── 다룬 데이터 : 종류 중심 ── */
+.dtg{columns:2;column-gap:16px}
+.dtc{break-inside:avoid;background:var(--plate);border:1px solid var(--line);border-radius:12px;padding:18px 18px 6px;margin-bottom:16px}
+.dtc-h{display:flex;align-items:center;gap:12px;margin-bottom:8px}
+.dtc-h .gi{width:42px;height:42px;border-radius:11px;background:var(--sunk);display:flex;align-items:center;justify-content:center;flex:none}
+.dtc-h .gi .gl{width:22px;height:22px;color:var(--ink)}
+.dtc-h b{display:block;font-size:16.5px;font-weight:720;letter-spacing:-.015em}
+.dtc-h span{display:block;font-size:12.5px;color:var(--ink-3);margin-top:1px}
+.dti{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:2px 12px;padding:11px 8px;margin:0 -8px;border-top:1px solid var(--grid);border-radius:8px;transition:background-color .15s ease}
+.dti b{font-size:14.5px;font-weight:620;color:var(--ink);line-height:1.4}
+.dti small{grid-column:1;font-size:12.5px;color:var(--ink-3);line-height:1.45}
+.dti .sz{grid-row:1/3;grid-column:2;align-self:center;text-align:right;font-size:13px;font-weight:600;color:var(--ink-2);white-space:nowrap}
+.dti .sz em{display:block;font-style:normal;font-family:var(--mono);font-size:11px;color:var(--ink-3);font-weight:400}
+.dti.fit b::after{content:"";display:inline-block;width:6px;height:6px;border-radius:50%;background:var(--ink);margin-left:7px;vertical-align:.18em}
+@media (hover:hover) and (pointer:fine){.dti:hover{background:var(--sunk)}}
+.credit{margin-top:28px;font-size:12px;color:var(--night-3)}
+.credit summary{cursor:pointer;width:max-content}
+.credit ul{margin:10px 0 0;padding:0;list-style:none;display:grid;gap:4px;line-height:1.5}
+.credit a{text-decoration:underline;text-underline-offset:3px}
 
 /* ── 역량 · 이력 · 코드 ── */
 .dl{margin:0;border-top:1px solid var(--line)}
@@ -420,6 +399,7 @@ html{scrollbar-color:var(--base-2) var(--bg)}
 
 /* ══ 반응형 ══ */
 @media (max-width:1100px){
+  .pg{grid-template-columns:repeat(2,minmax(0,1fr))}
   .hl{grid-column:1/7}.hf{grid-column:7/13;padding-left:0}
   .sh{grid-column:1/-1;position:static;margin-bottom:36px}
   .sh p{max-width:36em}
@@ -445,15 +425,8 @@ html{scrollbar-color:var(--base-2) var(--bg)}
   .brand em,.brand span{display:none}
   .ref,.trk-r,.dl>div,.tline .dl>div{grid-template-columns:minmax(0,1fr);gap:6px}
   .ref .st{padding-top:0}
-  .plist-h{display:none}
-  .prow{grid-template-columns:60px minmax(0,1fr) auto;grid-template-areas:"th pa yr" "th t t" "th k k";gap:4px 12px;padding:16px 4px;align-items:start}
-  .prow .th{grid-area:th;width:64px;height:44px}.prow .pa{grid-area:pa}.prow .yr{grid-area:yr}.prow .ct{display:none}
-  .dr,.dg-ax{grid-template-columns:20px minmax(0,1fr) 92px 30px;column-gap:10px}
-  .dr .dr-tr{grid-column:2/-1;grid-row:2;height:18px}
-  .dr{row-gap:2px;padding:8px 6px}
-  .dg-ax div{grid-column:2/-1}
-  .prow>div:first-of-type{grid-area:t}.prow .kpi{grid-area:k;color:var(--ink-2);font-size:13.5px}
-  .prow .m{white-space:normal}
+  .pg{grid-template-columns:minmax(0,1fr);gap:14px}
+  .dtg{columns:1}
   .tbl thead{display:none}
   .tbl tr{display:grid;grid-template-columns:1fr auto;gap:2px 12px;padding:14px 0;border-bottom:1px solid var(--line)}
   .tbl td{border:0;padding:0}
@@ -541,7 +514,7 @@ html{scrollbar-color:var(--base-2) var(--bg)}
     <div class="wrap sgrid">
       <div class="sh">
         <h2>다룬 데이터</h2>
-        <p>문서 · 특허 · 영상 · 이미지 · 센서 · 공공데이터. 점의 위치는 데이터 규모(로그 축)입니다. 진한 행은 이 페이지의 대표 프로젝트에 쓴 데이터이고, 누르면 해당 프로젝트로 이동합니다.</p>
+        <p>텍스트부터 주행 영상 · 라이다 · 공공데이터 · 센서 측정 · 직접 생성한 모의 데이터까지. 점(●)은 이 페이지의 대표 프로젝트에 쓴 데이터이고, 누르면 해당 프로젝트로 이동합니다.</p>
       </div>
       <div class="sb" id="datafig"></div>
     </div>
@@ -614,12 +587,11 @@ html{scrollbar-color:var(--base-2) var(--bg)}
     <div class="wrap sgrid">
       <div class="sh">
         <h2>전체 프로젝트<span class="cnt" id="pcount">17건</span></h2>
-        <p>번호 옆 점(●)은 위 대표 프로젝트입니다. 행을 누르면 상세 내용으로 이동합니다.</p>
+        <p>검은 번호표는 위 대표 프로젝트입니다. 카드를 누르면 상세 내용으로 이동합니다.</p>
       </div>
       <div class="sb">
         <div class="filters" id="filters" role="group" aria-label="분류 필터"></div>
-        <div class="plist-h" aria-hidden="true"><span>번호</span><span></span><span>프로젝트</span><span>핵심 결과</span><span>분류</span><span style="text-align:right">기간</span></div>
-        <div id="pgrid"></div>
+        <div class="pg" id="pgrid"></div>
       </div>
     </div>
   </section>
@@ -699,6 +671,7 @@ html{scrollbar-color:var(--base-2) var(--bg)}
           <a class="ext" href="https://github.com/Kim-Da-yeon" target="_blank" rel="noopener"><span><b>GitHub</b><span>github.com/Kim-Da-yeon</span></span><svg class="ic"><use href="#i-ext"/></svg></a>
         </div>
       </div>
+      <details class="credit" style="grid-column:1/-1"><summary>사진 출처</summary><ul id="credits"></ul></details>
       <div class="foot" style="grid-column:1/-1">
         <span>© 2026 김다연</span>
         <nav aria-label="하단 메뉴"><a href="#data">데이터</a><a href="#fit">대표 프로젝트</a><a href="#research">연구</a><a href="#projects">프로젝트</a><a href="#skills">역량</a><a href="#about">이력</a><a href="#code">코드</a></nav>
@@ -1460,121 +1433,34 @@ function routeHTML(f,i){
     <div class="r-fig">${fig}</div></article>`;
 }
 
-/* ══ 다룬 데이터 — 규모는 프로젝트 상세 · 논문의 수치 그대로 ══ */
-const DATA=[
- {v:185420,t:'185,420',u:'건',l:'기상청 강수 예보',s:'강수확률 · 실제 강수 유무 · 2023',g:'table',p:'rain'},
- {v:114066,t:'114,066',u:'건',l:'논문 초록',s:'OpenAlex · 2002–2025 · 972,092문장',g:'text',p:'emerg'},
- {v:75000,t:'75,000',u:'장',l:'한글 글자 이미지',s:'폰트 25종 · 128×256px',g:'image',p:'gan'},
- {v:70000,t:'약 7만',u:'건',l:'교통법규 분류 데이터',s:'Traffic violations · 분류 확장 실험',g:'table',p:'lora'},
- {v:21028,t:'21,028',u:'건',l:'미국 특허',s:'Google BigQuery · 524,424문장',g:'patent',p:'emerg'},
- {v:17366,t:'17,366',u:'건',l:'LLM 생성 영화 메타데이터',s:'Netflix · LLMRec',g:'table',p:'std'},
- {v:10000,t:'10,000',u:'문서',l:'모의 말뭉치 (직접 생성)',s:'환경 5종 · 최대 규모 기준 · 200~10,000문서',g:'sim',p:'bntm'},
- {v:6970,t:'6,970',u:'개',l:'주행 영상',s:'BDD-X · 주석 26,228개',g:'video',p:'lora'},
- {v:360,t:'360',u:'회',l:'작물 생육 측정',s:'18개체 × 20일 · 하루 1회 수기',g:'series',p:'farm'},
- {v:160,t:'160',u:'건',l:'미국 규제 문서',s:'Federal Register',g:'text',p:'tbt'},
- {v:6,t:'6',u:'종',l:'제품 설명서',s:'SONY 카메라 · 헤드폰 · 스피커',g:'text',p:'sony'}
-];
-const DEXTRA=[
- {l:'KITTI 라이다 점구름',g:'points',p:'sgmcmc'},
- {l:'FAERS 이상반응 보고서 · NTSB 사고 서술문',g:'text',p:'bntm'},
- {l:'서울시 택시 공공데이터 6종',g:'map',p:'taxi'},
- {l:'대학알리미 기숙사 공시',g:'table',p:'dorm'},
- {l:'농촌진흥청 작물 환경 데이터',g:'table',p:'crop'}
+/* ══ 다룬 데이터 — 종류 중심, 규모는 보조 정보(상세 · 논문 수치 그대로) ══ */
+const DTYPES=[
+ {g:'text',n:'텍스트 · 문서',s:'논문 · 특허 · 규제 문서 · 사고 보고서 · 설명서',items:[
+  ['논문 초록','OpenAlex · 2002–2025 · 972,092문장','114,066','건','emerg'],['미국 특허','Google BigQuery · 524,424문장','21,028','건','emerg'],
+  ['이상반응 · 사고 보고서','FAERS 이상반응 · NTSB 사고 서술문','','','bntm'],['미국 규제 문서','Federal Register','160','건','tbt'],['제품 설명서 PDF','SONY 카메라 · 헤드폰 · 스피커','6','종','sony']]},
+ {g:'video',n:'영상 · 이미지 · 라이다',s:'주행 영상 · 3D 점구름 · 글자 이미지',items:[
+  ['주행 영상과 설명 주석','BDD-X · 주석 26,228개','6,970','개','lora'],['라이다 점구름','KITTI 3D 객체 탐지','','','sgmcmc'],['한글 글자 이미지','폰트 25종 · 128×256px','75,000','장','gan']]},
+ {g:'table',n:'표 · 공공데이터',s:'공시 · 행정 · 기상 · 메타데이터',items:[
+  ['기상청 강수 예보','강수확률 · 실제 강수 유무 · 2023','185,420','건','rain'],['서울시 택시 공공데이터','6종 병합 · 25개 자치구','','','taxi'],
+  ['LLM 생성 영화 메타데이터','Netflix · LLMRec','17,366','건','std'],['교통법규 분류 데이터','Traffic violations','약 7만','건','lora'],
+  ['대학알리미 기숙사 공시','수용률 · 이익률 지표','','','dorm'],['농촌진흥청 작물 데이터','온도 · 일사량 · CO₂','','','crop']]},
+ {g:'series',n:'센서 · 시계열',s:'현장에서 직접 측정한 데이터',items:[['작물 생육 측정','18개체 × 20일 · 하루 1회 수기 측정','360','회','farm']]},
+ {g:'sim',n:'생성 데이터',s:'정답을 알고 만든 검증용 데이터',items:[['모의 말뭉치 (직접 생성)','환경 5종 · 정답 토픽 8~40개','최대 10,000','문서','bntm']]}
 ];
 const gl=n=>`<svg class="gl" aria-hidden="true"><use href="#g-${n}"/></svg>`;
 function dataHTML(){
-  const r=v=>Math.max(0,Math.min(1,Math.log10(v)/6)), fitP=new Set(RC.feat);
-  const rows=DATA.map((x,i)=>{const a=r(x.v);
-    return `<a class="dr${fitP.has(x.p)?' fit':''}" href="#/p/${x.p}" style="--i:${i};--a:0;--b:${a.toFixed(4)};--x:${a.toFixed(4)}">
-      ${gl(x.g)}<span class="dr-l"><b>${esc(x.l)}</b><small>${esc(x.s)}</small></span>
-      <span class="dr-tr" aria-hidden="true"><span class="fr-stem"></span><span class="fr-mk"><i></i></span></span>
-      <span class="dr-v">${esc(x.t)}<em>${esc(x.u)}</em></span><span class="dr-p">${pa(x.p)}</span></a>`;}).join('');
-  const ticks=['10','100','1천','1만','10만','100만'].map((t,i)=>`<span style="left:${((i+1)/6*100).toFixed(2)}%">${t}</span>`).join('');
-  const extra=DEXTRA.map(x=>`<a class="${fitP.has(x.p)?'fit':''}" href="#/p/${x.p}">${gl(x.g)}${esc(x.l)}<em>${pa(x.p)}</em></a>`).join('');
-  return `<figure class="dg fg" style="margin:0" aria-label="다룬 데이터 규모">
-    <div class="dg-h"><b>데이터 종류와 규모</b><span>로그 축 · 단위는 행마다 표기</span></div>
-    ${rows}
-    <div class="dg-ax" aria-hidden="true"><div>${ticks}</div></div>
-    <div class="dx"><p>규모를 따로 표기하지 않은 데이터</p><div class="dx-l">${extra}</div></div>
-  </figure>`;
+  const fitP=new Set(RC.feat);
+  return `<div class="dtg">${DTYPES.map(t=>`<div class="dtc"><div class="dtc-h"><span class="gi">${gl(t.g)}</span><div><b>${esc(t.n)}</b><span>${esc(t.s)}</span></div></div>
+    ${t.items.map(([n,sub,sz,u,pid])=>`<a class="dti${fitP.has(pid)?' fit':''}" href="#/p/${pid}"><b>${esc(n)}</b><small>${esc(sub)}</small><span class="sz">${sz?esc(sz)+'<span style="font-weight:400;font-size:12px"> '+esc(u)+'</span>':''}<em>${pa(pid)}</em></span></a>`).join('')}</div>`).join('')}</div>`;
 }
-/* ══ 프로젝트 목록 썸네일 — 실측 수치 미니 그림 (값은 각 상세 페이지 그대로) ══
-   파랑 = 본인 방법 · 결과, 회색 = 비교 기준, 잉크 = 데이터 구조 */
-const MC={i:'#13151A',t:'#5F6673',b:'#A0A7B4',b2:'#C9CED6',g:'#E9ECF0',a:'#2B45D4'};
-const mf=(b,lab)=>`<svg class="mf" viewBox="0 0 100 64" aria-hidden="true">${b}${lab?`<text x="50" y="60.5" text-anchor="middle" font-size="8.4" font-family="Pretendard Variable,Pretendard,sans-serif" font-weight="600" style="font-feature-settings:normal" fill="${MC.t}">${lab}</text>`:''}</svg>`;
-const ys=n=>Array.from({length:n},(_,i)=>n===1?32:12+i*(40/(n-1)));
-/* 롤리팝: 축(x0~x1) 위 기준점에서 값까지 막대 + 점. ref = 정답 · 기준선 */
-function mLolli(rows,lo,hi,o={}){
-  const X=v=>12+76*Math.max(0,Math.min(1,(v-lo)/(hi-lo))), Y=ys(rows.length); let b='';
-  if(o.ref!=null) b+=`<line x1="${X(o.ref)}" y1="5" x2="${X(o.ref)}" y2="59" stroke="${MC.i}" stroke-width="1.2" stroke-dasharray="2.4 2"/>`;
-  rows.forEach((r,k)=>{const y=Y[k],c=r.me?MC.a:MC.b,x0=X(o.from!=null?o.from:lo);
-    b+=`<line x1="12" y1="${y}" x2="88" y2="${y}" stroke="${MC.g}" stroke-width="1"/><line x1="${x0}" y1="${y}" x2="${X(r.v)}" y2="${y}" stroke="${c}" stroke-width="${r.me?2.6:1.6}"/><circle cx="${X(r.v)}" cy="${y}" r="4.2" fill="${c}"/>`;});
-  return mf(b);
-}
-/* 신뢰구간: 옅은 띠 + 점, ref = 무작위 기준 */
-function mCI(rows,lo,hi,ref){
-  const X=v=>12+76*(v-lo)/(hi-lo), Y=[22,42]; let b=`<line x1="${X(ref)}" y1="8" x2="${X(ref)}" y2="56" stroke="${MC.i}" stroke-width=".9" stroke-dasharray="2 1.6"/>`;
-  rows.forEach((r,k)=>{const y=Y[k];b+=`<line x1="12" y1="${y}" x2="88" y2="${y}" stroke="${MC.g}" stroke-width=".8"/><rect x="${X(r.l)}" y="${y-3.6}" width="${X(r.h)-X(r.l)}" height="7.2" rx="3.6" fill="${MC.a}" opacity=".3"/><circle cx="${X(r.v)}" cy="${y}" r="4.4" fill="${MC.a}"/>`;});
-  return mf(b);
-}
-/* 전 → 후: 빈 점(이전) → 채운 점(이후) */
-function mDelta(rows){
-  const X=v=>12+76*v, Y=ys(rows.length); let b='';
-  rows.forEach((r,k)=>{const y=Y[k];b+=`<line x1="12" y1="${y}" x2="88" y2="${y}" stroke="${MC.g}" stroke-width=".8"/><line x1="${X(r.f)}" y1="${y}" x2="${X(r.v)}" y2="${y}" stroke="${MC.a}" stroke-width="2.6"/><circle cx="${X(r.f)}" cy="${y}" r="3.8" fill="#fff" stroke="${MC.a}" stroke-width="1.8"/><circle cx="${X(r.v)}" cy="${y}" r="4.2" fill="${MC.a}"/>`;});
-  return mf(b);
-}
-/* 추이선 */
-function mLine(v,lo,hi){
-  const X=i=>14+i*(72/(v.length-1)), Y=x=>52-40*(x-lo)/(hi-lo);
-  let b=`<line x1="10" y1="52" x2="90" y2="52" stroke="${MC.g}" stroke-width=".8"/><polyline points="${v.map((x,i)=>X(i)+','+Y(x)).join(' ')}" fill="none" stroke="${MC.i}" stroke-width="2"/>`;
-  v.forEach((x,i)=>b+=`<circle cx="${X(i)}" cy="${Y(x)}" r="3.4" fill="${MC.i}"/>`);
-  return mf(b);
-}
-/* 세로 막대 + 기준선 */
-function mVbars(v,thr){
-  const w=9,gap=(80-v.length*w)/(v.length-1); let b=`<line x1="8" y1="54" x2="92" y2="54" stroke="${MC.b2}" stroke-width=".8"/>`;
-  v.forEach((x,i)=>{const h=Math.max(1,44*x),xx=10+i*(w+gap);b+=`<rect x="${xx}" y="${54-h}" width="${w}" height="${h}" rx="1" fill="${x>=thr?MC.a:MC.b2}"/>`;});
-  b+=`<line x1="8" y1="${54-44*thr}" x2="92" y2="${54-44*thr}" stroke="${MC.i}" stroke-width=".9" stroke-dasharray="2 1.6"/>`;
-  return mf(b);
-}
-/* 점 격자: cols × rows (데이터 구조) */
-function mGrid(cols,rows,r,o={}){
-  const x0=o.x0||10,x1=o.x1||90,y0=o.y0||10,y1=o.y1||54; let b='';
-  for(let j=0;j<rows;j++)for(let i=0;i<cols;i++){const cx=x0+(cols===1?0:i*(x1-x0)/(cols-1)),cy=y0+(rows===1?0:j*(y1-y0)/(rows-1));
-    const hit=o.hit&&o.hit(i,j);b+=`<circle cx="${cx.toFixed(1)}" cy="${cy.toFixed(1)}" r="${r}" fill="${hit?MC.a:(o.c||MC.t)}"/>`;}
-  return b;
-}
-const MINI={
- bntm:()=>mLolli([{v:20,me:1},{v:23.4},{v:15.4},{v:14.7}],10,25,{ref:20,from:20}),
- emerg:()=>mCI([{v:.876,l:.80,h:.93},{v:.746,l:.67,h:.81}],.4,1,.5),
- lora:()=>mLolli([{v:.1495,me:1},{v:.0888},{v:.0770},{v:.0693}],0,.16),
- sgmcmc:()=>mLolli([{v:49.59,me:1},{v:25.67,me:1},{v:25.37,me:1},{v:65.15},{v:49.07}],0,70),
- tbt:()=>mLolli([{v:.5743,me:1},{v:.42}],0,.6),
- std:()=>mDelta([{f:.484,v:.914},{f:0,v:.803}]),
- dorm:()=>mLine([23.2,23.0,23.8,23.5,23.4],22.8,24.0),
- rain:()=>mVbars([0,.003,.02,.54,.88,.82,.95],.5),
- farm:()=>mf(mGrid(20,18,1.05,{x0:12,x1:88,y0:7,y1:47}),'18개체 × 20일'),
- crop:()=>mf(mGrid(6,1,4.2,{y0:26,y1:26,x0:16,x1:84,c:MC.b2,hit:i=>i===5}),'모델 6종 → LGBM'),
- gan:()=>mf(mGrid(5,5,2.4,{x0:12,x1:40,y0:12,y1:44,c:MC.b})+`<path d="M48 28h14m-4-4 4 4-4 4" fill="none" stroke="${MC.t}" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/><rect x="68" y="16" width="22" height="24" rx="3" fill="${MC.a}"/>`,'폰트 25종 → 손글씨 210자'),
- sony:()=>{let b=`<line x1="12" y1="28" x2="88" y2="28" stroke="${MC.b2}" stroke-width="1"/>`;for(let i=0;i<7;i++){const x=12+i*(76/6);b+=`<rect x="${x-4.5}" y="23.5" width="9" height="9" rx="2" fill="${i===6?MC.a:'#fff'}" stroke="${i===6?MC.a:MC.i}" stroke-width="1.2"/>`;}return mf(b,'7단계 · 출처 반환');},
- cag:()=>mf(mGrid(5,5,2.8,{x0:30,x1:70,y0:8,y1:44,c:MC.i}),'질문 5 × 반복 5'),
- samc:()=>{let b='';['R','C','Py'].forEach((t,i)=>{const x=10+i*28;b+=`<rect x="${x}" y="14" width="24" height="24" rx="3" fill="#fff" stroke="${MC.i}" stroke-width="1.1"/><text x="${x+12}" y="30" text-anchor="middle" font-size="10" font-family="JetBrains Mono,monospace" fill="${MC.i}">${t}</text>`;});return mf(b,'백엔드 3종');},
- pika:()=>mf(mGrid(6,3,3.6,{x0:22,x1:78,y0:12,y1:40,c:MC.i}),'이산 행동 18개'),
- db:()=>mf(`<g fill="#fff" stroke="${MC.i}" stroke-width="1.1"><rect x="8" y="8" width="22" height="15" rx="2"/><rect x="39" y="27" width="22" height="15" rx="2"/><rect x="70" y="8" width="22" height="15" rx="2"/></g><path d="M30 15.5h4v19h5 M61 34.5h5v-19h4" fill="none" stroke="${MC.t}" stroke-width="1"/>`,'E-R 설계 · 정규화')
-};
-function thumbHTML(id){
-  if(id==='taxi') return `<span class="th" title="자치구별 택시 도착 건수 · QGIS"><img src="${A}img/taxi-map-arrivals.jpg" alt="" loading="lazy" decoding="async"></span>`;
-  return `<span class="th" title="${esc(KPI[id]||'')}">${MINI[id]?MINI[id]():gl('table')}</span>`;
-}
+/* ══ 프로젝트 카드 이미지 — 본인 그림(경로도 · KITTI · 지도 · 4분면 · 정규화 · 사후확률) 또는 관련 사진(출처는 하단) ══ */
+const CREDIT={"farm": {"title": "Tomato cultivation in France (2).jpg", "artist": "Mouh2jijel", "lic": "CC BY-SA 3.0", "page": "https://commons.wikimedia.org/wiki/File:Tomato_cultivation_in_France_(2).jpg"}, "crop": {"title": "HARNOIS Greenhouses - Entreprises Pitre Project.jpg", "artist": "Vincedouville", "lic": "CC BY-SA 4.0", "page": "https://commons.wikimedia.org/wiki/File:HARNOIS_Greenhouses_-_Entreprises_Pitre_Project.jpg"}, "lora": {"title": "Florida I95nb Exit 337 exit only dashcam 2.jpg", "artist": "Michael Rivera", "lic": "CC0", "page": "https://commons.wikimedia.org/wiki/File:Florida_I95nb_Exit_337_exit_only_dashcam_2.jpg"}, "tbt": {"title": "Zoox Toyota Highlander Test Vehicle - San Francisco, May 2025 10.jpg", "artist": "9yz", "lic": "CC BY 4.0", "page": "https://commons.wikimedia.org/wiki/File:Zoox_Toyota_Highlander_Test_Vehicle_-_San_Francisco,_May_2025_10.jpg"}, "cag": {"title": "Middelgrunden wind farm 2009-07-01 edit filtered.jpg", "artist": "Photo by Kim Hansen. Postprocessing (crop, rotation, color adjustment, dust spot", "lic": "CC BY-SA 3.0", "page": "https://commons.wikimedia.org/wiki/File:Middelgrunden_wind_farm_2009-07-01_edit_filtered.jpg"}, "gan": {"title": "Korean calligraphy-Hangul-01.jpg", "artist": "Samuraijohnny", "lic": "CC BY-SA 2.0", "page": "https://commons.wikimedia.org/wiki/File:Korean_calligraphy-Hangul-01.jpg"}, "db": {"title": "Bicycle-sharing station at Hangang bikeway 2.jpg", "artist": "Sarang", "lic": "Public domain", "page": "https://commons.wikimedia.org/wiki/File:Bicycle-sharing_station_at_Hangang_bikeway_2.jpg"}, "samc": {"title": "Inverse gaussian as stopping time of random walk.png", "artist": "Cosmia Nebula", "lic": "CC BY-SA 4.0", "page": "https://commons.wikimedia.org/wiki/File:Inverse_gaussian_as_stopping_time_of_random_walk.png"}, "pika": {"title": "Male beach volleyball player spiking a volleyball.jpg", "artist": "Department of Homeland Security. Federal Emergency Management Agency. Public Aff", "lic": "Public domain", "page": "https://commons.wikimedia.org/wiki/File:Male_beach_volleyball_player_spiking_a_volleyball.jpg"}, "emerg": {"title": "Arduino Uno 006.jpg", "artist": "oomlout", "lic": "CC BY-SA 2.0", "page": "https://commons.wikimedia.org/wiki/File:Arduino_Uno_006.jpg"}, "sony": {"title": "Sony Headphones (40476165073).jpg", "artist": "Wutthichai Charoenburi from Bangkok", "lic": "CC BY 2.0", "page": "https://commons.wikimedia.org/wiki/File:Sony_Headphones_(40476165073).jpg"}};
+function thumbHTML(id){ return `<span class="pc-img"><img src="${A}img/thumb/${id}.jpg" alt="" loading="lazy" decoding="async" width="960" height="600"><span class="pc-tag">${pa(id)}</span></span>`; }
 function prowHTML(p){
   const fit=RC.feat.includes(p.id);
-  return `<a class="prow${fit?' fit':''}" href="#/p/${p.id}">
-    <span class="pa">${pa(p.id)}</span>
-    ${thumbHTML(p.id)}
-    <div><h3>${esc(p.title)}</h3><span class="m">${esc(p.meta)}</span></div>
-    <span class="kpi">${esc(KPI[p.id]||'')}</span>
-    <span class="ct">${CATMAP[p.cat].n}</span>
-    <span class="yr">${esc(p.yr)}</span></a>`;
+  return `<a class="pc${fit?' fit':''}" href="#/p/${p.id}">${thumbHTML(p.id)}
+    <span class="pc-b"><span class="pc-c"><span>${CATMAP[p.cat].n}</span><span>${esc(p.yr)}</span></span>
+      <h3>${esc(p.title)}</h3><span class="kpi">${esc(KPI[p.id]||'')}</span></span></a>`;
 }
 
 function paperHTML(x){
@@ -1662,6 +1548,7 @@ function applyRole(){
 function build(){
   applyRole(); renderAV();
   $('#datafig').innerHTML=dataHTML();
+  const cr=$('#credits'); if(cr) cr.innerHTML=Object.entries(CREDIT).map(([id,c])=>`<li>${pa(id)} · <a href="${c.page}" target="_blank" rel="noopener">${esc(c.title)}</a> — ${esc(c.artist.replace(/\s+/g,' ').slice(0,60))} · ${esc(c.lic)}</li>`).join('');
   $('#papers').innerHTML=PAPERS.map(paperHTML).join('');
   const cnt=k=>k==='all'?P.length:P.filter(p=>p.cat===k).length;
   $('#filters').innerHTML=CATS.map(c=>`<button class="chip${c.k==='all'?' on':''}" aria-pressed="${c.k==='all'}" data-k="${c.k}">${c.n}<em>${cnt(c.k)}</em></button>`).join('');
