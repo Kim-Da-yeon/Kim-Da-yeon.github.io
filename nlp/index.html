@@ -514,7 +514,7 @@ html{scrollbar-color:var(--base-2) var(--bg)}
     <div class="wrap sgrid">
       <div class="sh">
         <h2>다룬 데이터</h2>
-        <p>텍스트부터 주행 영상 · 라이다 · 공공데이터 · 센서 측정 · 직접 생성한 모의 데이터까지. 점(●)은 이 페이지의 대표 프로젝트에 쓴 데이터이고, 누르면 해당 프로젝트로 이동합니다.</p>
+        <p>텍스트부터 라이다 · 이미지 · 공공데이터 · 센서 측정 · 직접 생성한 모의 데이터까지. 점(●)은 이 페이지의 대표 프로젝트에 쓴 데이터이고, 누르면 해당 프로젝트로 이동합니다.</p>
       </div>
       <div class="sb" id="datafig"></div>
     </div>
@@ -761,7 +761,7 @@ const P=[
 {
  id:'lora', cat:'nlp', yr:'2025',
  title:'자율주행 도메인에서 LoRA 기반 sLLM 파인튜닝 연구',
- meta:'한국자료분석학회지 27(3) 게재 · 제1저자 · BDD-X 주행 영상 6,970개 · 주석 26,228개',
+ meta:'한국자료분석학회지 27(3) 게재 · 제1저자 · BDD-X 주행 설명 주석 26,228개',
  sum:'임베디드 자원 제약을 전제로 도메인 특화 sLLM의 응답 품질을 높이기 위해 LoRA 파인튜닝과 RAG를 같은 조건에서 비교한 학술지 게재 연구.',
  techs:['Python','PyTorch','LoRA','Phi-4-mini','RAG','BDD-X']
 },
@@ -996,7 +996,7 @@ emerg:{
 
 lora:{
  r:['임베디드 자원 제약에 맞춰 Phi-4-mini(3.8B)를 고르고, LoRA로 전체 파라미터의 약 0.01%만 학습했습니다.',
-    'BDD-X 자율주행 데이터셋(주행 영상 6,970개 · 주석 26,228개)으로 파인튜닝했습니다.',
+    'BDD-X 자율주행 데이터셋의 주행 상황 설명 주석 26,228개(텍스트)로 파인튜닝했습니다.',
     '같은 조건의 RAG(k=1) 대비 ROUGE-1이 0.0888에서 0.1495로 올랐고, 평균 응답 시간은 1.145초였습니다.',
     '교통법규 분류(Traffic violations 약 7만 건)로 넓힌 실험에서 Accuracy 0.745, Macro F1 0.731이었습니다.'],
  d:['전체 파라미터 파인튜닝은 임베디드 환경에서 자원 부담이 큽니다. 자원 사용과 도메인 적응을 함께 고려해 LoRA를 골랐습니다.',
@@ -1265,8 +1265,8 @@ const AV_ITEMS=[
   line:'KITTI 라이다 점구름 · OpenPCDet · PointPillars · CUDA 환경을 고정하고 Adam과 SGMCMC 계열을 같은 조건(80 epoch)에서 비교. 학습 손실 최저와 BEV AP 최고가 다름을 확인'},
  {g:'sim', id:'bntm', tag:'모의 데이터 생성 · 시나리오 설계', title:'정답을 아는 모의 말뭉치 생성기 · 환경 5종',
   line:'정답 토픽 · 전이 · 비중을 아는 데이터를 생성 — 기본 · 초과 용량 · 다수 토픽 · 소표본 · 대규모(문서 10,000건) 5종, K_true 8~40. 다봉 사후분포를 의도적으로 만들어 로컬 트랩을 재현하고, 모든 환경에서 10개 seed 정확 복원을 확인한 뒤 실데이터에 적용'},
- {g:'fm', id:'lora', tag:'주행 도메인 평가', title:'BDD-X 주행 영상 기반 sLLM 파인튜닝 vs 검색 증강 비교',
-  line:'Phi-4-mini(3.8B)를 BDD-X 주행 영상 6,970개 · 주석 26,228개로 LoRA 파인튜닝. 같은 조건 RAG(k=1) 대비 ROUGE-1 0.0888 → 0.1495, Traffic violations 7만 건 확장 실험 Accuracy 0.745 · 한국자료분석학회지 27(3) 게재'},
+ {g:'fm', id:'lora', tag:'주행 도메인 평가', title:'BDD-X 주행 설명 주석 기반 sLLM 파인튜닝 vs 검색 증강 비교',
+  line:'Phi-4-mini(3.8B)를 BDD-X 주행 설명 주석 26,228개로 LoRA 파인튜닝. 같은 조건 RAG(k=1) 대비 ROUGE-1 0.0888 → 0.1495, Traffic violations 7만 건 확장 실험 Accuracy 0.745 · 한국자료분석학회지 27(3) 게재'},
  {g:'onv', id:'cag', tag:'quantization', title:'QLoRA 4bit 양자화 + CAG 결합 대화형 AI',
   line:'4bit 양자화로 자원 사용을 줄이고, 외부 문서를 캐시에 미리 올려 검색 없이 응답. BLEU · ROUGE · BERTScore 등 지표 6종으로 비교 (멘토 공동 연구)'},
  {g:'onv', id:'lora', tag:'parameter-efficient', title:'임베디드 자원 제약을 전제로 한 sLLM 선정 · LoRA 적용',
@@ -1310,7 +1310,7 @@ const FIGS={
  sg_bev:{p:'SGMCMC 기반 3D 객체 탐지 최적화 · KITTI',t:'최적화기만 바꿔 학습한 PointPillars의 BEV AP Moderate (%) · 직접 구현 3종 대 기준 최적화기',d:[0,70],ticks:[0,35,70],fmt:v=>v.toFixed(2),
    rows:[{l:'SGHMC',s:'직접 구현 · 학습 손실 최저 0.813',v:49.59,me:1},{l:'SGLD',s:'직접 구현',v:25.67,me:1},{l:'SGNHT',s:'직접 구현',v:25.37,me:1},{l:'Adam',s:'기준 최적화기',v:65.15},{l:'SGD',s:'기준 · 모멘텀',v:49.07}],
    n:'네트워크 · 손실을 고정하고 최적화기만 바꾼 실험. 학습 손실이 가장 낮은 SGHMC도 AP는 Adam보다 낮음.',go:'sgmcmc'},
- lora_rouge:{p:'학술지 논문 · 자율주행 도메인 LoRA 기반 sLLM 파인튜닝',t:'BDD-X 주행 영상 설명 생성 품질(ROUGE-1) · LoRA 파인튜닝 대 RAG, 같은 조건',d:[0,.16],ticks:[0,.08,.16],fmt:v=>v.toFixed(4),tfmt:v=>v.toFixed(2),
+ lora_rouge:{p:'학술지 논문 · 자율주행 도메인 LoRA 기반 sLLM 파인튜닝',t:'BDD-X 주행 상황 설명 생성 품질(ROUGE-1) · LoRA 파인튜닝 대 RAG, 같은 조건',d:[0,.16],ticks:[0,.08,.16],fmt:v=>v.toFixed(4),tfmt:v=>v.toFixed(2),
    rows:[{l:'LoRA 파인튜닝',s:'Phi-4-mini 3.8B · 파라미터 0.01%',v:.1495,me:1},{l:'RAG k=1',v:.0888},{l:'RAG k=3',v:.0770},{l:'RAG k=5',v:.0693}],
    n:'평균 응답 1.145초. 참조 문서가 많을수록 RAG 점수가 낮아짐.',go:'lora'},
  tntm_coh:{p:'KIAT 과제 분석 프로젝트 · 미국 자율주행·자동차 규제 문서',t:'규제 문서 160건에서 뽑은 토픽의 품질(Topic Coherence) · 제안 모델 대 LDA',d:[0,.6],ticks:[0,.3,.6],fmt:v=>v.toFixed(4).replace(/0+$/,'').replace(/\.$/,''),tfmt:v=>v.toFixed(1),
@@ -1343,13 +1343,13 @@ const ROLES={
         fig:['bntm_k','tntm_coh'], figt:'투고 예정 논문 · 분석 프로젝트 결과',
         feat:['bntm','emerg','sgmcmc'], res:'resume-ml.pdf', car:'career-ml.pdf'},
  'av': {title:'자율주행 Research Engineer', card:'자율주행 Research Engineer',
-        claim:'자율주행시스템학과 융합전공으로 학부를 마쳤습니다. KITTI 3D 객체 탐지에서 최적화기 5종을 같은 조건으로 비교했고, BDD-X 주행 영상 설명 데이터로 3.8B sLLM을 LoRA 파인튜닝해 학술지에 제1저자로 실었습니다.',
-        ev:[['자율주행시스템학과 융합전공','고려대학교 2025.02 졸업 · ROS · Autoware 실습'],['KITTI 3D 객체 탐지 최적화기 비교','PointPillars · OpenPCDet · SGLD · SGHMC · SGNHT 직접 구현 · 공개 저장소'],['BDD-X 주행 영상 sLLM 파인튜닝 논문 (제1저자)','한국자료분석학회지 27(3) · 임베디드 제약 · 평균 응답 1.145초']],
+        claim:'자율주행시스템학과 융합전공으로 학부를 마쳤습니다. KITTI 3D 객체 탐지에서 최적화기 5종을 같은 조건으로 비교했고, BDD-X 주행 설명 주석으로 3.8B sLLM을 LoRA 파인튜닝해 학술지에 제1저자로 실었습니다.',
+        ev:[['자율주행시스템학과 융합전공','고려대학교 2025.02 졸업 · ROS · Autoware 실습'],['KITTI 3D 객체 탐지 최적화기 비교','PointPillars · OpenPCDet · SGLD · SGHMC · SGNHT 직접 구현 · 공개 저장소'],['BDD-X 주행 설명 주석 sLLM 파인튜닝 논문 (제1저자)','한국자료분석학회지 27(3) · 임베디드 제약 · 평균 응답 1.145초']],
         fig:['lora_rouge','sg_bev'], figt:'자율주행 관련 연구 결과',
         feat:['sgmcmc','lora','bntm'], res:'resume-av.pdf', car:'career-av.pdf'},
  'nlp':{title:'NLP · LLM Engineer', card:'NLP · LLM Engineer',
         claim:'Phi-4-mini(3.8B)를 LoRA로 파인튜닝해 같은 조건의 RAG보다 ROUGE-1을 0.089에서 0.150으로 올렸습니다(학술지 제1저자). 제품 설명서 RAG 챗봇은 답변마다 근거 문서와 페이지 번호를 함께 보여 줍니다. 문서 13만 건에 토픽 모델을 적용한 예측 연구도 투고를 앞두고 있습니다.',
-        ev:[['LoRA sLLM 파인튜닝 논문 (제1저자)','한국자료분석학회지 27(3) · BDD-X 주행 영상 6,970개 · 평균 응답 1.145초'],['SONY 제품 설명서 RAG 챗봇','bge-m3 · Chroma · Re-rank · 출처 페이지 표기 · 공개 저장소'],['문서 13만 건 토픽 모델 기반 성장 예측 (투고 예정 · 제1저자)','논문 초록 114,066건 · 특허 21,028건 · AUC 0.876 · 0.746']],
+        ev:[['LoRA sLLM 파인튜닝 논문 (제1저자)','한국자료분석학회지 27(3) · BDD-X 주석 26,228개 · 평균 응답 1.145초'],['SONY 제품 설명서 RAG 챗봇','bge-m3 · Chroma · Re-rank · 출처 페이지 표기 · 공개 저장소'],['문서 13만 건 토픽 모델 기반 성장 예측 (투고 예정 · 제1저자)','논문 초록 114,066건 · 특허 21,028건 · AUC 0.876 · 0.746']],
         fig:['lora_rouge','tntm_coh'], figt:'학술지 논문 2편의 결과',
         feat:['sony','lora','emerg'], res:'resume-nlp.pdf', car:'career-nlp.pdf'},
  'cj': {title:'AI Engineer', card:'AI Engineer · Language AI',
@@ -1368,7 +1368,7 @@ const FEATALT={bntm:{th:['환경','정답 K','AWSGHMC','SGHMC','MH'],tbl:[['기�
  sgmcmc:{img:'img/sgmcmc-kitti-compare.jpg',w:746,h:180,alt:'같은 KITTI 장면에서 Adam은 13건, SGLD는 3건을 검출한 비교 이미지',cap:'같은 KITTI 장면 · Adam 13건 대 SGLD 3건 검출'}};
 const FEATFIG={emerg:'tntm_auc',bntm:'bntm_k',lora:'lora_rouge',sgmcmc:'sg_bev',tbt:'tntm_coh',std:'std_fit',
  taxi:{img:'img/taxi-map-arrivals.jpg',w:828,h:581,alt:'서울 자치구별 택시 도착 건수를 색 농도로 표현한 QGIS 지도',cap:'자치구별 택시 도착 건수 분포 · QGIS'},
- sony:{img:'img/sony-answer.jpg',w:1000,h:341,alt:'챗봇 답변과 출처 정보, 대조한 실제 매뉴얼 페이지',cap:'답변 · 출처(파일명 · 페이지)와 매뉴얼 원문 대조'},
+ sony:{img:'img/sony-answer-left.jpg',w:740,h:682,alt:'챗봇 답변 화면: 질문, 답변, 출처 정보(파일명 · 페이지 번호)',cap:'챗봇 답변 화면 · 질문 · 답변 · 출처(파일명 · 페이지 번호)'},
  farm:{tbl:[['환경 변수 영향력','온도 > 일사량 > CO₂'],['PDP 임계 구간','온도 25°C · CO₂ 400ppm'],['모델 선정 기준','Train–Test 격차 최소 (과적합 위험 최소)'],['후속 조치','다음 작물(딸기) 측정용 카메라 센서 구성 협의']],cap:'공공데이터 재접근 후 해석 결과 · P02 연계'}};
 
 /* ══ 렌더링 도우미 ══ */
@@ -1437,9 +1437,8 @@ function routeHTML(f,i){
 const DTYPES=[
  {g:'text',n:'텍스트 · 문서',s:'논문 · 특허 · 규제 문서 · 사고 보고서 · 설명서',items:[
   ['논문 초록','OpenAlex · 2002–2025 · 972,092문장','114,066','건','emerg'],['미국 특허','Google BigQuery · 524,424문장','21,028','건','emerg'],
-  ['이상반응 · 사고 보고서','FAERS 이상반응 · NTSB 사고 서술문','','','bntm'],['미국 규제 문서','Federal Register','160','건','tbt'],['제품 설명서 PDF','SONY 카메라 · 헤드폰 · 스피커','6','종','sony']]},
- {g:'video',n:'영상 · 이미지 · 라이다',s:'주행 영상 · 3D 점구름 · 글자 이미지',items:[
-  ['주행 영상과 설명 주석','BDD-X · 주석 26,228개','6,970','개','lora'],['라이다 점구름','KITTI 3D 객체 탐지','','','sgmcmc'],['한글 글자 이미지','폰트 25종 · 128×256px','75,000','장','gan']]},
+  ['자율주행 상황 설명 주석','BDD-X · 주행 장면별 행동 · 이유 설명','26,228','개','lora'],['이상반응 · 사고 보고서','FAERS 이상반응 · NTSB 사고 서술문','','','bntm'],['미국 규제 문서','Federal Register','160','건','tbt'],['제품 설명서 PDF','SONY 카메라 · 헤드폰 · 스피커','6','종','sony']]},
+ {g:'video',n:'이미지 · 라이다',s:'3D 점구름 · 글자 이미지',items:[['라이다 점구름','KITTI 3D 객체 탐지','','','sgmcmc'],['한글 글자 이미지','폰트 25종 · 128×256px','75,000','장','gan']]},
  {g:'table',n:'표 · 공공데이터',s:'공시 · 행정 · 기상 · 메타데이터',items:[
   ['기상청 강수 예보','강수확률 · 실제 강수 유무 · 2023','185,420','건','rain'],['서울시 택시 공공데이터','6종 병합 · 25개 자치구','','','taxi'],
   ['LLM 생성 영화 메타데이터','Netflix · LLMRec','17,366','건','std'],['교통법규 분류 데이터','Traffic violations','약 7만','건','lora'],
@@ -1454,7 +1453,7 @@ function dataHTML(){
     ${t.items.map(([n,sub,sz,u,pid])=>`<a class="dti${fitP.has(pid)?' fit':''}" href="#/p/${pid}"><b>${esc(n)}</b><small>${esc(sub)}</small><span class="sz">${sz?esc(sz)+'<span style="font-weight:400;font-size:12px"> '+esc(u)+'</span>':''}<em>${pa(pid)}</em></span></a>`).join('')}</div>`).join('')}</div>`;
 }
 /* ══ 프로젝트 카드 이미지 — 본인 그림(경로도 · KITTI · 지도 · 4분면 · 정규화 · 사후확률) 또는 관련 사진(출처는 하단) ══ */
-const CREDIT={"farm": {"title": "Tomato cultivation in France (2).jpg", "artist": "Mouh2jijel", "lic": "CC BY-SA 3.0", "page": "https://commons.wikimedia.org/wiki/File:Tomato_cultivation_in_France_(2).jpg"}, "crop": {"title": "HARNOIS Greenhouses - Entreprises Pitre Project.jpg", "artist": "Vincedouville", "lic": "CC BY-SA 4.0", "page": "https://commons.wikimedia.org/wiki/File:HARNOIS_Greenhouses_-_Entreprises_Pitre_Project.jpg"}, "lora": {"title": "Florida I95nb Exit 337 exit only dashcam 2.jpg", "artist": "Michael Rivera", "lic": "CC0", "page": "https://commons.wikimedia.org/wiki/File:Florida_I95nb_Exit_337_exit_only_dashcam_2.jpg"}, "tbt": {"title": "Zoox Toyota Highlander Test Vehicle - San Francisco, May 2025 10.jpg", "artist": "9yz", "lic": "CC BY 4.0", "page": "https://commons.wikimedia.org/wiki/File:Zoox_Toyota_Highlander_Test_Vehicle_-_San_Francisco,_May_2025_10.jpg"}, "cag": {"title": "Middelgrunden wind farm 2009-07-01 edit filtered.jpg", "artist": "Photo by Kim Hansen. Postprocessing (crop, rotation, color adjustment, dust spot", "lic": "CC BY-SA 3.0", "page": "https://commons.wikimedia.org/wiki/File:Middelgrunden_wind_farm_2009-07-01_edit_filtered.jpg"}, "gan": {"title": "Korean calligraphy-Hangul-01.jpg", "artist": "Samuraijohnny", "lic": "CC BY-SA 2.0", "page": "https://commons.wikimedia.org/wiki/File:Korean_calligraphy-Hangul-01.jpg"}, "db": {"title": "Bicycle-sharing station at Hangang bikeway 2.jpg", "artist": "Sarang", "lic": "Public domain", "page": "https://commons.wikimedia.org/wiki/File:Bicycle-sharing_station_at_Hangang_bikeway_2.jpg"}, "samc": {"title": "Inverse gaussian as stopping time of random walk.png", "artist": "Cosmia Nebula", "lic": "CC BY-SA 4.0", "page": "https://commons.wikimedia.org/wiki/File:Inverse_gaussian_as_stopping_time_of_random_walk.png"}, "pika": {"title": "Male beach volleyball player spiking a volleyball.jpg", "artist": "Department of Homeland Security. Federal Emergency Management Agency. Public Aff", "lic": "Public domain", "page": "https://commons.wikimedia.org/wiki/File:Male_beach_volleyball_player_spiking_a_volleyball.jpg"}, "emerg": {"title": "Arduino Uno 006.jpg", "artist": "oomlout", "lic": "CC BY-SA 2.0", "page": "https://commons.wikimedia.org/wiki/File:Arduino_Uno_006.jpg"}, "sony": {"title": "Sony Headphones (40476165073).jpg", "artist": "Wutthichai Charoenburi from Bangkok", "lic": "CC BY 2.0", "page": "https://commons.wikimedia.org/wiki/File:Sony_Headphones_(40476165073).jpg"}};
+const CREDIT={"farm": {"title": "Tomato cultivation in France (2).jpg", "artist": "Mouh2jijel", "lic": "CC BY-SA 3.0", "page": "https://commons.wikimedia.org/wiki/File:Tomato_cultivation_in_France_(2).jpg"}, "crop": {"title": "HARNOIS Greenhouses - Entreprises Pitre Project.jpg", "artist": "Vincedouville", "lic": "CC BY-SA 4.0", "page": "https://commons.wikimedia.org/wiki/File:HARNOIS_Greenhouses_-_Entreprises_Pitre_Project.jpg"}, "lora": {"title": "Florida I95nb Exit 337 exit only dashcam 2.jpg", "artist": "Michael Rivera", "lic": "CC0", "page": "https://commons.wikimedia.org/wiki/File:Florida_I95nb_Exit_337_exit_only_dashcam_2.jpg"}, "tbt": {"title": "Zoox Toyota Highlander Test Vehicle - San Francisco, May 2025 10.jpg", "artist": "9yz", "lic": "CC BY 4.0", "page": "https://commons.wikimedia.org/wiki/File:Zoox_Toyota_Highlander_Test_Vehicle_-_San_Francisco,_May_2025_10.jpg"}, "cag": {"title": "Middelgrunden wind farm 2009-07-01 edit filtered.jpg", "artist": "Photo by Kim Hansen. Postprocessing (crop, rotation, color adjustment, dust spot", "lic": "CC BY-SA 3.0", "page": "https://commons.wikimedia.org/wiki/File:Middelgrunden_wind_farm_2009-07-01_edit_filtered.jpg"}, "db": {"title": "Bicycle-sharing station at Hangang bikeway 2.jpg", "artist": "Sarang", "lic": "Public domain", "page": "https://commons.wikimedia.org/wiki/File:Bicycle-sharing_station_at_Hangang_bikeway_2.jpg"}};
 function thumbHTML(id){ return `<span class="pc-img"><img src="${A}img/thumb/${id}.jpg" alt="" loading="lazy" decoding="async" width="960" height="600"><span class="pc-tag">${pa(id)}</span></span>`; }
 function prowHTML(p){
   const fit=RC.feat.includes(p.id);
