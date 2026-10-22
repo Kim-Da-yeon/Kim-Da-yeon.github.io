@@ -260,7 +260,46 @@ html{scrollbar-color:var(--base-2) var(--bg)}
 .chip.on{color:var(--ink);font-weight:600}
 .chip.on::after{transform:scaleX(1)}
 @media (hover:hover) and (pointer:fine){.chip:hover{color:var(--ink)}}
-.plist-h,.prow{display:grid;grid-template-columns:52px minmax(0,1fr) minmax(0,.62fr) 76px 66px;gap:0 18px;align-items:baseline}
+.plist-h,.prow{display:grid;grid-template-columns:52px 72px minmax(0,1fr) minmax(0,.62fr) 76px 66px;gap:0 18px;align-items:center}
+.th{width:72px;height:54px;border-radius:5px;border:1px solid var(--line);background:var(--sunk);overflow:hidden;display:flex;align-items:center;justify-content:center;color:var(--ink-3)}
+.th img{width:100%;height:100%;object-fit:cover}
+.th .gl{width:24px;height:24px}
+/* ── 다룬 데이터 ── */
+.gl{width:20px;height:20px;fill:none;stroke:currentColor;stroke-width:1.6;stroke-linecap:round;stroke-linejoin:round;flex:none}
+.dg{background:var(--plate);border:1px solid var(--line);border-radius:8px;padding:clamp(18px,2.2vw,28px)}
+.dg-h{display:flex;flex-wrap:wrap;align-items:baseline;justify-content:space-between;gap:6px 16px;margin-bottom:14px}
+.dg-h b{font-size:15px;font-weight:650}
+.dg-h span{font-size:12.5px;color:var(--ink-3)}
+.dr{display:grid;grid-template-columns:24px minmax(140px,26%) minmax(0,1fr) 92px 34px;column-gap:14px;align-items:center;min-height:44px;padding:4px 6px;margin:0 -6px;border-radius:6px;color:var(--ink-3);transition:background-color .15s ease}
+.dr .gl{color:var(--base)}
+.dr-l{display:flex;flex-direction:column;line-height:1.3;min-width:0}
+.dr-l b{font-size:14px;font-weight:560;color:var(--ink-2)}
+.dr-l small{font-size:11.5px;color:var(--ink-3);margin-top:2px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.dr-tr{position:relative;height:30px;background-image:linear-gradient(90deg,var(--grid) 1px,transparent 1px);background-size:calc(100% / 6) 100%}
+.dr-tr::before{content:"";position:absolute;left:0;right:0;top:50%;height:1px;background:var(--grid)}
+.dr .fr-stem{background:var(--base-2)}
+.dr .fr-mk i{background:var(--base)}
+.dr-v{font-size:14px;font-weight:600;color:var(--ink-2);text-align:right;white-space:nowrap}
+.dr-v em{font-style:normal;font-size:11.5px;font-weight:400;color:var(--ink-3);margin-left:2px}
+.dr-p{font-family:var(--mono);font-size:11.5px;color:var(--ink-3);text-align:right}
+.dr.fit .gl{color:var(--ink)}
+.dr.fit .dr-l b{color:var(--ink);font-weight:680}
+.dr.fit .fr-stem{background:var(--ink);height:2px;top:calc(50% - 1px)}
+.dr.fit .fr-mk i{background:var(--ink)}
+.dr.fit .dr-v,.dr.fit .dr-p{color:var(--ink)}
+@media (hover:hover) and (pointer:fine){.dr:hover{background:var(--sunk)}}
+.dg-ax{display:grid;grid-template-columns:24px minmax(140px,26%) minmax(0,1fr) 92px 34px;column-gap:14px;margin-top:4px}
+.dg-ax div{grid-column:3;position:relative;height:18px}
+.dg-ax span{position:absolute;top:2px;transform:translateX(-50%);font-family:var(--mono);font-size:11px;color:var(--ink-3)}
+.dg-ax span:first-child{transform:none}.dg-ax span:last-child{transform:translateX(-100%)}
+.dx{margin-top:22px;padding-top:16px;border-top:1px solid var(--grid)}
+.dx p{font-size:12.5px;color:var(--ink-3);margin-bottom:10px}
+.dx-l{display:flex;flex-wrap:wrap;gap:8px 10px}
+.dx-l a{display:inline-flex;align-items:center;gap:8px;font-size:13.5px;color:var(--ink-2);padding:7px 12px 7px 10px;border:1px solid var(--line);border-radius:999px;transition:background-color .15s ease,border-color .15s ease}
+.dx-l a .gl{width:17px;height:17px;color:var(--ink-3)}
+.dx-l a.fit{color:var(--ink);font-weight:620;border-color:var(--ink-3)}
+.dx-l a em{font-style:normal;font-family:var(--mono);font-size:11px;color:var(--ink-3)}
+@media (hover:hover) and (pointer:fine){.dx-l a:hover{background:var(--sunk);border-color:var(--base)}}
 .plist-h{font-size:12px;color:var(--ink-3);padding:0 12px 10px;}
 .prow{padding:17px 12px;border-top:1px solid var(--line);border-radius:6px;transition:background-color .15s ease}
 .prow:last-child{border-bottom:1px solid var(--line)}
@@ -406,8 +445,12 @@ html{scrollbar-color:var(--base-2) var(--bg)}
   .ref,.trk-r,.dl>div,.tline .dl>div{grid-template-columns:minmax(0,1fr);gap:6px}
   .ref .st{padding-top:0}
   .plist-h{display:none}
-  .prow{grid-template-columns:44px minmax(0,1fr) auto;grid-template-areas:"pa ct yr" "t t t" "k k k";gap:4px 12px;padding:16px 4px}
-  .prow .pa{grid-area:pa}.prow .ct{grid-area:ct}.prow .yr{grid-area:yr}
+  .prow{grid-template-columns:60px minmax(0,1fr) auto;grid-template-areas:"th pa yr" "th t t" "th k k";gap:4px 12px;padding:16px 4px;align-items:start}
+  .prow .th{grid-area:th;width:60px;height:46px}.prow .pa{grid-area:pa}.prow .yr{grid-area:yr}.prow .ct{display:none}
+  .dr,.dg-ax{grid-template-columns:20px minmax(0,1fr) 92px 30px;column-gap:10px}
+  .dr .dr-tr{grid-column:2/-1;grid-row:2;height:18px}
+  .dr{row-gap:2px;padding:8px 6px}
+  .dg-ax div{grid-column:2/-1}
   .prow>div:first-of-type{grid-area:t}.prow .kpi{grid-area:k;color:var(--ink-2);font-size:13.5px}
   .prow .m{white-space:normal}
   .tbl thead{display:none}
@@ -435,6 +478,16 @@ html{scrollbar-color:var(--base-2) var(--bg)}
   <symbol id="i-mail" viewBox="0 0 256 256"><path d="M224,48H32a8,8,0,0,0-8,8V192a16,16,0,0,0,16,16H216a16,16,0,0,0,16-16V56A8,8,0,0,0,224,48Zm-8,144H40V74.19l82.59,75.71a8,8,0,0,0,10.82,0L216,74.19V192Z"/></symbol>
   <symbol id="i-gh" viewBox="0 0 256 256"><path d="M216,104v8a56.06,56.06,0,0,1-48.44,55.47A39.8,39.8,0,0,1,176,192v40a8,8,0,0,1-8,8H104a8,8,0,0,1-8-8V216H72a40,40,0,0,1-40-40A24,24,0,0,0,8,152a8,8,0,0,1,0-16,40,40,0,0,1,40,40,24,24,0,0,0,24,24H96v-8a39.8,39.8,0,0,1,8.44-24.53A56.06,56.06,0,0,1,56,112v-8a58.14,58.14,0,0,1,7.69-28.32A59.78,59.78,0,0,1,69.07,28,8,8,0,0,1,76,24a59.75,59.75,0,0,1,48,24h24a59.75,59.75,0,0,1,48-24,8,8,0,0,1,6.93,4,59.74,59.74,0,0,1,5.37,47.68A58,58,0,0,1,216,104Z"/></symbol>
   <symbol id="i-ext" viewBox="0 0 256 256"><path d="M228,104a12,12,0,0,1-24,0V69l-59.51,59.51a12,12,0,0,1-17-17L187,52H152a12,12,0,0,1,0-24h64a12,12,0,0,1,12,12Zm-44,24a12,12,0,0,0-12,12v64H52V84h64a12,12,0,0,0,0-24H48A20,20,0,0,0,28,80V208a20,20,0,0,0,20,20H176a20,20,0,0,0,20-20V140A12,12,0,0,0,184,128Z"/></symbol>
+  <symbol id="g-text" viewBox="0 0 24 24"><path d="M6 3h8l4 4v14H6z M14 3v4h4 M9 11h6 M9 14h6 M9 17h4"/></symbol>
+  <symbol id="g-patent" viewBox="0 0 24 24"><path d="M6 3h12v18H6z M9 7h6 M9 10h6"/><circle cx="12" cy="15.5" r="2.4"/></symbol>
+  <symbol id="g-video" viewBox="0 0 24 24"><rect x="3" y="6" width="18" height="12" rx="2"/><path d="M10.5 9.5v5l4-2.5z"/></symbol>
+  <symbol id="g-series" viewBox="0 0 24 24"><path d="M4 4v16h16 M7.5 15l3-4.5 3 2.5 4-6"/></symbol>
+  <symbol id="g-table" viewBox="0 0 24 24"><rect x="4" y="5" width="16" height="14" rx="1.5"/><path d="M4 10h16 M4 14.5h16 M10 5v14"/></symbol>
+  <symbol id="g-image" viewBox="0 0 24 24"><rect x="4" y="4" width="11" height="11" rx="1.5"/><path d="M9 19h11V8 M7.5 8.5h4 M9.5 8.5v4"/></symbol>
+  <symbol id="g-sim" viewBox="0 0 24 24"><path d="M6 3h8l4 4v14H6z M14 3v4h4 M12 10.5v6 M9 13.5h6"/></symbol>
+  <symbol id="g-points" viewBox="0 0 24 24"><circle cx="6" cy="16" r="1"/><circle cx="9" cy="12" r="1"/><circle cx="12" cy="17" r="1"/><circle cx="14" cy="9" r="1"/><circle cx="17" cy="14" r="1"/><circle cx="19" cy="7" r="1"/><circle cx="8" cy="7" r="1"/><path d="M3 20h18"/></symbol>
+  <symbol id="g-map" viewBox="0 0 24 24"><path d="M3 6l6-2 6 2 6-2v14l-6 2-6-2-6 2z M9 4v14 M15 6v14"/></symbol>
+  <symbol id="g-code" viewBox="0 0 24 24"><path d="M8 7l-5 5 5 5 M16 7l5 5-5 5 M13.5 5l-3 14"/></symbol>
 </svg>
 
 <header class="topbar" id="topbar">
@@ -444,6 +497,7 @@ html{scrollbar-color:var(--base-2) var(--bg)}
       <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
     </button>
     <nav class="nav" id="nav" aria-label="주요 섹션">
+      <a href="#data">데이터</a>
       <a href="#fit">대표 프로젝트</a>
       <a href="#research">연구</a>
       <a href="#projects">프로젝트</a>
@@ -478,6 +532,17 @@ html{scrollbar-color:var(--base-2) var(--bg)}
       <div class="hf">
         <div class="figp" id="fig1"></div>
       </div>
+    </div>
+  </section>
+
+  <!-- ══ 다룬 데이터 : 종류 · 규모(로그 축) · 해당 프로젝트 ══ -->
+  <section class="sec" id="data">
+    <div class="wrap sgrid">
+      <div class="sh">
+        <h2>다룬 데이터</h2>
+        <p>문서 · 특허 · 영상 · 이미지 · 센서 · 공공데이터. 점의 위치는 데이터 규모(로그 축)입니다. 진한 행은 이 페이지의 대표 프로젝트에 쓴 데이터이고, 누르면 해당 프로젝트로 이동합니다.</p>
+      </div>
+      <div class="sb" id="datafig"></div>
     </div>
   </section>
 
@@ -552,7 +617,7 @@ html{scrollbar-color:var(--base-2) var(--bg)}
       </div>
       <div class="sb">
         <div class="filters" id="filters" role="group" aria-label="분류 필터"></div>
-        <div class="plist-h" aria-hidden="true"><span>번호</span><span>프로젝트</span><span>핵심 결과</span><span>분류</span><span style="text-align:right">기간</span></div>
+        <div class="plist-h" aria-hidden="true"><span>번호</span><span></span><span>프로젝트</span><span>핵심 결과</span><span>분류</span><span style="text-align:right">기간</span></div>
         <div id="pgrid"></div>
       </div>
     </div>
@@ -635,7 +700,7 @@ html{scrollbar-color:var(--base-2) var(--bg)}
       </div>
       <div class="foot" style="grid-column:1/-1">
         <span>© 2026 김다연</span>
-        <nav aria-label="하단 메뉴"><a href="#fit">대표 프로젝트</a><a href="#research">연구</a><a href="#projects">프로젝트</a><a href="#skills">역량</a><a href="#about">이력</a><a href="#code">코드</a></nav>
+        <nav aria-label="하단 메뉴"><a href="#data">데이터</a><a href="#fit">대표 프로젝트</a><a href="#research">연구</a><a href="#projects">프로젝트</a><a href="#skills">역량</a><a href="#about">이력</a><a href="#code">코드</a></nav>
       </div>
     </div>
   </section>
@@ -831,7 +896,7 @@ const EV={
  bntm:[['학회 포스터 PDF','assets/poster-bntm-2026.pdf'],['저장소 게재 후 공개','']],
  emerg:[['논문 투고 예정','']],
  cag:[['2025 에코업 진학박람회 포스터 발표','']],
- taxi:[['발표 포스터 PDF','assets/poster-taxi-2023.pdf']],
+ taxi:[['발표 포스터 PDF','assets/taxi-demand-2023.pdf']],
  dorm:[['공모전 제출 카드뉴스 11장','']],
  sony:[['저장소','https://github.com/Kim-Da-yeon/SONY_Chatbot']],
  std:[['저장소','https://github.com/Kim-Da-yeon/llmrec-metadata-standard']],
@@ -1173,7 +1238,7 @@ const FEAT=[
   problem:'요금 인상 이후 기사 · 이용자가 함께 줄었고, 자치구별 수요 · 공급 불균형을 판단할 기준이 없었음',
   role:'팀 3명 중 QGIS 공간 시각화, 분석 코드 구현',
   result:'공공데이터 6종 병합, 계층적 군집(Ward.D)으로 25개 자치구를 6개 운영 군집에 배정. 고려대학교 통계학술제 최우수상',
-  links:[['상세 보기','#/p/taxi'],['발표 포스터 PDF','assets/poster-taxi-2023.pdf']]},
+  links:[['상세 보기','#/p/taxi'],['발표 포스터 PDF','assets/taxi-demand-2023.pdf']]},
  {id:'bntm', cat:'연구 · SCI급 투고 예정', title:'Fixed-K Shrinkage BNTM with AWSGHMC Inference',
   problem:'토픽 모델은 정답이 없어 샘플러가 맞게 작동하는지 확인할 방법이 없고, 기존 모델은 토픽 수를 미리 정해야 했음',
   role:'제1저자. 정답을 아는 모의 말뭉치 생성기 설계(환경 5종, 다봉 사후분포를 의도적으로 구성), 모델 설계, 샘플러 구현, 평가 지표 정의, 실험, 논문 작성 (지도교수 자문)',
@@ -1318,7 +1383,7 @@ const ROLES={
         ev:[['SONY 제품 설명서 RAG 챗봇 (팀 2명)','청킹 · bge-m3 검색 · 제품명 필터 · Re-rank · 출처 표기 구현, 팀원의 웹 검색 코드 통합'],['sLLM LoRA 파인튜닝 논문 (제1저자)','한국자료분석학회지 27(3) · RAG와 같은 조건에서 비교'],['LLM 메타데이터 정규화 + LightGCN 추천','Netflix 17,366건 · 7개 지표 성능 손실 없음']],
         fig:['lora_rouge','std_fit'], figt:'대표 프로젝트 결과',
         order:['sony','std','lora','cag','taxi','pika'],
-        feat:['sony','lora','std'], res:'resume-cj.pdf', car:'career-cj.pdf'}
+        feat:['sony','lora','std'], res:'resume.pdf', car:'career.pdf'}
 };
 const RC=ROLES[ROLE]||ROLES[''];
 const HOME_TITLE=document.title;
@@ -1394,10 +1459,55 @@ function routeHTML(f,i){
     <div class="r-fig">${fig}</div></article>`;
 }
 
+/* ══ 다룬 데이터 — 규모는 프로젝트 상세 · 논문의 수치 그대로 ══ */
+const DATA=[
+ {v:185420,t:'185,420',u:'건',l:'기상청 강수 예보',s:'강수확률 · 실제 강수 유무 · 2023',g:'table',p:'rain'},
+ {v:114066,t:'114,066',u:'건',l:'논문 초록',s:'OpenAlex · 2002–2025 · 972,092문장',g:'text',p:'emerg'},
+ {v:75000,t:'75,000',u:'장',l:'한글 글자 이미지',s:'폰트 25종 · 128×256px',g:'image',p:'gan'},
+ {v:70000,t:'약 7만',u:'건',l:'교통법규 분류 데이터',s:'Traffic violations · 분류 확장 실험',g:'table',p:'lora'},
+ {v:21028,t:'21,028',u:'건',l:'미국 특허',s:'Google BigQuery · 524,424문장',g:'patent',p:'emerg'},
+ {v:17366,t:'17,366',u:'건',l:'LLM 생성 영화 메타데이터',s:'Netflix · LLMRec',g:'table',p:'std'},
+ {v:10000,t:'10,000',u:'문서',l:'모의 말뭉치 (직접 생성)',s:'환경 5종 · 최대 규모 기준 · 200~10,000문서',g:'sim',p:'bntm'},
+ {v:6970,t:'6,970',u:'개',l:'주행 영상',s:'BDD-X · 주석 26,228개',g:'video',p:'lora'},
+ {v:360,t:'360',u:'회',l:'작물 생육 측정',s:'18개체 × 20일 · 하루 1회 수기',g:'series',p:'farm'},
+ {v:160,t:'160',u:'건',l:'미국 규제 문서',s:'Federal Register',g:'text',p:'tbt'},
+ {v:6,t:'6',u:'종',l:'제품 설명서',s:'SONY 카메라 · 헤드폰 · 스피커',g:'text',p:'sony'}
+];
+const DEXTRA=[
+ {l:'KITTI 라이다 점구름',g:'points',p:'sgmcmc'},
+ {l:'FAERS 이상반응 보고서 · NTSB 사고 서술문',g:'text',p:'bntm'},
+ {l:'서울시 택시 공공데이터 6종',g:'map',p:'taxi'},
+ {l:'대학알리미 기숙사 공시',g:'table',p:'dorm'},
+ {l:'농촌진흥청 작물 환경 데이터',g:'table',p:'crop'}
+];
+const gl=n=>`<svg class="gl" aria-hidden="true"><use href="#g-${n}"/></svg>`;
+function dataHTML(){
+  const r=v=>Math.max(0,Math.min(1,Math.log10(v)/6)), fitP=new Set(RC.feat);
+  const rows=DATA.map((x,i)=>{const a=r(x.v);
+    return `<a class="dr${fitP.has(x.p)?' fit':''}" href="#/p/${x.p}" style="--i:${i};--a:0;--b:${a.toFixed(4)};--x:${a.toFixed(4)}">
+      ${gl(x.g)}<span class="dr-l"><b>${esc(x.l)}</b><small>${esc(x.s)}</small></span>
+      <span class="dr-tr" aria-hidden="true"><span class="fr-stem"></span><span class="fr-mk"><i></i></span></span>
+      <span class="dr-v">${esc(x.t)}<em>${esc(x.u)}</em></span><span class="dr-p">${pa(x.p)}</span></a>`;}).join('');
+  const ticks=['10','100','1천','1만','10만','100만'].map((t,i)=>`<span style="left:${((i+1)/6*100).toFixed(2)}%">${t}</span>`).join('');
+  const extra=DEXTRA.map(x=>`<a class="${fitP.has(x.p)?'fit':''}" href="#/p/${x.p}">${gl(x.g)}${esc(x.l)}<em>${pa(x.p)}</em></a>`).join('');
+  return `<figure class="dg fg" style="margin:0" aria-label="다룬 데이터 규모">
+    <div class="dg-h"><b>데이터 종류와 규모</b><span>로그 축 · 단위는 행마다 표기</span></div>
+    ${rows}
+    <div class="dg-ax" aria-hidden="true"><div>${ticks}</div></div>
+    <div class="dx"><p>규모를 따로 표기하지 않은 데이터</p><div class="dx-l">${extra}</div></div>
+  </figure>`;
+}
+/* 프로젝트 목록 썸네일 — 실제 그림이 있으면 그림, 없으면 데이터 종류 아이콘 */
+const THUMB={bntm:'bntm-faers-path.png',sgmcmc:'sgmcmc-kitti-compare.jpg',taxi:'taxi-map-arrivals.jpg',dorm:'dorm-quadrant.jpg',sony:'sony-answer.jpg',std:'std-canonical.jpg',rain:'rain-posterior.jpg'};
+const PGLYPH={farm:'series',crop:'table',lora:'video',tbt:'text',cag:'text',gan:'image',db:'table',samc:'code',pika:'code',emerg:'patent'};
+function thumbHTML(id){
+  return THUMB[id]?`<span class="th"><img src="${A}img/${THUMB[id]}" alt="" loading="lazy" decoding="async"></span>`:`<span class="th">${gl(PGLYPH[id]||'table')}</span>`;
+}
 function prowHTML(p){
   const fit=RC.feat.includes(p.id);
   return `<a class="prow${fit?' fit':''}" href="#/p/${p.id}">
     <span class="pa">${pa(p.id)}</span>
+    ${thumbHTML(p.id)}
     <div><h3>${esc(p.title)}</h3><span class="m">${esc(p.meta)}</span></div>
     <span class="kpi">${esc(KPI[p.id]||'')}</span>
     <span class="ct">${CATMAP[p.cat].n}</span>
@@ -1488,6 +1598,7 @@ function applyRole(){
 
 function build(){
   applyRole(); renderAV();
+  $('#datafig').innerHTML=dataHTML();
   $('#papers').innerHTML=PAPERS.map(paperHTML).join('');
   const cnt=k=>k==='all'?P.length:P.filter(p=>p.cat===k).length;
   $('#filters').innerHTML=CATS.map(c=>`<button class="chip${c.k==='all'?' on':''}" aria-pressed="${c.k==='all'}" data-k="${c.k}">${c.n}<em>${cnt(c.k)}</em></button>`).join('');
