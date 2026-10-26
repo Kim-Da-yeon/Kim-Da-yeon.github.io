@@ -20,7 +20,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" crossorigin href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css">
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500&family=Nanum+Brush+Script&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500&family=Poor+Story&display=swap">
 <style>
 /* ══════════════════════════════════════════════
    디자인 토큰 — 통계 그림(figure) 문법
@@ -96,8 +96,8 @@ html{scrollbar-color:var(--base-2) var(--bg)}
 .hid{display:flex;align-items:flex-end;gap:20px}
 .hid img{width:104px;height:130px;object-fit:cover;border-radius:8px;background:var(--sunk);box-shadow:0 1px 2px rgba(19,21,26,.06),0 8px 24px -12px rgba(19,21,26,.22)}
 .hid b{display:block;font-size:22px;letter-spacing:-.02em;line-height:1.3}
-/* 손글씨 포인트 — 이름은 딥 바이올렛 */
-.sig{font-family:"Nanum Brush Script",cursive;font-style:normal;font-weight:400;color:#5B3FD1;font-size:42px;letter-spacing:0;line-height:1;margin-right:2px;vertical-align:-3px}
+/* 손글씨 포인트(Poor Story) — 이름은 남색 */
+.sig{font-family:"Poor Story",cursive;font-style:normal;font-weight:400;color:#1F2D5C;font-size:36px;letter-spacing:0;line-height:1;margin-right:4px;vertical-align:-2px}
 .hid span{display:block;font-size:14px;color:var(--ink-3);line-height:1.55;margin-top:4px}
 .hl h1{font-size:clamp(2.1rem,3.6vw,3.15rem);line-height:1.1;letter-spacing:-.035em;font-weight:760;margin:26px 0 16px}
 .claim{font-size:clamp(1.02rem,1.15vw,1.1rem);line-height:1.68;color:var(--ink-2);max-width:31em}
@@ -106,6 +106,9 @@ html{scrollbar-color:var(--base-2) var(--bg)}
 .evid li::before{content:"";width:7px;height:7px;border-radius:50%;background:var(--ink);margin-top:9px}
 .evid b{font-weight:650;font-size:15.5px;line-height:1.55;display:block}
 .evid span{display:block;font-size:13.5px;color:var(--ink-3);line-height:1.5;margin-top:2px}
+/* 첫 화면 정리: 근거는 굵은 한 줄씩, Fig. 1은 그림과 범례만 (세부 수치는 아래 섹션 · 상세 페이지) */
+.hero .evid span,.hero .fg-n,.hero .figp-f .fn{display:none}
+.hero .evid li{padding:9px 0}
 .acts{display:flex;flex-wrap:wrap;gap:10px;margin-top:24px}
 .roleview{margin-top:30px;display:flex;flex-wrap:wrap;align-items:baseline;gap:6px 14px;font-size:13.5px;color:var(--ink-3)}
 .roles{display:flex;flex-wrap:wrap;gap:4px 14px}
@@ -180,7 +183,7 @@ html{scrollbar-color:var(--base-2) var(--bg)}
 .sec{padding:clamp(80px,11vw,136px) 0;border-top:1px solid var(--line)}
 .sgrid{display:grid;grid-template-columns:repeat(12,minmax(0,1fr));gap:0 24px}
 .sh{grid-column:1/4;align-self:start;position:sticky;top:calc(var(--bar) + 32px)}
-.sh h2{font-family:"Nanum Brush Script",var(--sans);font-size:clamp(2.2rem,3vw,2.7rem);line-height:1.1;letter-spacing:0;font-weight:400}
+.sh h2{font-family:"Poor Story",var(--sans);font-size:clamp(2rem,2.7vw,2.4rem);line-height:1.15;letter-spacing:0;font-weight:400}
 .sh h2 .cnt{font-size:13px}
 .sh p{font-size:14.5px;color:var(--ink-3);margin-top:12px;line-height:1.6;max-width:19em}
 .topics{list-style:none;margin:8px 0 0;padding:0;font-size:14.5px;color:var(--ink-2);line-height:1.6}
@@ -323,6 +326,7 @@ html{scrollbar-color:var(--base-2) var(--bg)}
 .close ::selection{background:#fff;color:var(--night)}
 .close h2{font-size:clamp(1.55rem,2.2vw,1.95rem);font-weight:730;letter-spacing:-.025em}
 .close .lead{font-size:15px;color:var(--night-3);margin-top:12px;max-width:22em;line-height:1.6}
+.close .roleview{margin-top:26px;color:var(--night-3)}.close .roles a{color:var(--night-ink)}.close .roles a.on{color:#fff}
 .mailbig{display:inline-block;font-size:clamp(1.6rem,3.6vw,2.9rem);font-weight:700;letter-spacing:-.03em;line-height:1.2;color:#fff;
   text-decoration:underline;text-decoration-color:var(--night-3);text-decoration-thickness:2px;text-underline-offset:10px;transition:text-decoration-color .2s ease}
 @media (hover:hover) and (pointer:fine){.mailbig:hover{text-decoration-color:#fff}}
@@ -504,7 +508,6 @@ html{scrollbar-color:var(--base-2) var(--bg)}
           <a class="btn" id="resbtn" href="resume.pdf?v=20260901" download="김다연_이력서.pdf"><svg class="ic"><use href="#i-down"/></svg>이력서 PDF</a>
           <a class="btn line" href="mailto:dayun0405@gmail.com"><svg class="ic"><use href="#i-mail"/></svg>dayun0405@gmail.com</a>
         </div>
-        <div class="roleview"><span>다른 직무 기준으로 보기</span><nav class="roles" id="roles" aria-label="직무별 페이지"><a href="ml/" data-r="ml">ML Researcher</a><a href="nlp/" data-r="nlp">NLP · LLM Engineer</a><a href="ds/" data-r="ds">Data Scientist</a><a href="av/" data-r="av">자율주행 Research Engineer</a><a href="ai-engineer/" data-r="cj">AI Engineer</a></nav></div>
       </div>
       <div class="hf">
         <div class="figp" id="fig1"></div>
@@ -668,6 +671,7 @@ html{scrollbar-color:var(--base-2) var(--bg)}
       </div>
       <div class="sb">
         <a class="mailbig" href="mailto:dayun0405@gmail.com">dayun0405@gmail.com</a>
+        <div class="roleview"><span>다른 직무 기준으로 보기</span><nav class="roles" id="roles" aria-label="직무별 페이지"><a href="ml/" data-r="ml">ML Researcher</a><a href="nlp/" data-r="nlp">NLP · LLM Engineer</a><a href="ds/" data-r="ds">Data Scientist</a><a href="av/" data-r="av">자율주행 Research Engineer</a><a href="ai-engineer/" data-r="cj">AI Engineer</a></nav></div>
         <div class="clinks">
           <a href="resume.pdf?v=20260901" download="김다연_이력서.pdf"><span><b>이력서</b><span id="resrole">PDF</span></span><svg class="ic"><use href="#i-down"/></svg></a>
           <a href="career.pdf?v=20260901" download="김다연_경력기술서.pdf"><span><b>경력기술서</b><span>PDF</span></span><svg class="ic"><use href="#i-down"/></svg></a>
@@ -1412,7 +1416,7 @@ function fig1HTML(){
   const keys=RC.fig, hasCI=keys.some(k=>FIGS[k].rows.some(x=>x.lo!=null)), hasRef=keys.some(k=>FIGS[k].ref&&!FIGS[k].ref.me), hasMyRef=keys.some(k=>FIGS[k].ref&&FIGS[k].ref.me), hasFrom=keys.some(k=>FIGS[k].rows.some(x=>x.from!=null));
   return `<div class="figp-h"><span class="no">Fig. 1</span><h2>${esc(RC.figt)}</h2></div>
     ${keys.map((k,i)=>figHTML(k,'ab'[i])).join('')}
-    <div class="figp-f"><span><i class="me"></i>본인 방법 · 결과</span><span><i></i>비교 기준</span>${hasFrom?'<span><i class="from"></i>이전 값</span>':''}${hasRef?refLabs.map(l=>`<span><i class="rl"></i>${l}</span>`).join(''):''}${hasMyRef?'<span><i class="rl me"></i>직접 설정한 기준선</span>':''}${hasCI?'<span><i class="cil"></i>95% 신뢰구간</span>':''}<span>수치는 논문 · 실험 결과 그대로</span></div>`;
+    <div class="figp-f"><span><i class="me"></i>본인 방법 · 결과</span><span><i></i>비교 기준</span>${hasFrom?'<span><i class="from"></i>이전 값</span>':''}${hasRef?refLabs.map(l=>`<span><i class="rl"></i>${l}</span>`).join(''):''}${hasMyRef?'<span><i class="rl me"></i>직접 설정한 기준선</span>':''}${hasCI?'<span><i class="cil"></i>95% 신뢰구간</span>':''}<span class="fn">수치는 논문 · 실험 결과 그대로</span></div>`;
 }
 
 /* 지원 근거 한 건 */
