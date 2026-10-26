@@ -16,7 +16,7 @@
 <meta property="og:description" content="제1저자 학술지 논문 2편 · 투고 예정 2편 · 한국연구재단 과제 연구책임자 · 분석 프로젝트 17건.">
 <meta property="og:locale" content="ko_KR">
 <meta name="twitter:card" content="summary">
-<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%2313151A'/%3E%3Cline x1='7' y1='22' x2='19' y2='22' stroke='%23A0A7B4' stroke-width='2'/%3E%3Ccircle cx='22' cy='22' r='3.5' fill='%2333419E'/%3E%3Cline x1='7' y1='12' x2='13' y2='12' stroke='%23A0A7B4' stroke-width='2'/%3E%3Ccircle cx='16' cy='12' r='3.5' fill='%23A0A7B4'/%3E%3C/svg%3E">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%2313151A'/%3E%3Cline x1='7' y1='22' x2='19' y2='22' stroke='%23A0A7B4' stroke-width='2'/%3E%3Ccircle cx='22' cy='22' r='3.5' fill='%2313151A'/%3E%3Cline x1='7' y1='12' x2='13' y2='12' stroke='%23A0A7B4' stroke-width='2'/%3E%3Ccircle cx='16' cy='12' r='3.5' fill='%23A0A7B4'/%3E%3C/svg%3E">
 <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -32,7 +32,7 @@
   --bg:#F7F6F2; --plate:#FFFFFF; --sunk:#EFEDE8;
   --ink:#13151A; --ink-2:#3A3F49; --ink-3:#4D535E;
   --line:#E4E1DA; --grid:#EDEBE6;
-  --acc:#33419E; --acc-ink:#29357F; --acc-soft:#E9EAF4;
+  --acc:#1A1C21; --acc-ink:#1A1C21; --acc-soft:#ECE9E2;
   --base:#A0A7B4; --base-2:#C9CED6;
   --night:#111318; --night-2:#1B1E25; --night-line:#2C303A; --night-ink:#E9EBEF; --night-3:#A3A9B5;
   --sans:"Pretendard Variable",Pretendard,-apple-system,BlinkMacSystemFont,"Apple SD Gothic Neo","Malgun Gothic",system-ui,sans-serif;
@@ -90,15 +90,15 @@ html{scrollbar-color:var(--base-2) var(--bg)}
 @media (hover:hover) and (pointer:fine){.btn:hover{background:var(--ink-2)}.btn.line:hover{background:var(--plate);box-shadow:inset 0 0 0 1px var(--base)}}
 
 /* ══ 첫 화면 ══ */
-.hero{padding:calc(var(--bar) + clamp(32px,5vh,64px)) 0 clamp(64px,9vh,104px)}
+.hero{padding:calc(var(--bar) + clamp(40px,7vh,88px)) 0 clamp(80px,12vh,136px)}
 .hgrid{display:grid;grid-template-columns:repeat(12,minmax(0,1fr));gap:0 24px;align-items:start}
 .hl{grid-column:1/6}
 .hf{grid-column:6/13;padding-left:clamp(0px,2vw,24px)}
 .hid{display:flex;align-items:flex-end;gap:24px}
 .hid img{width:136px;height:170px;object-fit:cover;border-radius:8px;background:var(--sunk);box-shadow:0 1px 2px rgba(19,21,26,.06),0 8px 24px -12px rgba(19,21,26,.22)}
 .hid b{display:block;font-size:22px;letter-spacing:-.02em;line-height:1.3}
-/* 이름 · 섹션 제목 = Song Myung(붓 명조), 이름은 남색 */
-.sig{font-family:"Song Myung",cursive;font-style:normal;font-weight:400;color:#1F2D5C;font-size:54px;letter-spacing:-.01em;line-height:1.05;margin-right:8px;vertical-align:-4px}
+/* 이름 · 섹션 제목 = Song Myung(붓 명조) */
+.sig{font-family:"Song Myung",cursive;font-style:normal;font-weight:400;color:var(--ink);font-size:54px;letter-spacing:-.01em;line-height:1.05;margin-right:8px;vertical-align:-4px}
 .hid span{display:block;font-size:14px;color:var(--ink-3);line-height:1.55;margin-top:4px}
 .hl h1{font-size:clamp(2.05rem,3.4vw,3rem);line-height:1.12;letter-spacing:-.03em;font-weight:680;margin:30px 0 18px}
 .claim{font-size:clamp(1.02rem,1.15vw,1.1rem);line-height:1.68;color:var(--ink-2);max-width:31em}
@@ -181,7 +181,7 @@ html{scrollbar-color:var(--base-2) var(--bg)}
 }
 
 /* ══ 공통 섹션 — 보고서형 3/9 분할 ══ */
-.sec{padding:clamp(80px,11vw,136px) 0;border-top:1px solid var(--line)}
+.sec{padding:clamp(96px,13vw,168px) 0;border-top:1px solid var(--line)}
 .sgrid{display:grid;grid-template-columns:repeat(12,minmax(0,1fr));gap:0 24px}
 .sh{grid-column:1/4;align-self:start;position:sticky;top:calc(var(--bar) + 32px)}
 .sh h2{font-family:"Song Myung",var(--sans);font-size:clamp(1.9rem,2.5vw,2.3rem);line-height:1.2;letter-spacing:-.01em;font-weight:400}
@@ -1412,11 +1412,12 @@ function figHTML(key,letter,lab){
     ${f.n?`<p class="fg-n">${esc(f.n)} <a class="tl" href="#/p/${f.go}">${pa(f.go)} 상세</a></p>`:''}
   </figure>`;
 }
+const HF=RC.fig.slice(0,1);   /* 첫 화면은 그림 하나만(여백), 나머지는 대표 프로젝트에서 */
 function fig1HTML(){
-  const refLabs=[...new Set(RC.fig.map(k=>FIGS[k].ref&&!FIGS[k].ref.me?(FIGS[k].ref.lg||'정답'):null).filter(Boolean))];
-  const keys=RC.fig, hasCI=keys.some(k=>FIGS[k].rows.some(x=>x.lo!=null)), hasRef=keys.some(k=>FIGS[k].ref&&!FIGS[k].ref.me), hasMyRef=keys.some(k=>FIGS[k].ref&&FIGS[k].ref.me), hasFrom=keys.some(k=>FIGS[k].rows.some(x=>x.from!=null));
-  return `<div class="figp-h"><span class="no">Fig. 1</span><h2>${esc(RC.figt)}</h2></div>
-    ${keys.map((k,i)=>figHTML(k,'ab'[i])).join('')}
+  const refLabs=[...new Set(HF.map(k=>FIGS[k].ref&&!FIGS[k].ref.me?(FIGS[k].ref.lg||'정답'):null).filter(Boolean))];
+  const keys=HF, hasCI=keys.some(k=>FIGS[k].rows.some(x=>x.lo!=null)), hasRef=keys.some(k=>FIGS[k].ref&&!FIGS[k].ref.me), hasMyRef=keys.some(k=>FIGS[k].ref&&FIGS[k].ref.me), hasFrom=keys.some(k=>FIGS[k].rows.some(x=>x.from!=null));
+  return `<div class="figp-h"><span class="no">Fig. 1</span></div>
+    ${keys.map(k=>figHTML(k,'')).join('')}
     <div class="figp-f"><span><i class="me"></i>본인 방법 · 결과</span><span><i></i>비교 기준</span>${hasFrom?'<span><i class="from"></i>이전 값</span>':''}${hasRef?refLabs.map(l=>`<span><i class="rl"></i>${l}</span>`).join(''):''}${hasMyRef?'<span><i class="rl me"></i>직접 설정한 기준선</span>':''}${hasCI?'<span><i class="cil"></i>95% 신뢰구간</span>':''}<span class="fn">수치는 논문 · 실험 결과 그대로</span></div>`;
 }
 
@@ -1424,10 +1425,10 @@ function fig1HTML(){
 let FIGN=1, TABN=0;
 function routeHTML(f,i){
   let ff=FEATFIG[f.id]; let fig='';
-  if(typeof ff==='string'&&RC.fig.includes(ff)&&FEATALT[f.id]) ff=FEATALT[f.id];
+  if(typeof ff==='string'&&HF.includes(ff)&&FEATALT[f.id]) ff=FEATALT[f.id];
   if(typeof ff==='string'){
-    const pos=RC.fig.indexOf(ff);
-    fig=`<div class="figp">${figHTML(ff,'',pos>=0?'Fig. 1('+'ab'[pos]+')':'Fig. '+(++FIGN))}</div>`;
+    const pos=HF.indexOf(ff);
+    fig=`<div class="figp">${figHTML(ff,'',pos>=0?'Fig. 1':'Fig. '+(++FIGN))}</div>`;
   }else if(ff&&ff.img){
     fig=`<figure style="margin:0"><div class="plate-img"><img src="${A+ff.img}" alt="${esc(ff.alt)}" width="${ff.w}" height="${ff.h}" loading="lazy" decoding="async"></div><figcaption class="figcap"><b>Fig. ${++FIGN}</b>${esc(ff.cap)}</figcaption></figure>`;
   }else if(ff&&ff.tbl){
