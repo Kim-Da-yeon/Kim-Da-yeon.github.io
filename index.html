@@ -15,7 +15,7 @@
 <meta property="og:description" content="제1저자 학술지 논문 2편 · 투고 예정 2편 · 한국연구재단 과제 연구책임자 · 분석 프로젝트 17건.">
 <meta property="og:locale" content="ko_KR">
 <meta name="twitter:card" content="summary">
-<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%2313151A'/%3E%3Cline x1='7' y1='22' x2='19' y2='22' stroke='%23A0A7B4' stroke-width='2'/%3E%3Ccircle cx='22' cy='22' r='3.5' fill='%2313151A'/%3E%3Cline x1='7' y1='12' x2='13' y2='12' stroke='%23A0A7B4' stroke-width='2'/%3E%3Ccircle cx='16' cy='12' r='3.5' fill='%23A0A7B4'/%3E%3C/svg%3E">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%2313151A'/%3E%3Cline x1='7' y1='22' x2='19' y2='22' stroke='%23A0A7B4' stroke-width='2'/%3E%3Ccircle cx='22' cy='22' r='3.5' fill='%235FA38A'/%3E%3Cline x1='7' y1='12' x2='13' y2='12' stroke='%23A0A7B4' stroke-width='2'/%3E%3Ccircle cx='16' cy='12' r='3.5' fill='%23A0A7B4'/%3E%3C/svg%3E">
 <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -31,7 +31,7 @@
   --bg:#F7F6F2; --plate:#FFFFFF; --sunk:#EFEDE8;
   --ink:#13151A; --ink-2:#3A3F49; --ink-3:#4D535E;
   --line:#E4E1DA; --grid:#EDEBE6;
-  --acc:#1A1C21; --acc-ink:#1A1C21; --acc-soft:#ECE9E2;
+  --acc:#2E5E4E; --acc-ink:#24493D; --acc-soft:#E4ECE7;
   --base:#A0A7B4; --base-2:#C9CED6;
   --night:#111318; --night-2:#1B1E25; --night-line:#2C303A; --night-ink:#E9EBEF; --night-3:#A3A9B5;
   --sans:"Pretendard Variable",Pretendard,-apple-system,BlinkMacSystemFont,"Apple SD Gothic Neo","Malgun Gothic",system-ui,sans-serif;
@@ -43,7 +43,7 @@
 :root{color-scheme:light}
 a,button{-webkit-tap-highlight-color:transparent;touch-action:manipulation}
 html{scroll-padding-top:calc(var(--bar) + 16px);-webkit-text-size-adjust:100%}
-body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.7 var(--sans);
+body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.8 var(--sans);
   word-break:keep-all;overflow-wrap:break-word;-webkit-font-smoothing:antialiased;
   font-feature-settings:"tnum" 1;text-rendering:optimizeLegibility}
 img{max-width:100%;display:block}
@@ -99,8 +99,8 @@ html{scrollbar-color:var(--base-2) var(--bg)}
 /* 이름 · 섹션 제목 = Song Myung(붓 명조) */
 .sig{font-family:"Song Myung",cursive;font-style:normal;font-weight:400;color:var(--ink);font-size:54px;letter-spacing:-.01em;line-height:1.05;margin-right:8px;vertical-align:-4px}
 .hid span{display:block;font-size:14px;color:var(--ink-3);line-height:1.55;margin-top:4px}
-.hl h1{font-size:clamp(2.05rem,3.4vw,3rem);line-height:1.12;letter-spacing:-.03em;font-weight:680;margin:30px 0 18px}
-.claim{font-size:clamp(1.02rem,1.15vw,1.1rem);line-height:1.68;color:var(--ink-2);max-width:31em}
+.hl h1{font-size:clamp(2.05rem,3.4vw,3rem);line-height:1.22;letter-spacing:-.03em;font-weight:680;margin:40px 0 24px}
+.claim{font-size:clamp(1.02rem,1.15vw,1.1rem);line-height:1.85;color:var(--ink-2);max-width:31em}
 .evid{list-style:none;margin:24px 0 0;padding:0;border-top:1px solid var(--line)}
 .evid li{display:grid;grid-template-columns:18px 1fr;gap:0 12px;padding:11px 0;border-bottom:1px solid var(--line)}
 .evid li::before{content:"";width:7px;height:7px;border-radius:50%;background:var(--ink);margin-top:9px}
@@ -183,9 +183,12 @@ html{scrollbar-color:var(--base-2) var(--bg)}
 .sec{padding:clamp(96px,13vw,168px) 0;border-top:1px solid var(--line)}
 .sgrid{display:grid;grid-template-columns:repeat(12,minmax(0,1fr));gap:0 24px}
 .sh{grid-column:1/4;align-self:start;position:sticky;top:calc(var(--bar) + 32px)}
-.sh h2{font-family:"Song Myung",var(--sans);font-size:clamp(1.9rem,2.5vw,2.3rem);line-height:1.2;letter-spacing:-.01em;font-weight:400}
+.sh h2{font-family:"Song Myung",var(--sans);font-size:clamp(1.9rem,2.5vw,2.3rem);line-height:1.35;letter-spacing:-.01em;font-weight:400}
+/* 섹션 번호(01, 02 …): 색 대신 리듬을 주는 작은 장치 */
+#v-home{counter-reset:sec}
+.sec .sh h2::before{counter-increment:sec;content:counter(sec,decimal-leading-zero);display:block;font-family:var(--mono);font-size:12.5px;letter-spacing:.04em;color:var(--acc);margin-bottom:14px;line-height:1}
 .sh h2 .cnt{font-size:13px}
-.sh p{font-size:14.5px;color:var(--ink-3);margin-top:12px;line-height:1.6;max-width:19em}
+.sh p{font-size:14.5px;color:var(--ink-3);margin-top:22px;line-height:1.85;max-width:19em}
 .topics{list-style:none;margin:8px 0 0;padding:0;font-size:14.5px;color:var(--ink-2);line-height:1.6}
 .topics li{padding:7px 0;border-bottom:1px solid var(--grid)}
 .sh .cnt{font-family:var(--mono);font-size:13px;color:var(--ink-3);margin-left:8px;font-weight:400;letter-spacing:0}
@@ -194,15 +197,15 @@ html{scrollbar-color:var(--base-2) var(--bg)}
 /* ── 지원 근거(대표 프로젝트) ── */
 .route{display:grid;grid-template-columns:minmax(0,1.05fr) minmax(0,1fr);gap:24px clamp(24px,3.4vw,48px);padding:0 0 clamp(48px,6vw,72px);align-items:start}
 .route+.route{padding-top:clamp(48px,6vw,72px);border-top:1px solid var(--line)}
-.r-cat{font-size:13px;color:var(--ink-3);margin:-12px 0 18px}
+.r-cat{font-size:13px;color:var(--ink-3);margin:-14px 0 24px}
 .pa-x{font-family:var(--mono);font-size:13px;font-weight:500;color:var(--ink-3);letter-spacing:0;margin-right:12px;vertical-align:.18em}
-.route h3{font-size:clamp(1.3rem,1.8vw,1.6rem);line-height:1.32;letter-spacing:-.025em;margin:0 0 20px;font-weight:720;text-wrap:pretty}
+.route h3{font-size:clamp(1.3rem,1.8vw,1.6rem);line-height:1.45;letter-spacing:-.025em;margin:0 0 26px;font-weight:680;text-wrap:pretty}
 .route h3 a{transition:color .2s ease}
 @media (hover:hover) and (pointer:fine){.route h3 a:hover{color:var(--ink-2)}}
-.route dl{margin:0;display:grid;gap:14px}
+.route dl{margin:0;display:grid;gap:20px}
 .route dl div{display:grid;grid-template-columns:44px 1fr;gap:0 14px}
 .route dt{font-size:13px;color:var(--ink-3);padding-top:2px}
-.route dd{margin:0;font-size:15px;color:var(--ink-2);line-height:1.65}
+.route dd{margin:0;font-size:15px;color:var(--ink-2);line-height:1.8}
 .route dd strong{color:var(--ink);font-weight:650}
 .links{display:flex;flex-wrap:wrap;gap:8px 20px;margin-top:22px;font-size:14.5px}
 .links a{font-weight:600;display:inline-flex;align-items:center;gap:6px}
@@ -242,7 +245,7 @@ html{scrollbar-color:var(--base-2) var(--bg)}
 .ref .st{font-size:13px;font-weight:600;line-height:1.6;color:var(--ink);padding-top:3px}
 .ref .st small{display:block;color:var(--ink-3);font-size:12.5px;font-family:var(--sans);margin-top:2px}
 .ref.pend .st{color:var(--ink-3);font-weight:500}
-.ref h3{font-size:1.125rem;line-height:1.45;font-weight:680;letter-spacing:-.015em}
+.ref h3{font-size:1.125rem;line-height:1.6;font-weight:660;letter-spacing:-.015em}
 .ref .src{font-size:13.5px;color:var(--ink-3);margin-top:4px}
 .ref .ab{font-size:15px;color:var(--ink-2);margin-top:10px;line-height:1.7;max-width:46em}
 .ref .mt{display:flex;flex-wrap:wrap;gap:4px 18px;margin-top:12px;font-size:13px;color:var(--ink-3)}
@@ -273,7 +276,7 @@ html{scrollbar-color:var(--base-2) var(--bg)}
 .pc.fit .pc-tag{background:var(--ink);color:#fff}
 .pc-b{padding:14px 16px 16px;display:flex;flex-direction:column;gap:6px;flex:1}
 .pc-c{font-size:12.5px;color:var(--ink-3);display:flex;justify-content:space-between;gap:8px}
-.pc h3{font-size:15.5px;font-weight:680;line-height:1.42;letter-spacing:-.015em;text-wrap:pretty}
+.pc h3{font-size:15.5px;font-weight:660;line-height:1.55;letter-spacing:-.015em;text-wrap:pretty}
 .pc .kpi{margin-top:auto;padding-top:10px;font-size:13.5px;font-weight:600;line-height:1.45;color:var(--ink);border-top:1px solid var(--grid)}
 .pc:active{transform:scale(.99)}
 @media (hover:hover) and (pointer:fine){.pc:hover{border-color:var(--base-2);box-shadow:0 1px 2px rgba(19,21,26,.05),0 16px 32px -20px rgba(19,21,26,.3)}.pc:hover .pc-img img{transform:scale(1.03)}}
@@ -348,7 +351,7 @@ html{scrollbar-color:var(--base-2) var(--bg)}
 .backlink{display:inline-flex;align-items:center;gap:8px;font-size:14px;color:var(--ink-3);transition:color .2s ease}
 .backlink .ic{width:15px;height:15px;transform:rotate(180deg)}
 @media (hover:hover) and (pointer:fine){.backlink:hover{color:var(--ink)}}
-.dt h1{font-size:clamp(1.9rem,4vw,2.8rem);line-height:1.2;letter-spacing:-.03em;font-weight:680;margin-top:40px}
+.dt h1{font-size:clamp(1.9rem,4vw,2.8rem);line-height:1.32;letter-spacing:-.03em;font-weight:680;margin-top:40px}
 .dt h1 .pa-x{font-size:15px;vertical-align:.5em}
 .dt-meta{font-size:14.5px;color:var(--ink-3);margin-top:14px;line-height:1.6}
 .dt-info{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));margin:34px 0 0;border-top:1px solid var(--ink);border-bottom:1px solid var(--line)}
@@ -356,7 +359,7 @@ html{scrollbar-color:var(--base-2) var(--bg)}
 .dt-info dt{font-size:12px;color:var(--ink-3)}
 .dt-info dd{margin:2px 0 0;font-size:14.5px;font-weight:600}
 .dt-sum{font-size:clamp(1.1rem,1.6vw,1.28rem);line-height:1.7;color:var(--ink);margin-top:40px;font-weight:500;letter-spacing:-.01em}
-.dt h2{font-size:1.2rem;font-weight:700;margin:64px 0 18px;letter-spacing:-.02em;display:flex;align-items:baseline;gap:10px}
+.dt h2{font-size:1.2rem;font-weight:680;margin:80px 0 24px;letter-spacing:-.02em;display:flex;align-items:baseline;gap:10px}
 .rlist{list-style:none;margin:0;padding:0;counter-reset:r;border-top:1px solid var(--line)}
 .rlist li{counter-increment:r;display:grid;grid-template-columns:36px 1fr;gap:0 10px;padding:14px 0;border-bottom:1px solid var(--line);font-size:15.5px;line-height:1.7;color:var(--ink-2)}
 .rlist li::before{content:counter(r,decimal-leading-zero);font-size:13px;font-weight:600;color:var(--ink-3);padding-top:2px}
