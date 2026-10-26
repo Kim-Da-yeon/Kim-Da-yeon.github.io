@@ -117,6 +117,10 @@ html{scrollbar-color:var(--base-2) var(--bg)}
 /* 첫 화면 정리: 근거는 굵은 한 줄씩, Fig. 1은 그림과 범례만 (세부 수치는 아래 섹션 · 상세 페이지) */
 .hero .evid span,.hero .fg-n,.hero .figp-f .fn{display:none}
 .hero .evid li{padding:9px 0}
+/* 첫 화면 아래 키워드 띠: 다루는 방법 · 도구 (색 없이 결을 더하는 장치) */
+.kw{grid-column:1/-1;margin-top:clamp(56px,8vh,88px);padding-top:22px;border-top:1px solid var(--line);display:flex;flex-wrap:wrap;align-items:center;gap:10px 10px}
+.kw b{font-family:"Song Myung",serif;font-weight:400;font-size:17px;color:var(--ink);margin-right:10px}
+.kw span{font-size:13px;color:var(--ink-2);padding:6px 13px;border:1px solid var(--line);border-radius:999px;background:var(--plate)}
 .acts{display:flex;flex-wrap:wrap;gap:10px;margin-top:24px}
 .roleview{margin-top:30px;display:flex;flex-wrap:wrap;align-items:baseline;gap:6px 14px;font-size:13.5px;color:var(--ink-3)}
 .roles{display:flex;flex-wrap:wrap;gap:4px 14px}
@@ -194,7 +198,7 @@ html{scrollbar-color:var(--base-2) var(--bg)}
 .sh h2{font-family:"Song Myung",var(--sans);font-size:clamp(1.9rem,2.5vw,2.3rem);line-height:1.35;letter-spacing:-.01em;font-weight:400}
 /* 섹션 번호(01, 02 …): 색 대신 리듬을 주는 작은 장치 */
 #v-home{counter-reset:sec}
-.sec .sh h2::before{counter-increment:sec;content:counter(sec,decimal-leading-zero);display:block;font-family:var(--mono);font-size:12.5px;letter-spacing:.04em;color:var(--acc);margin-bottom:14px;line-height:1}
+.sec .sh h2::before{counter-increment:sec;content:counter(sec,decimal-leading-zero);display:block;font-family:"Song Myung",serif;font-size:clamp(2.6rem,3.6vw,3.4rem);letter-spacing:0;color:var(--acc);opacity:.9;margin-bottom:10px;line-height:1}
 .sh h2 .cnt{font-size:13px}
 .sh p{font-size:14.5px;color:var(--ink-3);margin-top:22px;line-height:1.85;max-width:19em}
 .topics{list-style:none;margin:8px 0 0;padding:0;font-size:14.5px;color:var(--ink-2);line-height:1.6}
@@ -520,6 +524,7 @@ html{scrollbar-color:var(--base-2) var(--bg)}
           <a class="btn line" href="mailto:dayun0405@gmail.com"><svg class="ic"><use href="#i-mail"/></svg>dayun0405@gmail.com</a>
         </div>
       </div>
+      <div class="kw" aria-label="다루는 방법과 도구"><b>Keywords</b><span>토픽 모델링</span><span>베이지안 추론 · SGMCMC</span><span>LLM 파인튜닝 (LoRA)</span><span>RAG · 검색</span><span>예측 모형</span><span>시뮬레이션 설계</span><span>PyTorch</span><span>Transformers</span><span>R · Rcpp</span><span>SQL</span><span>QGIS</span></div>
     </div>
   </section>
 
