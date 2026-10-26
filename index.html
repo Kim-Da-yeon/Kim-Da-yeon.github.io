@@ -687,8 +687,8 @@ html{scrollbar-color:var(--base-2) var(--bg)}
         <a class="mailbig" href="mailto:dayun0405@gmail.com">dayun0405@gmail.com</a>
         <div class="roleview"><span>다른 직무 기준으로 보기</span><nav class="roles" id="roles" aria-label="직무별 페이지"><a href="ml/" data-r="ml">ML Researcher</a><a href="nlp/" data-r="nlp">NLP · LLM Engineer</a><a href="ds/" data-r="ds">Data Scientist</a><a href="av/" data-r="av">자율주행 Research Engineer</a><a href="ai-engineer/" data-r="cj">AI Engineer</a></nav></div>
         <div class="clinks">
-          <a href="resume.pdf?v=20260901" download="김다연_이력서.pdf"><span><b>이력서</b><span id="resrole">PDF</span></span><svg class="ic"><use href="#i-down"/></svg></a>
-          <a href="career.pdf?v=20260901" download="김다연_경력기술서.pdf"><span><b>경력기술서</b><span>PDF</span></span><svg class="ic"><use href="#i-down"/></svg></a>
+          <a href="resume.pdf?v=20260901" download="김다연_이력서.pdf"><span><b>이력서</b></span><svg class="ic"><use href="#i-down"/></svg></a>
+          <a href="career.pdf?v=20260901" download="김다연_경력기술서.pdf"><span><b>경력기술서</b></span><svg class="ic"><use href="#i-down"/></svg></a>
           <a class="ext" href="https://github.com/Kim-Da-yeon" target="_blank" rel="noopener"><span><b>GitHub</b><span>github.com/Kim-Da-yeon</span></span><svg class="ic"><use href="#i-ext"/></svg></a>
         </div>
       </div>
@@ -1563,7 +1563,6 @@ function applyRole(){
     if(f.includes('이력서')) a.href=ROOT+RC.res+'?v=20260914';
     if(f.includes('경력기술서')) a.href=ROOT+RC.car+'?v=20260914';
   });
-  const rr=$('#resrole'); if(rr) rr.textContent=RC.card+' 기준 · PDF';
 }
 
 function build(){
