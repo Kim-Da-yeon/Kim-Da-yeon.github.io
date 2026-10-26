@@ -91,6 +91,8 @@ html{scrollbar-color:var(--base-2) var(--bg)}
 
 /* ══ 첫 화면 ══ */
 .hero{padding:calc(var(--bar) + clamp(40px,7vh,88px)) 0 clamp(80px,12vh,136px)}
+/* 첫 화면은 화면 높이를 꽉 채워 다음 섹션이 보이지 않게, 내용은 세로 가운데 */
+.hero{min-height:100vh;min-height:100svh;box-sizing:border-box;display:flex;align-items:center}.hero>.wrap{width:100%}
 .hgrid{display:grid;grid-template-columns:repeat(12,minmax(0,1fr));gap:0 24px;align-items:start}
 /* 첫 화면 = 프로필: 왼쪽 큰 사진, 오른쪽 이름 · 직무 · 소개 */
 .hero .hgrid{align-items:center;gap:0 clamp(32px,4vw,56px)}
