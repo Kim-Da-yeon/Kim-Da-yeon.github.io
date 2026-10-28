@@ -117,7 +117,8 @@ html{scrollbar-color:var(--base-2) var(--bg)}
 .evid b{font-weight:650;font-size:15.5px;line-height:1.55;display:block}
 .evid span{display:block;font-size:13.5px;color:var(--ink-3);line-height:1.5;margin-top:2px}
 /* 첫 화면 정리: 근거는 굵은 한 줄씩, Fig. 1은 그림과 범례만 (세부 수치는 아래 섹션 · 상세 페이지) */
-.hero .evid span,.hero .fg-n,.hero .figp-f .fn{display:none}
+.hero .fg-n,.hero .figp-f .fn{display:none}
+.evid .bd{font-style:normal;color:var(--acc);font-weight:600}
 .hero .evid li{padding:9px 0}
 /* 첫 화면 아래 키워드 띠: 다루는 방법 · 도구 (색 없이 결을 더하는 장치) */
 .kw{grid-column:1/-1;margin-top:clamp(56px,8vh,88px);padding-top:22px;border-top:1px solid var(--line);display:flex;flex-wrap:wrap;align-items:center;gap:10px 10px}
@@ -1375,33 +1376,33 @@ const FIGS={
 /* ══ 직무별 첫인상 — 제목 · 한 줄 주장 · 근거 3줄 · Fig. 1 · 지원 근거 3건 ══ */
 const ROLES={
  '':   {title:'Data Scientist · ML Researcher', card:'종합',
-        claim:'모델 구조를 이해하고 직접 변형해 학습합니다. Fixed-K Shrinkage BNTM with AWSGHMC Inference에서 토픽 모델에 활성 토픽 수를 데이터로 정하는 사전분포를 넣고 샘플러를 새로 설계했으며, 직접 설계한 모의실험 데이터 5종으로 검증했습니다(SCI급 투고 예정). 전이 네트워크 토픽 모델은 연도별 전이 구조로 확장해 임베디드 기술의 성장을 예측했고(투고 예정), Phi-4-mini는 LoRA로 자율주행 도메인에 파인튜닝했습니다(학술지 게재).',
-        ev:[['제1저자 학술지 논문 2편 · 투고 예정 2편','한국자료분석학회지 27(3) · 28(1) · 투고 예정 2편은 SCI급 1편 포함'],['한국연구재단 석사과정생연구장려금 연구책임자','TNTM을 활용한 임베디드 시스템 문서의 주제 흐름 분석 · 2025–2026'],['고려대 통계학술제 최우수상 외 수상 2회','택시 수요 분석을 통한 택시 서비스 개선 방안 마련 · 2023']],
+        claim:'Python, R, SQL을 기반으로 토픽 모델 · 샘플러 설계, LLM 파인튜닝, 통계 · 머신러닝 분석을 수행해 온 빅데이터사이언스 석사과정 지원자입니다.',
+        ev:[['경험 1. 토픽 모델 · MCMC 샘플러 설계 | 모의실험 5종 토픽 수 정확 복원','토픽 수를 데이터로 정하는 토픽 모델과 AWSGHMC 샘플러를 설계해, 실데이터 2종(FAERS · NTSB)에서 HTMM · LDA보다 낮은 perplexity 달성(SCI급 투고 예정)'],['경험 2. 임베디드 기술 성장 예측 | AUC 논문 0.876 · 특허 0.746','Google BigQuery에서 SQL로 미국 특허 21,028건을, OpenAlex에서 논문 초록 114,066건을 직접 추출해 3년 뒤 성장할 기술 토픽 예측'],['경험 3. 자율주행 sLLM LoRA 파인튜닝 | ROUGE-1 68.4% 향상 · 학술지 게재','Phi-4-mini(3.8B)를 파라미터 0.01%만 학습하는 LoRA로 BDD-X 주행 설명 26,228개에 맞춰 같은 조건 RAG 대비 ROUGE-1 0.0888 → 0.1495']],
         fig:['bntm_k','tntm_auc'], figt:'투고 예정 논문 2편의 결과',
         feat:['bntm','emerg','taxi'], res:'resume.pdf', car:'career.pdf'},
  'ds': {title:'Data Scientist', card:'Data Scientist',
-        claim:'텍스트 데이터에서 예측 변수를 직접 정의하고 예측 모형을 만듭니다. 전이 네트워크 토픽 모델을 이용한 임베디드 기술의 성장 예측에서 토픽 간 문장 전이로 변수 8개를 정의하고, 기준연도 이전 자료로만 학습해 3년 뒤 성장 토픽을 예측했습니다(투고 예정). 택시 수요 분석을 통한 택시 서비스 개선 방안 마련에서는 공공데이터 6종으로 25개 자치구를 군집화해 통계학술제 최우수상을 받았습니다.',
-        ev:[['성장 기술 예측 모형 (투고 예정 · 제1저자)','로지스틱 회귀 · 변수 22개 · rolling-origin 평가 · 토픽 붓스트랩 신뢰구간'],['통계학술제 최우수상: 택시 수요 분석','공공데이터 6종 병합 · 25개 구 계층적 군집 · QGIS 시각화'],['JERESFARM 데이터 분석 인턴','센서 데이터 시계열 분석 · 공공데이터 작물 분류 모델 6종 비교']],
+        claim:'Python, R, SQL을 기반으로 수요 · 공급 분석, 데이터 정합성 검증, 통계 · 머신러닝 모델링을 수행해 온 빅데이터사이언스 석사과정 지원자입니다.',
+        ev:[['경험 1. 서울시 택시 수요 · 공급 분석 | 통계학술제 최우수상','서울시 공공데이터 6종을 활용해 25개 자치구를 6개 유형으로 분류하고 지역별 배차 · 서비스 전략 제안'],['경험 2. LLM 생성 데이터 정합성 검증 | 형식 적합률 43.0%p 개선','Netflix 메타데이터 17,366건의 형식 적합률을 48.4%에서 91.4%로 개선하고 필드 밀림 오류 724건 자동 검출, 추천 성능 손실 없음을 검정으로 확인'],['경험 3. 스마트팜 데이터 분석 인턴 | 분석 한계 검증 및 후속 수집 방향 제안','생육 · 환경 데이터의 결측과 관측 구조를 검토해 기존 데이터만으로는 신뢰할 만한 영향요인을 규명하기 어렵다는 한계 확인']],
         fig:['tntm_auc','std_fit'], figt:'예측 모형 · 데이터 품질 결과',
         feat:['emerg','taxi','std'], res:'resume-ds.pdf', car:'career-ds.pdf'},
  'ml': {title:'ML Researcher · Applied Scientist', card:'ML Researcher',
-        claim:'토픽 모델과 MCMC 샘플러를 설계하고 구현합니다. Fixed-K Shrinkage BNTM with AWSGHMC Inference에서 토픽 수를 데이터로 정하는 모델과 샘플러를 설계했고, 직접 설계한 모의실험 데이터 5종 모두에서 정답 토픽 수를 복원했습니다(SCI급 투고 예정). 샘플러 7종을 구현했고, AWSGLD를 이용한 전이 네트워크 토픽 모델 추론을 학술지에 제1저자로 게재했습니다.',
-        ev:[['직접 설계한 모의실험 데이터 · 환경 5종','다봉 사후분포를 의도적으로 구성 · 10개 seed 모두 정확 복원'],['샘플러 7종 직접 구현','AWSGLD · AWSGHMC · SGHMC · SGLD · SGNHT · MH-within-Gibbs · SAMC'],['제1저자 학술지 2편 · 투고 예정 2편','한국자료분석학회지 27(3) · 28(1) · 연구재단 과제 연구책임자']],
+        claim:'Python · PyTorch를 기반으로 토픽 모델과 MCMC 샘플러를 설계 · 구현하고 LLM · 3D 탐지 모델을 학습해 온 빅데이터사이언스 석사과정 지원자입니다.',
+        ev:[['경험 1. 토픽 모델 · MCMC 샘플러 설계 | 모의실험 5종 토픽 수 정확 복원','토픽 수를 데이터로 정하는 토픽 모델과 AWSGHMC 샘플러를 설계해, 실데이터 2종(FAERS · NTSB)에서 HTMM · LDA보다 낮은 perplexity 달성(SCI급 투고 예정)'],['경험 2. 3D 객체 탐지 SGMCMC 적용 | SGLD 대비 BEV AP 23.9%p 높은 SGHMC 확인','KITTI · PointPillars에서 SGLD · SGHMC · SGNHT를 직접 구현해 같은 조건으로 비교, 기울기 잡음을 모멘텀으로 줄인 SGHMC가 최고(49.59%)'],['경험 3. 자율주행 sLLM LoRA 파인튜닝 | ROUGE-1 68.4% 향상 · 학술지 게재','Phi-4-mini(3.8B)를 파라미터 0.01%만 학습하는 LoRA로 BDD-X 주행 설명 26,228개에 맞춰 같은 조건 RAG 대비 ROUGE-1 0.0888 → 0.1495']],
         fig:['bntm_k','tntm_coh'], figt:'투고 예정 논문 · 분석 프로젝트 결과',
         feat:['bntm','emerg','sgmcmc'], res:'resume-ml.pdf', car:'career-ml.pdf'},
  'av': {title:'자율주행 Research Engineer', card:'자율주행 Research Engineer',
-        claim:'자율주행 데이터로 언어 모델과 3D 탐지 모델을 학습하고 비교합니다. 자율주행 도메인에서 LoRA 기반 sLLM 파인튜닝 연구에서 BDD-X 주행 설명 주석으로 Phi-4-mini를 파인튜닝하고 RAG와 ROUGE · 응답 시간을 비교했습니다(학술지 제1저자). SGMCMC 기반 3D 객체 탐지 최적화에서는 KITTI PointPillars의 최적화기 5종을 같은 조건으로 비교했습니다. 학부 융합전공은 자율주행시스템학과입니다.',
-        ev:[['자율주행시스템학과 융합전공','고려대학교 2025.02 졸업 · ROS · Autoware 실습'],['KITTI 3D 객체 탐지 최적화기 비교','PointPillars · OpenPCDet · SGLD · SGHMC · SGNHT 직접 구현 · 공개 저장소'],['BDD-X 주행 설명 주석 sLLM 파인튜닝 논문 (제1저자)','한국자료분석학회지 27(3) · 임베디드 제약 · 평균 응답 1.145초']],
+        claim:'Python · PyTorch를 기반으로 자율주행 데이터로 언어 모델과 3D 탐지 모델을 학습 · 비교해 온 빅데이터사이언스 석사과정 지원자입니다.',
+        ev:[['경험 1. 자율주행 sLLM LoRA 파인튜닝 | ROUGE-1 68.4% 향상 · 학술지 게재','Phi-4-mini(3.8B)를 파라미터 0.01%만 학습하는 LoRA로 BDD-X 주행 설명 26,228개에 맞춰 같은 조건 RAG 대비 ROUGE-1 0.0888 → 0.1495'],['경험 2. 3D 객체 탐지 SGMCMC 적용 | SGLD 대비 BEV AP 23.9%p 높은 SGHMC 확인','KITTI · PointPillars에서 SGLD · SGHMC · SGNHT를 직접 구현해 같은 조건으로 비교, 기울기 잡음을 모멘텀으로 줄인 SGHMC가 최고(49.59%)'],['경험 3. 토픽 모델 · MCMC 샘플러 설계 | 모의실험 5종 토픽 수 정확 복원','토픽 수를 데이터로 정하는 토픽 모델과 AWSGHMC 샘플러를 설계해, 실데이터 2종(FAERS · NTSB)에서 HTMM · LDA보다 낮은 perplexity 달성(SCI급 투고 예정)']],
         fig:['lora_rouge','sg_bev'], figt:'자율주행 관련 연구 결과',
         feat:['sgmcmc','lora','bntm'], res:'resume-av.pdf', car:'career-av.pdf'},
  'nlp':{title:'NLP · LLM Engineer', card:'NLP · LLM Engineer',
-        claim:'LLM 파인튜닝과 RAG를 구현하고 비교합니다. 자율주행 도메인에서 LoRA 기반 sLLM 파인튜닝 연구에서 같은 모델에 LoRA와 RAG를 각각 적용해 ROUGE와 응답 시간을 비교했습니다(학술지 제1저자). sLLM + Advanced RAG 기반 SONY 브랜드 AI 챗봇은 답변마다 근거 문서와 페이지를 반환하도록 구현했습니다. 전이 네트워크 토픽 모델로 기술 문서의 주제 전이를 분석한 연구도 투고 예정입니다.',
-        ev:[['LoRA sLLM 파인튜닝 논문 (제1저자)','한국자료분석학회지 27(3) · BDD-X 주석 26,228개 · 평균 응답 1.145초'],['SONY 제품 설명서 RAG 챗봇','bge-m3 · Chroma · Re-rank · 출처 페이지 표기 · 공개 저장소'],['문서 13만 건 토픽 모델 기반 성장 예측 (투고 예정 · 제1저자)','논문 초록 114,066건 · 특허 21,028건 · AUC 0.876 · 0.746']],
+        claim:'Python을 기반으로 LLM 파인튜닝 · 검색/캐시 증강과 문장 단위 토픽 모델을 구현하고 비교해 온 빅데이터사이언스 석사과정 지원자입니다.',
+        ev:[['경험 1. 자율주행 sLLM LoRA 파인튜닝 | ROUGE-1 68.4% 향상 · 학술지 게재','Phi-4-mini(3.8B)를 파라미터 0.01%만 학습하는 LoRA로 BDD-X 주행 설명 26,228개에 맞춰 같은 조건 RAG 대비 ROUGE-1 0.0888 → 0.1495'],['경험 2. 파인튜닝 + 캐시 증강 생성(CAG) | BLEU-1 2.6배 · TER 75.9% 감소','QLoRA 파인튜닝 모델에 문서를 KV 캐시로 미리 올리는 CAG를 결합해 8개 지표 모두 개선, 반복 생성 편차 79% 감소'],['경험 3. 임베디드 기술 성장 예측 | AUC 논문 0.876 · 특허 0.746','Google BigQuery에서 SQL로 미국 특허 21,028건을, OpenAlex에서 논문 초록 114,066건을 직접 추출해 3년 뒤 성장할 기술 토픽 예측']],
         fig:['lora_rouge','tntm_coh'], figt:'학술지 논문 2편의 결과',
         feat:['sony','lora','emerg'], res:'resume-nlp.pdf', car:'career-nlp.pdf'},
  'cj': {title:'AI Engineer', card:'AI Engineer · Language AI',
-        claim:'LLM 기반 검색 · 생성 시스템을 구현합니다. sLLM + Advanced RAG 기반 SONY 브랜드 AI 챗봇에서 문서 청킹 · 검색 · 재정렬 · 출처 표기를 구현했습니다. 국제 메타데이터 표준 통합 LLM 기반 그래프 증강 추천시스템에서는 LLM이 생성한 국가 · 언어 표기를 ISO 표준 코드로 정규화했고, 추천 성능은 떨어지지 않았습니다. LoRA 기반 sLLM 파인튜닝 연구는 학술지에 제1저자로 게재했습니다.',
-        ev:[['SONY 제품 설명서 RAG 챗봇 (팀 2명)','청킹 · bge-m3 검색 · 제품명 필터 · Re-rank · 출처 표기 구현, 팀원의 웹 검색 코드 통합'],['sLLM LoRA 파인튜닝 논문 (제1저자)','한국자료분석학회지 27(3) · RAG와 같은 조건에서 비교'],['LLM 메타데이터 정규화 + LightGCN 추천','Netflix 17,366건 · 7개 지표 성능 손실 없음']],
+        claim:'Python을 기반으로 LLM 파인튜닝 · 검색/캐시 증강 · 데이터 정합성 검증을 구현해 온 빅데이터사이언스 석사과정 지원자입니다.',
+        ev:[['경험 1. 자율주행 sLLM LoRA 파인튜닝 | ROUGE-1 68.4% 향상 · 학술지 게재','Phi-4-mini(3.8B)를 파라미터 0.01%만 학습하는 LoRA로 BDD-X 주행 설명 26,228개에 맞춰 같은 조건 RAG 대비 ROUGE-1 0.0888 → 0.1495'],['경험 2. 파인튜닝 + 캐시 증강 생성(CAG) | BLEU-1 2.6배 · TER 75.9% 감소','QLoRA 파인튜닝 모델에 문서를 KV 캐시로 미리 올리는 CAG를 결합해 8개 지표 모두 개선, 반복 생성 편차 79% 감소'],['경험 3. LLM 생성 데이터 정합성 검증 | 형식 적합률 43.0%p 개선','Netflix 메타데이터 17,366건의 형식 적합률을 48.4%에서 91.4%로 개선하고 필드 밀림 오류 724건 자동 검출, 추천 성능 손실 없음을 검정으로 확인']],
         fig:['lora_rouge','std_fit'], figt:'대표 프로젝트 결과',
         order:['sony','std','lora','cag','taxi','pika'],
         feat:['sony','lora','std'], res:'resume.pdf', car:'career.pdf'}
@@ -1578,7 +1579,7 @@ function renderAV(){
 function applyRole(){
   $('#rolename').textContent=RC.title;
   $('#roleclaim').textContent=RC.claim;
-  $('#evid').innerHTML=RC.ev.map(([b,s])=>`<li><div><b>${esc(b)}</b><span>${esc(s)}</span></div></li>`).join('');
+  $('#evid').innerHTML=RC.ev.map(([b,s])=>{const [t,bd]=b.split(' | ');return `<li><div><b>${esc(t)}${bd?`<em class="bd"> | ${esc(bd)}</em>`:''}</b><span>${esc(s)}</span></div></li>`}).join('');
   const f1=$('#fig1'); if(f1) f1.innerHTML=fig1HTML();
   const pick=RC.feat.map(id=>FEAT.find(f=>f.id===id)).filter(Boolean);
   FIGN=1; TABN=0; $('#fgrid').innerHTML=pick.map(routeHTML).join('');
