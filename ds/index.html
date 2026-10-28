@@ -1158,7 +1158,7 @@ std:{
     '상호운용성이 0에서 80.3%로 올랐고, column-shift 724건을 자동으로 찾았습니다.',
     '정규화 전후 임베딩으로 LightGCN을 seed 10회 학습하고 recall@k · ndcg@k를 대응표본 t-검정으로 비교했습니다(Netflix 17,366건).',
     'recall@k · ndcg@k 7개 지표 모두 p &gt; 0.05로 성능 손실이 없었습니다.'],
- d:['LLM으로 만든 메타데이터는 같은 의미를 다른 표면형으로 씁니다. LLMRec으로 만든 Netflix 메타데이터에서 같은 국가가 USA · United States · America로 나뉘어 시스템 간 결합이 안 되는 것을 확인하고, ISO 3166-1 · BCP 47 기준 정규화 레이어를 만들었습니다.',
+ d:['LLM이 생성한 데이터는 같은 의미를 매번 다른 표현으로 쓰고 국제 표준 코드를 따르지 않을 것이라 예상하여 시작하였습니다. LLMRec으로 만든 Netflix 메타데이터에서 같은 국가가 USA · United States · America로 나뉘어 시스템 간 결합이 안 되는 것을 확인하고, ISO 3166-1 · BCP 47 기준 정규화 레이어를 만들었습니다.',
     '정규화 후에도 추천 성능이 떨어지지 않음을 확인해, 이 프로젝트의 기여를 추천 성능이 아니라 데이터 품질과 상호운용성으로 정했습니다.'],
  panel:`<div class="panel"><div class="cap">표면형 → 표준 코드 통합</div>
   <div class="phases">
