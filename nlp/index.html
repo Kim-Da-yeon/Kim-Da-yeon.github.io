@@ -933,18 +933,18 @@ cag:{
 farm:{
  r:['센서 변수 29개에 비해 생육 크기는 개체 18개 · 관측 20일 · 하루 1회 수기 측정이라 종속변수 관측이 부족했습니다.',
     '결측 구간을 보간하고 로그 차분 후 ADF 검정으로 정상성을 확인했습니다. VAR에서는 유의수준 0.05에서 유의한 독립변수가 하나도 없었고, 공적분 검정에서 공적분이 확인돼 VECM으로 독립변수의 유의성을 다시 검정했습니다.',
-    'Lasso 회귀로 변수 17개를 추렸고, 종속변수 관측 부족으로 시계열 모형 해석이 부정확하다는 한계를 결론에 적었습니다.',
-    '다음 작물인 딸기를 정확히 측정하기 위해 회사와 농장 사전 조사를 하고 카메라 센서 구성을 협의했습니다.'],
+    'Linear · Ridge · Lasso 회귀의 테스트 R²는 0.36 · 0.51 · 0.99였고, Lasso(α=1)가 변수 17개를 골랐습니다. 학습 · 테스트를 90:10으로 나눠 테스트 데이터가 매우 적었기 때문에 0.99는 과적합으로 판단했습니다.',
+    '과적합의 원인을 종속변수 관측 부족으로 보고, 다음 작물인 딸기는 생육을 센서로 측정하도록 농장 환경을 사전 조사하고 카메라 센서 구성을 회사와 협의했습니다.'],
  d:['회사에 데이터 분석팀이 없어 외부 자문과 자체 조사로 분석했습니다. 팀원 2명이 최적 환경 도출과 센서 환경 설정 방안을 함께 맡았습니다.',
     '생육 데이터는 사람이 하루 한 번 줄자로 잰 값이었습니다. 그래서 예측 모델보다 먼저, 이 데이터로 결론을 낼 수 있는지를 검정했습니다. 결론은 측정 설계 단계의 한계였습니다.'],
  panel:`<div class="panel"><div class="cap">적용한 시계열 · 변수 선택 기법</div>
   <div class="cand">
-    <div class="on"><span><span class="nm">Lasso</span><span class="ro">규제 회귀 · 변수 선택</span></span><span class="pick">변수 17개</span></div>
+    <div class="on"><span><span class="nm">Lasso</span><span class="ro">규제 회귀 · 변수 선택</span></span><span class="pick">변수 17개 · 테스트 R² 0.99</span></div>
     <div><span><span class="nm">ARIMA</span><span class="ro">단변량 시계열</span></span><span></span></div>
     <div><span><span class="nm">VAR</span><span class="ro">다변량 시계열</span></span><span></span></div>
     <div><span><span class="nm">VECM</span><span class="ro">공적분 · 오차수정</span></span><span></span></div>
   </div>
-  <div class="panel-foot">종속변수 관측이 부족해 예측 정확도로 기법의 우열을 가릴 수 없었고, 독립변수 유의성 검정에 사용.</div></div>`},
+  <div class="panel-foot">테스트 R² Linear 0.36 · Ridge 0.51 · Lasso 0.99. 테스트 데이터가 적어 0.99는 과적합으로 판단했고, 시계열 기법은 독립변수 유의성 검정에 사용.</div></div>`},
 
 crop:{
  r:['현장 데이터의 한계를 근거로 농촌진흥청 공공 데이터로 바꿔 6종 작물 다중 분류로 과제를 다시 정했습니다.',
@@ -1244,7 +1244,7 @@ const FEAT=[
  {id:'farm', cat:'실무 · 인턴', title:'작물 생육 센서 데이터 시계열 분석',
   problem:'하루 1회 수기 측정 · 18개체 · 20일 데이터. 생육 예측이 가능한지부터 불확실했고, 사내 분석팀이 없었음',
   role:'팀 2명 중 시계열 분석 설계 · 구현, 센서 환경 요건 협의',
-  result:'ARIMA · VAR · VECM 검정으로 유의한 독립변수가 없음을 확인, Lasso 변수 17개 추출. 공공 데이터로 바꿔 모델 6종 비교 후 LGBM 선정 (Test F1 0.81)',
+  result:'ARIMA · VAR · VECM 검정으로 유의한 독립변수가 없음을 확인, Lasso 변수 17개 추출(테스트 R² 0.99, 과적합 판단 후 센서 측정 설계). 공공 데이터로 바꿔 모델 6종 비교 후 LGBM 선정 (Test F1 0.81)',
   links:[['상세 보기','#/p/farm'],['코드 비공개 · 사내 데이터','']]},
  {id:'taxi', cat:'공공데이터 분석 · 수상', title:'택시 수요 분석을 통한 택시 서비스 개선 방안 마련',
   problem:'요금 인상 이후 기사 · 이용자가 함께 줄었고, 자치구별 수요 · 공급 불균형을 판단할 기준이 없었음',
@@ -1326,7 +1326,7 @@ const AV_GROUPS=[['perc','Perception'],['sim','Simulation & Data'],['fm','E2E / 
 
 
 /* 프로젝트 목록에서 한눈에 보는 핵심 결과 — 상세 페이지 수치와 동일 */
-const KPI={rain:'비 판정 기준 강수확률 60%',emerg:'성장 토픽 예측 AUC 0.876 · 0.746',farm:'변수 17개 · 데이터 한계 확인',crop:'모델 6종 비교 · Test F1 0.81',bntm:'모의실험 데이터 5종 모두 K 정확 복원',
+const KPI={rain:'비 판정 기준 강수확률 60%',emerg:'성장 토픽 예측 AUC 0.876 · 0.746',farm:'Lasso R² 0.99(과적합) → 센서 측정 설계',crop:'모델 6종 비교 · Test F1 0.81',bntm:'모의실험 데이터 5종 모두 K 정확 복원',
  lora:'ROUGE-1 0.0888 → 0.1495',sgmcmc:'BEV AP Adam 65.15 · SGHMC 49.59',taxi:'통계학술제 최우수상',
  dorm:'수용률 23.4% · 운영 유형 4분류',tbt:'Coherence 0.42 → 0.5743',sony:'답변마다 출처 페이지 반환',
  std:'표준 적합률 0.484 → 0.914',cag:'BLEU-1 0.235 → 0.600 · TER 318.7 → 76.9',gan:'한글 75,000장 사전학습',
