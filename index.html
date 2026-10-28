@@ -625,7 +625,7 @@ html{scrollbar-color:var(--base-2) var(--bg)}
       </div>
       <div class="sb">
         <dl class="dl">
-          <div><dt>확률적 추론<small>샘플러 직접 구현</small></dt><dd><span class="own">AWSGLD</span> <span class="sep">·</span> <span class="own">AWSGHMC</span> <span class="sep">·</span> <span class="own">MH-within-Gibbs</span> <span class="sep">·</span> <span class="own">SAMC</span> <span class="sep">·</span> <span class="own">SGLD</span> <span class="sep">·</span> <span class="own">SGHMC</span> <span class="sep">·</span> <span class="own">SGNHT</span><small>비교 기준 Adam · SGD. SAMC는 순수 R · Rcpp · reticulate 3종 백엔드로 각각 재구현.</small></dd></div>
+          <div><dt>확률적 추론<small>샘플러 직접 구현</small></dt><dd><span class="own">AWSGLD</span> <span class="sep">·</span> <span class="own">AWSGHMC</span> <span class="sep">·</span> <span class="own">MH-within-Gibbs</span> <span class="sep">·</span> <span class="own">SAMC</span> <span class="sep">·</span> <span class="own">SGLD</span> <span class="sep">·</span> <span class="own">SGHMC</span> <span class="sep">·</span> <span class="own">SGNHT</span><small>비교 기준 SGD. SAMC는 순수 R · Rcpp · reticulate 3종 백엔드로 각각 재구현.</small></dd></div>
           <div><dt>NLP · LLM · 딥러닝</dt><dd>PyTorch <span class="sep">·</span> TensorFlow <span class="sep">·</span> Transformers <span class="sep">·</span> LoRA <span class="sep">·</span> QLoRA <span class="sep">·</span> 토픽 모델링 <span class="sep">·</span> 텍스트 마이닝 <span class="sep">·</span> 임베딩 <span class="sep">·</span> RAG <span class="sep">·</span> LangChain</dd></div>
           <div><dt>언어 · 통계</dt><dd>Python <span class="sep">·</span> R <span class="sep">·</span> SQL <span class="sep">·</span> Pandas <span class="sep">·</span> NumPy <span class="sep">·</span> SciPy <span class="sep">·</span> statsmodels <span class="sep">·</span> scikit-learn<small>회귀 · 분류 · 군집 · 시계열 · 앙상블 · 베이지안 · 유의성 검정 · 변수 선택 · 범주형 자료 분석</small></dd></div>
           <div><dt>시각화 · 공간</dt><dd>QGIS <span class="sep">·</span> matplotlib <span class="sep">·</span> seaborn<small>공간 데이터 병합 · 자치구 단위 분포 시각화 · EDA</small></dd></div>
@@ -790,7 +790,7 @@ const P=[
  id:'sgmcmc', cat:'stat', yr:'2025',
  title:'SGMCMC 기반 3D 객체 탐지 최적화',
  meta:'KITTI · OpenPCDet · PointPillars · CT-Stack · GCIoU',
- sum:'점추정만 하는 Adam 학습 대신 베이지안 샘플링 최적화기를 같은 조건에서 비교한 수업 프로젝트.',
+ sum:'3D 객체 탐지에 SGMCMC 3종을 같은 조건으로 적용해, 모멘텀으로 기울기 잡음을 줄인 SGHMC가 가장 좋음을 확인한 수업 프로젝트(A+).',
  techs:['PyTorch','OpenPCDet','KITTI','CUDA','SGHMC','SGLD','SGNHT'],
  repo:{name:'GCIoU-SGMCMC-3D-Detection',url:'https://github.com/Kim-Da-yeon/GCIoU-SGMCMC-3D-Detection'}
 },
@@ -1045,23 +1045,20 @@ lora:{
   <div class="panel-foot">참조 문서가 많을수록 점수가 낮아짐. 관련 없는 문서가 섞인 영향으로 해석.</div></div>`},
 
 sgmcmc:{
- r:['KITTI + OpenPCDet + CT-Stack 백본 + PointPillars + GCIoU 손실로 실험 환경을 고정했습니다.',
-    'Adam을 기준으로 두고 SGLD · SGHMC · SGNHT를 구현해 같은 조건(80 epoch, batch 8, OneCycle LR)에서 비교했습니다.',
-    'BEV AP Moderate는 Adam 65.15%, SGHMC 49.59%로, 이 과제에서는 확률적 탐색보다 적응적 학습률이 더 중요했습니다.',
-    'SGMCMC 계열 안에서는 모멘텀이 있는 SGHMC(49.59%)가 SGLD(25.67%)보다 높았습니다.',
-    '학습 손실은 SGHMC가 0.813으로 가장 낮았지만 검출 성능은 Adam이 가장 높았습니다. 손실이 낮다고 성능이 높지는 않았습니다.'],
- d:['Adam 기반 3D 객체 탐지는 점추정만 해 파라미터 불확실성과 여러 모드를 다루지 못합니다. 베이지안 샘플링 최적화기의 성능을 비교하려고, 백본(CT-Stack) · 구조(PointPillars) · 손실(GCIoU) · 학습 조건(80 epoch, batch 8, OneCycle LR)을 고정하고 최적화기만 바꿨습니다.',
-    '최적화기만 바꿨으므로 성능 차이를 최적화 방식의 차이로 볼 수 있습니다. Adam과 SGHMC를 결합한 방식은 향후 과제로 남겼습니다.'],
+ r:['GCIoU 손실을 에너지 함수로 두고 SGLD · SGHMC · SGNHT 업데이트식을 유도해 직접 구현했습니다.',
+    'KITTI + OpenPCDet + CT-Stack 백본 + PointPillars로 환경과 학습 조건(80 epoch, batch 8, OneCycle LR)을 고정하고 샘플러만 바꿨습니다.',
+    'BEV AP Moderate는 SGHMC 49.59% · SGD 49.07% · SGLD 25.67% · SGNHT 25.37%로 SGHMC가 가장 높았고, 학습 손실도 0.813으로 가장 낮았습니다.',
+    '모멘텀이 있는 SGHMC가 SGLD보다 23.9%p 높았습니다. 모멘텀이 단일 스텝의 기울기 잡음을 평균내 학습 경로를 안정시켰습니다.',
+    '이론상 가장 안정적인 혼합을 기대한 SGNHT가 가장 낮았습니다. 속도와 thermostat 두 곳에 잡음이 더해져 온도 1e-3 이상에서는 기울기가 폭발하고, 1e-4 이하에서는 업데이트가 사라졌습니다.'],
+ d:['점추정 최적화기는 파라미터 불확실성과 여러 모드를 다루지 못합니다. 같은 손실을 베이지안 샘플링 타깃으로 두면 어떤 샘플러가 3D 탐지에서 학습되는지 확인하려고, 백본 · 구조 · 손실 · 학습 조건을 고정하고 샘플러만 바꿨습니다.',
+    '온도에 극도로 민감한 문제는 온도를 1e-5부터 1까지 6단계로 탐색해 유효 범위(1e-5 부근)를 찾아 학습시켰습니다. 수백만 파라미터에 같은 온도를 쓰는 것이 원인이라 층별 온도 조절을 개선 방향으로 정리했습니다.',
+    '결론은 대규모 모델에서는 이론적으로 정교한 샘플러보다 기울기 잡음을 안정적으로 제어하는 구조가 성능을 좌우한다는 것입니다. 수업에서 A+를 받았습니다.'],
  panel:`<div class="panel"><div class="cap">BEV AP Moderate (%) · KITTI validation</div>
-  <div class="bar"><div class="bar-top"><span class="bar-lab">Adam <em>· 기준</em></span><span class="bar-val">65.15</span></div><div class="track"><div class="fill" data-w="100"></div></div></div>
-  <div class="bar hi"><div class="bar-top"><span class="bar-lab">SGHMC <em>· 직접 구현</em></span><span class="bar-val">49.59</span></div><div class="track"><div class="fill" data-w="76"></div></div></div>
-  <div class="bar"><div class="bar-top"><span class="bar-lab">SGD <em>· 모멘텀</em></span><span class="bar-val">49.07</span></div><div class="track"><div class="fill" data-w="75"></div></div></div>
-  <div class="bar hi"><div class="bar-top"><span class="bar-lab">SGLD <em>· 직접 구현</em></span><span class="bar-val">25.67</span></div><div class="track"><div class="fill" data-w="39"></div></div></div>
-  <div class="bar hi"><div class="bar-top"><span class="bar-lab">SGNHT <em>· 직접 구현</em></span><span class="bar-val">25.37</span></div><div class="track"><div class="fill" data-w="39"></div></div></div>
-  <div class="panel-foot">학습 손실은 SGHMC가 0.813으로 최저. 손실 순위와 검출 성능 순위가 다름.</div></div>
-  <div class="panel"><div class="cap">같은 장면 검출 결과 · Adam 대 SGLD</div>
-  <div class="plate"><img src="${A}img/sgmcmc-kitti-compare.jpg" loading="lazy" decoding="async" alt="같은 KITTI 장면에서 Adam은 13건, SGLD는 3건을 검출한 비교 이미지"></div>
-  <div class="panel-foot">같은 장면에서 Adam 13건, SGLD 3건 검출.</div></div>`},
+  <div class="bar hi"><div class="bar-top"><span class="bar-lab">SGHMC <em>· 직접 구현 · 학습 손실 최저 0.813</em></span><span class="bar-val">49.59</span></div><div class="track"><div class="fill" data-w="99"></div></div></div>
+  <div class="bar"><div class="bar-top"><span class="bar-lab">SGD <em>· 잡음 없는 기준</em></span><span class="bar-val">49.07</span></div><div class="track"><div class="fill" data-w="98"></div></div></div>
+  <div class="bar hi"><div class="bar-top"><span class="bar-lab">SGLD <em>· 직접 구현</em></span><span class="bar-val">25.67</span></div><div class="track"><div class="fill" data-w="51"></div></div></div>
+  <div class="bar hi"><div class="bar-top"><span class="bar-lab">SGNHT <em>· 직접 구현</em></span><span class="bar-val">25.37</span></div><div class="track"><div class="fill" data-w="51"></div></div></div>
+  <div class="panel-foot">SGNHT는 온도 1e-3 이상에서 기울기 폭발(gradient norm NaN), 1e-4 이하에서 업데이트 소실.</div></div>`},
 
 taxi:{
  r:['서울시 공공 데이터 6종을 병합하고, 3개 변수의 증감 조합과 계층적 군집분석(Ward.D)으로 자치구를 분류했습니다.',
@@ -1272,9 +1269,9 @@ const FEAT=[
   result:'답변마다 근거 청크의 파일명 · 페이지 번호를 반환해 원문과 대조 가능. 제품 매뉴얼 6종',
   links:[['상세 보기','#/p/sony'],['저장소','https://github.com/Kim-Da-yeon/SONY_Chatbot']]},
  {id:'sgmcmc', cat:'연구 · 실험 설계', title:'SGMCMC 기반 3D 객체 탐지 최적화',
-  problem:'Adam 학습은 점추정만 해 파라미터 불확실성과 여러 모드를 다루지 못함',
+  problem:'점추정 최적화기는 파라미터 불확실성과 여러 모드를 다루지 못함',
   role:'손실 함수 · 네트워크를 고정하고 최적화기만 바꾸는 실험 설계 · 수행. SGLD · SGHMC · SGNHT 구현',
-  result:'BEV AP Adam 65.15 · SGHMC 49.59 · SGLD 25.67. 학습 손실 최저(SGHMC 0.813)와 최고 성능(Adam)이 다름을 확인',
+  result:'BEV AP SGHMC 49.59 · SGLD 25.67 · SGNHT 25.37. SGNHT는 잡음 두 겹으로 기울기 폭발 · 소실, 잡음을 모멘텀으로 줄인 SGHMC가 최고',
   links:[['상세 보기','#/p/sgmcmc'],['저장소','https://github.com/Kim-Da-yeon/GCIoU-SGMCMC-3D-Detection']]},
  {id:'tbt', cat:'분석 프로젝트 · KIAT 과제', title:'AWSGLD-TNTM 기반 미국 자율주행·자동차 TBT 규제 분석',
   problem:'통보문 요약만으로 규제 방향을 판단할 수 없었고, LDA는 잡음 토픽이 상위에 나왔음',
@@ -1300,7 +1297,7 @@ const FEAT=[
 
 const AV_ITEMS=[
  {g:'perc', id:'sgmcmc', tag:'3D object detection', title:'SGMCMC 기반 3D 객체 탐지 최적화 (KITTI · PointPillars)',
-  line:'KITTI 라이다 점구름 · OpenPCDet · PointPillars · CUDA 환경을 고정하고 Adam과 SGMCMC 계열을 같은 조건(80 epoch)에서 비교. 학습 손실 최저와 BEV AP 최고가 다름을 확인'},
+  line:'KITTI 라이다 점구름 · OpenPCDet · PointPillars · CUDA 환경을 고정하고 SGMCMC 3종을 같은 조건(80 epoch)에서 비교. 모멘텀으로 기울기 잡음을 줄인 SGHMC가 BEV AP 최고(SGLD 대비 23.9%p↑)'},
  {g:'sim', id:'bntm', tag:'모의 데이터 생성 · 시나리오 설계', title:'직접 설계한 모의실험 데이터 · 환경 5종',
   line:'정답 토픽 · 전이 · 비중을 아는 데이터를 생성 — 기본 · 초과 용량 · 다수 토픽 · 소표본 · 대규모(문서 10,000건) 5종, K_true 8~40. 다봉 사후분포를 의도적으로 만들어 로컬 트랩을 재현하고, 모든 환경에서 10개 seed 정확 복원을 확인한 뒤 실데이터에 적용'},
  {g:'fm', id:'lora', tag:'주행 도메인 평가', title:'BDD-X 주행 설명 주석 기반 sLLM 파인튜닝 vs 검색 증강 비교',
@@ -1327,7 +1324,7 @@ const AV_GROUPS=[['perc','Perception'],['sim','Simulation & Data'],['fm','E2E / 
 
 /* 프로젝트 목록에서 한눈에 보는 핵심 결과 — 상세 페이지 수치와 동일 */
 const KPI={rain:'비 판정 기준 강수확률 60%',emerg:'성장 토픽 예측 AUC 0.876 · 0.746',farm:'Lasso R² 0.99(과적합) → 센서 측정 설계',crop:'모델 6종 비교 · Test F1 0.81',bntm:'모의실험 데이터 5종 모두 K 정확 복원',
- lora:'ROUGE-1 0.0888 → 0.1495',sgmcmc:'BEV AP Adam 65.15 · SGHMC 49.59',taxi:'통계학술제 최우수상',
+ lora:'ROUGE-1 0.0888 → 0.1495',sgmcmc:'BEV AP SGHMC 49.59 · SGLD 대비 23.9%p↑',taxi:'통계학술제 최우수상',
  dorm:'수용률 23.4% · 운영 유형 4분류',tbt:'Coherence 0.42 → 0.5743',sony:'답변마다 출처 페이지 반환',
  std:'표준 적합률 0.484 → 0.914',cag:'BLEU-1 0.235 → 0.600 · TER 318.7 → 76.9',gan:'한글 75,000장 사전학습',
  db:'4개 릴레이션 3NF · PHP 웹 연동',samc:'R 패키지 3종 구현',pika:'평균 보상 −2.27 → 5.68 (10,000 에피소드)'};
@@ -1345,9 +1342,9 @@ const FIGS={
    ref:{v:.5,l:'무작위 0.5',lg:'무작위 예측 기준'},
    rows:[{l:'논문 초록',s:'114,066건 · 평가 520건',v:.876,lo:.80,hi:.93,me:1},{l:'특허',s:'21,028건 · 평가 429건',v:.746,lo:.67,hi:.81,me:1}],
    n:'데이터 변수 14개(비중 · 확산 · 인용 · 저자)와 직접 정의한 전이 구조 변수 8개로 만든 L2 로지스틱 회귀.',go:'emerg'},
- sg_bev:{p:'SGMCMC 기반 3D 객체 탐지 최적화 · KITTI',t:'최적화기만 바꿔 학습한 PointPillars의 BEV AP Moderate (%) · 직접 구현 3종 대 기준 최적화기',d:[0,70],ticks:[0,35,70],fmt:v=>v.toFixed(2),
-   rows:[{l:'SGHMC',s:'직접 구현 · 학습 손실 최저 0.813',v:49.59,me:1},{l:'SGLD',s:'직접 구현',v:25.67,me:1},{l:'SGNHT',s:'직접 구현',v:25.37,me:1},{l:'Adam',s:'기준 최적화기',v:65.15},{l:'SGD',s:'기준 · 모멘텀',v:49.07}],
-   n:'네트워크 · 손실을 고정하고 최적화기만 바꾼 실험. 학습 손실이 가장 낮은 SGHMC도 AP는 Adam보다 낮음.',go:'sgmcmc'},
+ sg_bev:{p:'SGMCMC 기반 3D 객체 탐지 최적화 · KITTI',t:'샘플러만 바꿔 학습한 PointPillars의 BEV AP Moderate (%) · 직접 구현 3종 대 SGD',d:[0,60],ticks:[0,30,60],fmt:v=>v.toFixed(2),
+   rows:[{l:'SGHMC',s:'직접 구현 · 학습 손실 최저 0.813',v:49.59,me:1},{l:'SGLD',s:'직접 구현',v:25.67,me:1},{l:'SGNHT',s:'직접 구현',v:25.37,me:1},{l:'SGD',s:'기준 · 모멘텀',v:49.07}],
+   n:'네트워크 · 손실을 고정하고 샘플러만 바꾼 실험. 잡음이 두 겹인 SGNHT는 기울기 폭발 · 소실로 최하위, 모멘텀으로 잡음을 줄인 SGHMC가 최고.',go:'sgmcmc'},
  lora_rouge:{p:'학술지 논문 · 자율주행 도메인 LoRA 기반 sLLM 파인튜닝',t:'BDD-X 주행 상황 설명 생성 품질(ROUGE-1) · LoRA 파인튜닝 대 RAG, 같은 조건',d:[0,.16],ticks:[0,.08,.16],fmt:v=>v.toFixed(4),tfmt:v=>v.toFixed(2),
    rows:[{l:'LoRA 파인튜닝',s:'Phi-4-mini 3.8B · 파라미터 0.01%',v:.1495,me:1},{l:'RAG k=1',v:.0888},{l:'RAG k=3',v:.0770},{l:'RAG k=5',v:.0693}],
    n:'평균 응답 1.145초. 참조 문서가 많을수록 RAG 점수가 낮아짐.',go:'lora'},
@@ -1403,7 +1400,7 @@ const HOME_TITLE=document.title;
 /* 대표 프로젝트 그림 — 첫 화면 Fig. 1 에 이미 있으면 교차 참조로 대신함 */
 const FEATALT={bntm:{th:['환경','정답 K','AWSGHMC','SGHMC','MH'],tbl:[['기본','8','8.0','7.4','14.8'],['초과 용량 (K 40)','8','8.0','7.8','19.4'],['다수 토픽','20','20.0','15.4','23.4'],['소표본 (문서 200)','8','8.0','7.0','9.4'],['대규모 (문서 10,000)','40','40.0','35.1','44.6']],cap:'직접 설계한 모의실험 데이터 환경 5종 · 추정 활성 토픽 수 (10 seed 평균)'},
  emerg:{th:null,tbl:[['예측 대상','3년 뒤 성장률 상위 20% 토픽'],['변수','데이터 14개 + 전이 구조 8개 (직접 정의)'],['모형','L2 로지스틱 회귀 · 불균형 가중'],['평가','rolling-origin · 결과연도 논문 13개 · 특허 11개'],['2028 전망 1위','전력 설비 고장 감시 (확률 0.50)']],cap:'예측 모형 설계'},
- sgmcmc:{img:'img/sgmcmc-kitti-compare.jpg',w:746,h:180,alt:'같은 KITTI 장면에서 Adam은 13건, SGLD는 3건을 검출한 비교 이미지',cap:'같은 KITTI 장면 · Adam 13건 대 SGLD 3건 검출'}};
+ sgmcmc:{th:['샘플러','BEV AP Moderate (%)','학습 손실'],tbl:[['SGHMC','49.59','0.813'],['SGD','49.07','0.983'],['SGLD','25.67','1.135'],['SGNHT','25.37','1.326']],cap:'KITTI 3D 객체 탐지 · 샘플러만 바꾼 비교'}};
 const FEATFIG={emerg:'tntm_auc',bntm:'bntm_k',lora:'lora_rouge',sgmcmc:'sg_bev',tbt:'tntm_coh',std:'std_fit',
  taxi:{img:'img/taxi-map-arrivals.jpg',w:828,h:581,alt:'서울 자치구별 택시 도착 건수를 색 농도로 표현한 QGIS 지도',cap:'자치구별 택시 도착 건수 분포 · QGIS'},
  sony:{img:'img/sony-answer-left.jpg',w:740,h:682,alt:'챗봇 답변 화면: 질문, 답변, 출처 정보(파일명 · 페이지 번호)',cap:'챗봇 답변 화면 · 질문 · 답변 · 출처(파일명 · 페이지 번호)'},
