@@ -630,7 +630,7 @@ html{scrollbar-color:var(--base-2) var(--bg)}
           <div><dt>NLP · LLM · 딥러닝</dt><dd>PyTorch <span class="sep">·</span> TensorFlow <span class="sep">·</span> Transformers <span class="sep">·</span> LoRA <span class="sep">·</span> QLoRA <span class="sep">·</span> 토픽 모델링 <span class="sep">·</span> 텍스트 마이닝 <span class="sep">·</span> 임베딩 <span class="sep">·</span> RAG <span class="sep">·</span> LangChain</dd></div>
           <div><dt>언어 · 통계</dt><dd>Python <span class="sep">·</span> R <span class="sep">·</span> SQL <span class="sep">·</span> Pandas <span class="sep">·</span> NumPy <span class="sep">·</span> SciPy <span class="sep">·</span> statsmodels <span class="sep">·</span> scikit-learn<small>회귀 · 분류 · 군집 · 시계열 · 앙상블 · 베이지안 · 유의성 검정 · 변수 선택 · 범주형 자료 분석</small></dd></div>
           <div><dt>시각화 · 공간</dt><dd>QGIS <span class="sep">·</span> matplotlib <span class="sep">·</span> seaborn<small>공간 데이터 병합 · 자치구 단위 분포 시각화 · EDA</small></dd></div>
-          <div><dt>환경 · 협업 · 자격</dt><dd>Git <span class="sep">·</span> GPU Computing (CUDA) <span class="sep">·</span> MySQL <span class="sep">·</span> ER 모델링 <span class="sep">·</span> Rcpp <span class="sep">·</span> reticulate <span class="sep">·</span> ROS · Autoware (학부 실습)<small>ADsP 데이터분석 준전문가 (2023.11)</small></dd></div>
+          <div><dt>환경 · 협업 · 자격</dt><dd>Git <span class="sep">·</span> GPU Computing (CUDA) <span class="sep">·</span> MySQL <span class="sep">·</span> ER 모델링 <span class="sep">·</span> Rcpp <span class="sep">·</span> reticulate <span class="sep">·</span> ROS · Autoware (학부 실습)<small>ADsP 데이터분석 준전문가 (2023.11) <span class="sep">·</span> OPIc IM1 (2026.09)</small></dd></div>
         </dl>
       </div>
     </div>
@@ -767,8 +767,8 @@ const P=[
 {
  id:'crop', cat:'field', yr:'2024',
  title:'농촌진흥청 공공 데이터 기반 6종 작물 다중 분류',
- meta:'JERESFARM 인턴 후속 · 모델 6종 비교 · LGBM 최종 선정',
- sum:'현장 데이터 대신 농촌진흥청 공공 데이터로 6종 작물 분류 모델 6개를 비교하고, 환경 변수별 임계 구간을 찾은 프로젝트.',
+ meta:'JERESFARM 인턴 종료 후 개인 프로젝트 · 2024.05 – 06 · 827,080건 · 결과 · 코드 농장 전달',
+ sum:'인턴 때 규명하지 못한 문제를 농촌진흥청 공공 데이터 827,080건으로 다시 정의해 6종 작물 분류 모델 6개를 비교하고(LightGBM Test F1 0.81), 결과와 코드를 JERESFARM에 전달한 개인 프로젝트.',
  techs:['Python','LGBM','Random Forest','Bagging','SVM','K-NN','Decision Tree']
 },
 {
@@ -954,10 +954,11 @@ farm:{
   <div class="panel-foot">테스트 R² Linear 0.36 · Ridge 0.51 · Lasso 0.99. 테스트 데이터가 적어 0.99는 과적합으로 판단했고, 시계열 기법은 독립변수 유의성 검정에 사용.</div></div>`},
 
 crop:{
- r:['현장 데이터의 한계를 근거로 농촌진흥청 공공 데이터로 바꿔 6종 작물 다중 분류로 과제를 다시 정했습니다.',
+ r:['인턴 종료 후 개인 프로젝트로, 인턴 때 규명하지 못한 문제를 농촌진흥청 공공 데이터 827,080건으로 다시 정의해 6종 작물 다중 분류 과제로 만들었습니다.',
     'Decision Tree · SVM · K-NN · Bagging · Random Forest · LGBM 6개 모델을 비교했습니다.',
     'LGBM을 골랐습니다. Test F1은 0.81이고, 세 앙상블 가운데 Train–Test 격차가 가장 작았습니다.',
-    'Feature Importance로 온도 &gt; 일사량 &gt; CO₂ 순의 영향력을, Partial Dependence Plot으로 온도 25°C · CO₂ 400ppm 등 임계 구간을 찾았습니다.'],
+    'Feature Importance로 온도 &gt; 일사량 &gt; CO₂ 순의 영향력을, Partial Dependence Plot으로 온도 25°C · CO₂ 400ppm 등 임계 구간을 찾았습니다.',
+    '분석 결과와 코드를 JERESFARM에 전달해 농장에서 후속 검토할 수 있게 했습니다.'],
  d:['작물의 최적 환경을 찾으려고 스마트팜 인턴 경험을 살려 시작했습니다. 환경으로 작물을 예측하면 작물별 최적 환경과 토지에 맞는 작물을 함께 찾을 수 있어 생산량을 높이는 데 쓸 수 있습니다.',
     '최고 정확도보다 일반화 성능을 기준으로 모델을 골랐습니다. 세 앙상블의 Train · Test 정확도 격차를 비교해 과적합 위험이 가장 작은 모델을 택했습니다.',
     '고른 모델에서 변수 영향력 순위와 임계 구간을 해석해 현장에서 조절할 수 있는 환경 값으로 정리했습니다.'],
@@ -1257,7 +1258,7 @@ const FEAT=[
  {id:'farm', cat:'실무 · 인턴', title:'작물 생육 센서 데이터 시계열 분석',
   problem:'하루 1회 수기 측정 · 18개체 · 20일 데이터. 생육 예측이 가능한지부터 불확실했고, 사내 분석팀이 없었음',
   role:'팀 2명 중 시계열 분석 설계 · 구현, 센서 환경 요건 협의',
-  result:'ARIMA · VAR · VECM 검정으로 유의한 독립변수가 없음을 확인, Lasso 변수 17개 추출(테스트 R² 0.99, 과적합 판단 후 센서 측정 설계). 공공 데이터로 바꿔 모델 6종 비교 후 LGBM 선정 (Test F1 0.81)',
+  result:'ARIMA · VAR · VECM 검정으로 유의한 독립변수가 없음을 확인, Lasso 변수 17개 추출(테스트 R² 0.99, 과적합 판단 후 센서 측정 설계). 인턴 종료 후 공공 데이터 작물 분류 모델(Test F1 0.81)로 이어 농장에 전달',
   links:[['상세 보기','#/p/farm'],['코드 비공개 · 사내 데이터','']]},
  {id:'taxi', cat:'공공데이터 분석 · 수상', title:'택시 수요 분석을 통한 택시 서비스 개선 방안 마련',
   problem:'요금 인상 이후 기사 · 이용자가 함께 줄었고, 자치구별 수요 · 공급 불균형을 판단할 기준이 없었음',
@@ -1267,7 +1268,7 @@ const FEAT=[
  {id:'bntm', cat:'연구 · SCI급 투고 예정', title:'Fixed-K Shrinkage Bayesian Transition Network Topic Model with AWSGHMC Inference',
   problem:'LDA는 문장 순서를 무시하고, HTMM은 전이를 값 하나로 요약하며, TNTM은 토픽 수를 미리 정하고 확률 단체 제약 때문에 경사 기반 추론이 어려웠음. 사후분포가 다봉이라 일반 샘플러는 로컬 트랩에 갇힘',
   role:'제1저자. 모의실험 데이터 생성기 직접 설계(환경 5종, 다봉 사후분포를 의도적으로 구성), 모델 설계, 샘플러 구현, 평가 지표 정의, 실험, 논문 작성 (지도교수 자문)',
-  result:'모델 비교: 모의실험 5종과 실데이터 2종 모두 BNTM 문서 완성 perplexity 최저(FAERS 32.13 · HTMM 54.99 · LDA 78.23 / NTSB 472.1 · 498.5 · 1,090.7). 샘플러 비교: AWSGHMC가 최저 에너지 도달, 5개 환경 모두 토픽 수 정확 복원(SGHMC · SGLD는 과소, MH는 과다)',
+  result:'FAERS 실데이터 문서 완성 perplexity HTMM 54.99 → BNTM 32.13(41.6%↓, LDA 78.23), NTSB도 498.5 → 472.1로 최저. 정답 20토픽 환경의 추정 토픽 수 SGHMC 15.4개 → AWSGHMC 20.0개, 5개 환경 모두 정확 복원 · 포스터논문 장려상',
   links:[['상세 보기','#/p/bntm'],['학회 포스터 PDF','assets/poster-bntm-2026.pdf'],['저장소 게재 후 공개','']]},
  {id:'emerg', cat:'연구 · 예측 모형 · 투고 예정', title:'전이 네트워크 토픽 모델을 이용한 임베디드 기술의 성장 예측',
   problem:'임베디드 분야에서 3년 뒤 크게 성장할 기술 토픽을 예측하고 성장 이유를 설명하는 것. 기존 연구는 토픽 비중 · 키워드 · 인용 · 특허 지표를 썼고, 신경망 예측은 정확해도 성장 이유를 설명하기 어려웠음',
@@ -1339,7 +1340,7 @@ const AV_GROUPS=[['perc','Perception'],['sim','Simulation & Data'],['fm','E2E / 
 
 
 /* 프로젝트 목록에서 한눈에 보는 핵심 결과 — 상세 페이지 수치와 동일 */
-const KPI={rain:'비 판정 기준 강수확률 60%',emerg:'성장 토픽 예측 AUC 0.876 · 0.746',farm:'Lasso R² 0.99(과적합) → 센서 측정 설계',crop:'모델 6종 비교 · Test F1 0.81',bntm:'모의실험 데이터 5종 모두 K 정확 복원',
+const KPI={rain:'비 판정 기준 강수확률 60%',emerg:'성장 토픽 예측 AUC 0.876 · 0.746',farm:'Lasso R² 0.99(과적합) → 센서 측정 설계',crop:'Test F1 0.81 · 농장 전달',bntm:'모의실험 데이터 5종 모두 K 정확 복원',
  lora:'ROUGE-1 0.0888 → 0.1495',sgmcmc:'BEV AP SGHMC 49.59 · SGLD 대비 23.9%p↑',taxi:'통계학술제 최우수상',
  dorm:'수용률 23.4% · 운영 유형 4분류',tbt:'Coherence 0.42 → 0.5743',sony:'답변마다 출처 페이지 반환',
  std:'표준 적합률 0.484 → 0.914',cag:'BLEU-1 0.235 → 0.600 · TER 318.7 → 76.9',gan:'한글 75,000장 사전학습',
