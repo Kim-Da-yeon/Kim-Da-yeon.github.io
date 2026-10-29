@@ -118,6 +118,7 @@ html{scrollbar-color:var(--base-2) var(--bg)}
 /* 첫 화면 정리: 근거는 굵은 한 줄씩, Fig. 1은 그림과 범례만 (세부 수치는 아래 섹션 · 상세 페이지) */
 .hero .fg-n,.hero .figp-f .fn{display:none}
 .evid .bd{font-style:normal;color:var(--acc);font-weight:600}
+.evclose{margin:14px 0 0;font-size:14.5px;line-height:1.6;color:var(--ink-2)}
 .hero .evid li{padding:9px 0}
 /* 첫 화면 아래 키워드 띠: 다루는 방법 · 도구 (색 없이 결을 더하는 장치) */
 .kw{grid-column:1/-1;margin-top:clamp(56px,8vh,88px);padding-top:22px;border-top:1px solid var(--line);display:flex;flex-wrap:wrap;align-items:center;gap:10px 10px}
@@ -372,6 +373,9 @@ html{scrollbar-color:var(--base-2) var(--bg)}
 .dt-info div{padding:14px 16px 14px 0}
 .dt-info dt{font-size:12px;color:var(--ink-3)}
 .dt-info dd{margin:2px 0 0;font-size:14.5px;font-weight:600}
+.dt-out{margin-top:28px;padding:16px 20px;background:var(--acc-soft);border-left:3px solid var(--acc)}
+.dt-out .k{display:block;font-size:12.5px;font-weight:700;color:var(--acc);letter-spacing:.04em;margin-bottom:4px}
+.dt-out p{margin:0;font-size:15.5px;line-height:1.65;color:var(--ink);font-weight:550}
 .dt-sum{font-size:clamp(1.1rem,1.6vw,1.28rem);line-height:1.7;color:var(--ink);margin-top:40px;font-weight:500;letter-spacing:-.01em}
 .dt h2{font-size:1.2rem;font-weight:680;margin:80px 0 24px;letter-spacing:-.02em;display:flex;align-items:baseline;gap:10px}
 .rlist{list-style:none;margin:0;padding:0;counter-reset:r;border-top:1px solid var(--line)}
@@ -521,6 +525,7 @@ html{scrollbar-color:var(--base-2) var(--bg)}
         <h1 id="rolename">Data Scientist · ML Researcher</h1>
         <p class="claim" id="roleclaim"></p>
         <ul class="evid" id="evid"></ul>
+        <p class="evclose" id="evclose" hidden></p>
         <div class="acts">
           <a class="btn" id="resbtn" href="resume.pdf?v=20260901" download="김다연_이력서.pdf"><svg class="ic"><use href="#i-down"/></svg>이력서 PDF</a>
           <a class="btn line" href="mailto:dayun0405@gmail.com"><svg class="ic"><use href="#i-mail"/></svg>dayun0405@gmail.com</a>
@@ -1340,10 +1345,28 @@ const AV_GROUPS=[['perc','Perception'],['sim','Simulation & Data'],['fm','E2E / 
 
 
 /* 프로젝트 목록에서 한눈에 보는 핵심 결과 — 상세 페이지 수치와 동일 */
-const KPI={rain:'비 판정 기준 강수확률 60%',emerg:'성장 토픽 예측 AUC 0.876 · 0.746',farm:'후속 센서 설계 제안 · 작물 분류 F1 0.81',crop:'Test F1 0.81 · 농장 전달',bntm:'perplexity 41.6%↓ · 토픽 수 정확 복원',
- lora:'ROUGE-1 0.0888 → 0.1495',sgmcmc:'BEV AP SGHMC 49.59 · SGLD 대비 23.9%p↑',taxi:'통계학술제 최우수상',
- dorm:'수용률 23.4% · 운영 유형 4분류',tbt:'Coherence 0.42 → 0.5743',sony:'답변마다 출처 페이지 반환',
- std:'표준 적합률 0.484 → 0.914',cag:'BLEU-1 0.235 → 0.600 · TER 318.7 → 76.9',gan:'한글 75,000장 사전학습',
+const OUTC={"bntm": "문장 사이의 토픽 전이를 다루는 토픽 모델(BNTM)과 샘플러(AWSGHMC)를 제안해 실데이터(FAERS) 문서 완성 perplexity를 HTMM 54.99 → 32.13(41.6%↓)으로 낮추고, 정답 20토픽 환경의 추정 토픽 수를 SGHMC 15.4개 → AWSGHMC 20.0개로 정확 복원 · 포스터논문 장려상",
+ "cag": "파인튜닝 모델에 문서를 KV 캐시로 미리 올리는 CAG를 붙여 BLEU-1 0.235 → 0.600(2.6배), TER 318.7 → 76.9(75.9%↓), 반복 생성 편차 79% 감소",
+ "crop": "농촌진흥청 공공 데이터 827,080건으로 6종 작물 분류 모델 6개를 비교해 LightGBM Test F1 0.81, 온도 25°C · CO₂ 400ppm 임계 구간을 도출하고 결과와 코드를 JERESFARM에 전달",
+ "db": "요구사항 7개 항목을 4개 릴레이션으로 설계하고 삽입 · 갱신 · 삭제 연산으로 3NF를 검증, PHP 웹 화면과 연동",
+ "deliv": "2022 식품소비행태조사 6,366명으로 식사 방법별 건강 오즈비를 추정해 단체급식 1.25 · 일반식당 1.19 · 집밥 1.14 · 배달 0.80을 밝히고, 배달 빈도보다 식생활 습관이 건강에 더 크게 작용함을 확인 · 과목 A+",
+ "dorm": "수용률 · 이익률 지표를 정의해 대학 기숙사를 4개 운영 유형으로 분류하고 유형별 특징 · 6개 개선안을 제시, 구성과 시각화로 좋은 평가를 받아 공모전 본선 진출",
+ "emerg": "논문 초록 114,066건 · 미국 특허 21,028건(BigQuery SQL로 직접 추출)으로 3년 뒤 성장할 기술 토픽을 예측해 AUC 논문 0.876 · 특허 0.746, 성장 이유를 토픽 전이로 설명",
+ "farm": "분석 인력이 없던 농장에서 생육 데이터(개체 18개 · 20일)로는 영향요인을 규명할 수 없음을 검정으로 확인하고, 후속 센서 · 카메라 배치와 측정 항목을 현업과 협의해 제안 → 인턴 종료 후 공공 데이터 작물 분류 모델(Test F1 0.81)로 이어 농장에 전달",
+ "gan": "한글 75,000장으로 사전학습한 GAN을 직접 쓴 210자로 전이학습해 손글씨 스타일 이미지 생성",
+ "lora": "자율주행 판단을 설명하는 정확 · 일관된 실시간 응답을 목표로 LoRA FT-Driver(Phi-4-mini 3.8B, 파라미터 0.01% 학습)를 제안해 RAG 대비 ROUGE-1 0.0888 → 0.1495(68.4%↑), 교통법규 위반 분류 Accuracy 0.505 → 0.745",
+ "pika": "RGB 관측을 좌표 격자 상태로 바꾸고 보상을 다시 설계해 10,000 에피소드 동안 평균 보상 −2.27 → 5.68(+7.95), 규칙 기반 AI를 이기는 구간 반복 · 과목 A+",
+ "rain": "기상청 예보 약 18만 건으로 강수확률을 사후확률로 다시 계산해, 강수확률 70% 이상이면 비가 올 확률 88~95%(베이즈 팩터 7.36 이상), 0~30%면 0에 가깝다는 판단 기준 도출 · 과목 A+",
+ "samc": "SAMC 알고리즘을 순수 R · Rcpp · reticulate 세 백엔드로 구현해 devtools로 설치 · 호출되는 R 패키지 3종 제작",
+ "sgmcmc": "KITTI 3D 객체 탐지에서 SGMCMC 3종을 같은 조건으로 비교해, 모멘텀으로 기울기 잡음을 줄인 SGHMC가 BEV AP 49.59%로 최고(SGLD 대비 23.9%p↑)임을 확인 · 과목 A+",
+ "sony": "제품 6종 설명서를 한 창구에서 검색하고 답변마다 파일명 · 페이지 번호를 반환하는 RAG 챗봇 구현, 반환 페이지를 원문과 대조해 출처 확인",
+ "std": "LLM이 만든 메타데이터를 국제 표준으로 정규화해 표준 적합률 48.4% → 91.4%(43.0%p↑), 상호운용성 0% → 80.3%, 추천 성능 손실 없음 · 과목 A+",
+ "taxi": "서울시 공공 데이터 6종을 직접 구해 병합하고 공차율 지표를 설계해 서울 25개 자치구를 6개 군집으로 나누고, 군집별 문제와 배차 전략을 제안해 통계학술제 최우수상",
+ "tbt": "미국 Federal Register 규제 원문에 AWSGLD-TNTM을 적용해 LDA 대비 Topic Coherence 0.42 → 0.5743(약 37%↑), 규제 흐름을 3단계로 정리"};
+const KPI={rain:'강수확률 70%↑면 비 올 확률 88~95%',emerg:'성장 토픽 예측 AUC 0.876 · 0.746',farm:'후속 센서 설계 제안 · 작물 분류 F1 0.81',crop:'Test F1 0.81 · 농장 전달',bntm:'perplexity 41.6%↓ · 토픽 수 정확 복원',
+ lora:'ROUGE-1 68.4%↑ · 학술지 게재',sgmcmc:'BEV AP SGHMC 49.59 · SGLD 대비 23.9%p↑',taxi:'통계학술제 최우수상',
+ dorm:'공모전 본선 진출 · 운영 유형 4분류',tbt:'Topic Coherence 약 37%↑ (LDA 대비)',sony:'답변마다 출처 페이지 반환',
+ std:'표준 적합률 43.0%p↑ · 추천 손실 없음',cag:'BLEU-1 2.6배 · TER 75.9%↓',gan:'한글 75,000장 사전학습',
  db:'4개 릴레이션 3NF · PHP 웹 연동',deliv:'오즈비 단체급식 1.25 · 배달 0.80',samc:'R 패키지 3종 구현',pika:'평균 보상 −2.27 → 5.68 (10,000 에피소드)'};
 
 /* ══ 그림 사양 — 모든 값은 논문 · 프로젝트 상세의 실측값 ══
@@ -1405,11 +1428,14 @@ const ROLES={
         fig:['lora_rouge','tntm_coh'], figt:'학술지 논문 2편의 결과',
         feat:['sony','lora','emerg'], res:'resume-nlp.pdf', car:'career-nlp.pdf'},
  'cj': {title:'AI Engineer', card:'AI Engineer · Language AI',
-        claim:'Python을 기반으로 LLM 파인튜닝 · 검색/캐시 증강 · LLM 생성 데이터 표준 정규화를 구현해 온 빅데이터사이언스 석사과정 지원자입니다.',
-        ev:[['경험 1. 자율주행 sLLM LoRA 파인튜닝 | ROUGE-1 68.4% 향상 · 학술지 게재','자율주행 판단 설명의 정확 · 일관된 응답을 목표로 LoRA FT-Driver(Phi-4-mini 3.8B, 파라미터 0.01% 학습)를 제안, RAG 대비 ROUGE-1 0.0888 → 0.1495 · 교통법규 분류 Accuracy 0.505 → 0.745'],['경험 2. 파인튜닝 + 캐시 증강 생성(CAG) | BLEU-1 2.6배 · TER 75.9% 감소','QLoRA 파인튜닝 모델에 문서를 KV 캐시로 미리 올리는 CAG를 결합해 8개 지표 모두 개선, 반복 생성 편차 79% 감소'],['경험 3. LLM 생성 메타데이터 국제 표준 정규화 | 형식 적합률 43.0%p 개선','LLM(LLMRec)이 생성한 Netflix 메타데이터 17,366건을 ISO 3166-1 · BCP 47로 정규화해 형식 적합률을 48.4%에서 91.4%로 개선하고 필드 밀림 오류 724건 자동 검출, 추천 성능 손실 없음을 검정으로 확인']],
-        fig:['lora_rouge','std_fit'], figt:'대표 프로젝트 결과',
-        order:['sony','std','lora','cag','taxi','pika'],
-        feat:['sony','lora','std'], res:'resume-ai.pdf', car:'career-ai.pdf'}
+        claim:'Python·PyTorch 기반 AI 모델 학습과 RAG 챗봇 구현 경험을 갖춘 빅데이터사이언스 석사과정 지원자입니다.',
+        ev:[['경험 1. SONY 제품 설명서 RAG 챗봇 | 검색·답변 생성 기능 구현',['SONY 6개 제품 설명서를 활용해 sLLM 기반 질의응답 시제품 개발','bge-m3 임베딩, Chroma 검색, 재정렬(Reranking), Streamlit UI 연동','답변 근거인 설명서 파일명과 페이지 번호 표시']],
+            ['경험 2. Phi-4-mini LoRA·RAG 비교 | ROUGE-1 0.1495',['Phi-4-mini(3.8B)에 LoRA를 적용하고 동일 조건에서 RAG와 성능 비교','주행 설명 생성 ROUGE-1: LoRA 0.1495, RAG 최고 0.0888']],
+            ['경험 3. BNTM 추론 알고리즘 개선 | 포스터논문 장려상',['모델 구조와 AWSGHMC 추론 방법을 개선하고 5개 모의 환경에서 실제 활성 토픽 수 정확히 복원','2026년 한국자료분석학회 포스터논문 장려상 수상, 논문 투고 예정']]],
+        close:'모델 구현부터 실험 설계·평가, 문서 검색과 답변 생성 기능 연동까지 수행했습니다.',
+        fig:['bntm_k','lora_rouge'], figt:'대표 프로젝트 결과',
+        order:['bntm','sony','lora','std','cag','emerg','pika','taxi'],
+        feat:['bntm','sony','lora'], res:'resume-ai.pdf', car:'career-ai.pdf'}
 };
 const RC=ROLES[ROLE]||ROLES[''];
 const HOME_TITLE=document.title;
@@ -1550,6 +1576,7 @@ function detailHTML(p){
       <div><dt>주요 기술</dt><dd>${esc(p.techs.slice(0,3).join(' · '))}</dd></div>
     </dl>
     <p class="dt-sum">${esc(p.sum)}</p>
+    ${OUTC[p.id]?`<div class="dt-out"><span class="k">성과</span><p>${esc(OUTC[p.id])}</p></div>`:''}
     <h2>주요 결과</h2><ol class="rlist">${results}</ol>
     <h2>프로젝트 상세</h2><div class="prose">${paras}</div>
     ${figures}
@@ -1583,7 +1610,8 @@ function renderAV(){
 function applyRole(){
   $('#rolename').textContent=RC.title;
   $('#roleclaim').textContent=RC.claim;
-  $('#evid').innerHTML=RC.ev.map(([b,s])=>{const [t,bd]=b.split(' | ');return `<li><div><b>${esc(t)}${bd?`<em class="bd"> | ${esc(bd)}</em>`:''}</b><span>${esc(s)}</span></div></li>`}).join('');
+  $('#evid').innerHTML=RC.ev.map(([b,s])=>{const [t,bd]=b.split(' | ');return `<li><div><b>${esc(t)}${bd?`<em class="bd"> | ${esc(bd)}</em>`:''}</b><span>${Array.isArray(s)?s.map(esc).join('<br>'):esc(s)}</span></div></li>`}).join('');
+  const ec=$('#evclose'); if(ec){ec.textContent=RC.close||''; ec.hidden=!RC.close;}
   const f1=$('#fig1'); if(f1) f1.innerHTML=fig1HTML();
   const pick=RC.feat.map(id=>FEAT.find(f=>f.id===id)).filter(Boolean);
   FIGN=1; TABN=0; $('#fgrid').innerHTML=pick.map(routeHTML).join('');
