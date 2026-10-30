@@ -8,7 +8,7 @@
 <link rel="canonical" href="https://kim-da-yeon.github.io/ai-engineer/">
 <meta name="author" content="김다연">
 <meta name="description" content="김다연 · AI Engineer — 토픽 모델 · MCMC 샘플러 설계, 기술 성장 예측 모형, sLLM 파인튜닝, 공공데이터 분석.">
-<meta name="theme-color" content="#1FD16A">
+<meta name="theme-color" content="#17382B">
 <meta name="color-scheme" content="light">
 <meta property="og:type" content="profile">
 <meta property="og:url" content="https://kim-da-yeon.github.io/ai-engineer/">
@@ -32,11 +32,11 @@
   --bg:#FFFFFF; --plate:#FFFFFF; --sunk:#F2F4F3;
   --ink:#13151A; --ink-2:#3A3F49; --ink-3:#4D535E;
   --line:#E5E8E6; --grid:#EEF1EF;
-  --acc:#0B7F40; --acc-ink:#086434; --acc-soft:#E2F6E9;
-  /* 포인트 블록(첫 화면 · 연구) 바탕 = 쨍한 초록, 위 글자는 짙은 잉크(대비 9:1) */
-  --pop:#1FD16A; --pop-ink-2:#17331F; --pop-ink-3:#1F4A2E;
+  --acc:#2F6B4F; --acc-ink:#24563F; --acc-soft:#E3EEE7;
+  /* 번갈아 깔리는 연한 초록 바탕 */
+  --tint:#F1F6F2;
   --base:#A0A7B4; --base-2:#C9CED6;
-  --night:#111318; --night-2:#1B1E25; --night-line:#2C303A; --night-ink:#E9EBEF; --night-3:#A3A9B5;
+  --night:#17382B; --night-2:#1F4535; --night-line:#2F5646; --night-ink:#EAF2EC; --night-3:#A6C1B1;
   --sans:"Pretendard Variable",Pretendard,-apple-system,BlinkMacSystemFont,"Apple SD Gothic Neo","Malgun Gothic",system-ui,sans-serif;
   --mono:"JetBrains Mono",ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;
   /* 제목 명조: 영문 · 숫자 Crimson Pro(학술 · 연구 조합) + 한글 Noto Serif KR — ui-ux-pro-max typography "Academic/Research" */
@@ -214,21 +214,25 @@ html{scrollbar-color:var(--base-2) var(--bg)}
 .sh .cnt{font-family:var(--mono);font-size:13px;color:var(--ink-3);margin-left:8px;font-weight:400;letter-spacing:0}
 .sb{grid-column:4/13;min-width:0}
 
-/* ══ 포인트 블록 — 첫 화면 · 연구 섹션만 초록 바탕. 토큰을 블록 안에서 다시 정의해 하위 요소가 그대로 따라오게 ══ */
-.hero,#research{background:var(--pop);
-  --bg:var(--pop); --sunk:rgba(255,255,255,.35);
-  --ink-2:var(--pop-ink-2); --ink-3:var(--pop-ink-3);
-  --line:rgba(10,40,22,.18); --grid:rgba(10,40,22,.12);
-  --base:#2C5A3C; --base-2:rgba(10,40,22,.3);
-  --acc:#0B2A18; --acc-ink:#0B2A18; --acc-soft:rgba(255,255,255,.5)}
-#research{border-top:0}
-#research+.sec{border-top:0}
-.hero ::selection,#research ::selection{background:#fff}
-.hero .btn.line{background:#fff;box-shadow:none}
-.topbar{background:var(--pop);transition:border-color .2s ease,background-color .2s ease}
-.topbar.stuck{background:var(--bg)}
-.topbar:not(.stuck) .nav a:not(.cta),.topbar:not(.stuck) .brand em{color:var(--pop-ink-2)}
-.topbar:not(.stuck) .brand span{color:var(--pop-ink-3)}
+/* ══ 배경 리듬 — 첫 화면 · 연락 = 짙은 초록, 그 사이 섹션은 흰색 / 연한 초록(.tint) 번갈아 (JS가 보이는 섹션만 세서 지정) ══ */
+.sec{border-top:0}
+.sec.tint{background:var(--tint);--sunk:#E3ECE6;--line:#D9E4DD;--grid:#E3ECE6}
+.hero{background:var(--night);color:var(--night-ink);
+  --ink:#F3F7F4; --ink-2:#D5E3DA; --ink-3:var(--night-3);
+  --line:rgba(255,255,255,.16); --grid:rgba(255,255,255,.1); --sunk:var(--night-2);
+  --base:#8FAE9C; --base-2:rgba(255,255,255,.3); --acc:#9BDDB4; --acc-ink:#9BDDB4; --acc-soft:rgba(255,255,255,.12)}
+.hero ::selection{background:#fff;color:var(--night)}
+.hero .btn{background:#fff;color:var(--night)}
+.hero .btn.line{background:transparent;color:#fff;box-shadow:inset 0 0 0 1px rgba(255,255,255,.35)}
+@media (hover:hover) and (pointer:fine){.hero .btn:hover{background:#DCEBE1}.hero .btn.line:hover{background:rgba(255,255,255,.08);box-shadow:inset 0 0 0 1px rgba(255,255,255,.6)}}
+.hero .kw span{background:transparent;color:var(--ink-2);border-color:rgba(255,255,255,.22)}
+.hero .hp img{box-shadow:0 18px 40px -22px rgba(0,0,0,.6)}
+.topbar{transition:border-color .2s ease,background-color .2s ease}
+.topbar:not(.stuck){background:var(--night);color:#fff}
+.topbar:not(.stuck) .nav a:not(.cta),.topbar:not(.stuck) .brand em,.topbar:not(.stuck) .navtoggle{color:#D5E3DA}
+.topbar:not(.stuck) .brand span{color:var(--night-3)}
+.topbar:not(.stuck) .nav a.cta{background:#fff;color:var(--night)}
+@media (hover:hover) and (pointer:fine){.topbar:not(.stuck) .nav a:not(.cta):hover{background:rgba(255,255,255,.08);color:#fff}}
 
 
 /* ── 지원 근거(대표 프로젝트) ── */
@@ -1623,7 +1627,7 @@ function draw(k){
 
 function renderAV(){
   if(ROLE!=='av') return;
-  const sec=$('#avdomain'); if(!sec) return; sec.hidden=false;
+  const sec=$('#avdomain'); if(!sec) return; sec.hidden=false; if(typeof tintSecs==='function') tintSecs();
   $('#avcount').textContent=AV_GROUPS.length+'개 트랙';
   const item=x=>{const tag=x.id?'a':'a';const href=x.id?'#/p/'+x.id:x.href;
     return `<${tag} class="trk-i" href="${href}"><b>${esc(x.title)}<em>${x.id?pa(x.id):'수상'}</em></b><p>${esc(x.line)}</p></${tag}>`;};
@@ -1715,6 +1719,9 @@ route();
 
 /* 상단바 구분선 */
 addEventListener('scroll',()=>{ $('#topbar').classList.toggle('stuck',scrollY>8); },{passive:true});
+/* 보이는 섹션만 세서 둘째마다 연한 초록 바탕 — 직무별로 숨김 섹션이 달라도 흰색/초록이 번갈아 나오게 */
+function tintSecs(){ [...document.querySelectorAll('#v-home > .sec')].filter(e=>!e.hidden).forEach((e,i)=>e.classList.toggle('tint',i%2===1)); }
+tintSecs();
 
 /* 모바일 메뉴 */
 function closeNav(){ $('#nav').classList.remove('open'); $('#navtoggle').setAttribute('aria-expanded','false'); $('#navtoggle').setAttribute('aria-label','메뉴 열기'); }
