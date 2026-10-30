@@ -777,7 +777,7 @@ const P=[
  id:'crop', cat:'field', yr:'2024',
  title:'농촌진흥청 공공 데이터 기반 6종 작물 다중 분류',
  meta:'JERESFARM 인턴 종료 후 개인 프로젝트 · 2024.05 – 06 · 827,080건 · 결과와 코드 농장 전달',
- sum:'인턴 때 규명하지 못한 문제를 농촌진흥청 공공 데이터 827,080건으로 다시 정의하고, 6종 작물 분류 모델 6개를 비교한 뒤(LightGBM Test F1 0.81) 결과와 코드를 JERESFARM에 전달한 개인 프로젝트.',
+ sum:'인턴 때 규명하지 못한 문제를 농촌진흥청 공공 데이터 827,080건으로 다시 정의하고, 6종 작물 분류 모델 6개를 비교한 뒤(LightGBM Train F1 0.84 · Test F1 0.81) 결과와 코드를 JERESFARM에 전달한 개인 프로젝트.',
  techs:['Python','LGBM','Random Forest','Bagging','SVM','K-NN','Decision Tree']
 },
 {
@@ -964,8 +964,8 @@ farm:{
 
 crop:{
  r:['인턴 종료 후 개인 프로젝트로 진행했습니다. 인턴 때 규명하지 못한 문제를 농촌진흥청 공공 데이터 827,080건을 활용한 6종 작물 다중 분류 과제로 다시 정의했습니다.',
-    'Decision Tree, SVM, K-NN, Bagging, Random Forest, LGBM의 6개 모델을 비교했습니다.',
-    'LGBM을 선택했습니다. Test F1은 0.81이며, 세 앙상블 가운데 Train–Test 격차가 가장 작았습니다.',
+    'Decision Tree, SVM, K-NN, Bagging, Random Forest, LGBM의 6개 모델을 비교했습니다. 전처리 후 Test F1이 Decision Tree 0.6140 → 0.7500, SVM 0.3973 → 0.5128, K-NN 0.5338 → 0.6328로 올랐습니다.',
+    'LGBM을 선택했습니다. Train F1 0.8416 · Test F1 0.8108로 격차가 0.03에 그쳐, Bagging(0.9835 → 0.8178, 격차 0.17) · Random Forest(0.9979 → 0.7918, 격차 0.21)보다 과적합이 작았습니다.',
     'Feature Importance로 온도 &gt; 일사량 &gt; CO₂ 순의 영향력을 확인했습니다. Partial Dependence Plot으로는 온도 25°C, CO₂ 400ppm 등의 임계 구간을 찾았습니다.',
     '농장에서 후속 검토에 활용할 수 있도록 분석 결과와 코드를 JERESFARM에 전달했습니다.'],
  d:['스마트팜 인턴 경험을 바탕으로 작물의 최적 환경을 찾고자 시작했습니다. 환경으로 작물을 예측하면 작물별 최적 환경과 토지에 맞는 작물을 함께 찾을 수 있고, 이를 생산량을 높이는 데 활용할 수 있습니다.',
@@ -1351,7 +1351,7 @@ const AV_GROUPS=[['perc','Perception'],['sim','Simulation & Data'],['fm','E2E / 
 /* 프로젝트 목록에서 한눈에 보는 핵심 결과 — 상세 페이지 수치와 동일 */
 const OUTC={"bntm": "실데이터(FAERS) 문서 완성 perplexity를 HTMM 54.99 → BNTM 32.13(41.6%↓)으로 낮추고, 정답 20토픽 환경의 추정 토픽 수를 SGHMC 15.4개 → AWSGHMC 20.0개로 정확 복원 · 포스터논문 장려상",
  "cag": "파인튜닝 모델에 문서를 KV 캐시로 미리 올리는 CAG를 붙여 BLEU-1 0.235 → 0.600(2.6배), TER 318.7 → 76.9(75.9%↓), 반복 생성 편차 79% 감소",
- "crop": "농촌진흥청 공공 데이터 827,080건으로 6종 작물 분류 모델 6개를 비교해 LightGBM Test F1 0.81, 온도 25°C · CO₂ 400ppm 임계 구간을 도출하고 결과와 코드를 JERESFARM에 전달",
+ "crop": "농촌진흥청 공공 데이터 827,080건으로 6종 작물 분류 모델 6개를 비교해 Train–Test F1 격차가 가장 작은 LightGBM(Train 0.84 · Test 0.81, 격차 0.03 vs Bagging 0.17 · Random Forest 0.21)을 선정하고, 온도 25°C · CO₂ 400ppm 임계 구간을 도출하고 결과와 코드를 JERESFARM에 전달",
  "db": "요구사항 7개 항목을 4개 릴레이션으로 설계하고 삽입 · 갱신 · 삭제 연산으로 3NF를 검증, PHP 웹 화면과 연동",
  "deliv": "2022 식품소비행태조사 6,366명으로 식사 방법별 건강 오즈비를 추정해 단체급식 1.25 · 일반식당 1.19 · 집밥 1.14 · 배달 0.80을 밝히고, 배달 빈도보다 식생활 습관이 건강에 더 크게 작용함을 확인 · 과목 A+",
  "dorm": "수용률 · 이익률 지표를 정의해 대학 기숙사를 4개 운영 유형으로 분류하고 유형별 특징 · 6개 개선안을 제시, 구성과 시각화로 좋은 평가를 받아 공모전 본선 진출",
@@ -1367,7 +1367,7 @@ const OUTC={"bntm": "실데이터(FAERS) 문서 완성 perplexity를 HTMM 54.99 
  "std": "LLM이 만든 메타데이터를 국제 표준으로 정규화해 표준 적합률 48.4% → 91.4%(43.0%p↑), 상호운용성 0% → 80.3%, 추천 성능 손실 없음 · 과목 A+",
  "taxi": "서울시 공공 데이터 6종을 직접 구해 병합하고 공차율 지표를 설계해 서울 25개 자치구를 6개 군집으로 나누고, 군집별 문제와 배차 전략을 제안해 통계학술제 최우수상",
  "tbt": "미국 Federal Register 규제 원문에 AWSGLD-TNTM을 적용해 LDA 대비 Topic Coherence 0.42 → 0.5743(약 37%↑), 규제 흐름을 3단계로 정리"};
-const KPI={rain:'강수확률 70%↑ 비 올 확률 88~95%',emerg:'AUC 논문\u00a00.876 · 특허\u00a00.746 (무작위\u00a00.5)',farm:'센서 설계 제안 · 작물 분류 F1 0.81',crop:'Test F1 0.81 · 농장 전달',bntm:'perplexity HTMM\u00a054.99\u00a0→\u00a0BNTM\u00a032.13',
+const KPI={rain:'강수확률 70%↑ 비 올 확률 88~95%',emerg:'AUC 논문\u00a00.876 · 특허\u00a00.746 (무작위\u00a00.5)',farm:'센서 설계 제안 · 작물 분류 F1 0.81',crop:'F1 격차 RF\u00a00.21 · Bagging\u00a00.17 → LGBM\u00a00.03',bntm:'perplexity HTMM\u00a054.99\u00a0→\u00a0BNTM\u00a032.13',
  lora:'ROUGE-1 RAG\u00a00.0888\u00a0→\u00a0LoRA\u00a00.1495',sgmcmc:'BEV AP SGLD\u00a025.67\u00a0→\u00a0SGHMC\u00a049.59',taxi:'통계학술제 최우수상',
  dorm:'공모전 본선 진출 · 운영 유형 4분류',tbt:'Topic Coherence LDA\u00a00.42\u00a0→\u00a00.5743',sony:'답변마다 출처 페이지 반환',
  std:'표준 적합률 48.4%\u00a0→\u00a091.4%',cag:'BLEU-1\u00a00.235\u00a0→\u00a00.600 · TER\u00a0318.7\u00a0→\u00a076.9',gan:'한글 75,000장 사전학습',
