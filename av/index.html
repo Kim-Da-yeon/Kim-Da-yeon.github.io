@@ -1682,10 +1682,17 @@ const SHORTEV=[
  ['3D 객체 탐지','KITTI · PointPillars에서 SGLD · SGHMC · SGNHT 직접 구현 · 비교, SGHMC 최고(49.59%)'],
  ['캐시 증강','QLoRA 모델에 KV 캐시 증강(CAG)을 결합해 8개 지표 모두 개선, 반복 생성 편차 79% 감소'],
 ];
+/* 명함 한 줄 소개 — 첫 화면용 짧은 문장 (ROLES.claim 원문은 PPT 생성기가 읽으므로 유지) */
+const SHORTCLAIM={'':'새 토픽 모델과 샘플러를 직접 설계하고, LLM을 파인튜닝합니다.',
+ ds:'공공 · 특허 데이터를 분석해 예측 모델을 만듭니다.',
+ ml:'새 토픽 모델과 MCMC 샘플러를 직접 설계 · 구현합니다.',
+ av:'자율주행 데이터로 언어 모델과 3D 탐지 모델을 학습합니다.',
+ nlp:'LLM 파인튜닝 · 검색 증강과 문장 단위 토픽 모델을 다룹니다.',
+ cj:'AI 모델을 학습하고 RAG 챗봇을 구현합니다.'};
 const shortEv=(t,s)=>{const m=SHORTEV.find(([k])=>t.includes(k)); return m?m[1]:s;};
 function applyRole(){
   $('#rolename').textContent=RC.title;
-  $('#roleclaim').textContent=RC.claim;
+  $('#roleclaim').textContent=SHORTCLAIM[ROLE in SHORTCLAIM?ROLE:'']||RC.claim;
   $('#evid').innerHTML=RC.ev.map(([b,s])=>{const [t,bd]=b.split(' | ');s=shortEv(t,s); return `<li><div><b>${esc(t)}${bd?`<em class="bd"> | ${esc(bd)}</em>`:''}</b><span>${Array.isArray(s)?s.map(esc).join('<br>'):esc(s)}</span></div></li>`}).join('');
   const ec=$('#evclose'); if(ec){ec.textContent=RC.close||''; ec.hidden=!RC.close;}
   const f1=$('#fig1'); if(f1) f1.innerHTML=fig1HTML();
