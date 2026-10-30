@@ -8,7 +8,7 @@
 <link rel="canonical" href="https://kim-da-yeon.github.io/nlp/">
 <meta name="author" content="김다연">
 <meta name="description" content="김다연 · NLP · LLM Engineer — 토픽 모델 · MCMC 샘플러 설계, 기술 성장 예측 모형, sLLM 파인튜닝, 공공데이터 분석.">
-<meta name="theme-color" content="#F7F6F2">
+<meta name="theme-color" content="#1FD16A">
 <meta name="color-scheme" content="light">
 <meta property="og:type" content="profile">
 <meta property="og:url" content="https://kim-da-yeon.github.io/nlp/">
@@ -29,10 +29,12 @@
    울트라마린 = "본인 방법 · 검증된 결과" 전용 색
    ══════════════════════════════════════════════ */
 :root{
-  --bg:#F7F6F2; --plate:#FFFFFF; --sunk:#EFEDE8;
+  --bg:#FFFFFF; --plate:#FFFFFF; --sunk:#F2F4F3;
   --ink:#13151A; --ink-2:#3A3F49; --ink-3:#4D535E;
-  --line:#E4E1DA; --grid:#EDEBE6;
-  --acc:#2E5E4E; --acc-ink:#24493D; --acc-soft:#E4ECE7;
+  --line:#E5E8E6; --grid:#EEF1EF;
+  --acc:#0B7F40; --acc-ink:#086434; --acc-soft:#E2F6E9;
+  /* 포인트 블록(첫 화면 · 연구) 바탕 = 쨍한 초록, 위 글자는 짙은 잉크(대비 9:1) */
+  --pop:#1FD16A; --pop-ink-2:#17331F; --pop-ink-3:#1F4A2E;
   --base:#A0A7B4; --base-2:#C9CED6;
   --night:#111318; --night-2:#1B1E25; --night-line:#2C303A; --night-ink:#E9EBEF; --night-3:#A3A9B5;
   --sans:"Pretendard Variable",Pretendard,-apple-system,BlinkMacSystemFont,"Apple SD Gothic Neo","Malgun Gothic",system-ui,sans-serif;
@@ -211,6 +213,23 @@ html{scrollbar-color:var(--base-2) var(--bg)}
 .topics li{padding:7px 0;border-bottom:1px solid var(--grid)}
 .sh .cnt{font-family:var(--mono);font-size:13px;color:var(--ink-3);margin-left:8px;font-weight:400;letter-spacing:0}
 .sb{grid-column:4/13;min-width:0}
+
+/* ══ 포인트 블록 — 첫 화면 · 연구 섹션만 초록 바탕. 토큰을 블록 안에서 다시 정의해 하위 요소가 그대로 따라오게 ══ */
+.hero,#research{background:var(--pop);
+  --bg:var(--pop); --sunk:rgba(255,255,255,.35);
+  --ink-2:var(--pop-ink-2); --ink-3:var(--pop-ink-3);
+  --line:rgba(10,40,22,.18); --grid:rgba(10,40,22,.12);
+  --base:#2C5A3C; --base-2:rgba(10,40,22,.3);
+  --acc:#0B2A18; --acc-ink:#0B2A18; --acc-soft:rgba(255,255,255,.5)}
+#research{border-top:0}
+#research+.sec{border-top:0}
+.hero ::selection,#research ::selection{background:#fff}
+.hero .btn.line{background:#fff;box-shadow:none}
+.topbar{background:var(--pop);transition:border-color .2s ease,background-color .2s ease}
+.topbar.stuck{background:var(--bg)}
+.topbar:not(.stuck) .nav a:not(.cta),.topbar:not(.stuck) .brand em{color:var(--pop-ink-2)}
+.topbar:not(.stuck) .brand span{color:var(--pop-ink-3)}
+
 
 /* ── 지원 근거(대표 프로젝트) ── */
 .route{display:grid;grid-template-columns:minmax(0,1.05fr) minmax(0,1fr);gap:24px clamp(24px,3.4vw,48px);padding:0 0 clamp(48px,6vw,72px);align-items:start}
