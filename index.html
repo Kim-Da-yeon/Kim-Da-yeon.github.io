@@ -20,7 +20,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" crossorigin href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css">
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Crimson+Pro:wght@500;600&family=JetBrains+Mono:wght@400;500&family=Noto+Serif+KR:wght@500;600&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Crimson+Pro:wght@500;600&family=JetBrains+Mono:wght@400;500&family=Noto+Serif+KR:wght@500;600;800&display=swap">
 <style>
 /* ══════════════════════════════════════════════
    디자인 토큰 — 통계 그림(figure) 문법
@@ -105,7 +105,7 @@ html{scrollbar-color:var(--base-2) var(--bg)}
 .hp img{width:100%;max-width:340px;aspect-ratio:4/5;height:auto;object-fit:cover;object-position:top;border-radius:14px;background:var(--sunk);box-shadow:0 1px 2px rgba(19,21,26,.06),0 18px 40px -22px rgba(19,21,26,.35)}
 .hl{grid-column:5/13;padding-left:clamp(24px,4vw,64px)}
 .hname{display:flex;align-items:baseline;gap:16px;flex-wrap:wrap}
-.hname .sig{font-size:clamp(3.2rem,5vw,4.4rem);margin:0;vertical-align:0}
+.hname .sig{font-size:clamp(3.8rem,6.4vw,5.6rem);font-weight:800;margin:0;vertical-align:0}
 .hname span{font-size:16px;color:var(--ink-3);font-weight:500}
 .haff{font-size:14.5px;color:var(--ink-3);margin-top:12px;line-height:1.7}
 .hid{display:flex;align-items:flex-end;gap:24px}
@@ -114,7 +114,7 @@ html{scrollbar-color:var(--base-2) var(--bg)}
 /* 이름 · 섹션 제목 = 명조(--serif). 글자 간격은 크기별로(큰 글씨 좁게, 작은 라벨 넓게) */
 .sig{font-family:var(--serif);font-style:normal;font-weight:600;color:var(--ink);font-size:52px;letter-spacing:-.035em;line-height:1.05;margin-right:8px;vertical-align:-4px}
 .hid span{display:block;font-size:14px;color:var(--ink-3);line-height:1.55;margin-top:4px}
-.hl h1{font-size:clamp(1.9rem,3vw,2.6rem);line-height:1.18;letter-spacing:-.03em;font-weight:680;margin:36px 0 22px}
+.hl h1{font-size:clamp(1.5rem,2.2vw,1.95rem);line-height:1.18;letter-spacing:-.03em;font-weight:680;margin:36px 0 22px}
 .claim{font-size:clamp(1.02rem,1.15vw,1.1rem);line-height:1.85;color:var(--ink-2);max-width:31em}
 .evid{list-style:none;margin:24px 0 0;padding:0;border-top:1px solid var(--line)}
 .evid li{display:grid;grid-template-columns:18px 1fr;gap:0 12px;padding:11px 0;border-bottom:1px solid var(--line)}
@@ -229,7 +229,8 @@ html{scrollbar-color:var(--base-2) var(--bg)}
 .hero .btn.line{background:transparent;color:#fff;box-shadow:inset 0 0 0 1px rgba(255,255,255,.35)}
 @media (hover:hover) and (pointer:fine){.hero .btn:hover{background:#DCEBE1}.hero .btn.line:hover{background:rgba(255,255,255,.08);box-shadow:inset 0 0 0 1px rgba(255,255,255,.6)}}
 .hero .kw span{background:transparent;color:var(--ink-2);border-color:rgba(255,255,255,.22)}
-.hero .hp img{box-shadow:0 18px 40px -22px rgba(0,0,0,.6)}
+.hero .hp img{box-shadow:0 18px 40px -22px rgba(0,0,0,.6);max-width:400px}
+@media (min-width:1101px){.hero .hgrid{grid-template-columns:minmax(0,400px) minmax(0,1fr)}.hero .hp{grid-column:1}.hero .hl{grid-column:2;padding-left:0}}
 .topbar{transition:border-color .2s ease,background-color .2s ease}
 .topbar:not(.stuck){background:var(--hero-bg);color:#fff}
 .topbar:not(.stuck) .nav a:not(.cta),.topbar:not(.stuck) .brand em,.topbar:not(.stuck) .navtoggle{color:#E6EFE9}
@@ -473,7 +474,7 @@ html{scrollbar-color:var(--base-2) var(--bg)}
   .navtoggle{display:inline-flex}
   .hp,.hl{grid-column:1/-1}
   .hp img{max-width:220px}
-  .hero .hp img{margin:0 auto}
+  .hero .hp img{margin:0 auto;max-width:280px}
   .hl{margin-top:36px;padding-left:0}
   .route{grid-template-columns:1fr}
   .avq{grid-template-columns:1fr}
@@ -1433,18 +1434,18 @@ const FIGS={
 /* ══ 직무별 첫인상 — 제목 · 한 줄 주장 · 근거 3줄 · Fig. 1 · 지원 근거 3건 ══ */
 const ROLES={
  '':   {title:'Data Scientist · ML Researcher', card:'종합',
-        claim:'Python, R, SQL을 기반으로 새 토픽 모델 · 샘플러 설계, LLM 파인튜닝, 통계 · 머신러닝 분석을 수행해 온 빅데이터사이언스 석사과정 지원자입니다.',
-        ev:[['경험 1. 새 토픽 모델(BNTM) 설계 · 모의실험 데이터 생성 | perplexity 41.6% 감소 · 토픽 수 정확 복원','기존 토픽 모델의 한계를 보완한 새 모델 BNTM과 샘플러 AWSGHMC를 직접 설계하고 정답을 아는 모의실험 데이터 환경 5종을 생성해 검증. 실데이터(FAERS) 문서 완성 perplexity HTMM 54.99 → BNTM 32.13, 정답 20토픽 환경의 추정 토픽 수 SGHMC 15.4개 → AWSGHMC 20.0개(SCI급 투고 예정 · 포스터논문 장려상)'],['경험 2. 임베디드 기술 성장 예측 | AUC 논문 0.876 · 특허 0.746','Google BigQuery에서 SQL로 미국 특허 21,028건을, OpenAlex에서 논문 초록 114,066건을 직접 추출해 3년 뒤 성장할 기술 토픽 예측'],['경험 3. 자율주행 sLLM LoRA 파인튜닝 | ROUGE-1 68.4% 향상 · 학술지 게재','자율주행 판단 설명의 정확 · 일관된 응답을 목표로 LoRA FT-Driver(Phi-4-mini 3.8B, 파라미터 0.01% 학습)를 제안, RAG 대비 ROUGE-1 0.0888 → 0.1495 · 교통법규 분류 Accuracy 0.505 → 0.745']],
+        claim:'Python, R, SQL을 기반으로 새 토픽 모델 · 샘플러를 설계하고 예측 · 통계 · 머신러닝 분석을 수행해 온 빅데이터사이언스 석사과정 지원자입니다.',
+        ev:[['경험 1. 새 토픽 모델(BNTM) 설계 · 모의실험 데이터 생성 | perplexity 41.6% 감소 · 토픽 수 정확 복원','기존 토픽 모델의 한계를 보완한 새 모델 BNTM과 샘플러 AWSGHMC를 직접 설계하고 정답을 아는 모의실험 데이터 환경 5종을 생성해 검증. 실데이터(FAERS) 문서 완성 perplexity HTMM 54.99 → BNTM 32.13, 정답 20토픽 환경의 추정 토픽 수 SGHMC 15.4개 → AWSGHMC 20.0개(SCI급 투고 예정 · 포스터논문 장려상)'],['경험 2. 임베디드 기술 성장 예측 | AUC 논문 0.876 · 특허 0.746','Google BigQuery에서 SQL로 미국 특허 21,028건을, OpenAlex에서 논문 초록 114,066건을 직접 추출해 3년 뒤 성장할 기술 토픽 예측'],['경험 3. 3D 객체 탐지 SGMCMC 적용 | SGLD 대비 BEV AP 23.9%p 높은 SGHMC 확인','KITTI · PointPillars에서 SGLD · SGHMC · SGNHT를 직접 구현해 같은 조건으로 비교, 기울기 잡음을 모멘텀으로 줄인 SGHMC가 최고(49.59%)']],
         fig:['bntm_k','tntm_auc'], figt:'투고 예정 논문 2편의 결과',
         feat:['bntm','sgmcmc','taxi'], res:'resume.pdf', car:'career.pdf'},
  'ds': {title:'Data Scientist', card:'Data Scientist',
         claim:'Python, SQL, R을 활용한 데이터 전처리 · 통계 분석 및 예측 모델 연구 경험을 갖춘 빅데이터사이언스 석사과정 지원자입니다.',
-        ev:[['경험 1. 서울시 택시 수요 · 공급 분석 | 통계학술제 최우수상','서울시 공공데이터 6종을 활용해 25개 자치구를 6개 유형으로 분류하고 지역별 배차 · 서비스 전략 제안'],['경험 2. 임베디드 기술 성장 예측 | AUC 논문 0.876 · 특허 0.746','Google BigQuery에서 SQL로 미국 특허 21,028건을, OpenAlex에서 논문 초록 114,066건을 직접 추출해 3년 뒤 성장할 기술 토픽 예측'],['경험 3. LLM 생성 메타데이터 국제 표준 정규화 | 형식 적합률 43.0%p 개선','LLM(LLMRec)이 생성한 Netflix 메타데이터 17,366건을 ISO 3166-1 · BCP 47로 정규화해 형식 적합률을 48.4%에서 91.4%로 개선하고 필드 밀림 오류 724건 자동 검출, 추천 성능 손실 없음을 검정으로 확인']],
+        ev:[['경험 1. 서울시 택시 수요 · 공급 분석 | 통계학술제 최우수상','서울시 공공데이터 6종을 활용해 25개 자치구를 6개 유형으로 분류하고 지역별 배차 · 서비스 전략 제안'],['경험 2. 임베디드 기술 성장 예측 | AUC 논문 0.876 · 특허 0.746','Google BigQuery에서 SQL로 미국 특허 21,028건을, OpenAlex에서 논문 초록 114,066건을 직접 추출해 3년 뒤 성장할 기술 토픽 예측'],['경험 3. 스마트팜 데이터 분석 인턴 | 후속 측정 설계 제안 · 작물 분류 F1 0.81','생육 데이터(개체 18개 · 20일)로는 영향요인을 규명할 수 없음을 검정으로 확인하고 후속 센서 · 카메라 배치를 제안, 인턴 종료 후 공공 데이터 827,080건으로 작물 분류 모델(LightGBM Test F1 0.81)을 만들어 농장에 전달']],
         fig:['tntm_auc','std_fit'], figt:'예측 모형 · 데이터 품질 결과',
         feat:['emerg','taxi','farm'], res:'resume-ds.pdf', car:'career-ds.pdf'},
  'ml': {title:'ML Researcher · Applied Scientist', card:'ML Researcher',
-        claim:'Python · PyTorch를 기반으로 새 토픽 모델과 MCMC 샘플러를 설계 · 구현하고 LLM · 3D 탐지 모델을 학습해 온 빅데이터사이언스 석사과정 지원자입니다.',
-        ev:[['경험 1. 새 토픽 모델(BNTM) 설계 · 모의실험 데이터 생성 | perplexity 41.6% 감소 · 토픽 수 정확 복원','기존 토픽 모델의 한계를 보완한 새 모델 BNTM과 샘플러 AWSGHMC를 직접 설계하고 정답을 아는 모의실험 데이터 환경 5종을 생성해 검증. 실데이터(FAERS) 문서 완성 perplexity HTMM 54.99 → BNTM 32.13, 정답 20토픽 환경의 추정 토픽 수 SGHMC 15.4개 → AWSGHMC 20.0개(SCI급 투고 예정 · 포스터논문 장려상)'],['경험 2. 3D 객체 탐지 SGMCMC 적용 | SGLD 대비 BEV AP 23.9%p 높은 SGHMC 확인','KITTI · PointPillars에서 SGLD · SGHMC · SGNHT를 직접 구현해 같은 조건으로 비교, 기울기 잡음을 모멘텀으로 줄인 SGHMC가 최고(49.59%)'],['경험 3. 자율주행 sLLM LoRA 파인튜닝 | ROUGE-1 68.4% 향상 · 학술지 게재','자율주행 판단 설명의 정확 · 일관된 응답을 목표로 LoRA FT-Driver(Phi-4-mini 3.8B, 파라미터 0.01% 학습)를 제안, RAG 대비 ROUGE-1 0.0888 → 0.1495 · 교통법규 분류 Accuracy 0.505 → 0.745']],
+        claim:'Python · PyTorch를 기반으로 새 토픽 모델과 MCMC 샘플러를 설계 · 구현하고 3D 탐지 모델에 적용해 온 빅데이터사이언스 석사과정 지원자입니다.',
+        ev:[['경험 1. 새 토픽 모델(BNTM) 설계 · 모의실험 데이터 생성 | perplexity 41.6% 감소 · 토픽 수 정확 복원','기존 토픽 모델의 한계를 보완한 새 모델 BNTM과 샘플러 AWSGHMC를 직접 설계하고 정답을 아는 모의실험 데이터 환경 5종을 생성해 검증. 실데이터(FAERS) 문서 완성 perplexity HTMM 54.99 → BNTM 32.13, 정답 20토픽 환경의 추정 토픽 수 SGHMC 15.4개 → AWSGHMC 20.0개(SCI급 투고 예정 · 포스터논문 장려상)'],['경험 2. 3D 객체 탐지 SGMCMC 적용 | SGLD 대비 BEV AP 23.9%p 높은 SGHMC 확인','KITTI · PointPillars에서 SGLD · SGHMC · SGNHT를 직접 구현해 같은 조건으로 비교, 기울기 잡음을 모멘텀으로 줄인 SGHMC가 최고(49.59%)'],['경험 3. 임베디드 기술 성장 예측 | AUC 논문 0.876 · 특허 0.746','Google BigQuery에서 SQL로 미국 특허 21,028건을, OpenAlex에서 논문 초록 114,066건을 직접 추출해 3년 뒤 성장할 기술 토픽 예측']],
         fig:['bntm_k','tntm_coh'], figt:'투고 예정 논문 · 분석 프로젝트 결과',
         feat:['bntm','sgmcmc','farm'], res:'resume-ml.pdf', car:'career-ml.pdf'},
  'av': {title:'자율주행 Research Engineer', card:'자율주행 Research Engineer',
@@ -1650,10 +1651,11 @@ const SHORTEV=[
  ['택시 수요','서울시 공공데이터 6종으로 25개 자치구를 6개 유형으로 분류해 배차 전략 제안'],
  ['메타데이터 국제 표준','LLM 생성 Netflix 메타데이터 17,366건을 ISO · BCP 47로 정규화, 적합률 48.4% → 91.4%'],
  ['3D 객체 탐지','KITTI · PointPillars에서 SGLD · SGHMC · SGNHT 직접 구현 · 비교, SGHMC 최고(49.59%)'],
+ ['스마트팜','센서 데이터 검정으로 후속 측정 설계 제안, 공공 데이터 827,080건으로 작물 분류 F1 0.81'],
  ['캐시 증강','QLoRA 모델에 KV 캐시 증강(CAG)을 결합해 8개 지표 모두 개선, 반복 생성 편차 79% 감소'],
 ];
 /* 명함 한 줄 소개 — 첫 화면용 짧은 문장 (ROLES.claim 원문은 PPT 생성기가 읽으므로 유지) */
-const SHORTCLAIM={'':'새 토픽 모델과 샘플러를 직접 설계하고, LLM을 파인튜닝합니다.',
+const SHORTCLAIM={'':'새 토픽 모델과 샘플러를 직접 설계하고, 예측 · 통계 분석을 수행합니다.',
  ds:'공공 · 특허 데이터를 분석해 예측 모델을 만듭니다.',
  ml:'새 토픽 모델과 MCMC 샘플러를 직접 설계 · 구현합니다.',
  av:'자율주행 데이터로 언어 모델과 3D 탐지 모델을 학습합니다.',
