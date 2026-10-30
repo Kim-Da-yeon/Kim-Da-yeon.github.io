@@ -224,6 +224,10 @@ html{scrollbar-color:var(--base-2) var(--bg)}
   --base:#8FAE9C; --base-2:rgba(255,255,255,.3); --acc:#7DF0A6; --acc-ink:#7DF0A6; --acc-soft:rgba(255,255,255,.12)}
 .hero ::selection{background:#fff;color:var(--night)}
 .hero .claim{font-weight:500}
+/* 이름 카드: 한글 이름 · 영문 이름을 가운데 정렬로 묶어 첫 화면에서 가장 먼저 보이게 */
+.hero .hname{display:inline-flex;flex-direction:column;align-items:center;gap:6px;padding:20px 34px 18px;border:1px solid rgba(125,240,166,.45);background:rgba(125,240,166,.07);border-radius:12px}
+.hero .hname .sig{margin:0;line-height:1;display:block}
+.hero .hname span{font-size:14px;letter-spacing:.18em;text-transform:uppercase;color:#7DF0A6}
 .hero .haff,.hero .hname span{font-weight:500}
 .hero .evid b{font-weight:700}
 .hero .evid span{font-weight:500;font-size:14px;color:var(--ink-2)}
