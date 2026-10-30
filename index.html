@@ -7,7 +7,7 @@
 <link rel="canonical" href="https://kim-da-yeon.github.io/">
 <meta name="author" content="김다연">
 <meta name="description" content="김다연 · Data Scientist · ML Researcher — 토픽 모델 · MCMC 샘플러 설계, 기술 성장 예측 모형, sLLM 파인튜닝, 공공데이터 분석.">
-<meta name="theme-color" content="#17382B">
+<meta name="theme-color" content="#0F2A1F">
 <meta name="color-scheme" content="light">
 <meta property="og:type" content="profile">
 <meta property="og:url" content="https://kim-da-yeon.github.io/">
@@ -35,7 +35,7 @@
   /* 번갈아 깔리는 연한 초록 바탕 */
   --tint:#E5EFE8;
   --base:#A0A7B4; --base-2:#C9CED6;
-  --night:#17382B; --night-2:#1F4535; --night-line:#2F5646; --night-ink:#EAF2EC; --night-3:#A6C1B1;
+  --night:#0F2A1F; --night-2:#18382B; --night-line:#2B4D3E; --night-ink:#F2F7F3; --night-3:#C3D7CA;
   --sans:"Pretendard Variable",Pretendard,-apple-system,BlinkMacSystemFont,"Apple SD Gothic Neo","Malgun Gothic",system-ui,sans-serif;
   --mono:"JetBrains Mono",ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;
   /* 제목 명조: 영문 · 숫자 Crimson Pro(학술 · 연구 조합) + 한글 Noto Serif KR — ui-ux-pro-max typography "Academic/Research" */
@@ -210,6 +210,7 @@ html{scrollbar-color:var(--base-2) var(--bg)}
 .sh p{font-size:14.5px;color:var(--ink-3);margin-top:22px;line-height:1.85;max-width:19em}
 .topics{list-style:none;margin:8px 0 0;padding:0;font-size:14.5px;color:var(--ink-2);line-height:1.6}
 .topics li{padding:7px 0;border-bottom:1px solid var(--grid)}
+.sh p:empty{display:none}
 .sh .cnt{font-family:var(--mono);font-size:13px;color:var(--ink-3);margin-left:8px;font-weight:400;letter-spacing:0}
 .sb{grid-column:4/13;min-width:0}
 
@@ -217,7 +218,7 @@ html{scrollbar-color:var(--base-2) var(--bg)}
 .sec{border-top:0}
 .sec.tint{background:var(--tint);--sunk:#D8E6DC;--line:#CFDED4;--grid:#D8E6DC}
 .hero{background:var(--night);color:var(--night-ink);
-  --ink:#F3F7F4; --ink-2:#D5E3DA; --ink-3:var(--night-3);
+  --ink:#FFFFFF; --ink-2:#E6EFE9; --ink-3:var(--night-3);
   --line:rgba(255,255,255,.16); --grid:rgba(255,255,255,.1); --sunk:var(--night-2);
   --base:#8FAE9C; --base-2:rgba(255,255,255,.3); --acc:#B8F2CD; --acc-ink:#B8F2CD; --acc-soft:rgba(255,255,255,.12)}
 .hero ::selection{background:#fff;color:var(--night)}
@@ -228,7 +229,7 @@ html{scrollbar-color:var(--base-2) var(--bg)}
 .hero .hp img{box-shadow:0 18px 40px -22px rgba(0,0,0,.6)}
 .topbar{transition:border-color .2s ease,background-color .2s ease}
 .topbar:not(.stuck){background:var(--night);color:#fff}
-.topbar:not(.stuck) .nav a:not(.cta),.topbar:not(.stuck) .brand em,.topbar:not(.stuck) .navtoggle{color:#D5E3DA}
+.topbar:not(.stuck) .nav a:not(.cta),.topbar:not(.stuck) .brand em,.topbar:not(.stuck) .navtoggle{color:#E6EFE9}
 .topbar:not(.stuck) .brand span{color:var(--night-3)}
 .topbar:not(.stuck) .nav a.cta{background:#fff;color:var(--night)}
 @media (hover:hover) and (pointer:fine){.topbar:not(.stuck) .nav a:not(.cta):hover{background:rgba(255,255,255,.08);color:#fff}}
@@ -567,7 +568,7 @@ html{scrollbar-color:var(--base-2) var(--bg)}
     <div class="wrap sgrid">
       <div class="sh">
         <h2>다룬 데이터</h2>
-        <p>텍스트부터 라이다 · 이미지 · 공공데이터 · 센서 측정 · 직접 생성한 모의 데이터까지. 점(●)은 이 페이지의 대표 프로젝트에 쓴 데이터이고, 누르면 해당 프로젝트로 이동합니다.</p>
+        <p>텍스트부터 라이다 · 이미지 · 공공데이터 · 센서 측정 · 직접 생성한 모의 데이터까지. 누르면 해당 프로젝트로 이동합니다.</p>
       </div>
       <div class="sb" id="datafig"></div>
     </div>
@@ -602,25 +603,15 @@ html{scrollbar-color:var(--base-2) var(--bg)}
     </div>
   </section>
 
-  <!-- ══ 연구 · 논문 · 과제 · 수상 ══ -->
+  <!-- ══ 연구 · 논문 · 수상 · 과제 ══ -->
   <section class="sec" id="research">
     <div class="wrap sgrid">
       <div class="sh">
-        <h2>연구 · 논문</h2>
-        <p>KCI 등재지 제1저자 논문 2편 게재 · 투고 예정 2편(SCI급 1편 포함) · 한국연구재단 석사과정생연구장려금 연구책임자</p>
+        <h2>연구 · 논문 · 수상</h2>
+        <p>KCI 등재지 제1저자 논문 2편 게재 · 투고 예정 2편(SCI급 1편 포함) · 수상 3회 · 한국연구재단 석사과정생연구장려금 연구책임자</p>
       </div>
       <div class="sb">
         <div class="refs" id="papers"></div>
-
-        <h3 class="subh">연구 과제</h3>
-        <table class="tbl">
-          <thead><tr><th>과제</th><th>역할</th><th>과제번호 · 기간</th></tr></thead>
-          <tbody>
-            <tr><td>TNTM을 활용한 임베디드 시스템 문서의 주제 흐름 분석 · 성과 <a class="tl" href="#/p/emerg">P16</a></td><td class="pi">한국연구재단 석사과정생연구장려금 · 연구책임자(PI)</td><td class="k">RS-2025-25437035 · 2025–2026</td></tr>
-            <tr><td>베이지안 추론을 위한 적응적 가중 SGMCMC 알고리즘</td><td>한국연구재단 · 참여연구원</td><td class="k">RS-2024-00352792 · 2024–2027</td></tr>
-            <tr><td>초격차산업기반 표준전문인력양성</td><td>KIAT · 참여연구원 · 표준학 융합전공</td><td class="k">RS-2025-02215617 · 2025–2026</td></tr>
-          </tbody>
-        </table>
 
         <h3 class="subh">수상</h3>
         <table class="tbl">
@@ -629,6 +620,16 @@ html{scrollbar-color:var(--base-2) var(--bg)}
             <tr><td>한국자료분석학회 하계학술발표대회 · 포스터논문 부문</td><td class="pi">장려상</td><td>Fixed-K Shrinkage BNTM with AWSGLD Inference · 제1저자 · 이후 추론기를 AWSGHMC로 바꾼 버전 <a class="tl" href="#/p/bntm">P03</a>은 SCI급 투고 예정</td><td class="k">2026</td></tr>
             <tr><td>고려대학교 통계학술제</td><td class="pi">최우수상</td><td><a class="tl" href="#/p/taxi">택시 수요 분석을 통한 택시 서비스 개선 방안 마련</a> · 팀 3명</td><td class="k">2023</td></tr>
             <tr><td>미래모빌리티 및 세종지역혁신 아이디어 공모전</td><td class="pi">장려상</td><td>Smart Green-STOP · 압전 하베스팅 · 태양광 자가발전 스마트 정류소 아이디어 · 팀 2명 · 3D 구현 담당</td><td class="k">2023</td></tr>
+          </tbody>
+        </table>
+
+        <h3 class="subh">연구 과제</h3>
+        <table class="tbl">
+          <thead><tr><th>과제</th><th>역할</th><th>과제번호 · 기간</th></tr></thead>
+          <tbody>
+            <tr><td>TNTM을 활용한 임베디드 시스템 문서의 주제 흐름 분석 · 성과 <a class="tl" href="#/p/emerg">P16</a></td><td class="pi">한국연구재단 석사과정생연구장려금 · 연구책임자(PI)</td><td class="k">RS-2025-25437035 · 2025–2026</td></tr>
+            <tr><td>베이지안 추론을 위한 적응적 가중 SGMCMC 알고리즘</td><td>한국연구재단 · 참여연구원</td><td class="k">RS-2024-00352792 · 2024–2027</td></tr>
+            <tr><td>초격차산업기반 표준전문인력양성</td><td>KIAT · 참여연구원 · 표준학 융합전공</td><td class="k">RS-2025-02215617 · 2025–2026</td></tr>
           </tbody>
         </table>
       </div>
@@ -640,7 +641,7 @@ html{scrollbar-color:var(--base-2) var(--bg)}
     <div class="wrap sgrid">
       <div class="sh">
         <h2>전체 프로젝트<span class="cnt" id="pcount">18건</span></h2>
-        <p>검은 번호표는 위 대표 프로젝트입니다. 카드를 누르면 상세 내용으로 이동합니다.</p>
+        <p>카드를 누르면 상세 내용으로 이동합니다.</p>
       </div>
       <div class="sb">
         <div class="filters" id="filters" role="group" aria-label="분류 필터"></div>
@@ -654,7 +655,7 @@ html{scrollbar-color:var(--base-2) var(--bg)}
     <div class="wrap sgrid">
       <div class="sh">
         <h2>역량</h2>
-        <p>파란 글씨는 논문 · 프로젝트에서 직접 구현한 알고리즘입니다.</p>
+        <p>초록 글씨는 논문 · 프로젝트에서 직접 구현한 알고리즘입니다.</p>
       </div>
       <div class="sb">
         <dl class="dl">
@@ -673,8 +674,6 @@ html{scrollbar-color:var(--base-2) var(--bg)}
     <div class="wrap sgrid">
       <div class="sh">
         <h2>이력</h2>
-        <p>연구 주제</p>
-        <ul class="topics"><li>SGMCMC 샘플러 설계 · 베이지안 추론</li><li>전이 네트워크 토픽 모델 (TNTM · 새 모델 BNTM 설계)</li><li>LoRA 기반 sLLM 파인튜닝 · RAG</li><li>LightGCN 추천 실험 · 국제 표준 데이터 정규화</li></ul>
         <p style="margin-top:14px">현재 BNTM 확장 연구 진행 중</p>
       </div>
       <div class="sb tline">
@@ -695,7 +694,7 @@ html{scrollbar-color:var(--base-2) var(--bg)}
     <div class="wrap sgrid">
       <div class="sh">
         <h2>GitHub 저장소</h2>
-        <p>공개 저장소 5개. BNTM 구현은 논문 게재 후 공개합니다.</p>
+        <p>BNTM 구현은 논문 게재 후 공개합니다.</p>
       </div>
       <div class="sb">
         <div class="repo"><h3><svg class="ic"><use href="#i-gh"/></svg>bntm-topic-model</h3><p>직접 설계한 문장 토픽 전이 네트워크 모델(BNTM) 및 AWSGHMC 샘플러 구현</p><p class="tg">Python · MCMC · 토픽 모델링</p><span class="x">게재 후 공개</span></div>
@@ -724,7 +723,6 @@ html{scrollbar-color:var(--base-2) var(--bg)}
           <a class="ext" href="https://github.com/Kim-Da-yeon" target="_blank" rel="noopener"><span><b>GitHub</b><span>github.com/Kim-Da-yeon</span></span><svg class="ic"><use href="#i-ext"/></svg></a>
         </div>
       </div>
-      <details class="credit" style="grid-column:1/-1"><summary>사진 출처</summary><ul id="credits"></ul></details>
       <div class="foot" style="grid-column:1/-1">
         <span>© 2026 김다연</span>
         <nav aria-label="하단 메뉴"><a href="#data">데이터</a><a href="#fit">대표 프로젝트</a><a href="#research">연구</a><a href="#projects">프로젝트</a><a href="#skills">역량</a><a href="#about">이력</a><a href="#code">코드</a></nav>
@@ -1433,7 +1431,7 @@ const ROLES={
         claim:'Python, R, SQL을 기반으로 새 토픽 모델 · 샘플러 설계, LLM 파인튜닝, 통계 · 머신러닝 분석을 수행해 온 빅데이터사이언스 석사과정 지원자입니다.',
         ev:[['경험 1. 새 토픽 모델(BNTM) 설계 · 모의실험 데이터 생성 | perplexity 41.6% 감소 · 토픽 수 정확 복원','기존 토픽 모델의 한계를 보완한 새 모델 BNTM과 샘플러 AWSGHMC를 직접 설계하고 정답을 아는 모의실험 데이터 환경 5종을 생성해 검증. 실데이터(FAERS) 문서 완성 perplexity HTMM 54.99 → BNTM 32.13, 정답 20토픽 환경의 추정 토픽 수 SGHMC 15.4개 → AWSGHMC 20.0개(SCI급 투고 예정 · 포스터논문 장려상)'],['경험 2. 임베디드 기술 성장 예측 | AUC 논문 0.876 · 특허 0.746','Google BigQuery에서 SQL로 미국 특허 21,028건을, OpenAlex에서 논문 초록 114,066건을 직접 추출해 3년 뒤 성장할 기술 토픽 예측'],['경험 3. 자율주행 sLLM LoRA 파인튜닝 | ROUGE-1 68.4% 향상 · 학술지 게재','자율주행 판단 설명의 정확 · 일관된 응답을 목표로 LoRA FT-Driver(Phi-4-mini 3.8B, 파라미터 0.01% 학습)를 제안, RAG 대비 ROUGE-1 0.0888 → 0.1495 · 교통법규 분류 Accuracy 0.505 → 0.745']],
         fig:['bntm_k','tntm_auc'], figt:'투고 예정 논문 2편의 결과',
-        feat:['bntm','emerg','taxi'], res:'resume.pdf', car:'career.pdf'},
+        feat:['bntm','lora','taxi'], res:'resume.pdf', car:'career.pdf'},
  'ds': {title:'Data Scientist', card:'Data Scientist',
         claim:'Python, SQL, R을 활용한 데이터 전처리 · 통계 분석 및 예측 모델 연구 경험을 갖춘 빅데이터사이언스 석사과정 지원자입니다.',
         ev:[['경험 1. 서울시 택시 수요 · 공급 분석 | 통계학술제 최우수상','서울시 공공데이터 6종을 활용해 25개 자치구를 6개 유형으로 분류하고 지역별 배차 · 서비스 전략 제안'],['경험 2. 임베디드 기술 성장 예측 | AUC 논문 0.876 · 특허 0.746','Google BigQuery에서 SQL로 미국 특허 21,028건을, OpenAlex에서 논문 초록 114,066건을 직접 추출해 3년 뒤 성장할 기술 토픽 예측'],['경험 3. LLM 생성 메타데이터 국제 표준 정규화 | 형식 적합률 43.0%p 개선','LLM(LLMRec)이 생성한 Netflix 메타데이터 17,366건을 ISO 3166-1 · BCP 47로 정규화해 형식 적합률을 48.4%에서 91.4%로 개선하고 필드 밀림 오류 724건 자동 검출, 추천 성능 손실 없음을 검정으로 확인']],
@@ -1443,7 +1441,7 @@ const ROLES={
         claim:'Python · PyTorch를 기반으로 새 토픽 모델과 MCMC 샘플러를 설계 · 구현하고 LLM · 3D 탐지 모델을 학습해 온 빅데이터사이언스 석사과정 지원자입니다.',
         ev:[['경험 1. 새 토픽 모델(BNTM) 설계 · 모의실험 데이터 생성 | perplexity 41.6% 감소 · 토픽 수 정확 복원','기존 토픽 모델의 한계를 보완한 새 모델 BNTM과 샘플러 AWSGHMC를 직접 설계하고 정답을 아는 모의실험 데이터 환경 5종을 생성해 검증. 실데이터(FAERS) 문서 완성 perplexity HTMM 54.99 → BNTM 32.13, 정답 20토픽 환경의 추정 토픽 수 SGHMC 15.4개 → AWSGHMC 20.0개(SCI급 투고 예정 · 포스터논문 장려상)'],['경험 2. 3D 객체 탐지 SGMCMC 적용 | SGLD 대비 BEV AP 23.9%p 높은 SGHMC 확인','KITTI · PointPillars에서 SGLD · SGHMC · SGNHT를 직접 구현해 같은 조건으로 비교, 기울기 잡음을 모멘텀으로 줄인 SGHMC가 최고(49.59%)'],['경험 3. 자율주행 sLLM LoRA 파인튜닝 | ROUGE-1 68.4% 향상 · 학술지 게재','자율주행 판단 설명의 정확 · 일관된 응답을 목표로 LoRA FT-Driver(Phi-4-mini 3.8B, 파라미터 0.01% 학습)를 제안, RAG 대비 ROUGE-1 0.0888 → 0.1495 · 교통법규 분류 Accuracy 0.505 → 0.745']],
         fig:['bntm_k','tntm_coh'], figt:'투고 예정 논문 · 분석 프로젝트 결과',
-        feat:['bntm','emerg','sgmcmc'], res:'resume-ml.pdf', car:'career-ml.pdf'},
+        feat:['bntm','lora','sgmcmc'], res:'resume-ml.pdf', car:'career-ml.pdf'},
  'av': {title:'자율주행 Research Engineer', card:'자율주행 Research Engineer',
         claim:'Python · PyTorch를 기반으로 자율주행 데이터로 언어 모델과 3D 탐지 모델을 학습 · 비교해 온 빅데이터사이언스 석사과정 지원자입니다.',
         ev:[['경험 1. 자율주행 sLLM LoRA 파인튜닝 | ROUGE-1 68.4% 향상 · 학술지 게재','자율주행 판단 설명의 정확 · 일관된 응답을 목표로 LoRA FT-Driver(Phi-4-mini 3.8B, 파라미터 0.01% 학습)를 제안, RAG 대비 ROUGE-1 0.0888 → 0.1495 · 교통법규 분류 Accuracy 0.505 → 0.745'],['경험 2. 3D 객체 탐지 SGMCMC 적용 | SGLD 대비 BEV AP 23.9%p 높은 SGHMC 확인','KITTI · PointPillars에서 SGLD · SGHMC · SGNHT를 직접 구현해 같은 조건으로 비교, 기울기 잡음을 모멘텀으로 줄인 SGHMC가 최고(49.59%)'],['경험 3. 새 토픽 모델(BNTM) 설계 · 모의실험 데이터 생성 | perplexity 41.6% 감소 · 토픽 수 정확 복원','기존 토픽 모델의 한계를 보완한 새 모델 BNTM과 샘플러 AWSGHMC를 직접 설계하고 정답을 아는 모의실험 데이터 환경 5종을 생성해 검증. 실데이터(FAERS) 문서 완성 perplexity HTMM 54.99 → BNTM 32.13, 정답 20토픽 환경의 추정 토픽 수 SGHMC 15.4개 → AWSGHMC 20.0개(SCI급 투고 예정 · 포스터논문 장려상)']],
@@ -1611,6 +1609,7 @@ function detailHTML(p){
     <h2>기술 · 방법</h2><p class="techrow">${techs}</p>
     <nav class="nextnav" aria-label="프로젝트 이동">${nav}</nav>
     <p class="hint">키보드 ← → 로 이동, Esc 로 목록.</p>
+    ${CREDIT[p.id]?`<p class="hint">썸네일 사진: <a class="tl" href="${CREDIT[p.id].page}" target="_blank" rel="noopener">${esc(CREDIT[p.id].title)}</a> — ${esc(CREDIT[p.id].artist.replace(/\s+/g,' ').slice(0,60))} · ${esc(CREDIT[p.id].lic)}</p>`:''}
   </div></div>`;
 }
 
@@ -1642,7 +1641,7 @@ function applyRole(){
   const f1=$('#fig1'); if(f1) f1.innerHTML=fig1HTML();
   const pick=RC.feat.map(id=>FEAT.find(f=>f.id===id)).filter(Boolean);
   FIGN=1; TABN=0; $('#fgrid').innerHTML=pick.map(routeHTML).join('');
-  $('#fitlead').textContent=ROLE?RC.title+' 직무와 가장 관련 있는 프로젝트 '+pick.length+'건입니다.':'BNTM · 예측 연구 · 공공데이터 분석에서 하나씩 골랐습니다.';
+  $('#fitlead').textContent=ROLE?RC.title+' 직무와 가장 관련 있는 프로젝트 '+pick.length+'건입니다.':'';
   document.querySelectorAll('#roles a').forEach(a=>a.classList.toggle('on',a.dataset.r===ROLE));
   document.querySelectorAll('a[download]').forEach(a=>{
     const f=a.getAttribute('download')||'';
