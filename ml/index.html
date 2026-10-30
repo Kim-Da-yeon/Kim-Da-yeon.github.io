@@ -235,11 +235,8 @@ html{scrollbar-color:var(--base-2) var(--bg)}
 .bcard h1{color:var(--night);margin:26px 0 10px;padding-top:22px;border-top:1px solid var(--line);font-size:clamp(1.5rem,2.3vw,1.95rem)}
 .bcard .claim{color:var(--ink-2);font-size:15.5px;line-height:1.75;max-width:none}
 .hero .bcard+.evid{margin-top:40px}
-/* 명함 배치: 사진까지 명함 안에 넣고 첫 화면을 한 열(명함 → 경험 → 버튼)로, 폭을 맞춤 */
-.hero .hl{grid-column:1/-1;padding-left:0;max-width:960px;margin:0 auto;width:100%}
-.bcard{max-width:none;display:grid;grid-template-columns:168px minmax(0,1fr);gap:0 36px;align-items:center;padding:30px 36px}
-.bc-ph{width:168px;height:210px;object-fit:cover;object-position:top;border-radius:2px}
-.bcard h1{margin:20px 0 8px;padding-top:18px}
+/* 명함 폭 = 아래 경험 목록 폭 */
+.bcard{max-width:none}
 /* 3D: 살짝 기울어진 채 놓인 종이 명함. 아래 · 오른쪽 가장자리에 종이 두께, 마우스를 따라 기울기와 빛 반사가 움직임 */
 /* 평소엔 평평하게 둬서 글씨가 선명하고, 마우스를 올렸을 때만 기울어짐 */
 .bcard{--rx:0deg;--ry:0deg;--mx:30%;--my:20%;
@@ -254,7 +251,7 @@ html{scrollbar-color:var(--base-2) var(--bg)}
 @keyframes bc-in{from{opacity:0;transform:perspective(1400px) rotateX(24deg) rotateY(-14deg) translateY(28px)}}
 .bcard{animation:bc-in .9s var(--ease) both}
 @media (prefers-reduced-motion:reduce){.bcard{animation:none;transform:none;transition:none}}
-@media (max-width:640px){.bcard{grid-template-columns:1fr;gap:20px}.bc-ph{width:120px;height:150px}}
+
 @media (max-width:640px){.bcard{padding:26px 22px 24px}.bcard h1{margin-top:20px;padding-top:18px}.hero .bcard+.evid{margin-top:32px}}
 .hero .haff,.hero .hname span{font-weight:500}
 .hero .evid b{font-weight:700}
@@ -583,13 +580,14 @@ html{scrollbar-color:var(--base-2) var(--bg)}
   <!-- ══ 첫 화면 : 프로필 — 사진 · 이름 · 직무 · 한 줄 소개 · 근거 3줄 · 연락 ══ -->
   <section class="hero" id="top">
     <div class="wrap hgrid">
+      <div class="hp"><img src="../assets/img/profile.jpg" alt="김다연 프로필 사진" width="300" height="375"></div>
       <div class="hl">
-        <div class="bcard" id="bcard"><img class="bc-ph" src="../assets/img/profile.jpg" alt="김다연 프로필 사진" width="300" height="375"><div class="bc-tx">
+        <div class="bcard" id="bcard">
         <p class="hname"><em class="sig">김다연</em><span>Kim Dayeon</span></p>
         <p class="haff">고려대학교 일반대학원 빅데이터사이언스학과 석사과정 · 2027.02 졸업예정</p>
         <h1 id="rolename">Data Scientist · ML Researcher</h1>
         <p class="claim" id="roleclaim"></p>
-        </div></div>
+        </div>
         <ul class="evid" id="evid"></ul>
         <p class="evclose" id="evclose" hidden></p>
         <div class="acts">
