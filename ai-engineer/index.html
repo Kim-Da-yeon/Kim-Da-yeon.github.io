@@ -224,9 +224,18 @@ html{scrollbar-color:var(--base-2) var(--bg)}
   --base:#8FAE9C; --base-2:rgba(255,255,255,.3); --acc:#7DF0A6; --acc-ink:#7DF0A6; --acc-soft:rgba(255,255,255,.12)}
 .hero ::selection{background:#fff;color:var(--night)}
 .hero .claim{font-weight:500}
-/* 이름: 흰 각진 네모를 배경으로 깔아 첫 화면에서 가장 먼저 보이게 */
-.hero .hname{align-items:center}
-.hero .hname .sig{display:inline-block;margin:0;line-height:1;padding:.14em .3em .1em;background:#fff;color:var(--night);border-radius:0}
+/* 명함: 이름 · 소속 · 직무 · 한 줄 소개를 흰 종이 카드 한 장에 묶음. 짙은 초록 바탕 위에 놓인 실제 명함처럼 각지고 얇은 그림자만 */
+.bcard{position:relative;max-width:620px;background:#FFFFFF;color:#13151A;padding:34px 40px 32px;border-radius:3px;
+  box-shadow:0 1px 0 rgba(255,255,255,.5) inset,0 24px 48px -28px rgba(0,0,0,.75),0 2px 6px rgba(0,0,0,.25);
+  --ink:#13151A; --ink-2:#2E3A33; --ink-3:#4E5B53; --line:#DCE5DF}
+.bcard .hname{gap:12px}
+.bcard .hname .sig{color:var(--night);font-size:clamp(2.8rem,4.2vw,3.6rem)}
+.bcard .hname span{color:var(--ink-3);font-weight:500;font-size:15px}
+.bcard .haff{color:var(--ink-3);margin-top:8px;font-size:14px}
+.bcard h1{color:var(--night);margin:26px 0 10px;padding-top:22px;border-top:1px solid var(--line);font-size:clamp(1.5rem,2.3vw,1.95rem)}
+.bcard .claim{color:var(--ink-2);font-size:15.5px;line-height:1.75;max-width:none}
+.hero .bcard+.evid{margin-top:40px}
+@media (max-width:640px){.bcard{padding:26px 22px 24px}.bcard h1{margin-top:20px;padding-top:18px}.hero .bcard+.evid{margin-top:32px}}
 .hero .haff,.hero .hname span{font-weight:500}
 .hero .evid b{font-weight:700}
 .hero .evid span{font-weight:500;font-size:14px;color:var(--ink-2)}
@@ -556,10 +565,12 @@ html{scrollbar-color:var(--base-2) var(--bg)}
     <div class="wrap hgrid">
       <div class="hp"><img src="../assets/img/profile.jpg" alt="김다연 프로필 사진" width="300" height="375"></div>
       <div class="hl">
+        <div class="bcard">
         <p class="hname"><em class="sig">김다연</em><span>Kim Dayeon</span></p>
         <p class="haff">고려대학교 일반대학원 빅데이터사이언스학과 석사과정 · 2027.02 졸업예정</p>
         <h1 id="rolename">Data Scientist · ML Researcher</h1>
         <p class="claim" id="roleclaim"></p>
+        </div>
         <ul class="evid" id="evid"></ul>
         <p class="evclose" id="evclose" hidden></p>
         <div class="acts">
