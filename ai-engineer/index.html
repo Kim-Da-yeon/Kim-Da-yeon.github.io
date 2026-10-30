@@ -1464,9 +1464,9 @@ const ROLES={
         feat:['lora','sgmcmc','bntm'], res:'resume-av.pdf', car:'career-av.pdf'},
  'nlp':{title:'NLP · LLM Engineer', card:'NLP · LLM Engineer',
         claim:'Python을 기반으로 LLM 파인튜닝 · 검색/캐시 증강을 구현하고 문장 단위 토픽 모델을 새로 설계해 온 빅데이터사이언스 석사과정 지원자입니다.',
-        ev:[['경험 1. 자율주행 sLLM LoRA 파인튜닝 | ROUGE-1 68.4% 향상 · 학술지 게재','자율주행 판단 설명의 정확 · 일관된 응답을 목표로 LoRA FT-Driver(Phi-4-mini 3.8B, 파라미터 0.01% 학습)를 제안, RAG 대비 ROUGE-1 0.0888 → 0.1495 · 교통법규 분류 Accuracy 0.505 → 0.745'],['경험 2. 파인튜닝 + 캐시 증강 생성(CAG) | BLEU-1 2.6배 · TER 75.9% 감소','QLoRA 파인튜닝 모델에 문서를 KV 캐시로 미리 올리는 CAG를 결합해 8개 지표 모두 개선, 반복 생성 편차 79% 감소'],['경험 3. 임베디드 기술 성장 예측 | AUC 논문 0.876 · 특허 0.746','Google BigQuery에서 SQL로 미국 특허 21,028건을, OpenAlex에서 논문 초록 114,066건을 직접 추출해 3년 뒤 성장할 기술 토픽 예측']],
+        ev:[['경험 1. 자율주행 sLLM LoRA 파인튜닝 | ROUGE-1 68.4% 향상 · 학술지 게재','자율주행 판단 설명의 정확 · 일관된 응답을 목표로 LoRA FT-Driver(Phi-4-mini 3.8B, 파라미터 0.01% 학습)를 제안, RAG 대비 ROUGE-1 0.0888 → 0.1495 · 교통법규 분류 Accuracy 0.505 → 0.745'],['경험 2. SONY 제품 설명서 RAG 챗봇 | 답변마다 출처 페이지 반환','제품 7종 설명서를 bge-m3 · Chroma · Re-rank로 검색하고 답변마다 파일명 · 페이지 번호를 반환, 반환 페이지를 원문과 대조해 출처 확인'],['경험 3. 임베디드 기술 성장 예측 | AUC 논문 0.876 · 특허 0.746','Google BigQuery에서 SQL로 미국 특허 21,028건을, OpenAlex에서 논문 초록 114,066건을 직접 추출해 3년 뒤 성장할 기술 토픽 예측']],
         fig:['lora_rouge','tntm_coh'], figt:'학술지 논문 2편의 결과',
-        feat:['lora','cag','emerg'], res:'resume-nlp.pdf', car:'career-nlp.pdf'},
+        feat:['lora','sony','emerg'], res:'resume-nlp.pdf', car:'career-nlp.pdf'},
  'cj': {title:'AI Engineer', card:'AI Engineer · Language AI',
         claim:'Python·PyTorch 기반 AI 모델 학습과 RAG 챗봇 구현 경험을 갖춘 빅데이터사이언스 석사과정 지원자입니다.',
         ev:[['경험 1. SONY 제품 설명서 RAG 챗봇 | 검색·답변 생성 기능 구현',['SONY 7개 제품 설명서를 활용해 sLLM 기반 질의응답 시제품 개발','bge-m3 임베딩, Chroma 검색, 재정렬(Reranking), Streamlit UI 연동','답변 근거인 설명서 파일명과 페이지 번호 표시']],
@@ -1670,9 +1670,19 @@ const SHORTCLAIM={'':'새 토픽 모델과 샘플러를 직접 설계하고, 예
  av:'자율주행 데이터로 언어 모델과 3D 탐지 모델을 학습합니다.',
  nlp:'LLM 파인튜닝 · 검색 증강과 문장 단위 토픽 모델을 다룹니다.',
  cj:'AI 모델을 학습하고 RAG 챗봇을 구현합니다.'};
+/* 첫 화면 키워드: 항목은 같고 순서만 직무에 맞게 */
+const KWORDER={'':['토픽 모델링','베이지안 추론 · SGMCMC','예측 모형','시뮬레이션 설계','PyTorch','R · Rcpp','SQL','QGIS','LLM 파인튜닝 (LoRA)','RAG · 검색','Transformers'],
+ ds:['예측 모형','SQL','R · Rcpp','QGIS','토픽 모델링','베이지안 추론 · SGMCMC','시뮬레이션 설계','PyTorch','LLM 파인튜닝 (LoRA)','RAG · 검색','Transformers'],
+ ml:['베이지안 추론 · SGMCMC','토픽 모델링','시뮬레이션 설계','PyTorch','예측 모형','R · Rcpp','SQL','LLM 파인튜닝 (LoRA)','Transformers','RAG · 검색','QGIS'],
+ av:['LLM 파인튜닝 (LoRA)','PyTorch','베이지안 추론 · SGMCMC','Transformers','RAG · 검색','토픽 모델링','시뮬레이션 설계','예측 모형','R · Rcpp','SQL','QGIS'],
+ nlp:['LLM 파인튜닝 (LoRA)','RAG · 검색','Transformers','PyTorch','토픽 모델링','베이지안 추론 · SGMCMC','예측 모형','시뮬레이션 설계','SQL','R · Rcpp','QGIS'],
+ cj:['RAG · 검색','LLM 파인튜닝 (LoRA)','Transformers','PyTorch','토픽 모델링','베이지안 추론 · SGMCMC','예측 모형','시뮬레이션 설계','SQL','R · Rcpp','QGIS']};
+function orderKw(){ const box=document.querySelector('.kw'); if(!box) return; const o=KWORDER[ROLE in KWORDER?ROLE:'']; const sp=[...box.querySelectorAll('span')];
+  o.forEach(t=>{const e=sp.find(x=>x.textContent===t); if(e) box.appendChild(e);}); }
 const shortEv=(t,s)=>{const m=SHORTEV.find(([k])=>t.includes(k)); return m?m[1]:s;};
 function applyRole(){
   $('#rolename').textContent=RC.title;
+  orderKw();
   $('#roleclaim').textContent=SHORTCLAIM[ROLE in SHORTCLAIM?ROLE:'']||RC.claim;
   $('#evid').innerHTML=RC.ev.map(([b,s])=>{const [t,bd]=b.split(' | ');s=shortEv(t,s); return `<li><div><b>${esc(t)}${bd?`<em class="bd"><span class="m-hide"> | </span>${esc(bd)}</em>`:''}</b><span>${Array.isArray(s)?s.map(esc).join('<br>'):esc(s)}</span></div></li>`}).join('');
   const ec=$('#evclose'); if(ec){ec.textContent=RC.close||''; ec.hidden=!RC.close;}
