@@ -236,7 +236,14 @@ html{scrollbar-color:var(--base-2) var(--bg)}
 .bcard .claim{color:var(--ink-2);font-size:15.5px;line-height:1.75;max-width:none}
 .hero .bcard+.evid{margin-top:40px}
 /* 명함 폭 = 아래 경험 목록 폭 */
-.bcard{max-width:none}
+/* 실제 명함 비율(90×50mm ≈ 1.8:1) · 고정 폭. 위: 이름 · 직무 · 한 줄 소개 / 아래: 소속 · 메일 */
+.bcard{width:100%;max-width:560px;aspect-ratio:1.8/1;display:flex;flex-direction:column;padding:30px 34px 26px}
+.bcard .hname{order:1}
+.bcard h1{order:2;margin:10px 0 0;padding:0;border:0;font-size:clamp(1.15rem,1.6vw,1.35rem);font-weight:650;letter-spacing:-.02em}
+.bcard .claim{order:3;margin-top:8px;font-size:14px;line-height:1.6}
+.bcard .haff{order:4;margin-top:auto;padding-top:14px;border-top:1px solid var(--line);font-size:12.5px;line-height:1.5}
+.bc-mail{order:5;margin-top:2px;font-size:12.5px;color:var(--ink-3);font-family:var(--mono);font-feature-settings:normal}
+@media (max-width:640px){.bcard{aspect-ratio:auto;min-height:0;padding:24px 22px 20px}.bcard .haff{margin-top:20px}}
 /* 3D: 살짝 기울어진 채 놓인 종이 명함. 아래 · 오른쪽 가장자리에 종이 두께, 마우스를 따라 기울기와 빛 반사가 움직임 */
 /* 평소엔 평평하게 둬서 글씨가 선명하고, 마우스를 올렸을 때만 기울어짐 */
 .bcard{--rx:0deg;--ry:0deg;--mx:30%;--my:20%;
@@ -260,7 +267,9 @@ html{scrollbar-color:var(--base-2) var(--bg)}
 .hero .btn.line{background:transparent;color:#fff;box-shadow:inset 0 0 0 1px rgba(255,255,255,.35)}
 @media (hover:hover) and (pointer:fine){.hero .btn:hover{background:#DCEBE1}.hero .btn.line:hover{background:rgba(255,255,255,.08);box-shadow:inset 0 0 0 1px rgba(255,255,255,.6)}}
 .hero .kw span{background:transparent;color:var(--ink-2);border-color:rgba(255,255,255,.22)}
-.hero .hp img{box-shadow:0 18px 40px -22px rgba(0,0,0,.6)}
+/* 사진: 배경을 지운(투명) 인물만 놓아 첫 화면 바탕과 하나로 이어지게. 틀 · 그림자 없이 크게 */
+.hero .hp img{max-width:420px;aspect-ratio:auto;object-fit:contain;border-radius:0;background:none;box-shadow:none;-webkit-mask-image:linear-gradient(#000 82%,transparent);mask-image:linear-gradient(#000 82%,transparent)}
+@media (min-width:1101px){.hero .hl{padding-left:clamp(16px,3vw,48px)}}
 .topbar{transition:border-color .2s ease,background-color .2s ease}
 .topbar:not(.stuck){background:var(--night);color:#fff}
 .topbar:not(.stuck) .nav a:not(.cta),.topbar:not(.stuck) .brand em,.topbar:not(.stuck) .navtoggle{color:#E6EFE9}
@@ -504,6 +513,7 @@ html{scrollbar-color:var(--base-2) var(--bg)}
   .navtoggle{display:inline-flex}
   .hp,.hl{grid-column:1/-1}
   .hp img{max-width:220px}
+  .hero .hp img{max-width:260px;margin:0 auto}
   .hl{margin-top:36px;padding-left:0}
   .route{grid-template-columns:1fr}
   .avq{grid-template-columns:1fr}
@@ -582,13 +592,14 @@ html{scrollbar-color:var(--base-2) var(--bg)}
   <!-- ══ 첫 화면 : 프로필 — 사진 · 이름 · 직무 · 한 줄 소개 · 근거 3줄 · 연락 ══ -->
   <section class="hero" id="top">
     <div class="wrap hgrid">
-      <div class="hp"><img src="../assets/img/profile.jpg" alt="김다연 프로필 사진" width="300" height="375"></div>
+      <div class="hp"><img src="../assets/img/profile_cut.webp" alt="김다연 프로필 사진" width="960" height="1200"></div>
       <div class="hl">
         <div class="bcard" id="bcard">
         <p class="hname"><em class="sig">김다연</em><span>Kim Dayeon</span></p>
         <p class="haff">고려대학교 일반대학원 빅데이터사이언스학과 석사과정 · 2027.02 졸업예정</p>
         <h1 id="rolename">Data Scientist · ML Researcher</h1>
         <p class="claim" id="roleclaim"></p>
+        <p class="bc-mail">abcde0405@naver.com</p>
         </div>
         <ul class="evid" id="evid"></ul>
         <p class="evclose" id="evclose" hidden></p>
