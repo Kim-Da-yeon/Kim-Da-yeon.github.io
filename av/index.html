@@ -774,9 +774,9 @@ const P=[
  repo:null
 },
 {
- id:'crop', cat:'field', yr:'2024',
+ id:'crop', cat:'stat', lab:'개인 연구', yr:'2024',
  title:'농촌진흥청 공공 데이터 기반 6종 작물 다중 분류',
- meta:'JERESFARM 인턴 종료 후 개인 프로젝트 · 2024.05 – 06 · 827,080건 · 결과와 코드 농장 전달',
+ meta:'JERESFARM 인턴 종료 후 · 2024.05 – 06 · 827,080건 · 결과와 코드 농장 전달',
  sum:'인턴 때 규명하지 못한 문제를 농촌진흥청 공공 데이터 827,080건으로 다시 정의하고, 6종 작물 분류 모델 6개를 비교한 뒤(LightGBM Train F1 0.84 · Test F1 0.81) 결과와 코드를 JERESFARM에 전달한 개인 프로젝트.',
  techs:['Python','LGBM','Random Forest','Bagging','SVM','K-NN','Decision Tree']
 },
@@ -916,7 +916,7 @@ const EV={
  pika:[['저장소','https://github.com/Kim-Da-yeon/Pykachu-Volleyball']],
  farm:[['코드 비공개 · 사내 데이터','']],
  rain:[['학부 PBL 최종 발표 자료','']],
- crop:[['코드 비공개 · 사내 데이터','']]
+ crop:[['코드 비공개 · 공공 데이터','']]
 };
 
 const D={
@@ -1541,7 +1541,7 @@ function thumbHTML(id){ return `<span class="pc-img"><img src="${A}img/thumb/${i
 function prowHTML(p){
   const fit=RC.feat.includes(p.id);
   return `<a class="pc${fit?' fit':''}" href="#/p/${p.id}">${thumbHTML(p.id)}
-    <span class="pc-b"><span class="pc-c"><span>${CATMAP[p.cat].n}</span><span>${esc(p.yr)}</span></span>
+    <span class="pc-b"><span class="pc-c"><span>${p.lab||CATMAP[p.cat].n}</span><span>${esc(p.yr)}</span></span>
       <h3>${esc(p.title)}</h3><span class="kpi">${esc(KPI[p.id]||'')}</span></span></a>`;
 }
 
@@ -1573,10 +1573,10 @@ function detailHTML(p){
   return `<div class="dt"><div class="wrap">
     <a class="backlink" href="#projects">${ic('i-arrow')}프로젝트 목록으로</a>
     <h1><span class="pa-x">${pa(p.id)}</span>${esc(p.title)}</h1>
-    <p class="dt-meta">${CATMAP[p.cat].n} · ${esc(p.meta)}</p>
+    <p class="dt-meta">${p.lab||CATMAP[p.cat].n} · ${esc(p.meta)}</p>
     <dl class="dt-info">
       <div><dt>기간</dt><dd>${esc(p.yr)}</dd></div>
-      <div><dt>분류</dt><dd>${CATMAP[p.cat].n}</dd></div>
+      <div><dt>분류</dt><dd>${p.lab||CATMAP[p.cat].n}</dd></div>
       <div><dt>주요 기술</dt><dd>${esc(p.techs.slice(0,3).join(' · '))}</dd></div>
     </dl>
     <p class="dt-sum">${esc(p.sum)}</p>
