@@ -125,9 +125,9 @@ html{scrollbar-color:var(--base-2) var(--bg)}
 .evclose{margin:14px 0 0;font-size:14.5px;line-height:1.6;color:var(--ink-2)}
 .hero .evid li{padding:9px 0}
 /* 첫 화면 아래 키워드 띠: 다루는 방법 · 도구 (색 없이 결을 더하는 장치) */
-.kw{grid-column:1/-1;margin-top:clamp(56px,8vh,88px);padding-top:22px;border-top:1px solid var(--line);display:flex;flex-wrap:wrap;align-items:center;gap:10px 10px}
-.kw b{font-family:var(--serif);font-weight:600;font-size:17px;letter-spacing:-.01em;color:var(--ink);margin-right:10px}
-.kw span{font-size:13px;color:var(--ink-2);padding:6px 13px;border:1px solid var(--line);border-radius:999px;background:var(--plate)}
+.kw{grid-column:1/-1;margin-top:clamp(56px,8vh,88px);padding-top:22px;border-top:1px solid var(--line);display:flex;flex-wrap:wrap;align-items:center;gap:8px 6px}
+.kw b{font-family:var(--serif);font-weight:600;font-size:17px;letter-spacing:-.01em;color:var(--ink);margin-right:8px}
+.kw span{font-size:13px;color:var(--ink-2);padding:5px 11px;border:1px solid var(--line);border-radius:999px;background:var(--plate)}
 .acts{display:flex;flex-wrap:wrap;gap:10px;margin-top:24px}
 .roleview{margin-top:30px;display:flex;flex-wrap:wrap;align-items:baseline;gap:6px 14px;font-size:13.5px;color:var(--ink-3)}
 .roles{display:flex;flex-wrap:wrap;gap:4px 14px}
@@ -220,8 +220,12 @@ html{scrollbar-color:var(--base-2) var(--bg)}
 .hero{background:var(--night);color:var(--night-ink);
   --ink:#FFFFFF; --ink-2:#E6EFE9; --ink-3:var(--night-3);
   --line:rgba(255,255,255,.16); --grid:rgba(255,255,255,.1); --sunk:var(--night-2);
-  --base:#8FAE9C; --base-2:rgba(255,255,255,.3); --acc:#B8F2CD; --acc-ink:#B8F2CD; --acc-soft:rgba(255,255,255,.12)}
+  --base:#8FAE9C; --base-2:rgba(255,255,255,.3); --acc:#7DF0A6; --acc-ink:#7DF0A6; --acc-soft:rgba(255,255,255,.12)}
 .hero ::selection{background:#fff;color:var(--night)}
+.hero .claim{font-weight:500}
+.hero .haff,.hero .hname span{font-weight:500}
+.hero .evid b{font-weight:700}
+.hero .evid span{font-weight:500;font-size:14px;color:var(--ink-2)}
 .hero .btn{background:#fff;color:var(--night)}
 .hero .btn.line{background:transparent;color:#fff;box-shadow:inset 0 0 0 1px rgba(255,255,255,.35)}
 @media (hover:hover) and (pointer:fine){.hero .btn:hover{background:#DCEBE1}.hero .btn.line:hover{background:rgba(255,255,255,.08);box-shadow:inset 0 0 0 1px rgba(255,255,255,.6)}}
@@ -655,7 +659,6 @@ html{scrollbar-color:var(--base-2) var(--bg)}
     <div class="wrap sgrid">
       <div class="sh">
         <h2>역량</h2>
-        <p>초록 글씨는 논문 · 프로젝트에서 직접 구현한 알고리즘입니다.</p>
       </div>
       <div class="sb">
         <dl class="dl">
@@ -1633,10 +1636,24 @@ function renderAV(){
   $('#avgrid').innerHTML=AV_GROUPS.map(([g,name])=>`<div class="trk-r"><h3>${name}</h3><div>${AV_ITEMS.filter(x=>x.g===g).map(item).join('')}</div></div>`).join('');
 }
 
+/* 첫 화면 경험 설명 한 줄 요약 — 제목에 포함된 문구로 찾아 바꿔 표시 (ROLES 원문은 PPT 생성기가 읽으므로 유지) */
+const SHORTEV=[
+ ['SONY 제품 설명서','SONY 설명서 7종으로 bge-m3 · Chroma · 재정렬 RAG 챗봇 구현, 답변 근거 페이지 표시'],
+ ['Phi-4-mini LoRA·RAG','Phi-4-mini(3.8B) LoRA와 RAG를 같은 조건에서 비교, ROUGE-1 LoRA 0.1495 vs RAG 0.0888'],
+ ['새 토픽 모델 BNTM 설계','새 모델 BNTM · AWSGHMC 직접 설계, 정답을 아는 모의실험 데이터 5종을 생성해 토픽 수 정확 복원'],
+ ['새 토픽 모델(BNTM)','새 토픽 모델 BNTM · 샘플러 AWSGHMC 직접 설계, 정답을 아는 모의실험 데이터 5종을 생성해 검증 (SCI급 투고 예정)'],
+ ['임베디드 기술 성장','BigQuery · OpenAlex에서 특허 21,028건 · 논문 114,066건을 직접 추출해 3년 뒤 성장 기술 예측'],
+ ['자율주행 sLLM LoRA','Phi-4-mini 3.8B에 LoRA(파라미터 0.01%) 적용, RAG 대비 ROUGE-1 0.0888 → 0.1495'],
+ ['택시 수요','서울시 공공데이터 6종으로 25개 자치구를 6개 유형으로 분류해 배차 전략 제안'],
+ ['메타데이터 국제 표준','LLM 생성 Netflix 메타데이터 17,366건을 ISO · BCP 47로 정규화, 적합률 48.4% → 91.4%'],
+ ['3D 객체 탐지','KITTI · PointPillars에서 SGLD · SGHMC · SGNHT 직접 구현 · 비교, SGHMC 최고(49.59%)'],
+ ['캐시 증강','QLoRA 모델에 KV 캐시 증강(CAG)을 결합해 8개 지표 모두 개선, 반복 생성 편차 79% 감소'],
+];
+const shortEv=(t,s)=>{const m=SHORTEV.find(([k])=>t.includes(k)); return m?m[1]:s;};
 function applyRole(){
   $('#rolename').textContent=RC.title;
   $('#roleclaim').textContent=RC.claim;
-  $('#evid').innerHTML=RC.ev.map(([b,s])=>{const [t,bd]=b.split(' | ');return `<li><div><b>${esc(t)}${bd?`<em class="bd"> | ${esc(bd)}</em>`:''}</b><span>${Array.isArray(s)?s.map(esc).join('<br>'):esc(s)}</span></div></li>`}).join('');
+  $('#evid').innerHTML=RC.ev.map(([b,s])=>{const [t,bd]=b.split(' | ');s=shortEv(t,s); return `<li><div><b>${esc(t)}${bd?`<em class="bd"> | ${esc(bd)}</em>`:''}</b><span>${Array.isArray(s)?s.map(esc).join('<br>'):esc(s)}</span></div></li>`}).join('');
   const ec=$('#evclose'); if(ec){ec.textContent=RC.close||''; ec.hidden=!RC.close;}
   const f1=$('#fig1'); if(f1) f1.innerHTML=fig1HTML();
   const pick=RC.feat.map(id=>FEAT.find(f=>f.id===id)).filter(Boolean);
