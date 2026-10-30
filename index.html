@@ -234,6 +234,26 @@ html{scrollbar-color:var(--base-2) var(--bg)}
 .bcard h1{color:var(--night);margin:26px 0 10px;padding-top:22px;border-top:1px solid var(--line);font-size:clamp(1.5rem,2.3vw,1.95rem)}
 .bcard .claim{color:var(--ink-2);font-size:15.5px;line-height:1.75;max-width:none}
 .hero .bcard+.evid{margin-top:40px}
+/* 명함 배치: 사진까지 명함 안에 넣고 첫 화면을 한 열(명함 → 경험 → 버튼)로, 폭을 맞춤 */
+.hero .hl{grid-column:1/-1;padding-left:0;max-width:960px;margin:0 auto;width:100%}
+.bcard{max-width:none;display:grid;grid-template-columns:168px minmax(0,1fr);gap:0 36px;align-items:center;padding:30px 36px}
+.bc-ph{width:168px;height:210px;object-fit:cover;object-position:top;border-radius:2px}
+.bcard h1{margin:20px 0 8px;padding-top:18px}
+/* 3D: 살짝 기울어진 채 놓인 종이 명함. 아래 · 오른쪽 가장자리에 종이 두께, 마우스를 따라 기울기와 빛 반사가 움직임 */
+/* 평소엔 평평하게 둬서 글씨가 선명하고, 마우스를 올렸을 때만 기울어짐 */
+.bcard{--rx:0deg;--ry:0deg;--mx:30%;--my:20%;
+  transform:perspective(1400px) rotateX(var(--rx)) rotateY(var(--ry));transform-origin:50% 50%;
+  transition:transform .6s var(--ease);
+  box-shadow:1px 1px 0 #E1E8E3,2px 2px 0 #D2DCD5,3px 3px 0 #C3CFC7,
+    18px 30px 50px -18px rgba(0,0,0,.7),4px 8px 14px rgba(0,0,0,.25)}
+.bcard::after{content:"";position:absolute;inset:0;border-radius:inherit;pointer-events:none;
+  background:radial-gradient(520px circle at var(--mx) var(--my),rgba(255,255,255,0),rgba(15,42,31,.07) 70%),
+    linear-gradient(115deg,rgba(255,255,255,0) 55%,rgba(125,240,166,.10) 80%,rgba(255,255,255,0) 95%)}
+.bcard.tilt{transition:transform .12s linear}
+@keyframes bc-in{from{opacity:0;transform:perspective(1400px) rotateX(24deg) rotateY(-14deg) translateY(28px)}}
+.bcard{animation:bc-in .9s var(--ease) both}
+@media (prefers-reduced-motion:reduce){.bcard{animation:none;transform:none;transition:none}}
+@media (max-width:640px){.bcard{grid-template-columns:1fr;gap:20px}.bc-ph{width:120px;height:150px}}
 @media (max-width:640px){.bcard{padding:26px 22px 24px}.bcard h1{margin-top:20px;padding-top:18px}.hero .bcard+.evid{margin-top:32px}}
 .hero .haff,.hero .hname span{font-weight:500}
 .hero .evid b{font-weight:700}
@@ -562,14 +582,13 @@ html{scrollbar-color:var(--base-2) var(--bg)}
   <!-- ══ 첫 화면 : 프로필 — 사진 · 이름 · 직무 · 한 줄 소개 · 근거 3줄 · 연락 ══ -->
   <section class="hero" id="top">
     <div class="wrap hgrid">
-      <div class="hp"><img src="assets/img/profile.jpg" alt="김다연 프로필 사진" width="300" height="375"></div>
       <div class="hl">
-        <div class="bcard">
+        <div class="bcard" id="bcard"><img class="bc-ph" src="assets/img/profile.jpg" alt="김다연 프로필 사진" width="300" height="375"><div class="bc-tx">
         <p class="hname"><em class="sig">김다연</em><span>Kim Dayeon</span></p>
         <p class="haff">고려대학교 일반대학원 빅데이터사이언스학과 석사과정 · 2027.02 졸업예정</p>
         <h1 id="rolename">Data Scientist · ML Researcher</h1>
         <p class="claim" id="roleclaim"></p>
-        </div>
+        </div></div>
         <ul class="evid" id="evid"></ul>
         <p class="evclose" id="evclose" hidden></p>
         <div class="acts">
@@ -1749,6 +1768,14 @@ route();
 
 /* 상단바 구분선 */
 addEventListener('scroll',()=>{ $('#topbar').classList.toggle('stuck',scrollY>8); },{passive:true});
+/* 명함 3D 기울기: 마우스 위치에 따라 최대 5도 기울이고 빛 반사 위치를 옮김. 마우스를 떼면 원래 각도로. 터치 · 모션 줄이기에서는 끔 */
+(()=>{ const c=$('#bcard'); if(!c||!matchMedia('(hover:hover) and (pointer:fine)').matches||matchMedia('(prefers-reduced-motion:reduce)').matches) return;
+  c.addEventListener('animationend',()=>{c.style.animation='none';},{once:true});
+  c.addEventListener('pointermove',e=>{ const r=c.getBoundingClientRect(), x=(e.clientX-r.left)/r.width, y=(e.clientY-r.top)/r.height;
+    c.classList.add('tilt'); c.style.setProperty('--ry',((x-.5)*10).toFixed(2)+'deg'); c.style.setProperty('--rx',((.5-y)*8).toFixed(2)+'deg');
+    c.style.setProperty('--mx',(x*100).toFixed(1)+'%'); c.style.setProperty('--my',(y*100).toFixed(1)+'%'); });
+  c.addEventListener('pointerleave',()=>{ c.classList.remove('tilt'); ['--rx','--ry','--mx','--my'].forEach(k=>c.style.removeProperty(k)); });
+})();
 /* 보이는 섹션만 세서 둘째마다 연한 초록 바탕 — 직무별로 숨김 섹션이 달라도 흰색/초록이 번갈아 나오게 */
 function tintSecs(){ [...document.querySelectorAll('#v-home > .sec')].filter(e=>!e.hidden).forEach((e,i)=>e.classList.toggle('tint',i%2===1)); }
 tintSecs();
