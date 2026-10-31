@@ -933,6 +933,13 @@ const P=[
  meta:'수업 프로젝트(A+) · 개인 · 2022 식품소비행태조사 6,366명 · 다중 로지스틱 회귀 · K-means',
  sum:'식사 방법에 따른 건강할 확률의 오즈비를 추정하고 식생활 역량 군집을 비교해, 배달 빈도보다 식생활 습관이 건강에 더 크게 작용함을 확인한 프로젝트.',
  techs:['R','다중 로지스틱 회귀','AIC 변수 선택','K-means','계층적 군집분석']
+},
+{
+ id:'store', cat:'db', lab:'개인 프로젝트 · 웹 서비스', yr:'2026',
+ title:'체대입시 용품 멀티 쇼핑몰 BATON 구축 · 배포',
+ meta:'1인 · 2026.10 · Claude Code 활용 · Next.js 14 · Supabase · Vercel 배포 완료(정식 도메인 연결 예정)',
+ sum:'본사몰 · 학원별 쇼핑몰 · 원장 콘솔 · 본사 관리자로 이루어진 멀티 쇼핑몰을 요구사항 정의부터 DB 설계, Vercel 배포까지 혼자 3일 만에 만든 프로젝트.',
+ techs:['Next.js 14','TypeScript','Tailwind CSS','Supabase','PostgreSQL','Vercel','Claude Code']
 }
 ];
 
@@ -952,7 +959,8 @@ const EV={
  pika:[['저장소','https://github.com/Kim-Da-yeon/Pykachu-Volleyball']],
  farm:[['코드 비공개 · 사내 데이터','']],
  rain:[['학부 PBL 최종 발표 자료','']],
- crop:[['코드 비공개 · 공공 데이터','']]
+ crop:[['코드 비공개 · 공공 데이터','']],
+ store:[['배포 사이트(정식 도메인 연결 전)','https://piston-store.vercel.app/'],['저장소 비공개','']]
 };
 
 const D={
@@ -1295,7 +1303,29 @@ pika:{
  d:['하드코딩된 왼쪽 피카츄를 이기도록 오른쪽 피카츄를 Q-learning으로 학습시키며, 하이퍼파라미터와 보상 설정에 따른 학습 변화를 살펴본 프로젝트입니다.',
     '보상을 직접 설계하고 학습 결과에 따라 수정했습니다. 최종 보상은 승 +15 / 패 −10, 이동 거리당 +0.01, step마다 +0.1, 공 충돌 +1.0, 공과 가까울수록 +0.1/거리입니다. ε는 1.0에서 시작해 매 에피소드 0.995를 곱하며 0.1까지 줄였습니다.',
     '관측을 그대로 사용할 수 없어 상태 공간을 직접 정의했습니다. 상태에 공의 속도를 포함해 Markov 성질을 맞추는 것을 개선 방향으로 남겼습니다.',
-    '보상 편차가 크고 같은 경로로 패배하는 패턴이 반복된 점을 한계로 정리했습니다.']}
+    '보상 편차가 크고 같은 경로로 패배하는 패턴이 반복된 점을 한계로 정리했습니다.']},
+store:{
+ r:['Vercel에 배포했습니다. GitHub에 푸시하면 자동으로 빌드 · 배포되고, Supabase 접속 키는 Vercel 환경변수로만 관리합니다. 정식 도메인은 구매 후 연결할 예정입니다.',
+    'Supabase(PostgreSQL)에 테이블 19개, DB 함수 33개, 행 단위 접근 정책(RLS) 49개, 트리거 6개를 설계했습니다. 본사 · 원장 · 학생 역할에 따라 볼 수 있는 상품과 주문이 DB에서 갈립니다.',
+    '주문은 DB 함수가 가격 · 쿠폰 · 적립금 · 재고를 서버에서 다시 계산해 저장합니다. 화면에서 보낸 금액을 그대로 믿지 않아 가격 조작을 막습니다.',
+    '페이지 55개를 만들었습니다. 쇼핑(목록 · 상세 · 장바구니 · 주문서 · 비회원 주문조회), 회원(가입 · 마이페이지 · 후기 · 찜 · 적립금 · 쿠폰), 학원별 쇼핑몰, 원장 콘솔(상품 · 재고 · 주문 · 학생), 본사 관리자(주문 · 회원 · 판매 분석 · 리포트)입니다.',
+    '추가 라이브러리 없이 Next.js 기본 기능과 fetch만으로 Supabase REST API에 연결했고, DB가 연결되지 않아도 예시 데이터로 화면이 뜨도록 폴백을 두었습니다.'],
+ d:['체대입시 학원에 운동 기구 · 훈련 용품 · 단체복을 공급하는 쇼핑몰입니다. 본사가 학원 원장에게 공급가로 파는 메인몰과, 원장이 상품을 올리거나 메인몰 상품을 가져와 학생에게 파는 학원별 쇼핑몰로 이루어져 있습니다.',
+    'Claude Code(AI 코딩 에이전트)로 구현했고, 요구사항 · 화면 구성 · 역할과 권한 구조 · 주문 흐름 · 정산 방식은 직접 정했습니다. 2026년 10월 29일 첫 버전부터 3일 동안 커밋 39개로 기능을 넓혔습니다.',
+    '카드결제 도입에 맞춰 정산 구조를 검토했습니다. 본사가 PG 1건으로 받아 지급대행으로 학원(하위 판매자)에 나눠 주는 방식과, 본사 단일 판매자 + 판매장려금 방식을 비교해 정리했습니다.',
+    '무통장입금 주문 저장과 회원 · 후기 · 쿠폰 · 적립금 · 관리자 기능은 동작하고, 카드 · 간편결제와 카카오 · 네이버 로그인은 사업자 등록과 앱 등록 뒤 연동할 예정입니다.'],
+ panel:`<div class="panel"><div class="cap">본사 메인몰 첫 화면 · 상품 이미지는 three.js로 직접 렌더링</div>
+  <div class="plate"><img src="${A}img/store-main.jpg" loading="lazy" decoding="async" alt="BATON 쇼핑몰 첫 화면: 빨간 배경에 TRAINING GEAR 문구와 덤벨 3D 이미지"></div></div>
+  <div class="panel"><div class="cap">본사 관리자 · 주문 관리(예시 데이터 미리보기 모드)</div>
+  <div class="plate"><img src="${A}img/store-admin.jpg" loading="lazy" decoding="async" alt="관리자 주문 관리 화면: 쇼핑몰별 · 상태별 주문 목록"></div></div>
+  <div class="panel"><div class="cap">구성</div>
+  <div class="phases">
+    <div><span class="yr">본사 메인몰</span><span>원장 대상 공급가 판매 · 원장만 접속</span></div>
+    <div><span class="yr">학원별 몰</span><span>/a/학원주소 · 학생 가입코드 · 본사 직배송과 학원 재고</span></div>
+    <div><span class="yr">원장 콘솔</span><span>상품 등록 · 메인몰 상품 가져오기 · 재고 · 주문 · 학생</span></div>
+    <div><span class="yr">본사 관리자</span><span>주문 · 학원 · 상품 · 회원 · 후기 · 쿠폰 · 판매 분석 · 리포트</span></div>
+    <div><span class="yr">배포 · DB</span><span>Vercel 자동 배포 · Supabase(PostgreSQL · Auth · RLS)</span></div>
+  </div></div>`}
 };
 
 /* 대표 프로젝트 — 문제 · 역할 · 결과 */
@@ -1385,7 +1415,7 @@ const AV_GROUPS=[['perc','Perception'],['sim','Simulation & Data'],['fm','E2E / 
 
 
 /* 프로젝트 목록에서 한눈에 보는 핵심 결과 — 상세 페이지 수치와 동일 */
-const OUTC={"bntm": "새 토픽 모델 BNTM을 직접 설계하고 정답을 아는 모의실험 데이터(환경 5종)를 생성해 검증 · 실데이터(FAERS) 문서 완성 perplexity를 HTMM 54.99 → BNTM 32.13(41.6%↓)으로 낮추고, 정답 20토픽 환경의 추정 토픽 수를 SGHMC 15.4개 → AWSGHMC 20.0개로 정확 복원 · 포스터논문 장려상",
+const OUTC={"store": "본사몰 · 학원별 몰 · 원장 콘솔 · 관리자 페이지 55개를 3일 만에 구축해 Vercel에 배포(정식 도메인 연결 예정), Supabase 테이블 19개 · 접근 정책 49개로 역할별 권한을 DB에서 분리","bntm": "새 토픽 모델 BNTM을 직접 설계하고 정답을 아는 모의실험 데이터(환경 5종)를 생성해 검증 · 실데이터(FAERS) 문서 완성 perplexity를 HTMM 54.99 → BNTM 32.13(41.6%↓)으로 낮추고, 정답 20토픽 환경의 추정 토픽 수를 SGHMC 15.4개 → AWSGHMC 20.0개로 정확 복원 · 포스터논문 장려상",
  "cag": "파인튜닝 모델에 문서를 KV 캐시로 미리 올리는 CAG를 붙여 BLEU-1 0.235 → 0.600(2.6배), TER 318.7 → 76.9(75.9%↓), 반복 생성 편차 79% 감소",
  "crop": "농촌진흥청 공공 데이터 827,080건으로 6종 작물 분류 모델 6개를 비교해 Train–Test F1 격차가 가장 작은 LightGBM(Train 0.84 · Test 0.81, 격차 0.03 vs Bagging 0.17 · Random Forest 0.21)을 선정하고, 온도 25°C · CO₂ 400ppm 임계 구간을 도출하고 결과와 코드를 JERESFARM에 전달",
  "db": "요구사항 7개 항목을 4개 릴레이션으로 설계하고 삽입 · 갱신 · 삭제 연산으로 3NF를 검증, PHP 웹 화면과 연동",
@@ -1403,7 +1433,7 @@ const OUTC={"bntm": "새 토픽 모델 BNTM을 직접 설계하고 정답을 아
  "std": "LLM이 만든 메타데이터를 국제 표준으로 정규화해 표준 적합률 48.4% → 91.4%(43.0%p↑), 상호운용성 0% → 80.3%, 추천 성능 손실 없음 · 과목 A+",
  "taxi": "서울시 공공 데이터 6종을 직접 구해 병합하고 공차율 지표를 설계해 서울 25개 자치구를 6개 군집으로 나누고, 군집별 문제와 배차 전략을 제안해 통계학술제 최우수상",
  "tbt": "미국 Federal Register 규제 원문에 AWSGLD-TNTM을 적용해 LDA 대비 Topic Coherence 0.42 → 0.5743(약 37%↑), 규제 흐름을 3단계로 정리"};
-const KPI={rain:'강수확률 70%↑ 비 올 확률 88~95%',emerg:'AUC 논문\u00a00.876 · 특허\u00a00.746 (무작위\u00a00.5)',farm:'센서 설계 제안 · 작물 분류 F1 0.81',crop:'F1 격차 RF\u00a00.21 · Bagging\u00a00.17 → LGBM\u00a00.03',bntm:'perplexity HTMM\u00a054.99\u00a0→\u00a0BNTM\u00a032.13',
+const KPI={store:'Vercel 배포 · 페이지 55개 · RLS 정책 49개',rain:'강수확률 70%↑ 비 올 확률 88~95%',emerg:'AUC 논문\u00a00.876 · 특허\u00a00.746 (무작위\u00a00.5)',farm:'센서 설계 제안 · 작물 분류 F1 0.81',crop:'F1 격차 RF\u00a00.21 · Bagging\u00a00.17 → LGBM\u00a00.03',bntm:'perplexity HTMM\u00a054.99\u00a0→\u00a0BNTM\u00a032.13',
  lora:'ROUGE-1 RAG\u00a00.0888\u00a0→\u00a0LoRA\u00a00.1495',sgmcmc:'BEV AP SGLD\u00a025.67\u00a0→\u00a0SGHMC\u00a049.59',taxi:'통계학술제 최우수상',
  dorm:'공모전 본선 진출 · 운영 유형 4분류',tbt:'Topic Coherence LDA\u00a00.42\u00a0→\u00a00.5743',sony:'답변마다 출처 페이지 반환',
  std:'표준 적합률 48.4%\u00a0→\u00a091.4%',cag:'BLEU-1\u00a00.235\u00a0→\u00a00.600 · TER\u00a0318.7\u00a0→\u00a076.9',gan:'한글 75,000장 사전학습',
@@ -1474,7 +1504,7 @@ const ROLES={
             ['경험 3. 새 토픽 모델 BNTM 설계 · 모의실험 데이터 생성 | 포스터논문 장려상',['기존 토픽 모델의 한계를 보완한 새 모델 BNTM과 AWSGHMC 추론 알고리즘을 직접 설계','정답을 아는 모의실험 데이터 환경 5종을 직접 생성해 모든 환경에서 실제 활성 토픽 수 정확히 복원','2026년 한국자료분석학회 포스터논문 장려상 수상, 논문 투고 예정']]],
         close:'모델 구현부터 실험 설계·평가, 문서 검색과 답변 생성 기능 연동까지 수행했습니다.',
         fig:['bntm_k','lora_rouge'], figt:'대표 프로젝트 결과',
-        order:['bntm','sony','lora','std','cag','emerg','pika','taxi'],
+        order:['bntm','sony','lora','store','std','cag','emerg','pika','taxi'],
         feat:['sony','lora','bntm'], res:'resume-ai.pdf', car:'career-ai.pdf'}
 };
 const RC=ROLES[ROLE]||ROLES[''];
