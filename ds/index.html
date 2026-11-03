@@ -576,7 +576,7 @@ p,li,dd,figcaption{text-wrap:pretty}
           <a class="btn line" href="mailto:abcde0405@naver.com"><svg class="ic"><use href="#i-mail"/></svg>abcde0405@naver.com</a>
         </div>
       </div>
-      <div class="kw" aria-label="다루는 방법과 도구"><b>Keywords</b><span>토픽 모델링</span><span>베이지안 추론 · SGMCMC</span><span>LLM 파인튜닝 (LoRA)</span><span>RAG · 검색</span><span>예측 모형</span><span>시뮬레이션 설계</span><span>PyTorch</span><span>Transformers</span><span>R · Rcpp</span><span>SQL</span><span>QGIS</span></div>
+      <div class="kw" aria-label="다루는 방법과 도구"><b>Keywords</b><span>토픽 모델링</span><span>베이지안 추론 · SGMCMC</span><span>LLM 파인튜닝 (LoRA)</span><span>RAG · 검색</span><span>예측 모형</span><span>시뮬레이션 설계</span><span>PyTorch</span><span>Transformers</span><span>R · Rcpp</span><span>SQL</span><span>QGIS</span><span hidden>멀티에이전트</span><span hidden>온톨로지</span></div>
     </div>
   </section>
 
@@ -942,11 +942,11 @@ const P=[
  techs:['Next.js 14','TypeScript','Tailwind CSS','Supabase','PostgreSQL','Vercel','Claude Code']
 },
 {
- id:'sosang', cat:'nlp', lab:'공모전 출품 · LLM 에이전트 서비스', yr:'2026',
- title:'소상공인 공고 · 임대차 · 법령 확인 멀티에이전트 서비스 ‘사장님 비서’',
+ id:'sosang', cat:'nlp', lab:'공모전 출품 · 온톨로지 + 멀티에이전트', yr:'2026',
+ title:'사장님 비서: 온톨로지 · 멀티에이전트 기반 소상공인 행정 AI 서비스',
  meta:'팀 3명 · 2026.11 · 2026 하반기 AI 경진대회 학생 부문 출품(결과 대기) · Vercel 배포 완료',
- sum:'에이전트 11개와 RDF 온톨로지, 규칙 판정기를 결합해 내 가게와 지원공고 조건을 대조하고 근거 문구까지 보여 주는 서비스. 역할별 비교 측정에서 최종 판단 에이전트가 잘못된 일치를 5건에서 0건으로 줄였습니다.',
- techs:['Claude API','멀티에이전트','RDF 온톨로지','SHACL','FastAPI','PyMuPDF','Vercel','Claude Code','Codex CLI']
+ sum:'LLM 에이전트 12개와 RDF 온톨로지, 규칙 판정기를 결합해 내 가게와 지원사업 공고 조건을 대조하고 근거 문구까지 보여 주는 서비스. 정답 일치 28/30, 잘못된 일치 0건(공고 10건 · 가상 사례 30건).',
+ techs:['멀티에이전트','RDF 온톨로지','SHACL','Claude API','신경-기호 결합','FastAPI','PyMuPDF','Vercel','Claude Code','Codex CLI']
 }
 ];
 
@@ -968,7 +968,7 @@ const EV={
  rain:[['학부 PBL 최종 발표 자료','']],
  crop:[['코드 비공개 · 공공 데이터','']],
  store:[['배포 사이트(정식 도메인 연결 전)','https://piston-store.vercel.app/'],['저장소 비공개','']],
- sosang:[['배포 사이트','https://sosang-agent.vercel.app/'],['GitHub 저장소','https://github.com/Kim-Da-yeon/sosang-agent'],['시연 영상(126초)','https://github.com/Kim-Da-yeon/sosang-agent/blob/main/docs/demo/demo_20261103.mp4']]
+ sosang:[['배포 사이트','https://sajangnim-biseo.vercel.app/'],['GitHub 저장소','https://github.com/Kim-Da-yeon/sajangnim-biseo'],['시연 영상','https://github.com/Kim-Da-yeon/sajangnim-biseo/blob/main/docs/demo/demo.mp4']]
 };
 
 const D={
@@ -1335,41 +1335,51 @@ store:{
     <div><span class="yr">배포 · DB</span><span>Vercel 자동 배포 · Supabase(PostgreSQL · Auth · RLS)</span></div>
   </div></div>`},
 sosang:{
- r:['코드와 정답을 먼저 고정한 뒤 처음 보는 공고 4건 · 가상 사례 24건으로 측정했습니다. 역할을 하나씩 더한 구성끼리 비교해, 정답과 같은 사례가 10건에서 18건으로 늘었습니다.',
-    '판단 범위를 넓힐수록 늘어난 잘못된 일치(정답이 불일치 · 확인 필요인데 일치로 답한 경우)를 최종 판단 에이전트가 5건에서 0건으로 줄였습니다. 신청하면 안 되는 공고를 된다고 안내하는 오류라 가장 위험한 지표로 따로 봤습니다.',
-    '공고 접수기간 상태 24/24, 근거 문구 인용 오류 0건(최종 판단 출력 48회를 코드로 원문 대조), 최종 판단 2회 반복 24건 중 23건 동일.',
-    '조건을 한 번 구조화하면 숫자 · 날짜 · 업종 대조는 LLM 호출 없이 0.1초 미만에 끝납니다. 공고 46건 기준 조건 확정은 1회 약 $28, 매번 직접 묻는 방식은 사용자당 약 $3으로 추정했습니다.',
-    '가상 계약서 5건의 값 추출과 법정 기간 · 보증금 구간 계산 5/5, 법령 질문 20건을 수집 조문과 대조해 맞음 18 · 부분 2 · 틀림 0, 판단 요구 질문 거절 3/3.'],
- d:['담당 직원이 없는 소상공인은 지원공고, 임대차 기한, 법령 변경을 혼자 확인해야 합니다. 수집한 공고 46건은 평균 약 1.4만 자이고, 같은 소기업 매출 기준도 공고마다 15억 원, 10억 원으로 다르게 적혀 있었습니다.',
-    '공고 대조, 지원금 항목 정리, 임대차 법정 기간 계산, 법령 변경 · 조문 안내, 행정 달력을 한 화면에 묶었습니다. 자격 확정과 법률 해석은 하지 않고 공고 조건과 조문 정보까지만 제공합니다.',
-    '문서 해석 · 근거 검증 · 총괄 에이전트가 공고를 구조화하고, 규칙과 온톨로지가 숫자 · 날짜 · 업종을 계산합니다. 규칙으로 대조하기 어려운 조건은 진술 대조 · 조건 판단 에이전트가 맡고, 최종 판단 에이전트가 공고 전체를 다시 읽어 상태를 정합니다. 모르는 사실은 단정하지 않고 사장님께 물을 질문으로 돌려줍니다.',
-    '근거 문구와 문의처 전화번호는 원문에 있는지 코드로 확인하고, 자격 확정 · 법률 해석 표현은 금지어 검사로 막습니다. 비용은 사람당 AI 테스트 5회와 하루 호출 한도로 제한했습니다.',
-    '한계도 함께 기록했습니다. 정답 일치 수는 LLM 직접 응답(20/24)이 시스템(18/24)보다 높았고, 잘못된 일치는 둘 다 0건입니다. 시스템의 차이는 조건별 근거 제시, 되묻는 질문, 규칙 대조의 비용과 속도입니다. 정답은 AI가 작성하고 Codex가 감수했으며, 전문가 검증과 실제 사용자 테스트는 아직 하지 않았습니다.',
-    '오답 6건의 원인을 분류해 지시문을 고친 뒤 같은 24사례에서 21/24, 잘못된 일치 0건을 확인했습니다. 이미 오답을 본 사례라 주 수치로 쓰지 않았고, 새 공고 재측정은 남아 있습니다.'],
- panel:`<div class="panel"><div class="cap">공고 대조 화면 · 가상 가게 정보로 실제 서비스를 조작한 캡처</div>
-  <div class="plate"><img src="${A}img/sosang-main.jpg" loading="lazy" decoding="async" alt="사장님 비서 공고 확인 화면: 가게 정보 입력, 답할 질문 목록, 확인 필요 공고 목록"></div></div>
-  <div class="panel"><div class="cap">조건별 상태와 공고 원문 근거 문구</div>
-  <div class="plate"><img src="${A}img/sosang-evidence.jpg" loading="lazy" decoding="async" alt="공고 조건마다 확인 필요 · 기관 판단 · 일치 상태와 쪽 번호, 원문 문구를 표시한 화면"></div></div>
+ r:['정답 일치 28/30, 잘못된 일치 0건, 근거 문구 인용 오류 0건(공고 10건 · 가상 사례 30건, 사장님 답변 반영). 잘못된 일치는 신청 대상이 아닌 공고를 맞다고 안내하는 오류라 가장 위험한 지표로 따로 봤습니다.',
+    '내역: 코드와 정답을 고정한 첫 측정은 24사례 중 18건이었습니다. 오답 원인을 분석해 고친 뒤 같은 24사례에서 21건, 사장님 답변을 반영하면 22건이 되었고, 코드와 정답을 고정해 추가한 공고 6건에서 6건이 맞았습니다.',
+    '멀티에이전트 효과: 첫 측정에서 역할을 하나씩 더하는 비교 실험을 했고, 정답 일치가 10/24에서 18/24로 늘었습니다. 판단 범위를 넓히며 늘어난 잘못된 일치는 최종 판단 에이전트가 5건에서 0건으로 줄였습니다.',
+    '온톨로지와 규칙 효과: 숫자 · 날짜 · 업종 대조는 LLM 호출 없이 0.1초 미만에 끝납니다. AI 공고 대조는 공고 9건 기준 약 40초, 1회 약 $1입니다.',
+    '가상 계약서 5건의 값 추출과 법정 기간 · 보증금 구간 계산 5/5, 법령 질문 34건을 수집 조문과 대조해 맞음 25 · 부분 일치 9 · 틀림 0, 판단 요구 질문 거절 3/3.'],
+ d:['담당 직원이 없는 소상공인은 지원사업 공고, 임대차 기한, 법령 변경을 혼자 챙겨야 합니다. 소상공인 대상 공고 46건은 평균 약 1.4만 자이고, 같은 소기업 매출 기준도 공고마다 15억 원, 10억 원으로 다르게 적혀 있었습니다.',
+    '멀티에이전트: 역할별 에이전트 12개를 공고 준비(총괄 · 문서 해석 · 근거 검증), 자격 대조(진술 대조 · 조건 판단 · 최종 판단), 사장님 안내(프로필 인터뷰 · 안내 작성 · 자금 해석), 임대차 · 법령(임대차 문서 해석 · 법령 검색 · 법령 안내)으로 나눴습니다. 공고 준비는 총괄 에이전트가 도구 호출로 추출 · 검사 · 재추출 순서를 정하고, 대조는 코드 파이프라인이 순서대로 호출합니다.',
+    '온톨로지: 업종 계층, 출처별 소기업 매출 기준, 제외 업종 코드 39개와 예외, 임대차 기간 규칙, 지역별 보증금액을 RDF로 모델링하고 SHACL로 추출 조건의 구조를 검증합니다. 공고마다 다른 기준을 출처별로 구분해 규칙 판정기가 계산에 씁니다.',
+    '신경-기호 결합: 규칙이 명확한 조건은 온톨로지와 코드로 계산하고, 자유 문장 조건은 에이전트가 판단합니다. 최종 판단 에이전트가 두 결과와 공고 전체를 함께 검토하고, 모르는 사실은 단정하지 않고 사장님께 물을 질문으로 돌려줍니다.',
+    '공고 대조와 근거 문구, 자격 갖추기 안내, 임대차 법정 기간 계산, 법령 21종 조문 1,512개 기반의 법 물어보기, 행정 달력을 한 서비스에 묶었습니다. 자격 확정과 법률 해석은 하지 않으며, 근거 문구는 원문에 있는지 코드로 확인합니다.',
+    '한계: 첫 측정에서는 LLM 직접 응답(20/24)이 시스템(18/24)보다 높았고, 최종 버전과는 같은 조건으로 다시 비교하지 않았습니다. 24사례는 오답을 본 뒤 고친 재측정이고, 추가 6사례는 최종 버그 수정 전 코드로 잰 값이며 기존 사업과 유사한 공고입니다. 정답은 AI가 작성했고 전문가 검증과 실제 사용자 테스트는 아직 하지 않았습니다.'],
+ panel:`<div class="panel"><div class="cap">멀티에이전트 12개와 코드 기반 안전장치(규칙 판정기 · 온톨로지 · SHACL · 근거 대조)</div>
+  <div class="plate"><img src="${A}img/sosang-agents.jpg" loading="lazy" decoding="async" alt="공고 준비, 자격 대조, 사장님 안내, 임대차 · 법령 네 묶음의 에이전트 12개와 LLM 호출이 없는 규칙 판정기, 온톨로지, SHACL, 근거 대조 구성도"></div></div>
   <div class="panel"><div class="cap">시스템 구성과 처리 흐름</div>
   <div class="plate"><img src="${A}img/sosang-flow.jpg" loading="lazy" decoding="async" alt="공고 준비, 공고 대조, 원인별 안내 3단계의 처리 흐름도"></div></div>
-  <div class="panel"><div class="cap">역할별 비교 · 새 공고 4건 · 가상 사례 24건 · 코드와 정답 고정 후 측정</div>
+  <div class="panel"><div class="cap">공고 대조 화면 · 가상 가게 정보로 실제 서비스를 조작한 캡처</div>
+  <div class="plate"><img src="${A}img/sosang-main.jpg" loading="lazy" decoding="async" alt="사장님 비서 지원사업 공고 확인 화면: 가게 정보 입력, 답할 질문 목록, 확인 필요 공고 목록"></div></div>
+  <div class="panel"><div class="cap">조건별 상태와 공고 원문 근거 문구</div>
+  <div class="plate"><img src="${A}img/sosang-evidence.jpg" loading="lazy" decoding="async" alt="공고 조건마다 상태와 쪽 번호, 원문 문구를 표시한 화면"></div></div>
+  <div class="panel"><div class="cap">정답 일치 내역 · 공고 10건 · 가상 사례 30건</div>
+  <table class="tbl mini sim"><thead><tr><th>측정</th><th>정답과 같은 사례</th><th>잘못된 일치</th></tr></thead><tbody>
+   <tr><td>첫 측정(코드 · 정답 고정)</td><td>18/24</td><td>0</td></tr>
+   <tr><td>오답 분석 · 수정 후 같은 사례</td><td>21/24</td><td>0</td></tr>
+   <tr><td>+ 사장님 답변 반영</td><td>22/24</td><td>0</td></tr>
+   <tr><td>추가 공고 6건(코드 · 정답 고정)</td><td>6/6</td><td>0</td></tr>
+   <tr><td>합계</td><td>28/30</td><td>0</td></tr>
+  </tbody></table></div>
+  <div class="panel"><div class="cap">역할별 비교 · 첫 측정 24사례 · 코드와 정답 고정</div>
   <table class="tbl mini sim"><thead><tr><th>구성</th><th>정답과 같은 사례</th><th>잘못된 일치</th></tr></thead><tbody>
    <tr><td>1차 추출 + 규칙</td><td>10/24</td><td>2</td></tr>
    <tr><td>+ 근거 검증 · 재추출</td><td>10/24</td><td>0</td></tr>
    <tr><td>+ 진술 대조</td><td>14/24</td><td>3</td></tr>
    <tr><td>+ 조건 판단</td><td>16/24</td><td>5</td></tr>
-   <tr><td>+ 최종 판단 (최종 구성)</td><td>18/24</td><td>0</td></tr>
+   <tr><td>+ 최종 판단</td><td>18/24</td><td>0</td></tr>
    <tr><td>비교: LLM 직접 응답</td><td>20/24</td><td>0</td></tr>
   </tbody></table></div>`}
 };
 
 /* 대표 프로젝트 — 문제 · 역할 · 결과 */
 const FEAT=[
- {id:'sosang', cat:'공모전 출품 · LLM 에이전트', title:'소상공인 공고 · 임대차 · 법령 확인 멀티에이전트 서비스 ‘사장님 비서’',
-  problem:'지원공고는 평균 약 1.4만 자이고 같은 소기업 기준도 공고마다 달라, 담당 직원이 없는 소상공인이 조건을 하나씩 대조하기 어려움',
-  role:'팀 3명. 에이전트 11개 · 온톨로지 · 규칙 판정기 설계와 구현, 사전 고정 평가, Vercel 배포. 2026 하반기 AI 경진대회 학생 부문 출품(결과 대기)',
-  result:'최종 판단 에이전트로 잘못된 일치 5건 → 0건, 역할 추가로 정답 일치 10/24 → 18/24, 근거 문구 인용 오류 0건. 정답 일치는 LLM 직접 응답(20/24)보다 낮지만 조건별 근거와 되묻는 질문을 제공',
-  links:[['상세 보기','#/p/sosang'],['배포 사이트','https://sosang-agent.vercel.app/'],['저장소','https://github.com/Kim-Da-yeon/sosang-agent']]},
+ {id:'sosang', cat:'공모전 출품 · 온톨로지 + 멀티에이전트', title:'사장님 비서: 온톨로지 · 멀티에이전트 기반 소상공인 행정 AI 서비스',
+  problem:'지원사업 공고는 평균 약 1.4만 자이고 같은 소기업 기준도 공고마다 달라, 담당 직원이 없는 소상공인이 조건을 하나씩 대조하기 어려움',
+  role:'팀 3명. 멀티에이전트 12개 · RDF 온톨로지 · 규칙 판정기 설계와 구현, 평가, Vercel 배포. 2026 하반기 AI 경진대회 학생 부문 출품(결과 대기)',
+  result:'정답 일치 28/30, 잘못된 일치 0건, 근거 인용 오류 0건(첫 측정 18/24를 오답 분석으로 22/24까지 개선, 추가 공고 6/6). 역할 추가 비교에서 정답 일치 10/24 → 18/24, 최종 판단 에이전트로 잘못된 일치 5건 → 0건',
+  links:[['상세 보기','#/p/sosang'],['배포 사이트','https://sajangnim-biseo.vercel.app/'],['저장소','https://github.com/Kim-Da-yeon/sajangnim-biseo']]},
  {id:'farm', cat:'실무 · 인턴', title:'작물 생육 센서 데이터 시계열 분석',
   problem:'하루 1회 수기로 측정한 18개체의 20일 데이터. 생육 예측이 가능한지 불확실했고 사내 분석팀도 없었음',
   role:'팀 2명 중 시계열 분석 설계와 구현, 센서 환경 요건 협의 담당',
@@ -1455,7 +1465,7 @@ const AV_GROUPS=[['perc','Perception'],['sim','Simulation & Data'],['fm','E2E / 
 
 
 /* 프로젝트 목록에서 한눈에 보는 핵심 결과 — 상세 페이지 수치와 동일 */
-const OUTC={"sosang": "에이전트 11개와 온톨로지 · 규칙 판정기를 결합한 서비스를 Vercel에 배포. 사전 고정 측정(가상 사례 24건)에서 최종 판단으로 잘못된 일치 5건 → 0건, 정답 일치 10/24 → 18/24, 근거 인용 오류 0건", "store": "본사몰 · 학원별 몰 · 원장 콘솔 · 관리자 페이지 55개를 3일 만에 구축해 Vercel에 배포(정식 도메인 연결 예정), Supabase 테이블 19개 · 접근 정책 49개로 역할별 권한을 DB에서 분리","bntm": "새 토픽 모델 BNTM을 직접 설계하고 정답을 아는 모의실험 데이터(환경 5종)를 생성해 검증 · 실데이터(FAERS) 문서 완성 perplexity를 HTMM 54.99 → BNTM 32.13(41.6%↓)으로 낮추고, 정답 20토픽 환경의 추정 토픽 수를 SGHMC 15.4개 → AWSGHMC 20.0개로 정확 복원 · 포스터논문 장려상",
+const OUTC={"sosang": "멀티에이전트 12개와 RDF 온톨로지 · 규칙 판정기를 결합한 서비스를 Vercel에 배포. 가상 사례 30건에서 정답 일치 28/30, 잘못된 일치 0건(첫 측정 18/24를 개선), 근거 인용 오류 0건", "store": "본사몰 · 학원별 몰 · 원장 콘솔 · 관리자 페이지 55개를 3일 만에 구축해 Vercel에 배포(정식 도메인 연결 예정), Supabase 테이블 19개 · 접근 정책 49개로 역할별 권한을 DB에서 분리","bntm": "새 토픽 모델 BNTM을 직접 설계하고 정답을 아는 모의실험 데이터(환경 5종)를 생성해 검증 · 실데이터(FAERS) 문서 완성 perplexity를 HTMM 54.99 → BNTM 32.13(41.6%↓)으로 낮추고, 정답 20토픽 환경의 추정 토픽 수를 SGHMC 15.4개 → AWSGHMC 20.0개로 정확 복원 · 포스터논문 장려상",
  "cag": "파인튜닝 모델에 문서를 KV 캐시로 미리 올리는 CAG를 붙여 BLEU-1 0.235 → 0.600(2.6배), TER 318.7 → 76.9(75.9%↓), 반복 생성 편차 79% 감소",
  "crop": "농촌진흥청 공공 데이터 827,080건으로 6종 작물 분류 모델 6개를 비교해 Train–Test F1 격차가 가장 작은 LightGBM(Train 0.84 · Test 0.81, 격차 0.03 vs Bagging 0.17 · Random Forest 0.21)을 선정하고, 온도 25°C · CO₂ 400ppm 임계 구간을 도출하고 결과와 코드를 JERESFARM에 전달",
  "db": "요구사항 7개 항목을 4개 릴레이션으로 설계하고 삽입 · 갱신 · 삭제 연산으로 3NF를 검증, PHP 웹 화면과 연동",
@@ -1473,7 +1483,7 @@ const OUTC={"sosang": "에이전트 11개와 온톨로지 · 규칙 판정기를
  "std": "LLM이 만든 메타데이터를 국제 표준으로 정규화해 표준 적합률 48.4% → 91.4%(43.0%p↑), 상호운용성 0% → 80.3%, 추천 성능 손실 없음 · 과목 A+",
  "taxi": "서울시 공공 데이터 6종을 직접 구해 병합하고 공차율 지표를 설계해 서울 25개 자치구를 6개 군집으로 나누고, 군집별 문제와 배차 전략을 제안해 통계학술제 최우수상",
  "tbt": "미국 Federal Register 규제 원문에 AWSGLD-TNTM을 적용해 LDA 대비 Topic Coherence 0.42 → 0.5743(약 37%↑), 규제 흐름을 3단계로 정리"};
-const KPI={sosang:'잘못된 일치 5→0건 · 정답 일치 10→18/24',store:'Vercel 배포 · 페이지 55개 · RLS 정책 49개',rain:'강수확률 70%↑ 비 올 확률 88~95%',emerg:'AUC 논문\u00a00.876 · 특허\u00a00.746 (무작위\u00a00.5)',farm:'센서 설계 제안 · 작물 분류 F1 0.81',crop:'F1 격차 RF\u00a00.21 · Bagging\u00a00.17 → LGBM\u00a00.03',bntm:'perplexity HTMM\u00a054.99\u00a0→\u00a0BNTM\u00a032.13',
+const KPI={sosang:'정답 일치 28/30 · 잘못된 일치 0건',store:'Vercel 배포 · 페이지 55개 · RLS 정책 49개',rain:'강수확률 70%↑ 비 올 확률 88~95%',emerg:'AUC 논문\u00a00.876 · 특허\u00a00.746 (무작위\u00a00.5)',farm:'센서 설계 제안 · 작물 분류 F1 0.81',crop:'F1 격차 RF\u00a00.21 · Bagging\u00a00.17 → LGBM\u00a00.03',bntm:'perplexity HTMM\u00a054.99\u00a0→\u00a0BNTM\u00a032.13',
  lora:'ROUGE-1 RAG\u00a00.0888\u00a0→\u00a0LoRA\u00a00.1495',sgmcmc:'BEV AP SGLD\u00a025.67\u00a0→\u00a0SGHMC\u00a049.59',taxi:'통계학술제 최우수상',
  dorm:'공모전 본선 진출 · 운영 유형 4분류',tbt:'Topic Coherence LDA\u00a00.42\u00a0→\u00a00.5743',sony:'답변마다 출처 페이지 반환',
  std:'표준 적합률 48.4%\u00a0→\u00a091.4%',cag:'BLEU-1\u00a00.235\u00a0→\u00a00.600 · TER\u00a0318.7\u00a0→\u00a076.9',gan:'한글 75,000장 사전학습',
@@ -1504,9 +1514,9 @@ const FIGS={
  std_fit:{p:'LLM 메타데이터 국제 표준 정규화 + 그래프 추천',t:'ISO 3166-1 · BCP 47 기준 정규화 전(빈 원) → 후(채운 원)',d:[0,1],ticks:[0,.5,1],fmt:v=>v.toFixed(3),tfmt:v=>v===0?'0':v===1?'1':v.toFixed(1),
    rows:[{l:'표준 적합률',s:'정규화 전 0.484',from:.484,v:.914,me:1,txt:'0.914'},{l:'상호운용성',s:'정규화 전 0%',from:0,v:.803,me:1,txt:'80.3%'}],
    n:'정규화 후 LightGCN 추천 성능 7개 지표 전부 p > 0.05(seed 10회) — 하위 태스크 손실 없음.',go:'std'},
- agent_abl:{p:'사장님 비서 · 2026 하반기 AI 경진대회 출품',t:'에이전트 역할을 하나씩 더했을 때 정답과 같은 사례 수 · 새 공고 4건 · 가상 사례 24건',d:[0,24],ticks:[0,6,12,18,24],fmt:v=>v+'/24',tfmt:v=>String(v),
-   rows:[{l:'최종 구성',s:'+ 최종 판단 · 잘못된 일치 0건',v:18,me:1},{l:'+ 조건 판단',s:'잘못된 일치 5건',v:16},{l:'+ 진술 대조',s:'잘못된 일치 3건',v:14},{l:'+ 근거 검증',s:'잘못된 일치 0건',v:10},{l:'1차 추출 + 규칙',s:'잘못된 일치 2건',v:10},{l:'LLM 직접 응답',s:'비교군 · 잘못된 일치 0건',v:20}],
-   n:'코드와 정답을 고정한 뒤 측정. 정답은 AI 작성 · Codex 감수로 전문가 검증 전이며, 표본이 작아 공고 전반의 정확도는 아닙니다.',go:'sosang'},
+ agent_abl:{p:'사장님 비서 · 멀티에이전트 역할별 비교',t:'에이전트 역할을 하나씩 더했을 때 정답과 같은 사례 수 · 첫 측정 24사례',d:[0,24],ticks:[0,6,12,18,24],fmt:v=>v+'/24',tfmt:v=>String(v),
+   rows:[{l:'멀티에이전트 전체',s:'+ 최종 판단 · 잘못된 일치 0건',v:18,me:1},{l:'+ 조건 판단',s:'잘못된 일치 5건',v:16},{l:'+ 진술 대조',s:'잘못된 일치 3건',v:14},{l:'+ 근거 검증',s:'잘못된 일치 0건',v:10},{l:'1차 추출 + 규칙',s:'잘못된 일치 2건',v:10},{l:'LLM 직접 응답',s:'비교군 · 잘못된 일치 0건',v:20}],
+   n:'코드와 정답을 고정한 첫 측정. 오답 분석 · 수정 후 같은 사례 22/24, 추가 공고 6/6으로 합계 28/30입니다. 정답은 AI 작성으로 전문가 검증 전입니다.',go:'sosang'},
  dorm_rate:{p:'대학 기숙사 운영 유형 분류 · 대학알리미 공시',t:'2024년 기숙사 수용률 (%)과 직접 정한 유형 기준선',d:[0,35],ticks:[0,10,20,30],fmt:v=>v.toFixed(1),
    ref:{v:30,l:'직접 설정한 유형 기준선 30%',r:1,me:1},
    rows:[{l:'대학',s:'재학생 1,561,661명',v:23.4},{l:'전문대학',s:'재학생 374,878명',v:18.0}],
@@ -1551,8 +1561,8 @@ const ROLES={
         feat:['sony','lora','bntm'], res:'resume-ai.pdf', car:'career-ai.pdf'}
 };
 /* AI Engineer · NLP 첫 화면 경험과 대표 프로젝트 (ROLES.cj 원문은 AI 덱 생성기가 읽으므로 유지) */
-const EV_SOSANG='사장님 비서 멀티에이전트 서비스 | 잘못된 일치 5건 → 0건 · Vercel 배포';
-const EV_SOSANG_D='에이전트 11개 · 온톨로지 · 규칙 판정기로 공고 조건과 근거 문구를 제시, AI 경진대회 출품(결과 대기)';
+const EV_SOSANG='사장님 비서: 온톨로지 · 멀티에이전트 서비스 | 정답 일치 28/30 · 잘못된 일치 0건';
+const EV_SOSANG_D='에이전트 12개 · RDF 온톨로지 · 규칙 판정기를 결합해 공고 조건과 근거 제시, AI 경진대회 출품(결과 대기)';
 Object.assign(ROLES.cj,{ev:[['경험 1. '+EV_SOSANG,EV_SOSANG_D],ROLES.cj.ev[1],ROLES.cj.ev[2]],
   feat:['sosang','lora','bntm'],order:['sosang','lora','bntm','sony','store','std','cag','emerg','pika','taxi'],
   close:'모델 학습부터 에이전트 서비스 구현 · 평가 · 배포까지 수행했습니다.'});
@@ -1749,17 +1759,18 @@ const SHORTCLAIM={'':'새 토픽 모델과 샘플러를 직접 설계하고, 예
  ds:'공공 · 특허 데이터를 분석해 예측 모델을 만듭니다.',
  ml:'새 토픽 모델과 MCMC 샘플러를 직접 설계 · 구현합니다.',
  av:'자율주행 데이터로 언어 모델과 3D 탐지 모델을 학습합니다.',
- nlp:'LLM 파인튜닝 · 검색 증강과 멀티에이전트 서비스를 구현합니다.',
- cj:'LLM 멀티에이전트 서비스를 구현 · 평가 · 배포합니다.'};
+ nlp:'LLM 파인튜닝과 온톨로지 · 멀티에이전트 서비스를 구현합니다.',
+ cj:'온톨로지 · 멀티에이전트 서비스를 구현 · 평가 · 배포합니다.'};
 /* 첫 화면 키워드: 항목은 같고 순서만 직무에 맞게 */
 const KWORDER={'':['토픽 모델링','베이지안 추론 · SGMCMC','예측 모형','시뮬레이션 설계','PyTorch','R · Rcpp','SQL','QGIS','LLM 파인튜닝 (LoRA)','RAG · 검색','Transformers'],
  ds:['예측 모형','SQL','R · Rcpp','QGIS','토픽 모델링','베이지안 추론 · SGMCMC','시뮬레이션 설계','PyTorch','LLM 파인튜닝 (LoRA)','RAG · 검색','Transformers'],
  ml:['베이지안 추론 · SGMCMC','토픽 모델링','시뮬레이션 설계','PyTorch','예측 모형','R · Rcpp','SQL','LLM 파인튜닝 (LoRA)','Transformers','RAG · 검색','QGIS'],
  av:['LLM 파인튜닝 (LoRA)','PyTorch','베이지안 추론 · SGMCMC','Transformers','RAG · 검색','토픽 모델링','시뮬레이션 설계','예측 모형','R · Rcpp','SQL','QGIS'],
- nlp:['LLM 파인튜닝 (LoRA)','RAG · 검색','Transformers','PyTorch','토픽 모델링','베이지안 추론 · SGMCMC','예측 모형','시뮬레이션 설계','SQL','R · Rcpp','QGIS'],
- cj:['RAG · 검색','LLM 파인튜닝 (LoRA)','Transformers','PyTorch','토픽 모델링','베이지안 추론 · SGMCMC','예측 모형','시뮬레이션 설계','SQL','R · Rcpp','QGIS']};
+ nlp:['멀티에이전트','온톨로지','LLM 파인튜닝 (LoRA)','RAG · 검색','Transformers','PyTorch','토픽 모델링','베이지안 추론 · SGMCMC','예측 모형','시뮬레이션 설계','SQL','R · Rcpp','QGIS'],
+ cj:['멀티에이전트','온톨로지','RAG · 검색','LLM 파인튜닝 (LoRA)','Transformers','PyTorch','토픽 모델링','베이지안 추론 · SGMCMC','예측 모형','시뮬레이션 설계','SQL','R · Rcpp','QGIS']};
 function orderKw(){ const box=document.querySelector('.kw'); if(!box) return; const o=KWORDER[ROLE in KWORDER?ROLE:'']; const sp=[...box.querySelectorAll('span')];
-  o.forEach(t=>{const e=sp.find(x=>x.textContent===t); if(e) box.appendChild(e);}); }
+  o.forEach(t=>{const e=sp.find(x=>x.textContent===t); if(e) box.appendChild(e);});
+  if(ROLE==='cj'||ROLE==='nlp') sp.forEach(e=>{const t=e.textContent; if(t==='멀티에이전트'||t==='온톨로지') e.hidden=false; if(t==='QGIS'||t==='R · Rcpp'||t==='시뮬레이션 설계') e.hidden=true;}); }
 const shortEv=(t,s)=>{const m=SHORTEV.find(([k])=>t.includes(k)); return m?m[1]:s;};
 function applyRole(){
   $('#rolename').textContent=RC.title;
