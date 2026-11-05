@@ -1124,7 +1124,7 @@ lora:{
 
 sgmcmc:{
  r:['GCIoU 손실을 에너지 함수로 설정하고 SGLD, SGHMC, SGNHT의 업데이트식을 유도해 직접 구현했습니다.',
-    'KITTI, OpenPCDet, CT-Stack 백본, PointPillars로 환경을 구성하고 학습 조건(80 epoch, batch 8, OneCycle LR)을 고정한 뒤 샘플러만 바꿨습니다.',
+    'KITTI, OpenPCDet, CT-Stack 백본, PointPillars로 환경을 구성하고 학습 조건(80 epoch, batch 8, OneCycle LR)을 고정한 뒤 최적화기만 바꿨습니다.',
     'BEV AP Moderate는 Adam 65.15%, SGHMC 49.59%, SGD 49.07%, SGLD 25.67%, SGNHT 25.37%였습니다. SGHMC는 학습 손실이 0.813으로 가장 낮았지만 성능은 2위였고, Adam은 손실이 네 번째(1.149)인데도 성능이 가장 높았습니다.',
     'SGMCMC 안에서는 모멘텀이 있는 SGHMC가 SGLD보다 23.9%p 높았지만, 모멘텀 기준인 SGD와의 차이는 0.52%p였습니다.',
     '이론상 가장 안정적인 혼합을 기대했던 SGNHT의 성능이 가장 낮았습니다. 속도와 thermostat 두 곳에 잡음이 더해져 온도 1e-3 이상에서는 기울기가 폭발했고, 1e-4 이하에서는 업데이트가 사라졌습니다.'],
@@ -1572,7 +1572,7 @@ const ROLES={
 /* AI Engineer · NLP 첫 화면 경험과 대표 프로젝트 (ROLES.cj 원문은 AI 덱 생성기가 읽으므로 유지) */
 const EV_SOSANG='사장님 비서: 온톨로지 · 멀티에이전트 서비스 | 근거 인용 오류 0건 · 정답 일치 27/30';
 const EV_SOSANG_D='에이전트 12개 · RDF 온톨로지 · 규칙 판정기를 결합해 공고 조건과 근거 제시, AI 경진대회 출품(결과 대기)';
-Object.assign(ROLES.cj,{ev:[['경험 1. '+EV_SOSANG,EV_SOSANG_D],ROLES.cj.ev[1],ROLES.cj.ev[2]],
+Object.assign(ROLES.cj,{ev:[['경험 1. '+EV_SOSANG,EV_SOSANG_D],['경험 2. 자율주행 sLLM LoRA 파인튜닝 | ROUGE-1 68.4% 향상 · 학술지 게재',ROLES.cj.ev[1][1]],['경험 3. 새 토픽 모델 BNTM 설계 · 모의실험 데이터 생성 | perplexity 41.6% 감소 · 토픽 수 정확 복원',ROLES.cj.ev[2][1]]],
   feat:['sosang','lora','bntm'],order:['sosang','lora','bntm','sony','store','std','cag','emerg','pika','taxi'],
   close:'모델 학습 · 평가부터 서비스 배포까지 수행했습니다.'});
 Object.assign(ROLES.nlp,{ev:[ROLES.nlp.ev[0],['경험 2. '+EV_SOSANG,EV_SOSANG_D],['경험 3. SONY 제품 설명서 RAG 챗봇 | 답변마다 출처 페이지 반환',ROLES.nlp.ev[1][1]]],
