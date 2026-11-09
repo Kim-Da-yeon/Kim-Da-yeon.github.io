@@ -949,9 +949,9 @@ const P=[
  techs:['Next.js 14','TypeScript','Tailwind CSS','Supabase','PostgreSQL','Vercel','Claude Code']
 },
 {
- id:'sosang', cat:'nlp', lab:'공모전 출품 · 온톨로지 + 멀티에이전트', yr:'2026',
+ id:'sosang', cat:'nlp', lab:'팀 프로젝트 · 온톨로지 + 멀티에이전트', yr:'2026',
  title:'사장님 비서: 온톨로지 · 멀티에이전트 기반 소상공인 행정 AI 서비스',
- meta:'팀 3명 · 2026.10 – 11 · 2026 하반기 AI 경진대회 학생 부문 출품(결과 대기) · Vercel 배포 완료',
+ meta:'팀 3명 · 2026.10 – 11 · Vercel 배포 완료',
  sum:'LLM 에이전트 12개와 RDF 온톨로지, 규칙 판정기를 결합해 내 가게와 지원사업 공고 조건을 대조하고 근거 문구까지 보여 주는 서비스. 가상 사례 30건 정답 일치 27/30(공고 10건, 수정 후 재측정 포함), 근거 인용 오류 0건.',
  techs:['멀티에이전트','RDF 온톨로지','SHACL','Claude API','신경-기호 결합','FastAPI','PyMuPDF','Vercel','Claude Code','Codex CLI']
 }
@@ -1385,9 +1385,9 @@ const USED={sosang:[['지원사업 공고(실제)','중소벤처기업부 45건 
 const USEDNOTE={sosang:'개인정보와 기업 내부 데이터는 쓰지 않았고, 실제 사장님 사용 데이터도 없습니다.'};
 /* 대표 프로젝트 — 문제 · 역할 · 결과 */
 const FEAT=[
- {id:'sosang', cat:'공모전 출품 · 온톨로지 + 멀티에이전트', title:'사장님 비서: 온톨로지 · 멀티에이전트 기반 소상공인 행정 AI 서비스',
+ {id:'sosang', cat:'팀 프로젝트 · 온톨로지 + 멀티에이전트', title:'사장님 비서: 온톨로지 · 멀티에이전트 기반 소상공인 행정 AI 서비스',
   problem:'지원사업 공고는 평균 약 1.4만 자이고 같은 소기업 기준도 공고마다 달라, 담당 직원이 없는 소상공인이 조건을 하나씩 대조하기 어려움',
-  role:'Vercel 배포 단독. 멀티에이전트 12개 · RDF 온톨로지 · 규칙 판정기 설계와 구현, 평가는 팀 3명이 함께 진행. 2026 하반기 AI 경진대회 학생 부문 출품(결과 대기)',
+  role:'3인 팀에서 공고 대조용 RDF 온톨로지 · 규칙 판정 설계 및 오답 개선 담당, Vercel 배포 단독 수행. 에이전트 구조와 평가는 팀 3명이 공동 진행',
   result:'근거 인용 오류 0건. 역할 추가 비교에서 정답 일치 10/24 → 18/24, 늘어난 잘못된 일치는 최종 판단 에이전트로 5건 → 0건. 오답 분석 · 수정 후 같은 사례 21/24, 추가 공고 6/6으로 합계 27/30. 첫 측정의 LLM 직접 응답은 20/24',
   links:[['상세 보기','#/p/sosang'],['배포 사이트','https://sajangnim-biseo.vercel.app/'],['저장소','https://github.com/Kim-Da-yeon/sajangnim-biseo']]},
  {id:'farm', cat:'실무 · 인턴', title:'작물 생육 센서 데이터 시계열 분석',
@@ -1572,7 +1572,7 @@ const ROLES={
 };
 /* AI Engineer · NLP 첫 화면 경험과 대표 프로젝트 (ROLES.cj 원문은 AI 덱 생성기가 읽으므로 유지) */
 const EV_SOSANG='사장님 비서: 온톨로지 · 멀티에이전트 서비스 | 근거 인용 오류 0건 · 정답 일치 27/30';
-const EV_SOSANG_D='에이전트 12개 · RDF 온톨로지 · 규칙 판정기를 결합해 공고 조건과 근거 제시, AI 경진대회 출품(결과 대기)';
+const EV_SOSANG_D='에이전트 12개 · RDF 온톨로지 · 규칙 판정기를 결합해 공고 조건과 근거 제시';
 Object.assign(ROLES.cj,{ev:[['경험 1. '+EV_SOSANG,EV_SOSANG_D],['경험 2. 자율주행 sLLM LoRA 파인튜닝 | ROUGE-1 68.4% 향상 · 학술지 게재',ROLES.cj.ev[1][1]],['경험 3. 새 토픽 모델 BNTM 설계 · 모의실험 데이터 생성 | perplexity 41.6% 감소 · 토픽 수 정확 복원',ROLES.cj.ev[2][1]]],
   feat:['sosang','lora','bntm'],order:['sosang','lora','bntm','sony','store','std','cag','emerg','pika','taxi'],
   close:'모델 학습 · 평가부터 서비스 배포까지 수행했습니다.'});
