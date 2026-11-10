@@ -109,6 +109,7 @@ html{scrollbar-color:var(--base-2) var(--bg)}
 .hname .sig{font-size:clamp(3.8rem,6.4vw,5.6rem);font-weight:800;margin:0;vertical-align:0}
 .hname span{font-size:16px;color:var(--ink-3);font-weight:500}
 .haff{font-size:14.5px;color:var(--ink-3);margin-top:12px;line-height:1.7}
+.hthesis{font-size:14px;color:var(--ink-2);margin-top:2px;line-height:1.6}.hthesis b{font-weight:600}
 .hid{display:flex;align-items:flex-end;gap:24px}
 .hid img{width:136px;height:170px;object-fit:cover;border-radius:8px;background:var(--sunk);box-shadow:0 1px 2px rgba(19,21,26,.06),0 8px 24px -12px rgba(19,21,26,.22)}
 .hid b{display:block;font-size:22px;letter-spacing:-.02em;line-height:1.3}
@@ -574,6 +575,7 @@ p,li,dd,figcaption{text-wrap:pretty}
       <div class="hl">
         <p class="hname"><em class="sig">김다연</em><span>Kim Dayeon</span></p>
         <p class="haff">고려대학교 일반대학원 빅데이터사이언스학과 석사과정<span class="m-hide"> · </span><span class="m-line">2027.02 졸업예정</span></p>
+        <p class="hthesis"><b>학위논문</b> 「AWSGMCMC를 이용한 베이지안 전이 네트워크 토픽 모형 추론」 · <a href="#research">2026.11.30 발표 예정</a></p>
         <h1 id="rolename">Data Scientist · ML Researcher</h1>
         <p class="claim" id="roleclaim"></p>
         <ul class="evid" id="evid"></ul>
@@ -632,7 +634,7 @@ p,li,dd,figcaption{text-wrap:pretty}
     <div class="wrap sgrid">
       <div class="sh">
         <h2>연구 · 논문 · 수상</h2>
-        <p>KCI 등재지 제1저자 논문 2편 게재 · 투고 예정 2편(SCI급 1편 포함) · 수상 3회 · 한국연구재단 석사과정생연구장려금 연구책임자</p>
+        <p>석사학위논문(2026.11.30 발표 예정) · KCI 등재지 제1저자 논문 2편 게재 · 투고 예정 2편(SCI급 1편 포함) · 수상 3회 · 한국연구재단 석사과정생연구장려금 연구책임자</p>
       </div>
       <div class="sb">
         <div class="refs" id="papers"></div>
@@ -783,6 +785,11 @@ const CATS=[{k:'all',n:'전체'},{k:'field',n:'실무'},{k:'stat',n:'통계·ML'
 const CATMAP={field:{n:'실무'},stat:{n:'통계·ML'},nlp:{n:'NLP·LLM'},db:{n:'데이터·DB'}};
 
 const PAPERS=[
+ {st:'pend', who:'통계학 석사 · 2027', tag:'학위논문', t:'AWSGMCMC를 이용한 베이지안 전이 네트워크 토픽 모형 추론',
+  src:'고려대학교 석사학위논문(통계학) · 지도교수 전수영 · 2026.11.30 발표 예정 · 2027.02 학위 예정',
+  p:'문장 사이 토픽 전이를 K×K 방향성 전이행렬로 추정하는 베이지안 토픽 모형 2개를 제안하고, 연속 모수를 적응적 가중 확률적 경사 MCMC(AWSGMCMC)로 추론. 연구 1(연도별 TNTM + AWSGLD): 임베디드 분야 논문 초록 114,066건 · 미국 특허 21,028건에서 문서 완성 perplexity 최저(논문 TNTM 1172 · HTMM 1223 · LDA 2149), 전이 구조 변수로 3년 뒤 성장 토픽을 AUC 논문 0.876 · 특허 0.746로 예측. 연구 2(BNTM + AWSGHMC): 모의 환경 5종 · 10개 시드 모두에서 활성 토픽 수를 정확히 복원한 유일한 샘플러, 실데이터 문서 완성 perplexity FAERS 32.13(HTMM 54.99 · LDA 78.23) · NTSB 472.1(498.5 · 1,090.7).',
+  meth:'TNTM · BNTM · AWSGLD · AWSGHMC · MH-Gibbs · Logistic-Normal · 축소 사전분포',
+  go:'#/p/bntm'},
  {st:'ok', who:'제1저자 · 2026', tag:'게재', t:'AWSGLD를 이용한 전이 네트워크 토픽 모델 추론',
   src:'한국자료분석학회지 28(1), 109–121',
   p:'TNTM 추론을 확률적 기울기 표본추출로 바꿔 잡음이 있는 텍스트에서도 안정적이고 해석 가능한 토픽 전이 구조를 추정하는 방법을 제안(문장 토픽은 MH-Gibbs, 전이행렬 · 단어 분포는 AWSGLD). IMDB 리뷰 1,000문장의 각 문장에 무작위 단어를 0 · 50 · 100개 넣은 실험에서 SGD는 토픽 다양성 0.48(토픽 절반 중복), AWSGLD와 SGLD는 0.96이었고, 단어 50개 조건의 perplexity는 SGLD보다 약 8배 낮음(m=30).',
@@ -796,12 +803,12 @@ const PAPERS=[
   doi:'10.37727/jkdas.2025.27.3.769',
   go:'#/p/lora'},
  {st:'pend', who:'제1저자 · 2026', tag:'투고 예정', t:'Fixed-K Shrinkage Bayesian Transition Network Topic Model with AWSGHMC Inference',
-  src:'SCI급 학술지 투고 예정 · Kim, D. & Cheon, S.',
+  src:'SCI급 학술지 투고 예정 · Kim, D. & Cheon, S. · 학위논문 연구 2',
   p:'목표는 두 가지. ① 문장 순서가 있는 텍스트를 기존 토픽 모델(LDA · HTMM)보다 잘 설명하는 새 모델(BNTM) 직접 설계 ② 멀티모달 사후분포를 안정적으로 추정하는 샘플러(AWSGHMC). 직접 설계한 모의실험 5종과 실데이터 2종(FAERS · NTSB)에서 BNTM이 문서 완성 perplexity 최저, AWSGHMC가 최저 에너지 도달 · 토픽 수 정확 복원.',
   meth:'BNTM · AWSGHMC · Logistic-Normal · Sparse Prior · PyTorch',
   go:'#/p/bntm'},
  {st:'pend', who:'제1저자 · 2026', tag:'투고 예정', t:'전이 네트워크 토픽 모델을 이용한 임베디드 기술의 성장 예측',
-  src:'투고 예정 · Kim, D. & Cheon, S.',
+  src:'투고 예정 · Kim, D. & Cheon, S. · 학위논문 연구 1',
   p:'논문 초록 114,066건과 미국 특허 21,028건에서 3년 뒤 성장할 기술 토픽을 예측. 데이터 변수 14개(비중 · 확산 · 인용 · 저자)와 TNTM 전이 구조 변수 8개로 만든 로지스틱 회귀 모형이 과거 자료만으로 학습하는 평가에서 AUC 논문 0.876, 특허 0.746.',
   meth:'TNTM · AWSGLD · L2 로지스틱 회귀 · rolling-origin 평가',
   go:'#/p/emerg'}
@@ -1400,12 +1407,12 @@ const FEAT=[
   role:'팀 3명 중 QGIS 공간 시각화와 분석 코드 구현 담당',
   result:'공공데이터 6종을 병합하고 계층적 군집(Ward.D)으로 25개 자치구를 6개 운영 군집에 배정함. 고려대학교 통계학술제 최우수상 수상',
   links:[['상세 보기','#/p/taxi'],['발표 포스터 PDF','assets/taxi-demand-2023.pdf']]},
- {id:'bntm', cat:'연구 · 새 모델 설계 · SCI급 투고 예정', title:'Fixed-K Shrinkage Bayesian Transition Network Topic Model with AWSGHMC Inference',
+ {id:'bntm', cat:'학위논문 연구 2 · 새 모델 설계 · SCI급 투고 예정', title:'Fixed-K Shrinkage Bayesian Transition Network Topic Model with AWSGHMC Inference',
   problem:'LDA는 문장 순서를 무시하고 HTMM은 전이를 값 하나로 요약함. TNTM은 토픽 수를 미리 정해야 하며 확률 단체 제약으로 경사 기반 추론이 어려웠음. 멀티모달 사후분포에서 일반 샘플러가 로컬 트랩에 갇힘',
   role:'제1저자. 새 토픽 모델 BNTM 직접 설계, 정답을 아는 모의실험 데이터 생성기 직접 설계(환경 5종, 멀티모달 사후분포를 의도적으로 구성), 샘플러 구현, 평가 지표 정의, 실험과 논문 작성 담당(지도교수 자문)',
-  result:'FAERS 실데이터 문서 완성 perplexity HTMM 54.99 → BNTM 32.13(41.6%↓, LDA 78.23), NTSB도 498.5 → 472.1로 최저 기록. 정답 20토픽 환경의 추정 토픽 수 SGHMC 15.4개 → AWSGHMC 20.0개, 5개 환경 모두 정확 복원. 포스터논문 장려상 수상',
+  result:'FAERS 실데이터 문서 완성 perplexity HTMM 54.99 → BNTM 32.13(41.6%↓, LDA 78.23), NTSB도 498.5 → 472.1로 최저 기록. 정답 20토픽 환경의 추정 토픽 수 SGHMC 15.4개 → AWSGHMC 20.0개, 5개 환경 · 10개 시드 모두 정확 복원. 포스터논문 장려상 수상(AWSGLD 버전)',
   links:[['상세 보기','#/p/bntm'],['학회 포스터 PDF','assets/poster-bntm-2026.pdf'],['저장소 게재 후 공개','']]},
- {id:'emerg', cat:'연구 · 예측 모형 · 투고 예정', title:'전이 네트워크 토픽 모델을 이용한 임베디드 기술의 성장 예측',
+ {id:'emerg', cat:'학위논문 연구 1 · 예측 모형 · 투고 예정', title:'전이 네트워크 토픽 모델을 이용한 임베디드 기술의 성장 예측',
   problem:'임베디드 분야에서 3년 뒤 크게 성장할 기술 토픽 예측과 성장 이유 설명. 기존 연구는 토픽 비중, 키워드, 인용, 특허 지표를 사용했으며, 신경망 예측은 정확해도 성장 이유를 설명하기 어려웠음',
   role:'제1저자로 논문 초록 11.4만 건과 특허 2.1만 건 수집 및 정제, TNTM GPU 샘플러 구현, 전이 구조 변수 8개 정의, 로지스틱 회귀 예측 모형과 rolling-origin 평가 설계 담당',
   result:'과거 자료로만 학습한 평가에서 AUC 논문 0.876(95% CI 0.80–0.93), 특허 0.746(무작위 예측 0.5). 문서 완성 perplexity TNTM 1172 · HTMM 1223 · LDA 2149. 유입 증가가 성장의 주요 신호로 나타남. 2028년 전망에서는 전력 설비 고장 감시, 스마트 에너지 계량, 대기·화재 감시가 상위에 오름',
