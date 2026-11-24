@@ -1578,10 +1578,13 @@ const ROLES={
 /* AI Engineer · NLP 첫 화면 경험과 대표 프로젝트 (ROLES.cj 원문은 AI 덱 생성기가 읽으므로 유지) */
 const EV_SOSANG='사장님 비서: 온톨로지 · 멀티에이전트 서비스 | 근거 인용 오류 0건 · 정답 일치 29/30';
 const EV_SOSANG_D='에이전트 12개 · RDF 온톨로지 · 규칙 판정기를 결합해 공고 조건과 근거 제시';
-Object.assign(ROLES.cj,{ev:[['경험 1. '+EV_SOSANG,EV_SOSANG_D],['경험 2. 자율주행 sLLM LoRA 파인튜닝 | ROUGE-1 68.4% 향상 · 학술지 게재',ROLES.cj.ev[1][1]],['경험 3. 새 토픽 모델 BNTM 설계 · 모의실험 데이터 생성 | perplexity 41.6% 감소 · 토픽 수 정확 복원',ROLES.cj.ev[2][1]]],
-  feat:['sosang','lora','bntm'],order:['sosang','lora','bntm','sony','store','std','cag','emerg','pika','taxi'],
-  close:'모델 학습 · 평가부터 서비스 배포까지 수행했습니다.'});
-Object.assign(ROLES.nlp,{ev:[ROLES.nlp.ev[0],['경험 2. '+EV_SOSANG,EV_SOSANG_D],['경험 3. SONY 제품 설명서 RAG 챗봇 | 답변마다 출처 페이지 반환',ROLES.nlp.ev[1][1]]],
+const EV_SONY=['SONY 제품 설명서 RAG 챗봇 | 답변마다 출처 페이지 반환','제품 7종 설명서를 bge-m3 · Chroma로 검색하고 답변마다 파일명 · 페이지 번호를 반환, 반환 페이지를 원문과 대조해 출처 확인'];
+const EV_LORA=['자율주행 sLLM LoRA 파인튜닝 | ROUGE-1 68.4% 향상 · 학술지 게재','Phi-4-mini 3.8B에 LoRA(파라미터 0.01% 학습)를 적용해 RAG 대비 ROUGE-1 0.0888 → 0.1495, 교통법규 분류 Accuracy RAG 최고 0.540 → 0.745'];
+/* 2026-11-24 직무 적합도 점검: AI Engineer = 사장님 비서 · SONY · LoRA (경력기술서 v46과 같음) */
+Object.assign(ROLES.cj,{ev:[['경험 1. '+EV_SOSANG,EV_SOSANG_D],['경험 2. '+EV_SONY[0],EV_SONY[1]],['경험 3. '+EV_LORA[0],EV_LORA[1]]],
+  feat:['sosang','sony','lora'],order:['sosang','sony','lora','store','std','cag','bntm','emerg','pika','taxi'],
+  close:'에이전트 설계 · 배포부터 문서 검색 · 답변 생성, 모델 학습 · 비교 평가까지 수행했습니다.'});
+Object.assign(ROLES.nlp,{ev:[['경험 1. '+EV_LORA[0],EV_LORA[1]],['경험 2. '+EV_SOSANG,EV_SOSANG_D],['경험 3. '+EV_SONY[0],EV_SONY[1]]],
   feat:['lora','sosang','sony']});
 const RC=ROLES[ROLE]||ROLES[''];
 const HOME_TITLE=document.title;
@@ -1772,7 +1775,7 @@ const SHORTEV=[
  ['택시 수요','공공 데이터 6종으로 25개 자치구를 6개 군집으로 분류, 공차율 웹과 서비스 개선 방향 제시'],
  ['메타데이터 국제 표준','LLM 생성 Netflix 메타데이터 17,366건을 ISO · BCP 47로 정규화, 적합률 48.4% → 91.4%'],
  ['3D 객체 탐지','KITTI · PointPillars에서 SGMCMC 3종을 직접 구현해 Adam · SGD와 비교, Adam 65.15% · SGHMC 49.59%'],
- ['스마트팜','생육 데이터 검정으로 후속 측정 설계 제안, 데이터 쪽은 교수님 조언을 받고 현업에 설명하며 진행'],
+ ['스마트팜','인턴 때 생육 데이터 한계를 검정으로 확인 → 후속 PBL에서 공공 데이터 90,000건으로 작물 분류 모델 6개 비교, LightGBM(Test F1 0.81) 결과와 코드를 농장에 전달'],
  ['캐시 증강','QLoRA 모델에 KV 캐시 증강(CAG)을 결합해 8개 지표 모두 개선, 반복 생성 편차 79% 감소'],
 ];
 /* 명함 한 줄 소개 — 첫 화면용 짧은 문장 (ROLES.claim 원문은 PPT 생성기가 읽으므로 유지) */
